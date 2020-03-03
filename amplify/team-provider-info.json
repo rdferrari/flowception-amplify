@@ -1,0 +1,14 @@
+{
+    "envapi": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-react-amplify-envapi-144444-authRole",
+            "UnauthRoleArn": "arn:aws:iam::837623038432:role/amplify-react-amplify-envapi-144444-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::837623038432:role/amplify-react-amplify-envapi-144444-authRole",
+            "Region": "ap-southeast-2",
+            "DeploymentBucketName": "amplify-react-amplify-envapi-144444-deployment",
+            "UnauthRoleName": "amplify-react-amplify-envapi-144444-unauthRole",
+            "StackName": "amplify-react-amplify-envapi-144444",
+            "StackId": "arn:aws:cloudformation:ap-southeast-2:837623038432:stack/amplify-react-amplify-envapi-144444/8ef8adf0-5cf0-11ea-8549-02de5ae5c4ae"
+        }
+    }
+}
