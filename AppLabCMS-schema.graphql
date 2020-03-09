@@ -1,0 +1,32 @@
+type Section @model {
+  id: ID!
+  ownerId: String!
+  ownerUsername: String!
+  title: String!
+  introduction: String!
+  body: String!
+  file: S3Object
+  url: String
+  createdAt: String
+  updatedAt: String
+  subsections: [Subsection] @connection(name: "SectionSubsections")
+}
+
+type Subsection @model {
+  id: ID!
+  ownerId: String!
+  ownerUsername: String!
+  section: Section @connection(name: "SectionSubsections")
+  file: S3Object
+  url: String
+  type: String!
+  text: String
+  createdAt: String!
+  updatedAt: String
+}
+
+type S3Object {
+  bucket: String!
+  region: String!
+  key: String!
+}

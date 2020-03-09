@@ -1,1 +1,9 @@
-{}
+{
+	"auth": {
+		"applabd56b276b": {
+			"service": "Cognito",
+			"providerPlugin": "awscloudformation",
+			"dependsOn": []
+		}
+	}
+}
