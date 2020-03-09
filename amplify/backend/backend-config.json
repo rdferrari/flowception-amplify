@@ -5,5 +5,28 @@
 			"providerPlugin": "awscloudformation",
 			"dependsOn": []
 		}
+	},
+	"api": {
+		"applab": {
+			"service": "AppSync",
+			"providerPlugin": "awscloudformation",
+			"output": {
+				"authConfig": {
+					"additionalAuthenticationProviders": [],
+					"defaultAuthentication": {
+						"authenticationType": "AMAZON_COGNITO_USER_POOLS",
+						"userPoolConfig": {
+							"userPoolId": "authapplabd56b276b"
+						}
+					}
+				}
+			}
+		}
+	},
+	"storage": {
+		"applab": {
+			"service": "S3",
+			"providerPlugin": "awscloudformation"
+		}
 	}
 }

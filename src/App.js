@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState } from "react";
 import {
   BrowserRouter as Router,
   Switch,
@@ -8,7 +8,9 @@ import {
 import "./index.scss";
 import Header from "./components/Header";
 import Home from "./components/Home";
-import Login from "./components/Login";
+import Section from "./components/section/Section";
+import Subsection from "./components/subsection/Subsection";
+// import Login from "./components/Login";
 
 import { Authenticator, AmplifyTheme } from "aws-amplify-react";
 import Amplify from "@aws-amplify/core";
@@ -26,14 +28,18 @@ function LoginApp() {
 
 function App() {
   const [user, setUser] = useState(null);
+  const [username, setUsername] = useState(null);
 
   useEffect(() => {
     getUserData();
     console.dir(AmplifyTheme);
+
     Hub.listen("auth", data => {
       const { payload } = data;
       listener(payload);
-      console.log(data.payload.data.username + " has " + data.payload.event);
+      const username = data.payload.data.username;
+      setUsername(username);
+      console.log(username + " has " + data.payload.event);
     });
   }, []);
 
@@ -67,13 +73,14 @@ function App() {
   };
 
   return (
-    <UserContext.Provider value={{ user }}>
+    <UserContext.Provider value={{ user, username }}>
       <Router>
         <Header handleSignOut={handleSignOut} />
-        {/* <p onClick={() => handleSignOut()}>sign out</p> */}
 
         <Switch>
-          <Route exact path="/" component={Home} />
+          <Route exact path="/" component={Section} />
+          <Route path="/section/:id" component={Subsection} />
+
           {user ? (
             <Route path="/login" render={() => <Redirect to="/" />} />
           ) : (

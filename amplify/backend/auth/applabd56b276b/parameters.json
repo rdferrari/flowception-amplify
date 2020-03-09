@@ -1,6 +1,6 @@
 {
     "identityPoolName": "applabd56b276b_identitypool_d56b276b",
-    "allowUnauthenticatedIdentities": false,
+    "allowUnauthenticatedIdentities": true,
     "resourceNameTruncated": "applabd56b276b",
     "userPoolName": "applabd56b276b_userpool_d56b276b",
     "autoVerifiedAttributes": [
