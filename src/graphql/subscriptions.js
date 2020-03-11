@@ -6,6 +6,7 @@ export const onCreateSection = /* GraphQL */ `
     onCreateSection {
       id
       ownerUsername
+      owner
       title
       intro
       body
@@ -21,6 +22,7 @@ export const onCreateSection = /* GraphQL */ `
         items {
           id
           ownerUsername
+          owner
           url
           type
           text
@@ -37,6 +39,7 @@ export const onUpdateSection = /* GraphQL */ `
     onUpdateSection {
       id
       ownerUsername
+      owner
       title
       intro
       body
@@ -52,6 +55,7 @@ export const onUpdateSection = /* GraphQL */ `
         items {
           id
           ownerUsername
+          owner
           url
           type
           text
@@ -68,6 +72,7 @@ export const onDeleteSection = /* GraphQL */ `
     onDeleteSection {
       id
       ownerUsername
+      owner
       title
       intro
       body
@@ -83,6 +88,7 @@ export const onDeleteSection = /* GraphQL */ `
         items {
           id
           ownerUsername
+          owner
           url
           type
           text
@@ -99,9 +105,21 @@ export const onCreateSubsection = /* GraphQL */ `
     onCreateSubsection {
       id
       ownerUsername
+      owner
+      file {
+        bucket
+        region
+        key
+      }
+      url
+      type
+      text
+      createdAt
+      updatedAt
       section {
         id
         ownerUsername
+        owner
         title
         intro
         body
@@ -117,16 +135,6 @@ export const onCreateSubsection = /* GraphQL */ `
           nextToken
         }
       }
-      file {
-        bucket
-        region
-        key
-      }
-      url
-      type
-      text
-      createdAt
-      updatedAt
     }
   }
 `;
@@ -135,9 +143,21 @@ export const onUpdateSubsection = /* GraphQL */ `
     onUpdateSubsection {
       id
       ownerUsername
+      owner
+      file {
+        bucket
+        region
+        key
+      }
+      url
+      type
+      text
+      createdAt
+      updatedAt
       section {
         id
         ownerUsername
+        owner
         title
         intro
         body
@@ -153,16 +173,6 @@ export const onUpdateSubsection = /* GraphQL */ `
           nextToken
         }
       }
-      file {
-        bucket
-        region
-        key
-      }
-      url
-      type
-      text
-      createdAt
-      updatedAt
     }
   }
 `;
@@ -171,9 +181,21 @@ export const onDeleteSubsection = /* GraphQL */ `
     onDeleteSubsection {
       id
       ownerUsername
+      owner
+      file {
+        bucket
+        region
+        key
+      }
+      url
+      type
+      text
+      createdAt
+      updatedAt
       section {
         id
         ownerUsername
+        owner
         title
         intro
         body
@@ -189,16 +211,33 @@ export const onDeleteSubsection = /* GraphQL */ `
           nextToken
         }
       }
-      file {
-        bucket
-        region
-        key
-      }
-      url
-      type
-      text
-      createdAt
-      updatedAt
+    }
+  }
+`;
+export const onCreateS3Object = /* GraphQL */ `
+  subscription OnCreateS3Object {
+    onCreateS3Object {
+      bucket
+      region
+      key
+    }
+  }
+`;
+export const onUpdateS3Object = /* GraphQL */ `
+  subscription OnUpdateS3Object {
+    onUpdateS3Object {
+      bucket
+      region
+      key
+    }
+  }
+`;
+export const onDeleteS3Object = /* GraphQL */ `
+  subscription OnDeleteS3Object {
+    onDeleteS3Object {
+      bucket
+      region
+      key
     }
   }
 `;

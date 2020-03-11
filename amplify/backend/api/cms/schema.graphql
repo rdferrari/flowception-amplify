@@ -3,7 +3,7 @@ type Section
   @auth(
     rules: [
       { allow: groups, groups: ["admin"] }
-      { allow: public, provider: iam, operations: [read] }
+      { allow: public, provider: apiKey, operations: [read] }
     ]
   ) {
   id: ID!
@@ -24,7 +24,7 @@ type Subsection
   @auth(
     rules: [
       { allow: groups, groups: ["admin"] }
-      { allow: public, provider: iam, operations: [read] }
+      { allow: public, provider: apiKey, operations: [read] }
     ]
   ) {
   id: ID!
@@ -39,7 +39,14 @@ type Subsection
   updatedAt: String
 }
 
-type S3Object {
+type S3Object
+  @model(subscriptions: { level: public })
+  @auth(
+    rules: [
+      { allow: groups, groups: ["admin"] }
+      { allow: public, provider: apiKey, operations: [read] }
+    ]
+  ) {
   bucket: String!
   region: String!
   key: String!

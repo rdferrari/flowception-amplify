@@ -9,6 +9,7 @@ export const createSection = /* GraphQL */ `
     createSection(input: $input, condition: $condition) {
       id
       ownerUsername
+      owner
       title
       intro
       body
@@ -24,6 +25,7 @@ export const createSection = /* GraphQL */ `
         items {
           id
           ownerUsername
+          owner
           url
           type
           text
@@ -43,6 +45,7 @@ export const updateSection = /* GraphQL */ `
     updateSection(input: $input, condition: $condition) {
       id
       ownerUsername
+      owner
       title
       intro
       body
@@ -58,6 +61,7 @@ export const updateSection = /* GraphQL */ `
         items {
           id
           ownerUsername
+          owner
           url
           type
           text
@@ -77,6 +81,7 @@ export const deleteSection = /* GraphQL */ `
     deleteSection(input: $input, condition: $condition) {
       id
       ownerUsername
+      owner
       title
       intro
       body
@@ -92,6 +97,7 @@ export const deleteSection = /* GraphQL */ `
         items {
           id
           ownerUsername
+          owner
           url
           type
           text
@@ -111,9 +117,21 @@ export const createSubsection = /* GraphQL */ `
     createSubsection(input: $input, condition: $condition) {
       id
       ownerUsername
+      owner
+      file {
+        bucket
+        region
+        key
+      }
+      url
+      type
+      text
+      createdAt
+      updatedAt
       section {
         id
         ownerUsername
+        owner
         title
         intro
         body
@@ -129,16 +147,6 @@ export const createSubsection = /* GraphQL */ `
           nextToken
         }
       }
-      file {
-        bucket
-        region
-        key
-      }
-      url
-      type
-      text
-      createdAt
-      updatedAt
     }
   }
 `;
@@ -150,9 +158,21 @@ export const updateSubsection = /* GraphQL */ `
     updateSubsection(input: $input, condition: $condition) {
       id
       ownerUsername
+      owner
+      file {
+        bucket
+        region
+        key
+      }
+      url
+      type
+      text
+      createdAt
+      updatedAt
       section {
         id
         ownerUsername
+        owner
         title
         intro
         body
@@ -168,16 +188,6 @@ export const updateSubsection = /* GraphQL */ `
           nextToken
         }
       }
-      file {
-        bucket
-        region
-        key
-      }
-      url
-      type
-      text
-      createdAt
-      updatedAt
     }
   }
 `;
@@ -189,9 +199,21 @@ export const deleteSubsection = /* GraphQL */ `
     deleteSubsection(input: $input, condition: $condition) {
       id
       ownerUsername
+      owner
+      file {
+        bucket
+        region
+        key
+      }
+      url
+      type
+      text
+      createdAt
+      updatedAt
       section {
         id
         ownerUsername
+        owner
         title
         intro
         body
@@ -207,16 +229,42 @@ export const deleteSubsection = /* GraphQL */ `
           nextToken
         }
       }
-      file {
-        bucket
-        region
-        key
-      }
-      url
-      type
-      text
-      createdAt
-      updatedAt
+    }
+  }
+`;
+export const createS3Object = /* GraphQL */ `
+  mutation CreateS3Object(
+    $input: CreateS3ObjectInput!
+    $condition: ModelS3ObjectConditionInput
+  ) {
+    createS3Object(input: $input, condition: $condition) {
+      bucket
+      region
+      key
+    }
+  }
+`;
+export const updateS3Object = /* GraphQL */ `
+  mutation UpdateS3Object(
+    $input: UpdateS3ObjectInput!
+    $condition: ModelS3ObjectConditionInput
+  ) {
+    updateS3Object(input: $input, condition: $condition) {
+      bucket
+      region
+      key
+    }
+  }
+`;
+export const deleteS3Object = /* GraphQL */ `
+  mutation DeleteS3Object(
+    $input: DeleteS3ObjectInput!
+    $condition: ModelS3ObjectConditionInput
+  ) {
+    deleteS3Object(input: $input, condition: $condition) {
+      bucket
+      region
+      key
     }
   }
 `;

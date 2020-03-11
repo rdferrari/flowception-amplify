@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { API, graphqlOperation } from "aws-amplify";
+import { Auth, API, graphqlOperation } from "aws-amplify";
 import ItemSection from "./ItemSection";
 
 import { listSections } from "../../graphql/queries";
@@ -10,7 +10,9 @@ function ListSection() {
   const [sections, updateSections] = useState([]);
 
   useEffect(() => {
-    getData();
+    {
+      Auth.user ? getData() : getPublicData();
+    }
   }, []);
 
   useEffect(() => {
@@ -37,6 +39,15 @@ function ListSection() {
     } catch (err) {
       console.log("error fetching data..", err);
     }
+  };
+
+  const getPublicData = async () => {
+    const sectionData = await API.graphql({
+      query: listSections,
+      variables: {},
+      authMode: "API_KEY"
+    });
+    updateSections(sectionData.data.listSections.items);
   };
 
   const handleDeleteContent = async sectionId => {

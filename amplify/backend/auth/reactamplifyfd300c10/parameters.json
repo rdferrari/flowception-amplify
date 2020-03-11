@@ -1,8 +1,8 @@
 {
-    "identityPoolName": "applabd56b276b_identitypool_d56b276b",
+    "identityPoolName": "reactamplifyfd300c10_identitypool_fd300c10",
     "allowUnauthenticatedIdentities": true,
-    "resourceNameTruncated": "applabd56b276b",
-    "userPoolName": "applabd56b276b_userpool_d56b276b",
+    "resourceNameTruncated": "reactafd300c10",
+    "userPoolName": "reactamplifyfd300c10_userpool_fd300c10",
     "autoVerifiedAttributes": [
         "email"
     ],
@@ -28,9 +28,9 @@
     "userpoolClientReadAttributes": [
         "email"
     ],
-    "userpoolClientLambdaRole": "applabd56b276b_userpoolclient_lambda_role",
+    "userpoolClientLambdaRole": "reactafd300c10_userpoolclient_lambda_role",
     "userpoolClientSetAttributes": false,
-    "resourceName": "applabd56b276b",
+    "resourceName": "reactamplifyfd300c10",
     "authSelections": "identityPoolAndUserPool",
     "authRoleArn": {
         "Fn::GetAtt": [
@@ -45,5 +45,14 @@
         ]
     },
     "useDefault": "default",
-    "dependsOn": []
+    "triggers": "{}",
+    "userPoolGroupList": [
+        "admin"
+    ],
+    "parentStack": {
+        "Ref": "AWS::StackId"
+    },
+    "permissions": [],
+    "dependsOn": [],
+    "adminQueryGroup": "admin"
 }

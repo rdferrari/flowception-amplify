@@ -1,10 +1,10 @@
 {
-    "AppSyncApiName": "applab",
+    "AppSyncApiName": "cms",
     "DynamoDBBillingMode": "PAY_PER_REQUEST",
     "DynamoDBEnableServerSideEncryption": "false",
     "AuthCognitoUserPoolId": {
         "Fn::GetAtt": [
-            "authapplabd56b276b",
+            "authreactamplifyfd300c10",
             "Outputs.UserPoolId"
         ]
     }

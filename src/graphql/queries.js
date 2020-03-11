@@ -1,37 +1,6 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const getSection = /* GraphQL */ `
-  query GetSection($id: ID!) {
-    getSection(id: $id) {
-      id
-      ownerUsername
-      title
-      intro
-      body
-      file {
-        bucket
-        region
-        key
-      }
-      url
-      createdAt
-      updatedAt
-      subsections {
-        items {
-          id
-          ownerUsername
-          url
-          type
-          text
-          createdAt
-          updatedAt
-        }
-        nextToken
-      }
-    }
-  }
-`;
 export const listSections = /* GraphQL */ `
   query ListSections(
     $filter: ModelSectionFilterInput
@@ -42,6 +11,7 @@ export const listSections = /* GraphQL */ `
       items {
         id
         ownerUsername
+        owner
         title
         intro
         body
@@ -61,14 +31,59 @@ export const listSections = /* GraphQL */ `
     }
   }
 `;
+export const getSection = /* GraphQL */ `
+  query GetSection($id: ID!) {
+    getSection(id: $id) {
+      id
+      ownerUsername
+      owner
+      title
+      intro
+      body
+      file {
+        bucket
+        region
+        key
+      }
+      url
+      createdAt
+      updatedAt
+      subsections {
+        items {
+          id
+          ownerUsername
+          owner
+          url
+          type
+          text
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+    }
+  }
+`;
 export const getSubsection = /* GraphQL */ `
   query GetSubsection($id: ID!) {
     getSubsection(id: $id) {
       id
       ownerUsername
+      owner
+      file {
+        bucket
+        region
+        key
+      }
+      url
+      type
+      text
+      createdAt
+      updatedAt
       section {
         id
         ownerUsername
+        owner
         title
         intro
         body
@@ -84,16 +99,6 @@ export const getSubsection = /* GraphQL */ `
           nextToken
         }
       }
-      file {
-        bucket
-        region
-        key
-      }
-      url
-      type
-      text
-      createdAt
-      updatedAt
     }
   }
 `;
@@ -107,16 +112,7 @@ export const listSubsections = /* GraphQL */ `
       items {
         id
         ownerUsername
-        section {
-          id
-          ownerUsername
-          title
-          intro
-          body
-          url
-          createdAt
-          updatedAt
-        }
+        owner
         file {
           bucket
           region
@@ -127,6 +123,42 @@ export const listSubsections = /* GraphQL */ `
         text
         createdAt
         updatedAt
+        section {
+          id
+          ownerUsername
+          owner
+          title
+          intro
+          body
+          url
+          createdAt
+          updatedAt
+        }
+      }
+      nextToken
+    }
+  }
+`;
+export const getS3Object = /* GraphQL */ `
+  query GetS3Object($id: ID!) {
+    getS3Object(id: $id) {
+      bucket
+      region
+      key
+    }
+  }
+`;
+export const listS3Objects = /* GraphQL */ `
+  query ListS3Objects(
+    $filter: ModelS3ObjectFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listS3Objects(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        bucket
+        region
+        key
       }
       nextToken
     }

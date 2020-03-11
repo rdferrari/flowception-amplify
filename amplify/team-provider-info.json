@@ -1,19 +1,19 @@
 {
     "master": {
         "awscloudformation": {
-            "AuthRoleName": "amplify-applab-master-103404-authRole",
-            "UnauthRoleArn": "arn:aws:iam::837623038432:role/amplify-applab-master-103404-unauthRole",
-            "AuthRoleArn": "arn:aws:iam::837623038432:role/amplify-applab-master-103404-authRole",
+            "AuthRoleName": "amplify-react-amplify-master-84642-authRole",
+            "UnauthRoleArn": "arn:aws:iam::837623038432:role/amplify-react-amplify-master-84642-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::837623038432:role/amplify-react-amplify-master-84642-authRole",
             "Region": "ap-southeast-2",
-            "DeploymentBucketName": "amplify-applab-master-103404-deployment",
-            "UnauthRoleName": "amplify-applab-master-103404-unauthRole",
-            "StackName": "amplify-applab-master-103404",
-            "StackId": "arn:aws:cloudformation:ap-southeast-2:837623038432:stack/amplify-applab-master-103404/88dacf00-6184-11ea-bd0d-02667729fd96",
-            "AmplifyAppId": "d6923ftzlm99a"
+            "DeploymentBucketName": "amplify-react-amplify-master-84642-deployment",
+            "UnauthRoleName": "amplify-react-amplify-master-84642-unauthRole",
+            "StackName": "amplify-react-amplify-master-84642",
+            "StackId": "arn:aws:cloudformation:ap-southeast-2:837623038432:stack/amplify-react-amplify-master-84642/0b619280-63d1-11ea-86a9-0ac3f68b351c",
+            "AmplifyAppId": "d2bkfq99j0cffj"
         },
         "categories": {
             "auth": {
-                "applabd56b276b": {}
+                "reactamplifyfd300c10": {}
             }
         }
     }
