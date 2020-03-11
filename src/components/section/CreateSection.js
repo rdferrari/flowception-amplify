@@ -42,7 +42,6 @@ function CreateSection({ username }) {
     Storage.put(name, file).then(() => {
       setUrl(name);
     });
-    console.log(url);
   };
 
   return (
