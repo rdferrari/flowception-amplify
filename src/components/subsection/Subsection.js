@@ -4,8 +4,9 @@ import { S3Image } from "aws-amplify-react";
 import { getSection } from "../../graphql/queries";
 import { useParams } from "react-router-dom";
 import EditSection from "../section/EditSection";
+import { UserContext } from "../../App";
 
-function Subsection() {
+function Subsection({ user, username }) {
   let { id } = useParams();
   const [title, setTitle] = useState(null);
   const [intro, setIntro] = useState(null);
@@ -19,9 +20,15 @@ function Subsection() {
 
   const getData = async () => {
     try {
-      const sectionData = await API.graphql(
-        graphqlOperation(getSection, { id })
-      );
+      const sectionData = await API.graphql({
+        query: getSection,
+        variables: { id },
+        authMode: "API_KEY"
+      });
+
+      // const sectionData = await API.graphql(
+      //   graphqlOperation(getSection, { id })
+      // );
       setTitle(sectionData.data.getSection.title);
       setIntro(sectionData.data.getSection.intro);
       setBody(sectionData.data.getSection.body);
@@ -33,32 +40,41 @@ function Subsection() {
 
   if (editSection === false) {
     return (
-      <div>
-        <h1>Section</h1>
-        {url ? <S3Image imgKey={url} /> : null}
-        <p>{title}</p>
-        <p>{intro}</p>
-        <p>{body}</p>
-        <p onClick={() => setEditSection(true)}>Edit</p>
-      </div>
+      <UserContext.Consumer>
+        {({ user, username }) => (
+          <div>
+            <h1>Section</h1>
+            {url ? <S3Image imgKey={url} /> : null}
+            <p>{title}</p>
+            <p>{intro}</p>
+            <p>{body}</p>
+            {user && username === "rdferrari" ? (
+              <p onClick={() => setEditSection(true)}>Edit</p>
+            ) : null}
+          </div>
+        )}
+      </UserContext.Consumer>
     );
   } else {
     return (
-      <div>
-        <h2>Edit Section</h2>
-
-        {title && intro && body ? (
-          <EditSection
-            sectionId={id}
-            iniTitle={title}
-            iniIntro={intro}
-            iniBody={body}
-            iniUrl={url}
-            getData={getData}
-            setEditSection={setEditSection}
-          />
-        ) : null}
-      </div>
+      <UserContext.Consumer>
+        {({ user, username }) => (
+          <div>
+            <h2>Edit Section</h2>
+            {title && intro && body ? (
+              <EditSection
+                sectionId={id}
+                iniTitle={title}
+                iniIntro={intro}
+                iniBody={body}
+                iniUrl={url}
+                getData={getData}
+                setEditSection={setEditSection}
+              />
+            ) : null}
+          </div>
+        )}
+      </UserContext.Consumer>
     );
   }
 }

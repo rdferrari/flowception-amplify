@@ -4,7 +4,7 @@ import React from "react";
 import { S3Image } from "aws-amplify-react";
 import { Link } from "react-router-dom";
 
-function ItemSection({ sections, handleDeleteContent }) {
+function ItemSection({ sections, handleDeleteContent, user, username }) {
   return sections.map(section => (
     <div key={section.id}>
       <Link to={`/section/${section.id}`}>
@@ -13,7 +13,9 @@ function ItemSection({ sections, handleDeleteContent }) {
         <p>{section.intro}</p>
         <p>{section.body}</p>
       </Link>
-      <p onClick={() => handleDeleteContent(section.id)}>delete section</p>
+      {user && username ? (
+        <p onClick={() => handleDeleteContent(section.id)}>delete section</p>
+      ) : null}
     </div>
   ));
 }

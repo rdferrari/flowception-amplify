@@ -30,8 +30,6 @@ function App() {
   const [user, setUser] = useState(null);
   const [username, setUsername] = useState(null);
 
-  console.log(Auth.user);
-
   useEffect(() => {
     getUserData();
     console.dir(AmplifyTheme);
@@ -39,7 +37,7 @@ function App() {
     Hub.listen("auth", data => {
       const { payload } = data;
       listener(payload);
-      console.log(data.payload.data);
+      console.log(data.payload.data.attributes);
       const username = data.payload.data.username;
       setUsername(username);
       console.log(username + " has " + data.payload.event);
@@ -61,6 +59,7 @@ function App() {
         break;
       case "signOut":
         setUser(null);
+        setUsername(null);
         break;
       default:
         return;

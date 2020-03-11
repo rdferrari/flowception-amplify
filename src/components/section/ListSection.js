@@ -6,13 +6,11 @@ import { listSections } from "../../graphql/queries";
 import { onCreateSection } from "../../graphql/subscriptions";
 import { deleteSection } from "../../graphql/mutations";
 
-function ListSection() {
+function ListSection({ user, username }) {
   const [sections, updateSections] = useState([]);
 
   useEffect(() => {
-    {
-      Auth.user ? getData() : getPublicData();
-    }
+    getPublicData();
   }, []);
 
   useEffect(() => {
@@ -32,14 +30,14 @@ function ListSection() {
     return () => subscription.unsubscribe();
   }, [sections]);
 
-  const getData = async () => {
-    try {
-      const sectionData = await API.graphql(graphqlOperation(listSections));
-      updateSections(sectionData.data.listSections.items);
-    } catch (err) {
-      console.log("error fetching data..", err);
-    }
-  };
+  // const getData = async () => {
+  //   try {
+  //     const sectionData = await API.graphql(graphqlOperation(listSections));
+  //     updateSections(sectionData.data.listSections.items);
+  //   } catch (err) {
+  //     console.log("error fetching data..", err);
+  //   }
+  // };
 
   const getPublicData = async () => {
     const sectionData = await API.graphql({
@@ -53,7 +51,7 @@ function ListSection() {
   const handleDeleteContent = async sectionId => {
     const input = { id: sectionId };
     await API.graphql(graphqlOperation(deleteSection, { input }));
-    getData();
+    getPublicData();
   };
 
   return (
@@ -62,6 +60,8 @@ function ListSection() {
       <ItemSection
         sections={sections}
         handleDeleteContent={handleDeleteContent}
+        user={user}
+        username={username}
       />
     </div>
   );
