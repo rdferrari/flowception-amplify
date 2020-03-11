@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Auth, API, graphqlOperation, Storage } from "aws-amplify";
+import { S3Image } from "aws-amplify-react";
 import { createSection } from "../../graphql/mutations";
 import { useInput } from "../auth/useInput";
 
@@ -32,6 +33,7 @@ function CreateSection({ username }) {
     resetTitle();
     resetIntro();
     resetBody();
+    setUrl(null);
   };
 
   const handleUploadFile = async event => {
@@ -44,10 +46,24 @@ function CreateSection({ username }) {
     });
   };
 
+  const handleDeleteImage = async imageUrl => {
+    Storage.remove(imageUrl).then(() => {
+      setUrl(null);
+    });
+  };
+
   return (
     <div>
       <h2>Create Section</h2>
-      <input type="file" onChange={handleUploadFile} />
+      {url ? (
+        <div>
+          <S3Image imgKey={url} />
+          <p onClick={() => handleDeleteImage(url)}>Delete image</p>
+        </div>
+      ) : (
+        <input type="file" onChange={handleUploadFile} />
+      )}
+
       <form onSubmit={handleSubmit}>
         <label>
           Title:

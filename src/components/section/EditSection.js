@@ -1,12 +1,22 @@
 import React, { useState, useEffect } from "react";
 import { API, graphqlOperation, Storage } from "aws-amplify";
+import { S3Image } from "aws-amplify-react";
 import { updateSection } from "../../graphql/mutations";
 import { useInput } from "../auth/useInput";
 
-function EditSection({ sectionId, iniTitle, iniIntro, iniBody, getData }) {
+function EditSection({
+  sectionId,
+  iniTitle,
+  iniIntro,
+  iniBody,
+  iniUrl,
+  getData,
+  setEditSection
+}) {
   const { value: title, bind: bindTitle } = useInput(iniTitle);
   const { value: intro, bind: bindIntro } = useInput(iniIntro);
   const { value: body, bind: bindBody } = useInput(iniBody);
+  const [url, setUrl] = useState(iniUrl);
 
   const handleSubmit = async evt => {
     evt.preventDefault();
@@ -17,7 +27,8 @@ function EditSection({ sectionId, iniTitle, iniIntro, iniBody, getData }) {
       title,
       intro,
       body,
-      createdAt: Date.now()
+      url,
+      updatedAt: Date.now()
     };
 
     const result = await API.graphql(
@@ -26,12 +37,36 @@ function EditSection({ sectionId, iniTitle, iniIntro, iniBody, getData }) {
       })
     );
     getData();
+    setEditSection(false);
     console.info(`Updated section: id ${result.data.updateSection.id}`);
+  };
+
+  const handleUploadFile = async event => {
+    event.preventDefault();
+    const file = event.target.files[0];
+    const name = file.name;
+
+    Storage.put(name, file).then(() => {
+      setUrl(name);
+    });
+  };
+
+  const handleDeleteImage = async imageUrl => {
+    Storage.remove(imageUrl).then(() => {
+      setUrl(null);
+    });
   };
 
   return (
     <div>
-      <h2>Edit Section</h2>
+      {url ? (
+        <div>
+          <S3Image imgKey={url} />
+          <p onClick={() => handleDeleteImage(url)}>Delete image</p>
+        </div>
+      ) : (
+        <input type="file" onChange={handleUploadFile} />
+      )}
       <form onSubmit={handleSubmit}>
         <label>
           Title:

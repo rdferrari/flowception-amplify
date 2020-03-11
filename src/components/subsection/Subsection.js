@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { API, graphqlOperation } from "aws-amplify";
+import { API, graphqlOperation, Storage } from "aws-amplify";
 import { S3Image } from "aws-amplify-react";
 import { getSection } from "../../graphql/queries";
 import { useParams } from "react-router-dom";
@@ -11,6 +11,7 @@ function Subsection() {
   const [intro, setIntro] = useState(null);
   const [body, setBody] = useState(null);
   const [url, setUrl] = useState(null);
+  const [editSection, setEditSection] = useState(false);
 
   useEffect(() => {
     getData();
@@ -30,24 +31,35 @@ function Subsection() {
     }
   };
 
-  return (
-    <div>
-      <h1>Section</h1>
-      {url ? <S3Image imgKey={url} /> : null}
-      <p>{title}</p>
-      <p>{intro}</p>
-      <p>{body}</p>
-      {title && intro && body ? (
-        <EditSection
-          sectionId={id}
-          iniTitle={title}
-          iniIntro={intro}
-          iniBody={body}
-          getData={getData}
-        />
-      ) : null}
-    </div>
-  );
+  if (editSection === false) {
+    return (
+      <div>
+        <h1>Section</h1>
+        {url ? <S3Image imgKey={url} /> : null}
+        <p>{title}</p>
+        <p>{intro}</p>
+        <p>{body}</p>
+        <p onClick={() => setEditSection(true)}>Edit</p>
+      </div>
+    );
+  } else {
+    return (
+      <div>
+        <h2>Edit Section</h2>
+
+        {title && intro && body ? (
+          <EditSection
+            sectionId={id}
+            iniTitle={title}
+            iniIntro={intro}
+            iniBody={body}
+            getData={getData}
+            setEditSection={setEditSection}
+          />
+        ) : null}
+      </div>
+    );
+  }
 }
 
 export default Subsection;
