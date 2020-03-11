@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { API, graphqlOperation, Storage } from "aws-amplify";
+import { API, graphqlOperation } from "aws-amplify";
 import { S3Image } from "aws-amplify-react";
 import { getSection } from "../../graphql/queries";
 import { useParams } from "react-router-dom";
@@ -53,6 +53,7 @@ function Subsection() {
             iniTitle={title}
             iniIntro={intro}
             iniBody={body}
+            iniUrl={url}
             getData={getData}
             setEditSection={setEditSection}
           />
