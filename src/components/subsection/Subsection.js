@@ -41,14 +41,14 @@ function Subsection({ user, username }) {
   if (editSection === false) {
     return (
       <UserContext.Consumer>
-        {({ user, username }) => (
+        {({ user, group }) => (
           <div>
             <h1>Section</h1>
             {url ? <S3Image imgKey={url} /> : null}
             <p>{title}</p>
             <p>{intro}</p>
             <p>{body}</p>
-            {user && username === "rdferrari" ? (
+            {user && group === "admin" ? (
               <p onClick={() => setEditSection(true)}>Edit</p>
             ) : null}
           </div>
@@ -58,22 +58,24 @@ function Subsection({ user, username }) {
   } else {
     return (
       <UserContext.Consumer>
-        {({ user, username }) => (
-          <div>
-            <h2>Edit Section</h2>
-            {title && intro && body ? (
-              <EditSection
-                sectionId={id}
-                iniTitle={title}
-                iniIntro={intro}
-                iniBody={body}
-                iniUrl={url}
-                getData={getData}
-                setEditSection={setEditSection}
-              />
-            ) : null}
-          </div>
-        )}
+        {({ user, group }) =>
+          user && group === "admin" ? (
+            <div>
+              <h2>Edit Section</h2>
+              {title && intro && body ? (
+                <EditSection
+                  sectionId={id}
+                  iniTitle={title}
+                  iniIntro={intro}
+                  iniBody={body}
+                  iniUrl={url}
+                  getData={getData}
+                  setEditSection={setEditSection}
+                />
+              ) : null}
+            </div>
+          ) : null
+        }
       </UserContext.Consumer>
     );
   }

@@ -29,6 +29,7 @@ function LoginApp() {
 function App() {
   const [user, setUser] = useState(null);
   const [username, setUsername] = useState(null);
+  const [group, setGroup] = useState(null);
 
   useEffect(() => {
     getUserData();
@@ -37,7 +38,12 @@ function App() {
     Hub.listen("auth", data => {
       const { payload } = data;
       listener(payload);
-      console.log(data.payload.data.attributes);
+      console.log(
+        data.payload.data.signInUserSession.idToken.payload["cognito:groups"][0]
+      );
+      setGroup(
+        data.payload.data.signInUserSession.idToken.payload["cognito:groups"][0]
+      );
       const username = data.payload.data.username;
       setUsername(username);
       console.log(username + " has " + data.payload.event);
@@ -60,6 +66,7 @@ function App() {
       case "signOut":
         setUser(null);
         setUsername(null);
+        setGroup(null);
         break;
       default:
         return;
@@ -75,7 +82,7 @@ function App() {
   };
 
   return (
-    <UserContext.Provider value={{ user, username }}>
+    <UserContext.Provider value={{ user, username, group }}>
       <Router>
         <Header handleSignOut={handleSignOut} />
 
