@@ -6,9 +6,11 @@ import { useParams } from "react-router-dom";
 import EditSection from "../section/EditSection";
 import { UserContext } from "../../App";
 import DetailSection from "../section/DetailSection";
+import CreateSubsection from "./CreateSubsection";
 
-function Subsection({ user, username }) {
+function Subsection() {
   let { id } = useParams();
+  const [subsections, setSubsections] = useState(null);
   const [title, setTitle] = useState(null);
   const [intro, setIntro] = useState(null);
   const [body, setBody] = useState(null);
@@ -27,6 +29,7 @@ function Subsection({ user, username }) {
         authMode: "API_KEY"
       });
 
+      setSubsections(sectionData.data.getSection.subsections.items);
       setTitle(sectionData.data.getSection.title);
       setIntro(sectionData.data.getSection.intro);
       setBody(sectionData.data.getSection.body);
@@ -36,9 +39,11 @@ function Subsection({ user, username }) {
     }
   };
 
+  console.log(subsections);
+
   return (
     <UserContext.Consumer>
-      {({ user, group }) => (
+      {({ user, group, username }) => (
         <div>
           {editSection === false ? (
             <DetailSection
@@ -69,6 +74,15 @@ function Subsection({ user, username }) {
             </div>
           )}
           <h3>Subsection</h3>
+          <CreateSubsection username={username} sectionId={id} />
+          {subsections
+            ? subsections.map(item => (
+                <div>
+                  <p>{item.id}</p>
+                  <p>{item.type}</p>
+                </div>
+              ))
+            : null}
         </div>
       )}
     </UserContext.Consumer>

@@ -8,7 +8,6 @@ type Section
   ) {
   id: ID!
   ownerUsername: String!
-  owner: String
   title: String!
   intro: String!
   body: String
@@ -16,7 +15,7 @@ type Section
   url: String
   createdAt: String!
   updatedAt: String
-  subsections: [Subsection] @connection(name: "SectionSubsections")
+  subsections: [Subsection] @connection(keyName: "bySection", fields: ["id"])
 }
 
 type Subsection
@@ -26,11 +25,12 @@ type Subsection
       { allow: groups, groups: ["admin"] }
       { allow: public, provider: apiKey, operations: [read] }
     ]
-  ) {
+  )
+  @key(name: "bySection", fields: ["sectionId"]) {
   id: ID!
   ownerUsername: String!
-  owner: String
-  section: Section @connection(name: "SectionSubsections")
+  sectionId: ID!
+  section: Section @connection(fields: ["sectionId"])
   file: S3Object
   url: String
   type: String!

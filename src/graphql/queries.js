@@ -11,7 +11,6 @@ export const listSections = /* GraphQL */ `
       items {
         id
         ownerUsername
-        owner
         title
         intro
         body
@@ -36,7 +35,6 @@ export const getSection = /* GraphQL */ `
     getSection(id: $id) {
       id
       ownerUsername
-      owner
       title
       intro
       body
@@ -52,7 +50,7 @@ export const getSection = /* GraphQL */ `
         items {
           id
           ownerUsername
-          owner
+          sectionId
           url
           type
           text
@@ -69,7 +67,7 @@ export const getSubsection = /* GraphQL */ `
     getSubsection(id: $id) {
       id
       ownerUsername
-      owner
+      sectionId
       file {
         bucket
         region
@@ -83,7 +81,6 @@ export const getSubsection = /* GraphQL */ `
       section {
         id
         ownerUsername
-        owner
         title
         intro
         body
@@ -112,7 +109,7 @@ export const listSubsections = /* GraphQL */ `
       items {
         id
         ownerUsername
-        owner
+        sectionId
         file {
           bucket
           region
@@ -126,7 +123,6 @@ export const listSubsections = /* GraphQL */ `
         section {
           id
           ownerUsername
-          owner
           title
           intro
           body

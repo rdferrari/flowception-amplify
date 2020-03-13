@@ -6,7 +6,6 @@ export const onCreateSection = /* GraphQL */ `
     onCreateSection {
       id
       ownerUsername
-      owner
       title
       intro
       body
@@ -22,7 +21,7 @@ export const onCreateSection = /* GraphQL */ `
         items {
           id
           ownerUsername
-          owner
+          sectionId
           url
           type
           text
@@ -39,7 +38,6 @@ export const onUpdateSection = /* GraphQL */ `
     onUpdateSection {
       id
       ownerUsername
-      owner
       title
       intro
       body
@@ -55,7 +53,7 @@ export const onUpdateSection = /* GraphQL */ `
         items {
           id
           ownerUsername
-          owner
+          sectionId
           url
           type
           text
@@ -72,7 +70,6 @@ export const onDeleteSection = /* GraphQL */ `
     onDeleteSection {
       id
       ownerUsername
-      owner
       title
       intro
       body
@@ -88,7 +85,7 @@ export const onDeleteSection = /* GraphQL */ `
         items {
           id
           ownerUsername
-          owner
+          sectionId
           url
           type
           text
@@ -105,7 +102,7 @@ export const onCreateSubsection = /* GraphQL */ `
     onCreateSubsection {
       id
       ownerUsername
-      owner
+      sectionId
       file {
         bucket
         region
@@ -119,7 +116,6 @@ export const onCreateSubsection = /* GraphQL */ `
       section {
         id
         ownerUsername
-        owner
         title
         intro
         body
@@ -143,7 +139,7 @@ export const onUpdateSubsection = /* GraphQL */ `
     onUpdateSubsection {
       id
       ownerUsername
-      owner
+      sectionId
       file {
         bucket
         region
@@ -157,7 +153,6 @@ export const onUpdateSubsection = /* GraphQL */ `
       section {
         id
         ownerUsername
-        owner
         title
         intro
         body
@@ -181,7 +176,7 @@ export const onDeleteSubsection = /* GraphQL */ `
     onDeleteSubsection {
       id
       ownerUsername
-      owner
+      sectionId
       file {
         bucket
         region
@@ -195,7 +190,6 @@ export const onDeleteSubsection = /* GraphQL */ `
       section {
         id
         ownerUsername
-        owner
         title
         intro
         body

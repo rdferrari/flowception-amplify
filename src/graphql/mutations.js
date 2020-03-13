@@ -9,7 +9,6 @@ export const createSection = /* GraphQL */ `
     createSection(input: $input, condition: $condition) {
       id
       ownerUsername
-      owner
       title
       intro
       body
@@ -25,7 +24,7 @@ export const createSection = /* GraphQL */ `
         items {
           id
           ownerUsername
-          owner
+          sectionId
           url
           type
           text
@@ -45,7 +44,6 @@ export const updateSection = /* GraphQL */ `
     updateSection(input: $input, condition: $condition) {
       id
       ownerUsername
-      owner
       title
       intro
       body
@@ -61,7 +59,7 @@ export const updateSection = /* GraphQL */ `
         items {
           id
           ownerUsername
-          owner
+          sectionId
           url
           type
           text
@@ -81,7 +79,6 @@ export const deleteSection = /* GraphQL */ `
     deleteSection(input: $input, condition: $condition) {
       id
       ownerUsername
-      owner
       title
       intro
       body
@@ -97,7 +94,7 @@ export const deleteSection = /* GraphQL */ `
         items {
           id
           ownerUsername
-          owner
+          sectionId
           url
           type
           text
@@ -117,7 +114,7 @@ export const createSubsection = /* GraphQL */ `
     createSubsection(input: $input, condition: $condition) {
       id
       ownerUsername
-      owner
+      sectionId
       file {
         bucket
         region
@@ -131,7 +128,6 @@ export const createSubsection = /* GraphQL */ `
       section {
         id
         ownerUsername
-        owner
         title
         intro
         body
@@ -158,7 +154,7 @@ export const updateSubsection = /* GraphQL */ `
     updateSubsection(input: $input, condition: $condition) {
       id
       ownerUsername
-      owner
+      sectionId
       file {
         bucket
         region
@@ -172,7 +168,6 @@ export const updateSubsection = /* GraphQL */ `
       section {
         id
         ownerUsername
-        owner
         title
         intro
         body
@@ -199,7 +194,7 @@ export const deleteSubsection = /* GraphQL */ `
     deleteSubsection(input: $input, condition: $condition) {
       id
       ownerUsername
-      owner
+      sectionId
       file {
         bucket
         region
@@ -213,7 +208,6 @@ export const deleteSubsection = /* GraphQL */ `
       section {
         id
         ownerUsername
-        owner
         title
         intro
         body
