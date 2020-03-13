@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Auth, API, graphqlOperation } from "aws-amplify";
+import { API, graphqlOperation } from "aws-amplify";
 import ItemSection from "./ItemSection";
 
 import { listSections } from "../../graphql/queries";
@@ -8,6 +8,8 @@ import { deleteSection } from "../../graphql/mutations";
 
 function ListSection({ user, username }) {
   const [sections, updateSections] = useState([]);
+  // const [filteredSections, setFilteredSections] = useState([]);
+  const [filter, setFilter] = useState(null);
 
   useEffect(() => {
     getPublicData();
@@ -30,15 +32,6 @@ function ListSection({ user, username }) {
     return () => subscription.unsubscribe();
   }, [sections]);
 
-  // const getData = async () => {
-  //   try {
-  //     const sectionData = await API.graphql(graphqlOperation(listSections));
-  //     updateSections(sectionData.data.listSections.items);
-  //   } catch (err) {
-  //     console.log("error fetching data..", err);
-  //   }
-  // };
-
   const getPublicData = async () => {
     const sectionData = await API.graphql({
       query: listSections,
@@ -46,6 +39,7 @@ function ListSection({ user, username }) {
       authMode: "API_KEY"
     });
     updateSections(sectionData.data.listSections.items);
+    setFilter(null);
   };
 
   const handleDeleteContent = async sectionId => {
@@ -54,9 +48,42 @@ function ListSection({ user, username }) {
     getPublicData();
   };
 
+  // const handleSearch = event => {
+  //   event.preventDefault();
+  //   const query = filter.toLowerCase();
+
+  //   const matchedSections = sections.filter(section => {
+  //     return (
+  //       section.title.toLowerCase().includes(query) ||
+  //       section.intro.toLowerCase().includes(query)
+  //     );
+  //   });
+  //   updateSections(matchedSections);
+  //   setFilter("");
+  //   console.log(filter);
+  // };
+
+  // const resetSearch = event => {
+  //   event.preventDefault();
+
+  //   event.target.search = null;
+
+  //   getPublicData();
+  //   setFilter(null);
+  // };
+
   return (
     <div>
       <h2>Section List</h2>
+      {/* <form onSubmit={handleSearch}>
+        <input
+          name="search"
+          onChange={event => setFilter(event.target.value)}
+          placeholder="Search sections"
+        />
+        <button type="submit">search</button>
+        <button onClick={resetSearch}>reset</button>
+  </form> */}
       <ItemSection
         sections={sections}
         handleDeleteContent={handleDeleteContent}
