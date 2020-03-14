@@ -6,13 +6,10 @@ import { UserContext } from "../../App";
 function Section() {
   return (
     <UserContext.Consumer>
-      {({ user, username, group }) => (
+      {({ user, group }) => (
         <div>
-          {console.log(username)}
-          {group === "admin" ? (
-            <CreateSection user={user} username={username} />
-          ) : null}
-          <ListSection user={user} username={username} />
+          {user && group === "admin" ? <CreateSection user={user} /> : null}
+          <ListSection user={user} group={group} />
         </div>
       )}
     </UserContext.Consumer>

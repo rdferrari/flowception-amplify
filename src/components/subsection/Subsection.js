@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { API } from "aws-amplify";
+import { API, graphqlOperation } from "aws-amplify";
+import { S3Image } from "aws-amplify-react";
 
+import { onCreateSubsection } from "../../graphql/subscriptions";
 import { getSection } from "../../graphql/queries";
 import { useParams } from "react-router-dom";
 import EditSection from "../section/EditSection";
@@ -39,12 +41,28 @@ function Subsection() {
     }
   };
 
-  console.log(subsections);
+  useEffect(() => {
+    const subscription = API.graphql(
+      graphqlOperation(onCreateSubsection)
+    ).subscribe({
+      next: data => {
+        const {
+          value: {
+            data: { onCreateSubsection }
+          }
+        } = data;
+        const subsectionData = [onCreateSubsection, ...subsections];
+        setSubsections(subsectionData);
+      }
+    });
+    return () => subscription.unsubscribe();
+  }, [subsections]);
 
   return (
     <UserContext.Consumer>
-      {({ user, group, username }) => (
+      {({ user, group }) => (
         <div>
+          {console.log(subsections)}
           {editSection === false ? (
             <DetailSection
               url={url}
@@ -74,12 +92,17 @@ function Subsection() {
             </div>
           )}
           <h3>Subsection</h3>
-          <CreateSubsection username={username} sectionId={id} />
+
+          {user && group === "admin" ? (
+            <CreateSubsection sectionId={id} />
+          ) : null}
+
           {subsections
             ? subsections.map(item => (
-                <div>
-                  <p>{item.id}</p>
-                  <p>{item.type}</p>
+                <div key={item.id}>
+                  <p>Item type: {item.type}</p>
+                  {item.type === "TEXT" ? <p>{item.text}</p> : null}
+                  {item.type === "IMAGE" ? <S3Image imgKey={item.url} /> : null}
                 </div>
               ))
             : null}

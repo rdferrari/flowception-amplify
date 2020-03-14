@@ -41,9 +41,14 @@ function App() {
       console.log(
         data.payload.data.signInUserSession.idToken.payload["cognito:groups"][0]
       );
-      setGroup(
-        data.payload.data.signInUserSession.idToken.payload["cognito:groups"][0]
-      );
+
+      const groupUsers =
+        data.payload.data.signInUserSession.idToken.payload["cognito:groups"];
+
+      if (groupUsers) {
+        console.log(groupUsers[0]);
+        setGroup(groupUsers[0]);
+      }
       const username = data.payload.data.username;
       setUsername(username);
       console.log(username + " has " + data.payload.event);
@@ -53,6 +58,13 @@ function App() {
   const getUserData = async () => {
     const user = await Auth.currentAuthenticatedUser();
     user ? setUser(user) : setUser(null);
+
+    const groupUsers = user.signInUserSession.idToken.payload["cognito:groups"];
+
+    if (groupUsers) {
+      console.log(groupUsers[0]);
+      setGroup(groupUsers[0]);
+    }
   };
 
   const listener = payload => {
@@ -64,6 +76,7 @@ function App() {
         console.log("sign up");
         break;
       case "signOut":
+        getUserData();
         setUser(null);
         setUsername(null);
         setGroup(null);

@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { API, graphqlOperation, Storage } from "aws-amplify";
+import { Auth, API, graphqlOperation, Storage } from "aws-amplify";
 import { S3Image } from "aws-amplify-react";
 import { createSubsection } from "../../graphql/mutations";
 import { useInput } from "../auth/useInput";
 
-function CreateSubsection({ username, sectionId }) {
+function CreateSubsection({ sectionId }) {
   // const { value: type, bind: bindType, reset: resetType } = useInput(null);
   const { value: text, bind: bindText, reset: resetText } = useInput(null);
   const [url, setUrl] = useState(null);
@@ -18,7 +18,7 @@ function CreateSubsection({ username, sectionId }) {
       type: mediaType,
       text,
       url,
-      ownerUsername: username,
+      ownerUsername: Auth.user.username,
       createdAt: Date.now()
     };
 

@@ -6,10 +6,10 @@ import { listSections } from "../../graphql/queries";
 import { onCreateSection } from "../../graphql/subscriptions";
 import { deleteSection } from "../../graphql/mutations";
 
-function ListSection({ user, username }) {
+function ListSection({ user, group }) {
   const [sections, updateSections] = useState([]);
   // const [filteredSections, setFilteredSections] = useState([]);
-  const [filter, setFilter] = useState(null);
+  // const [filter, setFilter] = useState(null);
 
   useEffect(() => {
     getPublicData();
@@ -39,7 +39,7 @@ function ListSection({ user, username }) {
       authMode: "API_KEY"
     });
     updateSections(sectionData.data.listSections.items);
-    setFilter(null);
+    // setFilter(null);
   };
 
   const handleDeleteContent = async sectionId => {
@@ -88,7 +88,7 @@ function ListSection({ user, username }) {
         sections={sections}
         handleDeleteContent={handleDeleteContent}
         user={user}
-        username={username}
+        group={group}
       />
     </div>
   );

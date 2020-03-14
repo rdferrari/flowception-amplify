@@ -1,0 +1,3 @@
+mediaType = {
+  text: "TEXT"
+};

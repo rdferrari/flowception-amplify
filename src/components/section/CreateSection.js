@@ -4,7 +4,7 @@ import { S3Image } from "aws-amplify-react";
 import { createSection } from "../../graphql/mutations";
 import { useInput } from "../auth/useInput";
 
-function CreateSection({ username }) {
+function CreateSection() {
   const { value: title, bind: bindTitle, reset: resetTitle } = useInput(null);
   const { value: intro, bind: bindIntro, reset: resetIntro } = useInput(null);
   const { value: body, bind: bindBody, reset: resetBody } = useInput(null);
