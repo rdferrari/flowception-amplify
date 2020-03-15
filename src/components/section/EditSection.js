@@ -41,6 +41,22 @@ function EditSection({
     console.info(`Updated section: id ${result.data.updateSection.id}`);
   };
 
+  const updateUrl = async name => {
+    const input = {
+      id: sectionId,
+      url: name,
+      updatedAt: Date.now()
+    };
+
+    const result = await API.graphql(
+      graphqlOperation(updateSection, {
+        input
+      })
+    );
+    getData();
+    console.info(`Updated section: id ${result.data.updateSection.id}`);
+  };
+
   const handleUploadFile = async event => {
     event.preventDefault();
     const file = event.target.files[0];
@@ -52,12 +68,16 @@ function EditSection({
     Storage.put(name, file).then(() => {
       setUrl(name);
     });
+
+    updateUrl(name);
   };
 
   const handleDeleteImage = async imageUrl => {
     Storage.remove(imageUrl).then(() => {
       setUrl(null);
     });
+
+    updateUrl(null);
   };
 
   return (

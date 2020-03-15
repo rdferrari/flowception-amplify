@@ -6,6 +6,7 @@ import { onCreateSubsection } from "../../graphql/subscriptions";
 import { getSection } from "../../graphql/queries";
 import { useParams } from "react-router-dom";
 import EditSection from "../section/EditSection";
+import EditSubsection from "./EditSubsection";
 import { UserContext } from "../../App";
 import DetailSection from "../section/DetailSection";
 import CreateSubsection from "./CreateSubsection";
@@ -19,6 +20,7 @@ function Subsection() {
   const [body, setBody] = useState(null);
   const [url, setUrl] = useState(null);
   const [editSection, setEditSection] = useState(false);
+  const [editText, setEditText] = useState(false);
 
   useEffect(() => {
     getData();
@@ -118,10 +120,22 @@ function Subsection() {
                   <p>Item type: {item.type}</p>
                   {item.type === "TEXT" ? (
                     <div>
-                      <p>{item.text}</p>{" "}
-                      <p onClick={() => handleDeleteSubsection(item.id)}>
-                        delete
-                      </p>
+                      {editText === false ? (
+                        <div>
+                          <p>{item.text}</p>{" "}
+                          <p onClick={() => handleDeleteSubsection(item.id)}>
+                            delete
+                          </p>
+                          <p onClick={() => setEditText(true)}>Edit</p>
+                        </div>
+                      ) : (
+                        <EditSubsection
+                          subsectionId={item.id}
+                          iniText={item.text}
+                          getData={getData}
+                          setEditText={setEditText}
+                        />
+                      )}
                     </div>
                   ) : null}
                   {item.type === "IMAGE" ? (
