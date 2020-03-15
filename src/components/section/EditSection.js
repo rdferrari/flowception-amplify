@@ -44,7 +44,10 @@ function EditSection({
   const handleUploadFile = async event => {
     event.preventDefault();
     const file = event.target.files[0];
-    const name = file.name;
+
+    const randomExtension = Math.floor(Math.random() * 90000) + 10000;
+
+    const name = randomExtension + file.name;
 
     Storage.put(name, file).then(() => {
       setUrl(name);

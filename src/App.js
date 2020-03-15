@@ -38,9 +38,6 @@ function App() {
     Hub.listen("auth", data => {
       const { payload } = data;
       listener(payload);
-      console.log(
-        data.payload.data.signInUserSession.idToken.payload["cognito:groups"][0]
-      );
 
       const groupUsers =
         data.payload.data.signInUserSession.idToken.payload["cognito:groups"];
