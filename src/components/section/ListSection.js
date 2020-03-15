@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { API, graphqlOperation } from "aws-amplify";
+import { API, graphqlOperation, Storage } from "aws-amplify";
 import ItemSection from "./ItemSection";
 
 import { listSections } from "../../graphql/queries";
@@ -8,8 +8,6 @@ import { deleteSection } from "../../graphql/mutations";
 
 function ListSection({ user, group }) {
   const [sections, updateSections] = useState([]);
-  // const [filteredSections, setFilteredSections] = useState([]);
-  // const [filter, setFilter] = useState(null);
 
   useEffect(() => {
     getPublicData();
@@ -39,51 +37,26 @@ function ListSection({ user, group }) {
       authMode: "API_KEY"
     });
     updateSections(sectionData.data.listSections.items);
-    // setFilter(null);
   };
 
-  const handleDeleteContent = async sectionId => {
+  const handleDeleteContent = async (sectionId, url) => {
     const input = { id: sectionId };
     await API.graphql(graphqlOperation(deleteSection, { input }));
+
+    if (url) {
+      handleDeleteImage(url);
+    }
+
     getPublicData();
   };
 
-  // const handleSearch = event => {
-  //   event.preventDefault();
-  //   const query = filter.toLowerCase();
-
-  //   const matchedSections = sections.filter(section => {
-  //     return (
-  //       section.title.toLowerCase().includes(query) ||
-  //       section.intro.toLowerCase().includes(query)
-  //     );
-  //   });
-  //   updateSections(matchedSections);
-  //   setFilter("");
-  //   console.log(filter);
-  // };
-
-  // const resetSearch = event => {
-  //   event.preventDefault();
-
-  //   event.target.search = null;
-
-  //   getPublicData();
-  //   setFilter(null);
-  // };
+  const handleDeleteImage = async imageUrl => {
+    Storage.remove(imageUrl);
+  };
 
   return (
     <div>
       <h2>Section List</h2>
-      {/* <form onSubmit={handleSearch}>
-        <input
-          name="search"
-          onChange={event => setFilter(event.target.value)}
-          placeholder="Search sections"
-        />
-        <button type="submit">search</button>
-        <button onClick={resetSearch}>reset</button>
-  </form> */}
       <ItemSection
         sections={sections}
         handleDeleteContent={handleDeleteContent}

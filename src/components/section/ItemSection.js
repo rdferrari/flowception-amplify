@@ -14,7 +14,9 @@ function ItemSection({ sections, handleDeleteContent, user, group }) {
         <p>{section.body}</p>
       </Link>
       {user && group ? (
-        <p onClick={() => handleDeleteContent(section.id)}>delete section</p>
+        <p onClick={() => handleDeleteContent(section.id, section.url)}>
+          delete section
+        </p>
       ) : null}
     </div>
   ));

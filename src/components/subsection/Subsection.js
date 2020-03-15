@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { API, graphqlOperation } from "aws-amplify";
+import { API, graphqlOperation, Storage } from "aws-amplify";
 import { S3Image } from "aws-amplify-react";
 
 import { onCreateSubsection } from "../../graphql/subscriptions";
@@ -9,6 +9,7 @@ import EditSection from "../section/EditSection";
 import { UserContext } from "../../App";
 import DetailSection from "../section/DetailSection";
 import CreateSubsection from "./CreateSubsection";
+import { deleteSubsection } from "../../graphql/mutations";
 
 function Subsection() {
   let { id } = useParams();
@@ -58,11 +59,25 @@ function Subsection() {
     return () => subscription.unsubscribe();
   }, [subsections]);
 
+  const handleDeleteSubsection = async (subsectionId, url) => {
+    const input = { id: subsectionId };
+    await API.graphql(graphqlOperation(deleteSubsection, { input }));
+
+    if (url) {
+      handleDeleteImage(url);
+    }
+
+    getData();
+  };
+
+  const handleDeleteImage = async imageUrl => {
+    Storage.remove(imageUrl);
+  };
+
   return (
     <UserContext.Consumer>
       {({ user, group }) => (
         <div>
-          {console.log(subsections)}
           {editSection === false ? (
             <DetailSection
               url={url}
@@ -101,8 +116,26 @@ function Subsection() {
             ? subsections.map(item => (
                 <div key={item.id}>
                   <p>Item type: {item.type}</p>
-                  {item.type === "TEXT" ? <p>{item.text}</p> : null}
-                  {item.type === "IMAGE" ? <S3Image imgKey={item.url} /> : null}
+                  {item.type === "TEXT" ? (
+                    <div>
+                      <p>{item.text}</p>{" "}
+                      <p onClick={() => handleDeleteSubsection(item.id)}>
+                        delete
+                      </p>
+                    </div>
+                  ) : null}
+                  {item.type === "IMAGE" ? (
+                    <div>
+                      <S3Image imgKey={item.url} />
+                      <p
+                        onClick={() =>
+                          handleDeleteSubsection(item.id, item.url)
+                        }
+                      >
+                        delete
+                      </p>
+                    </div>
+                  ) : null}
                 </div>
               ))
             : null}
