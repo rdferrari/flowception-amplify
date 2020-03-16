@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 import "./index.scss";
 import Header from "./components/Header";
+import Menu from "./components/Menu";
 import Home from "./components/Home";
 import Section from "./components/section/Section";
 import Subsection from "./components/subsection/Subsection";
@@ -24,6 +25,14 @@ export const UserContext = React.createContext();
 
 function LoginApp() {
   return <Authenticator theme={theme} />;
+}
+
+function ScrollToTopOnMount() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  return null;
 }
 
 function App() {
@@ -94,20 +103,22 @@ function App() {
   return (
     <UserContext.Provider value={{ user, username, group }}>
       <Router>
+        <ScrollToTopOnMount />
         <Header handleSignOut={handleSignOut} />
+        <div className="app-container">
+          <Switch>
+            <Route exact path="/" component={Section} />
+            <Route path="/section/:id" component={Subsection} />
 
-        <Switch>
-          <Route exact path="/" component={Section} />
-          <Route path="/section/:id" component={Subsection} />
-
-          {user ? (
-            <Route path="/login" render={() => <Redirect to="/" />} />
-          ) : (
+            {user ? (
+              <Route path="/login" render={() => <Redirect to="/" />} />
+            ) : (
+              <Route path="/login" component={LoginApp} />
+            )}
             <Route path="/login" component={LoginApp} />
-          )}
-          <Route path="/login" component={LoginApp} />
-          <Route path="/:id" component={Home} />
-        </Switch>
+            <Route path="/:id" component={Home} />
+          </Switch>
+        </div>
       </Router>
     </UserContext.Provider>
   );
@@ -115,6 +126,41 @@ function App() {
 
 const theme = {
   ...AmplifyTheme,
+  container: {
+    ...AmplifyTheme.container,
+    paddingLeft: "1px",
+    paddingRight: "1px"
+  },
+  nav: {
+    ...AmplifyTheme.nav,
+    margin: "1px"
+  },
+  navButton: {
+    ...AmplifyTheme.navButton,
+    display: "inline-block"
+  },
+  formSection: {
+    ...AmplifyTheme.formSection,
+    backgroundColor: "#fff",
+    border: "none",
+    width: "320px"
+  },
+  sectionHeader: {
+    ...AmplifyTheme.sectionHeader,
+    backgroundColor: "#ffffff",
+    color: "#000000"
+  },
+  sectionBody: {
+    ...AmplifyTheme.sectionBody,
+    padding: "5px"
+  },
+  sectionFooter: {
+    ...AmplifyTheme.sectionFooter,
+    backgroundColor: "#ffffff",
+    padding: "5px",
+    borderTop: "none"
+  },
+
   navBar: {
     ...AmplifyTheme.navBar,
     backgroundColor: "#ffffff"
@@ -122,20 +168,6 @@ const theme = {
   button: {
     ...AmplifyTheme.button,
     backgroundColor: "#ffffff"
-  },
-  sectionFooter: {
-    ...AmplifyTheme.sectionFooter,
-    backgroundColor: "#ffffff"
-  },
-  sectionHeader: {
-    ...AmplifyTheme.sectionHeader,
-    backgroundColor: "#ffffff",
-    color: "#000000"
-  },
-  formSection: {
-    ...AmplifyTheme.formSection,
-    backgroundColor: "#fff",
-    border: "none"
   }
 };
 
