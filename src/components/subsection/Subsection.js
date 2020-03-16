@@ -111,17 +111,17 @@ function Subsection() {
           <h3>Subsection</h3>
 
           {user && group === "admin" ? (
-            <CreateSubsection sectionId={id} />
+            <CreateSubsection sectionId={id} getData={getData} />
           ) : null}
 
           {subsections
             ? subsections.map(item => (
                 <div key={item.id}>
-                  <p>Item type: {item.type}</p>
                   {item.type === "TEXT" ? (
                     <div>
                       {editText === false ? (
                         <div>
+                          <p>Item type: {item.type}</p>
                           <p>{item.text}</p>{" "}
                           <p onClick={() => handleDeleteSubsection(item.id)}>
                             delete
@@ -140,12 +140,40 @@ function Subsection() {
                   ) : null}
                   {item.type === "IMAGE" ? (
                     <div>
-                      <S3Image imgKey={item.url} />
+                      <p>Item type: {item.type}</p>
+                      {item.url ? <S3Image imgKey={item.url} /> : null}
                       <p
                         onClick={() =>
                           handleDeleteSubsection(item.id, item.url)
                         }
                       >
+                        delete
+                      </p>
+                    </div>
+                  ) : null}
+                  {item.type === "VIDEO" ? (
+                    <div>
+                      <p>Item type: {item.type}</p>
+                      <p>Video {item.url}</p>
+                      <p onClick={() => handleDeleteSubsection(item.id)}>
+                        delete
+                      </p>
+                    </div>
+                  ) : null}
+                  {item.type === "IMAGE_360" ? (
+                    <div>
+                      <p>Item type: {item.type}</p>
+                      <p>360 image {item.url}</p>
+                      <p onClick={() => handleDeleteSubsection(item.id)}>
+                        delete
+                      </p>
+                    </div>
+                  ) : null}
+                  {item.type === "VIDEO_360" ? (
+                    <div>
+                      <p>Item type: {item.type}</p>
+                      <p>360 video {item.url}</p>
+                      <p onClick={() => handleDeleteSubsection(item.id)}>
                         delete
                       </p>
                     </div>

@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { Auth, API, graphqlOperation, Storage } from "aws-amplify";
 import { S3Image } from "aws-amplify-react";
-import { createSubsection } from "../../graphql/mutations";
+import { createSubsection, deleteSubsection } from "../../graphql/mutations";
 import { useInput } from "../auth/useInput";
 
-function CreateSubsection({ sectionId }) {
+function CreateSubsection({ sectionId, getData }) {
   // const { value: type, bind: bindType, reset: resetType } = useInput(null);
   const { value: text, bind: bindText, reset: resetText } = useInput(null);
   const [url, setUrl] = useState(null);
@@ -34,6 +34,27 @@ function CreateSubsection({ sectionId }) {
     setMediaType(null);
   };
 
+  const createSubsectionMedia = async name => {
+    const input = {
+      sectionId,
+      type: mediaType,
+      url: name,
+      text: null,
+      ownerUsername: Auth.user.username,
+      createdAt: Date.now()
+    };
+
+    const result = await API.graphql(
+      graphqlOperation(createSubsection, {
+        input
+      })
+    );
+    console.info(`Created section: id ${result.data.createSubsection.id}`);
+    resetText();
+    setUrl(null);
+    setMediaType(null);
+  };
+
   const handleUploadFile = async event => {
     event.preventDefault();
     const file = event.target.files[0];
@@ -42,15 +63,22 @@ function CreateSubsection({ sectionId }) {
 
     const name = randomExtension + file.name;
 
-    Storage.put(name, file).then(() => {
-      setUrl(name);
-    });
+    setUrl(name);
+
+    Storage.put(name, file);
+
+    createSubsectionMedia(name);
   };
 
   const handleDeleteImage = async imageUrl => {
+    const input = { id: sectionId };
+    await API.graphql(graphqlOperation(deleteSubsection, { input }));
+
     Storage.remove(imageUrl).then(() => {
       setUrl(null);
     });
+
+    getData();
   };
 
   return (
