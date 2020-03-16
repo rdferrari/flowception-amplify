@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { API, graphqlOperation } from "aws-amplify";
 import { updateSubsection } from "../../graphql/mutations";
 import { useInput } from "../auth/useInput";
@@ -20,6 +20,7 @@ function EditSubsection({ subsectionId, iniText, getData, setEditText }) {
         input
       })
     );
+    console.log(`Subsectio id: ${result.data.updateSubsection.id} was edited`);
     getData();
     setEditText(false);
   };
