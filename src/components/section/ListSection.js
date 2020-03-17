@@ -40,8 +40,7 @@ function ListSection({ user, group }) {
   };
 
   const handleDeleteContent = async (sectionId, url) => {
-    const inputSection = { id: sectionId };
-    await API.graphql(graphqlOperation(deleteSection, { inputSection }));
+    await API.graphql(graphqlOperation(deleteSection, { id: sectionId }));
 
     if (url) {
       handleDeleteImage(url);
@@ -55,15 +54,12 @@ function ListSection({ user, group }) {
   };
 
   return (
-    <div>
-      <h2>Section List</h2>
-      <ItemSection
-        sections={sections}
-        handleDeleteContent={handleDeleteContent}
-        user={user}
-        group={group}
-      />
-    </div>
+    <ItemSection
+      sections={sections}
+      handleDeleteContent={handleDeleteContent}
+      user={user}
+      group={group}
+    />
   );
 }
 

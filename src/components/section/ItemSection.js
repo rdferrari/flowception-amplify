@@ -6,18 +6,21 @@ import { Link } from "react-router-dom";
 
 function ItemSection({ sections, handleDeleteContent, user, group }) {
   return sections.map(section => (
-    <div key={section.id}>
+    <div className="section-card" key={section.id}>
       <Link to={`/section/${section.id}`}>
-        {section.url ? <S3Image imgKey={section.url} /> : null}
-        <h3>{section.title}</h3>
-        <p>{section.intro}</p>
-        <p>{section.body}</p>
+        {section.url ? (
+          <S3Image className="section-card-image" imgKey={section.url} />
+        ) : null}
+        <div className="section-card-text-container">
+          <h2>{section.title}</h2>
+          <p>{section.intro}</p>
+        </div>
       </Link>
-      {user && group ? (
+      {/* {user && group ? (
         <p onClick={() => handleDeleteContent(section.id, section.url)}>
           delete section
         </p>
-      ) : null}
+      ) : null} */}
     </div>
   ));
 }

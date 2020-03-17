@@ -7,7 +7,7 @@ function Section() {
   return (
     <UserContext.Consumer>
       {({ user, group }) => (
-        <div>
+        <div className="section-list-container">
           {user && group === "admin" ? <CreateSection user={user} /> : null}
           <ListSection user={user} group={group} />
         </div>

@@ -7,11 +7,8 @@ import {
 } from "react-router-dom";
 import "./index.scss";
 import Header from "./components/Header";
-import Menu from "./components/Menu";
-import Home from "./components/Home";
 import Section from "./components/section/Section";
 import Subsection from "./components/subsection/Subsection";
-// import Login from "./components/Login";
 
 import { Authenticator, AmplifyTheme } from "aws-amplify-react";
 import Amplify from "@aws-amplify/core";
@@ -116,7 +113,6 @@ function App() {
               <Route path="/login" component={LoginApp} />
             )}
             <Route path="/login" component={LoginApp} />
-            <Route path="/:id" component={Home} />
           </Switch>
         </div>
       </Router>
@@ -170,7 +166,5 @@ const theme = {
     backgroundColor: "#ffffff"
   }
 };
-
-// export default withAuthenticator(App, { includeGreetings: true });
 
 export default App;
