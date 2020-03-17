@@ -9,6 +9,7 @@ function CreateSection() {
   const { value: intro, bind: bindIntro, reset: resetIntro } = useInput(null);
   const { value: body, bind: bindBody, reset: resetBody } = useInput(null);
   const [url, setUrl] = useState(null);
+  const [showForm, setShowForm] = useState(false);
 
   const handleSubmit = async evt => {
     evt.preventDefault();
@@ -55,35 +56,80 @@ function CreateSection() {
     });
   };
 
-  return (
-    <div>
-      <h2>Create Section</h2>
-      {url ? (
-        <div>
-          <S3Image imgKey={url} />
-          <p onClick={() => handleDeleteImage(url)}>Delete image</p>
-        </div>
-      ) : (
-        <input type="file" onChange={handleUploadFile} />
-      )}
+  if (showForm === false) {
+    return (
+      <button
+        className="primary-button button-dark"
+        onClick={() => setShowForm(true)}
+      >
+        Add new section
+      </button>
+    );
+  } else {
+    return (
+      <div>
+        {url ? (
+          <div>
+            <S3Image className="section-card-image" imgKey={url} />
+            <button
+              className="primary-button button-transparent"
+              onClick={() => handleDeleteImage(url)}
+            >
+              Delete image
+            </button>
+          </div>
+        ) : (
+          <div className="upload-btn-wrapper">
+            <input type="file" onChange={handleUploadFile} className="myfile" />
+            <img className="btn" src="/images/UploadBt.svg" />
+          </div>
+        )}
 
-      <form onSubmit={handleSubmit}>
-        <label>
-          Title:
-          <input type="text" {...bindTitle} />
-        </label>
-        <label>
-          Intro:
-          <input type="text" {...bindIntro} />
-        </label>
-        <label>
-          Body:
-          <input type="text" {...bindBody} />
-        </label>
-        <input type="submit" value="Submit" />
-      </form>
-    </div>
-  );
+        <form onSubmit={handleSubmit}>
+          <label>
+            <input
+              placeholder="Section title"
+              className="input-light"
+              type="text"
+              {...bindTitle}
+            />
+          </label>
+          <label>
+            <textarea
+              rows="6"
+              cols="60"
+              placeholder="Section introduction"
+              className="input-light"
+              type="text"
+              {...bindIntro}
+            />
+          </label>
+          <label>
+            <textarea
+              rows="6"
+              cols="60"
+              placeholder="Section body text"
+              className="input-light"
+              type="text"
+              {...bindBody}
+            />
+          </label>
+          <input
+            className="primary-button button-dark"
+            type="submit"
+            value="Create section"
+          />
+        </form>
+
+        <button
+          className="primary-button button-transparent"
+          onClick={() => setShowForm(false)}
+        >
+          Close form
+        </button>
+      </div>
+    );
+  }
 }
 
 export default CreateSection;

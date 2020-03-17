@@ -30,3 +30,48 @@ a {
   background-color: red;
   width: 300px;
 }
+
+.button-dark {
+  background-color: $primary-color;
+  border: none;
+  color: $secondary-color;
+}
+
+.button-transparent {
+  background-color: transparent;
+  border: 1px solid $primary-color;
+  color: $primary-color;
+}
+
+.primary-button {
+  font-family: $secondary-font-medium, sans-serif;
+  margin-bottom: $space-sm;
+  padding: $space-xm;
+  width: 100%;
+}
+
+.input-light {
+  border: 1px solid $primary-color-2;
+  font-family: $secondary-font-light, sans-serif;
+  margin-bottom: $space-sm;
+  padding: $space-xm 0 $space-xm $space-xm;
+  width: 95%;
+}
+
+.upload-btn-wrapper {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+}
+
+.btn {
+  width: 100%;
+}
+
+.upload-btn-wrapper input[type="file"] {
+  font-size: 100px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+}
