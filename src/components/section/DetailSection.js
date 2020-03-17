@@ -12,14 +12,20 @@ function DetailSection({
 }) {
   return (
     <div>
-      <h1>Section</h1>
-      {url ? <S3Image imgKey={url} /> : null}
-      <p>{title}</p>
-      <p>{intro}</p>
-      <p>{body}</p>
-      {user && group === "admin" ? (
-        <p onClick={() => setEditSection(true)}>Edit</p>
-      ) : null}
+      {url ? <S3Image className="section-card-image" imgKey={url} /> : null}
+      <div className="section-detail-text-container">
+        <h2>{title}</h2>
+        <p>{intro}</p>
+        <p>{body}</p>
+        {user && group === "admin" ? (
+          <button
+            className="primary-button button-transparent"
+            onClick={() => setEditSection(true)}
+          >
+            Edit section
+          </button>
+        ) : null}
+      </div>
     </div>
   );
 }

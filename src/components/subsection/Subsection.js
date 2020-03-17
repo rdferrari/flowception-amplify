@@ -10,11 +10,12 @@ import EditSubsection from "./EditSubsection";
 import { UserContext } from "../../App";
 import DetailSection from "../section/DetailSection";
 import CreateSubsection from "./CreateSubsection";
-import { deleteSubsection } from "../../graphql/mutations";
+import { deleteSubsection, deleteSection } from "../../graphql/mutations";
 
-function Subsection() {
+function Subsection(props) {
   let { id } = useParams();
   const [subsections, setSubsections] = useState(null);
+  const [idDelete, setIdDelete] = useState(null);
   const [title, setTitle] = useState(null);
   const [intro, setIntro] = useState(null);
   const [body, setBody] = useState(null);
@@ -35,6 +36,7 @@ function Subsection() {
       });
 
       setSubsections(sectionData.data.getSection.subsections.items);
+      setIdDelete(sectionData.data.getSection.id);
       setTitle(sectionData.data.getSection.title);
       setIntro(sectionData.data.getSection.intro);
       setBody(sectionData.data.getSection.body);
@@ -76,20 +78,41 @@ function Subsection() {
     Storage.remove(imageUrl);
   };
 
+  const handleDeleteSection = async (sectionId, url) => {
+    console.log(subsections);
+    subsections.map(subsection =>
+      handleDeleteSubsection(subsection.id, subsection.url)
+    );
+
+    const input = { id: sectionId };
+    await API.graphql(graphqlOperation(deleteSection, { input }));
+
+    if (url) {
+      handleDeleteImage(url);
+    }
+
+    props.history.push("/");
+  };
+
   return (
     <UserContext.Consumer>
       {({ user, group }) => (
         <div>
           {editSection === false ? (
-            <DetailSection
-              url={url}
-              title={title}
-              intro={intro}
-              body={body}
-              user={user}
-              group={group}
-              setEditSection={setEditSection}
-            />
+            <div>
+              <DetailSection
+                url={url}
+                title={title}
+                intro={intro}
+                body={body}
+                user={user}
+                group={group}
+                setEditSection={setEditSection}
+              />
+              <p onClick={() => handleDeleteSection(idDelete, url)}>
+                delete section
+              </p>
+            </div>
           ) : (
             <div>
               {title && intro && body && user && group === "admin" ? (

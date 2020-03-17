@@ -39,28 +39,11 @@ function ListSection({ user, group }) {
     updateSections(sectionData.data.listSections.items);
   };
 
-  const handleDeleteContent = async (sectionId, url) => {
-    await API.graphql(graphqlOperation(deleteSection, { id: sectionId }));
-
-    if (url) {
-      handleDeleteImage(url);
-    }
-
-    getPublicData();
-  };
-
   const handleDeleteImage = async imageUrl => {
     Storage.remove(imageUrl);
   };
 
-  return (
-    <ItemSection
-      sections={sections}
-      handleDeleteContent={handleDeleteContent}
-      user={user}
-      group={group}
-    />
-  );
+  return <ItemSection sections={sections} user={user} group={group} />;
 }
 
 export default ListSection;
