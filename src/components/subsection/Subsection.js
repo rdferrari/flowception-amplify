@@ -108,10 +108,9 @@ function Subsection(props) {
                 user={user}
                 group={group}
                 setEditSection={setEditSection}
+                handleDeleteSection={handleDeleteSection}
+                idDelete={idDelete}
               />
-              <p onClick={() => handleDeleteSection(idDelete, url)}>
-                delete section
-              </p>
             </div>
           ) : (
             <div>

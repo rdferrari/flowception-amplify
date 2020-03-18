@@ -8,7 +8,9 @@ function DetailSection({
   body,
   user,
   group,
-  setEditSection
+  setEditSection,
+  handleDeleteSection,
+  idDelete
 }) {
   return (
     <div>
@@ -18,12 +20,20 @@ function DetailSection({
         <p>{intro}</p>
         <p>{body}</p>
         {user && group === "admin" ? (
-          <button
-            className="primary-button button-transparent"
-            onClick={() => setEditSection(true)}
-          >
-            Edit section
-          </button>
+          <div>
+            <button
+              className="primary-button button-transparent"
+              onClick={() => setEditSection(true)}
+            >
+              Edit section
+            </button>
+            <button
+              className="delete-section-button"
+              onClick={() => handleDeleteSection(idDelete, url)}
+            >
+              Delete section
+            </button>
+          </div>
         ) : null}
       </div>
     </div>

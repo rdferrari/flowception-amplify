@@ -10,6 +10,7 @@ function CreateSection() {
   const { value: body, bind: bindBody, reset: resetBody } = useInput(null);
   const [url, setUrl] = useState(null);
   const [showForm, setShowForm] = useState(false);
+  const [uploading, setUploading] = useState(false);
 
   const handleSubmit = async evt => {
     evt.preventDefault();
@@ -45,15 +46,25 @@ function CreateSection() {
 
     const name = randomExtension + file.name;
 
-    Storage.put(name, file).then(() => {
+    Storage.put(name, file, {
+      progressCallback(progress) {
+        console.log(
+          `Uploaded: ${progress} ${progress.loaded}/${progress.total}`
+        );
+      }
+    }).then(() => {
       setUrl(name);
     });
+
+    setUploading(false);
   };
 
   const handleDeleteImage = async imageUrl => {
     Storage.remove(imageUrl).then(() => {
       setUrl(null);
     });
+
+    setUploading(false);
   };
 
   if (showForm === false) {
@@ -80,8 +91,17 @@ function CreateSection() {
           </div>
         ) : (
           <div className="upload-btn-wrapper">
-            <input type="file" onChange={handleUploadFile} className="myfile" />
-            <img className="btn" src="/images/UploadBt.svg" />
+            <input
+              onClick={() => setUploading(true)}
+              type="file"
+              onChange={handleUploadFile}
+              className="myfile"
+            />
+            {uploading === false ? (
+              <img className="btn" src="/images/UploadBt.svg" />
+            ) : (
+              <img className="btn" src="/images/Uploading.svg" />
+            )}
           </div>
         )}
 

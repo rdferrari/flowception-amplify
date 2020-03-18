@@ -4,7 +4,6 @@ import ItemSection from "./ItemSection";
 
 import { listSections } from "../../graphql/queries";
 import { onCreateSection } from "../../graphql/subscriptions";
-import { deleteSection } from "../../graphql/mutations";
 
 function ListSection({ user, group }) {
   const [sections, updateSections] = useState([]);
@@ -37,10 +36,6 @@ function ListSection({ user, group }) {
       authMode: "API_KEY"
     });
     updateSections(sectionData.data.listSections.items);
-  };
-
-  const handleDeleteImage = async imageUrl => {
-    Storage.remove(imageUrl);
   };
 
   return <ItemSection sections={sections} user={user} group={group} />;
