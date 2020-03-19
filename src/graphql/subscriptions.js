@@ -5,6 +5,7 @@ export const onCreateSection = /* GraphQL */ `
   subscription OnCreateSection {
     onCreateSection {
       id
+      order
       ownerUsername
       title
       intro
@@ -20,10 +21,12 @@ export const onCreateSection = /* GraphQL */ `
       subsections {
         items {
           id
+          order
           ownerUsername
           sectionId
           url
           type
+          title
           text
           createdAt
           updatedAt
@@ -37,6 +40,7 @@ export const onUpdateSection = /* GraphQL */ `
   subscription OnUpdateSection {
     onUpdateSection {
       id
+      order
       ownerUsername
       title
       intro
@@ -52,10 +56,12 @@ export const onUpdateSection = /* GraphQL */ `
       subsections {
         items {
           id
+          order
           ownerUsername
           sectionId
           url
           type
+          title
           text
           createdAt
           updatedAt
@@ -69,6 +75,7 @@ export const onDeleteSection = /* GraphQL */ `
   subscription OnDeleteSection {
     onDeleteSection {
       id
+      order
       ownerUsername
       title
       intro
@@ -84,10 +91,12 @@ export const onDeleteSection = /* GraphQL */ `
       subsections {
         items {
           id
+          order
           ownerUsername
           sectionId
           url
           type
+          title
           text
           createdAt
           updatedAt
@@ -101,6 +110,7 @@ export const onCreateSubsection = /* GraphQL */ `
   subscription OnCreateSubsection {
     onCreateSubsection {
       id
+      order
       ownerUsername
       sectionId
       file {
@@ -110,11 +120,13 @@ export const onCreateSubsection = /* GraphQL */ `
       }
       url
       type
+      title
       text
       createdAt
       updatedAt
       section {
         id
+        order
         ownerUsername
         title
         intro
@@ -138,6 +150,7 @@ export const onUpdateSubsection = /* GraphQL */ `
   subscription OnUpdateSubsection {
     onUpdateSubsection {
       id
+      order
       ownerUsername
       sectionId
       file {
@@ -147,11 +160,13 @@ export const onUpdateSubsection = /* GraphQL */ `
       }
       url
       type
+      title
       text
       createdAt
       updatedAt
       section {
         id
+        order
         ownerUsername
         title
         intro
@@ -175,6 +190,7 @@ export const onDeleteSubsection = /* GraphQL */ `
   subscription OnDeleteSubsection {
     onDeleteSubsection {
       id
+      order
       ownerUsername
       sectionId
       file {
@@ -184,11 +200,13 @@ export const onDeleteSubsection = /* GraphQL */ `
       }
       url
       type
+      title
       text
       createdAt
       updatedAt
       section {
         id
+        order
         ownerUsername
         title
         intro

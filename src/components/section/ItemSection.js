@@ -1,10 +1,8 @@
 import React from "react";
-// import { API, graphqlOperation } from "aws-amplify";
-// import { deleteSection } from "../../graphql/mutations";
 import { S3Image } from "aws-amplify-react";
 import { Link } from "react-router-dom";
 
-function ItemSection({ sections, handleDeleteContent, user, group }) {
+function ItemSection({ sections }) {
   return sections.map(section => (
     <div className="section-card" key={section.id}>
       <Link to={`/section/${section.id}`}>
@@ -16,11 +14,6 @@ function ItemSection({ sections, handleDeleteContent, user, group }) {
           <p>{section.intro}</p>
         </div>
       </Link>
-      {/* {user && group ? (
-        <p onClick={() => handleDeleteContent(section.id, section.url)}>
-          delete section
-        </p>
-      ) : null} */}
     </div>
   ));
 }

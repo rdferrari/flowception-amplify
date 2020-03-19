@@ -8,6 +8,7 @@ export const createSection = /* GraphQL */ `
   ) {
     createSection(input: $input, condition: $condition) {
       id
+      order
       ownerUsername
       title
       intro
@@ -23,10 +24,12 @@ export const createSection = /* GraphQL */ `
       subsections {
         items {
           id
+          order
           ownerUsername
           sectionId
           url
           type
+          title
           text
           createdAt
           updatedAt
@@ -43,6 +46,7 @@ export const updateSection = /* GraphQL */ `
   ) {
     updateSection(input: $input, condition: $condition) {
       id
+      order
       ownerUsername
       title
       intro
@@ -58,10 +62,12 @@ export const updateSection = /* GraphQL */ `
       subsections {
         items {
           id
+          order
           ownerUsername
           sectionId
           url
           type
+          title
           text
           createdAt
           updatedAt
@@ -78,6 +84,7 @@ export const deleteSection = /* GraphQL */ `
   ) {
     deleteSection(input: $input, condition: $condition) {
       id
+      order
       ownerUsername
       title
       intro
@@ -93,10 +100,12 @@ export const deleteSection = /* GraphQL */ `
       subsections {
         items {
           id
+          order
           ownerUsername
           sectionId
           url
           type
+          title
           text
           createdAt
           updatedAt
@@ -113,6 +122,7 @@ export const createSubsection = /* GraphQL */ `
   ) {
     createSubsection(input: $input, condition: $condition) {
       id
+      order
       ownerUsername
       sectionId
       file {
@@ -122,11 +132,13 @@ export const createSubsection = /* GraphQL */ `
       }
       url
       type
+      title
       text
       createdAt
       updatedAt
       section {
         id
+        order
         ownerUsername
         title
         intro
@@ -153,6 +165,7 @@ export const updateSubsection = /* GraphQL */ `
   ) {
     updateSubsection(input: $input, condition: $condition) {
       id
+      order
       ownerUsername
       sectionId
       file {
@@ -162,11 +175,13 @@ export const updateSubsection = /* GraphQL */ `
       }
       url
       type
+      title
       text
       createdAt
       updatedAt
       section {
         id
+        order
         ownerUsername
         title
         intro
@@ -193,6 +208,7 @@ export const deleteSubsection = /* GraphQL */ `
   ) {
     deleteSubsection(input: $input, condition: $condition) {
       id
+      order
       ownerUsername
       sectionId
       file {
@@ -202,11 +218,13 @@ export const deleteSubsection = /* GraphQL */ `
       }
       url
       type
+      title
       text
       createdAt
       updatedAt
       section {
         id
+        order
         ownerUsername
         title
         intro

@@ -10,6 +10,7 @@ export const listSections = /* GraphQL */ `
     listSections(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
+        order
         ownerUsername
         title
         intro
@@ -34,6 +35,7 @@ export const getSection = /* GraphQL */ `
   query GetSection($id: ID!) {
     getSection(id: $id) {
       id
+      order
       ownerUsername
       title
       intro
@@ -49,10 +51,12 @@ export const getSection = /* GraphQL */ `
       subsections {
         items {
           id
+          order
           ownerUsername
           sectionId
           url
           type
+          title
           text
           createdAt
           updatedAt
@@ -66,6 +70,7 @@ export const getSubsection = /* GraphQL */ `
   query GetSubsection($id: ID!) {
     getSubsection(id: $id) {
       id
+      order
       ownerUsername
       sectionId
       file {
@@ -75,11 +80,13 @@ export const getSubsection = /* GraphQL */ `
       }
       url
       type
+      title
       text
       createdAt
       updatedAt
       section {
         id
+        order
         ownerUsername
         title
         intro
@@ -108,6 +115,7 @@ export const listSubsections = /* GraphQL */ `
     listSubsections(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
+        order
         ownerUsername
         sectionId
         file {
@@ -117,11 +125,13 @@ export const listSubsections = /* GraphQL */ `
         }
         url
         type
+        title
         text
         createdAt
         updatedAt
         section {
           id
+          order
           ownerUsername
           title
           intro

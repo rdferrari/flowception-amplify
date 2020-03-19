@@ -7,6 +7,7 @@ type Section
     ]
   ) {
   id: ID!
+  order: String
   ownerUsername: String!
   title: String!
   intro: String!
@@ -28,12 +29,14 @@ type Subsection
   )
   @key(name: "bySection", fields: ["sectionId"]) {
   id: ID!
+  order: String
   ownerUsername: String!
   sectionId: ID!
   section: Section @connection(fields: ["sectionId"])
   file: S3Object
   url: String
   type: String!
+  title: String
   text: String
   createdAt: String!
   updatedAt: String

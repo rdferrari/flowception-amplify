@@ -24,10 +24,10 @@ function Subsection(props) {
   const [editText, setEditText] = useState(false);
 
   useEffect(() => {
-    getData();
+    getPublicData();
   }, []);
 
-  const getData = async () => {
+  const getPublicData = async () => {
     try {
       const sectionData = await API.graphql({
         query: getSection,
@@ -71,7 +71,7 @@ function Subsection(props) {
       handleDeleteImage(url);
     }
 
-    getData();
+    getPublicData();
   };
 
   const handleDeleteImage = async imageUrl => {
@@ -123,7 +123,7 @@ function Subsection(props) {
                     iniIntro={intro}
                     iniBody={body}
                     iniUrl={url}
-                    getData={getData}
+                    getPublicData={getPublicData}
                     setEditSection={setEditSection}
                   />
                 </div>
@@ -133,7 +133,7 @@ function Subsection(props) {
           <h3>Subsection</h3>
 
           {user && group === "admin" ? (
-            <CreateSubsection sectionId={id} getData={getData} />
+            <CreateSubsection sectionId={id} getPublicData={getPublicData} />
           ) : null}
 
           {subsections
@@ -154,7 +154,7 @@ function Subsection(props) {
                         <EditSubsection
                           subsectionId={item.id}
                           iniText={item.text}
-                          getData={getData}
+                          getPublicData={getPublicData}
                           setEditText={setEditText}
                         />
                       )}
