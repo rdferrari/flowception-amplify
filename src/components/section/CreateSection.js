@@ -14,7 +14,6 @@ function CreateSection({ sections }) {
 
   const handleSubmit = async evt => {
     evt.preventDefault();
-    // alert(`Submitting ${title} ${intro} ${body}`);
 
     const input = {
       title,
