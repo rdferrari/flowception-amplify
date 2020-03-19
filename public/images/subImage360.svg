@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="44" height="50" viewBox="0 0 44 50">
+  <g id="Group_94" data-name="Group 94" transform="translate(2770 2448)">
+    <text id="_360_image" data-name="360 image" transform="translate(-2748 -2401)" fill="#f8f8f8" font-size="10" font-family="Rajdhani-Regular, Rajdhani"><tspan x="-21.265" y="0">360 image</tspan></text>
+    <g id="Group_119" data-name="Group 119" transform="translate(-2909 -2965)">
+      <g id="Ellipse_10" data-name="Ellipse 10" transform="translate(144 517)" fill="none" stroke="#f8f8f8" stroke-width="1">
+        <circle cx="16" cy="16" r="16" stroke="none"/>
+        <circle cx="16" cy="16" r="15.5" fill="none"/>
+      </g>
+      <g id="Ellipse_11" data-name="Ellipse 11" transform="translate(150 517)" fill="none" stroke="#f8f8f8" stroke-width="1">
+        <ellipse cx="10" cy="16" rx="10" ry="16" stroke="none"/>
+        <ellipse cx="10" cy="16" rx="9.5" ry="15.5" fill="none"/>
+      </g>
+      <g id="Ellipse_12" data-name="Ellipse 12" transform="translate(144 543) rotate(-90)" fill="none" stroke="#f8f8f8" stroke-width="1">
+        <ellipse cx="10" cy="16" rx="10" ry="16" stroke="none"/>
+        <ellipse cx="10" cy="16" rx="9.5" ry="15.5" fill="none"/>
+      </g>
+      <text id="_360" data-name="360" transform="translate(155.5 535.48)" fill="#f8f8f8" font-size="6" font-family="Rajdhani-SemiBold, Rajdhani" font-weight="600"><tspan x="0" y="0">360</tspan></text>
+    </g>
+  </g>
+</svg>

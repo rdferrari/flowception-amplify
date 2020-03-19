@@ -20,3 +20,21 @@
 .section-detail-text-container {
   padding: 0 $space-xm;
 }
+
+.section-sub-container {
+  background-color: $primary-color;
+  color: $secondary-color;
+  padding: $space-xm;
+}
+
+.section-sub-type-container {
+  background-color: $primary-color;
+  color: $secondary-color;
+  display: flex;
+  justify-content: space-between;
+  padding: $space-md $space-xm;
+}
+
+.section-sub-textType-container {
+  padding: 0 $space-xm;
+}

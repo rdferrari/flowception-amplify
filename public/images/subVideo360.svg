@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="40" height="50" viewBox="0 0 40 50">
+  <g id="Group_95" data-name="Group 95" transform="translate(2667 2448)">
+    <text id="_360_video" data-name="360 video" transform="translate(-2647 -2401)" fill="#f8f8f8" font-size="10" font-family="Rajdhani-Regular, Rajdhani"><tspan x="-19.46" y="0">360 video</tspan></text>
+    <g id="Group_96" data-name="Group 96" transform="translate(-2783 -3678)">
+      <g id="Ellipse_15" data-name="Ellipse 15" transform="translate(120 1230)" fill="none" stroke="#f8f8f8" stroke-width="1">
+        <circle cx="16" cy="16" r="16" stroke="none"/>
+        <circle cx="16" cy="16" r="15.5" fill="none"/>
+      </g>
+      <g id="Ellipse_16" data-name="Ellipse 16" transform="translate(126 1230)" fill="none" stroke="#f8f8f8" stroke-width="1">
+        <ellipse cx="10" cy="16" rx="10" ry="16" stroke="none"/>
+        <ellipse cx="10" cy="16" rx="9.5" ry="15.5" fill="none"/>
+      </g>
+      <g id="Ellipse_17" data-name="Ellipse 17" transform="translate(120 1256) rotate(-90)" fill="none" stroke="#f8f8f8" stroke-width="1">
+        <ellipse cx="10" cy="16" rx="10" ry="16" stroke="none"/>
+        <ellipse cx="10" cy="16" rx="9.5" ry="15.5" fill="none"/>
+      </g>
+      <path id="Polygon_10" data-name="Polygon 10" d="M3.86,0l3.86,6.342H0Z" transform="translate(140.083 1242.261) rotate(90)" fill="#f8f8f8"/>
+    </g>
+  </g>
+</svg>

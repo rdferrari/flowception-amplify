@@ -3,7 +3,14 @@ import { API, graphqlOperation } from "aws-amplify";
 import { updateSubsection } from "../../graphql/mutations";
 import { useInput } from "../auth/useInput";
 
-function EditSubsection({ subsectionId, iniText, getData, setEditText }) {
+function EditSubsection({
+  subsectionId,
+  iniTitle,
+  iniText,
+  getPublicData,
+  setEditText
+}) {
+  const { value: title, bind: bindTitle } = useInput(iniTitle);
   const { value: text, bind: bindText } = useInput(iniText);
 
   const handleSubmit = async evt => {
@@ -11,6 +18,7 @@ function EditSubsection({ subsectionId, iniText, getData, setEditText }) {
 
     const input = {
       id: subsectionId,
+      title,
       text,
       updatedAt: Date.now()
     };
@@ -21,19 +29,39 @@ function EditSubsection({ subsectionId, iniText, getData, setEditText }) {
       })
     );
     console.log(`Subsectio id: ${result.data.updateSubsection.id} was edited`);
-    getData();
     setEditText(false);
+    getPublicData();
   };
 
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <label>
-          Text:
-          <input type="text" {...bindText} />
-        </label>
-        <input type="submit" value="Submit" />
+        <input
+          placeholder="Subsection title"
+          className="input-light"
+          type="text"
+          {...bindTitle}
+        />
+        <textarea
+          rows="6"
+          cols="60"
+          placeholder="Subsection text"
+          className="input-light"
+          type="text"
+          {...bindText}
+        />
+        <input
+          className="primary-button button-dark"
+          type="submit"
+          value="Edit subsection"
+        />
       </form>
+      <button
+        className="primary-button button-transparent"
+        onClick={() => setEditText(false)}
+      >
+        Close form
+      </button>
     </div>
   );
 }

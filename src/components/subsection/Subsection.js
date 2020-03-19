@@ -130,10 +130,13 @@ function Subsection(props) {
               ) : null}
             </div>
           )}
-          <h3>Subsection</h3>
 
           {user && group === "admin" ? (
-            <CreateSubsection sectionId={id} getPublicData={getPublicData} />
+            <CreateSubsection
+              sectionId={id}
+              getPublicData={getPublicData}
+              subsections={subsections}
+            />
           ) : null}
 
           {subsections
@@ -142,17 +145,30 @@ function Subsection(props) {
                   {item.type === "TEXT" ? (
                     <div>
                       {editText === false ? (
-                        <div>
-                          <p>Item type: {item.type}</p>
+                        <div className="section-sub-textType-container">
+                          <h2>{item.title}</h2>
                           <p>{item.text}</p>{" "}
-                          <p onClick={() => handleDeleteSubsection(item.id)}>
-                            delete
-                          </p>
-                          <p onClick={() => setEditText(true)}>Edit</p>
+                          {user && group === "admin" ? (
+                            <div>
+                              <button
+                                className="primary-button button-dark"
+                                onClick={() => setEditText(true)}
+                              >
+                                Edit text
+                              </button>
+                              <button
+                                className="delete-section-button"
+                                onClick={() => handleDeleteSubsection(item.id)}
+                              >
+                                Delete text
+                              </button>
+                            </div>
+                          ) : null}
                         </div>
                       ) : (
                         <EditSubsection
                           subsectionId={item.id}
+                          iniTitle={item.title}
                           iniText={item.text}
                           getPublicData={getPublicData}
                           setEditText={setEditText}
@@ -162,15 +178,22 @@ function Subsection(props) {
                   ) : null}
                   {item.type === "IMAGE" ? (
                     <div>
-                      <p>Item type: {item.type}</p>
-                      {item.url ? <S3Image imgKey={item.url} /> : null}
-                      <p
-                        onClick={() =>
-                          handleDeleteSubsection(item.id, item.url)
-                        }
-                      >
-                        delete
-                      </p>
+                      {item.url ? (
+                        <S3Image
+                          className="section-card-image"
+                          imgKey={item.url}
+                        />
+                      ) : null}
+                      {user && group === "admin" ? (
+                        <button
+                          className="delete-section-button"
+                          onClick={() =>
+                            handleDeleteSubsection(item.id, item.url)
+                          }
+                        >
+                          Delete image
+                        </button>
+                      ) : null}
                     </div>
                   ) : null}
                   {item.type === "VIDEO" ? (

@@ -37,10 +37,22 @@ a {
   color: $secondary-color;
 }
 
+.button-light {
+  background-color: $secondary-color;
+  border: none;
+  color: $primary-color;
+}
+
 .button-transparent {
   background-color: transparent;
   border: 1px solid $primary-color;
   color: $primary-color;
+}
+
+.button-transparent-light {
+  background-color: transparent;
+  border: 1px solid $secondary-color;
+  color: $secondary-color;
 }
 
 .primary-button {

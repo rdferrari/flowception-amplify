@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="46" viewBox="0 0 32 46">
+  <g id="Group_93" data-name="Group 93" transform="translate(-44 -612)">
+    <text id="Image" transform="translate(60 655)" fill="#f8f8f8" font-size="10" font-family="Rajdhani-Regular, Rajdhani"><tspan x="-12.495" y="0">Image</tspan></text>
+    <g id="Group_121" data-name="Group 121">
+      <g id="Rectangle_71" data-name="Rectangle 71" transform="translate(44 612)" fill="none" stroke="#f8f8f8" stroke-width="1">
+        <rect width="32" height="25" stroke="none"/>
+        <rect x="0.5" y="0.5" width="31" height="24" fill="none"/>
+      </g>
+      <path id="Exclusion_4" data-name="Exclusion 4" d="M3119.953,3079,3105,3079l4.552-6.932a11.328,11.328,0,0,0,10.4,6.932h0Zm14.047,0h-14.038a11.291,11.291,0,0,0,10.011-6.13L3134,3079Zm-4.027-6.131h0L3119.5,3056.92l-9.947,15.146a11.644,11.644,0,0,1,2.389-12.7,11.208,11.208,0,0,1,16.02,0,11.514,11.514,0,0,1,3.318,8.132,11.668,11.668,0,0,1-1.307,5.368Z" transform="translate(-3059 -2443)" fill="#f8f8f8"/>
+    </g>
+  </g>
+</svg>

@@ -138,7 +138,7 @@ function CreateSection({ sections }) {
           <input
             className="primary-button button-dark"
             type="submit"
-            value="Create section"
+            value="Add new section"
           />
         </form>
 

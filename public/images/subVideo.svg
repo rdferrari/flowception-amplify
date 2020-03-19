@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="46" viewBox="0 0 32 46">
+  <g id="Group_92" data-name="Group 92" transform="translate(-144 -612)">
+    <text id="Video" transform="translate(160 655)" fill="#f8f8f8" font-size="10" font-family="Rajdhani-Regular, Rajdhani"><tspan x="-11.01" y="0">Video</tspan></text>
+    <g id="Group_120" data-name="Group 120">
+      <g id="Rectangle_70" data-name="Rectangle 70" transform="translate(144 612)" fill="none" stroke="#f8f8f8" stroke-width="1">
+        <rect width="32" height="25" stroke="none"/>
+        <rect x="0.5" y="0.5" width="31" height="24" fill="none"/>
+      </g>
+      <path id="Polygon_11" data-name="Polygon 11" d="M3.86,0l3.86,6.342H0Z" transform="translate(164.342 621) rotate(90)" fill="#f8f8f8"/>
+    </g>
+  </g>
+</svg>
