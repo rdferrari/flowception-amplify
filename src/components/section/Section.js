@@ -38,7 +38,9 @@ const Section = () => {
       variables: {},
       authMode: "API_KEY"
     });
-    updateSections(sectionData.data.listSections.items);
+
+    const sectionArray = sectionData.data.listSections.items;
+    updateSections(sectionArray);
   };
 
   return (
