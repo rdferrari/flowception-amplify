@@ -1,5 +1,33 @@
 .section-list-container {
   padding: $space-xm;
+  width: 100%;
+
+  @media (min-width: $screen-lg-min) {
+    width: 480px;
+  }
+}
+
+.section-desktop-flex {
+  display: flex;
+}
+
+.section-desktop-right {
+  display: none;
+
+  @media (min-width: $screen-lg-min) {
+    background-color: $primary-color;
+    display: inherit;
+    margin-top: -63px;
+    height: 100vh;
+    position: static;
+  }
+}
+
+.section-desktop-list-scroll {
+  @media (min-width: $screen-lg-min) {
+    height: 85vh;
+    overflow: scroll;
+  }
 }
 
 .section-card {
@@ -7,6 +35,10 @@
   margin-bottom: $space-md;
   padding-bottom: $space-xm;
   width: 100%;
+
+  @media (min-width: $screen-lg-min) {
+    width: 480px;
+  }
 }
 
 .section-card-image {

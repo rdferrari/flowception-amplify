@@ -115,26 +115,26 @@ function CreateSubsection({ sectionId, getData, subsections }) {
       ) : (
         <div>
           {mediaType === "IMAGE" ||
-          mediaType === "IMAGE_360" ||
-          mediaType === "VIDEO" ||
-          mediaType === "VIDEO_360" ? (
-            <div className="upload-btn-wrapper">
-              <input
-                onClick={() => setUploading(true)}
-                type="file"
-                onChange={handleUploadFile}
-                className="myfile"
-              />
-              {uploading === false ? (
-                <img className="btn" src="/images/UploadBt.svg" />
-              ) : (
-                <img className="btn" src="/images/Uploading.svg" />
-              )}
-            </div>
-          ) : null}
+            mediaType === "IMAGE_360" ||
+            mediaType === "VIDEO" ||
+            (mediaType === "VIDEO_360" && (
+              <div className="upload-btn-wrapper">
+                <input
+                  onClick={() => setUploading(true)}
+                  type="file"
+                  onChange={handleUploadFile}
+                  className="myfile"
+                />
+                {uploading === false ? (
+                  <img className="btn" src="/images/UploadBt.svg" />
+                ) : (
+                  <img className="btn" src="/images/Uploading.svg" />
+                )}
+              </div>
+            ))}
 
           <form onSubmit={handleSubmit}>
-            {mediaType === "TEXT" ? (
+            {mediaType === "TEXT" && (
               <div>
                 <input
                   placeholder="Subsection title"
@@ -156,7 +156,7 @@ function CreateSubsection({ sectionId, getData, subsections }) {
                   value="Add new subsection"
                 />
               </div>
-            ) : null}
+            )}
           </form>
           <button
             className="primary-button button-transparent-light"

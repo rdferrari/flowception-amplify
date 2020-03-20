@@ -18,9 +18,9 @@ function ItemSection({ sections }) {
   return orderedSections.map(section => (
     <div className="section-card" key={section.id}>
       <Link to={`/section/${section.id}`}>
-        {section.url ? (
+        {section.url && (
           <S3Image className="section-card-image" imgKey={section.url} />
-        ) : null}
+        )}
         <div className="section-card-text-container">
           <h2>{section.title}</h2>
           <p>{section.intro}</p>

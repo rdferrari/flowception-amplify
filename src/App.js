@@ -21,7 +21,11 @@ Amplify.configure(aws_exports);
 export const UserContext = React.createContext();
 
 function LoginApp() {
-  return <Authenticator theme={theme} />;
+  return (
+    <div className="app-login-container">
+      <Authenticator theme={theme} />
+    </div>
+  );
 }
 
 function ScrollToTopOnMount() {

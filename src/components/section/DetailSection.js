@@ -14,12 +14,12 @@ function DetailSection({
 }) {
   return (
     <div>
-      {url ? <S3Image className="section-card-image" imgKey={url} /> : null}
+      {url && <S3Image className="section-card-image" imgKey={url} />}
       <div className="section-detail-text-container">
         <h2>{title}</h2>
         <p>{intro}</p>
         <p>{body}</p>
-        {user && group === "admin" ? (
+        {user && group === "admin" && (
           <div>
             <button
               className="primary-button button-transparent"
@@ -34,7 +34,7 @@ function DetailSection({
               Delete section
             </button>
           </div>
-        ) : null}
+        )}
       </div>
     </div>
   );

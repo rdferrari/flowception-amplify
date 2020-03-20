@@ -49,7 +49,7 @@ function Header({ history, handleSignOut }) {
           </div>
 
           <div>
-            {showMenu === true ? (
+            {showMenu === true && (
               <div className="header-menu-body">
                 <NavLink to="/">
                   <p onClick={() => setShowMenu(false)}> Home</p>
@@ -62,7 +62,7 @@ function Header({ history, handleSignOut }) {
                   </NavLink>
                 )}
               </div>
-            ) : null}
+            )}
           </div>
         </div>
       )}

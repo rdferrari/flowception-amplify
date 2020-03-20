@@ -7,6 +7,10 @@
   position: fixed;
   width: 100%;
   z-index: 99;
+
+  @media (min-width: $screen-lg-min) {
+    width: 500px;
+  }
 }
 
 .header-logo {
@@ -32,9 +36,13 @@
   background-color: white;
   height: 100vh;
   position: fixed;
-  right: 0;
+  left: 0;
   text-align: center;
   top: 60px;
   width: 100%;
   z-index: 100;
+
+  @media (min-width: $screen-lg-min) {
+    width: 500px;
+  }
 }

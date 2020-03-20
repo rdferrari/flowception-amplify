@@ -107,7 +107,7 @@ function Subsection(props) {
   return (
     <UserContext.Consumer>
       {({ user, group }) => (
-        <div>
+        <div className="section-list-container">
           {editSection === false ? (
             <div>
               <DetailSection
@@ -124,7 +124,7 @@ function Subsection(props) {
             </div>
           ) : (
             <div>
-              {title && intro && body && user && group === "admin" ? (
+              {title && intro && body && user && group === "admin" && (
                 <div>
                   <EditSection
                     sectionId={id}
@@ -136,105 +136,87 @@ function Subsection(props) {
                     setEditSection={setEditSection}
                   />
                 </div>
-              ) : null}
+              )}
             </div>
           )}
 
-          {user && group === "admin" ? (
+          {user && group === "admin" && (
             <CreateSubsection
               sectionId={id}
               getPublicData={getPublicData}
               subsections={subsections}
             />
-          ) : null}
+          )}
 
-          {subsections
-            ? subsections.sort(compare).map(item => (
-                <div key={item.id}>
-                  {item.type === "TEXT" ? (
-                    <div>
-                      {editText === false ? (
-                        <div className="section-sub-textType-container">
-                          <h2>{item.title}</h2>
-                          <p>{item.text}</p>{" "}
-                          {user && group === "admin" ? (
-                            <div>
-                              <button
-                                className="primary-button button-dark"
-                                onClick={() => setEditText(true)}
-                              >
-                                Edit text
-                              </button>
-                              <button
-                                className="delete-section-button"
-                                onClick={() => handleDeleteSubsection(item.id)}
-                              >
-                                Delete text
-                              </button>
-                            </div>
-                          ) : null}
-                        </div>
-                      ) : (
-                        <EditSubsection
-                          subsectionId={item.id}
-                          iniTitle={item.title}
-                          iniText={item.text}
-                          getPublicData={getPublicData}
-                          setEditText={setEditText}
-                        />
-                      )}
-                    </div>
-                  ) : null}
-                  {item.type === "IMAGE" ? (
-                    <div>
-                      {item.url ? (
-                        <S3Image
-                          className="section-card-image"
-                          imgKey={item.url}
-                        />
-                      ) : null}
-                      {user && group === "admin" ? (
-                        <button
-                          className="delete-section-button"
-                          onClick={() =>
-                            handleDeleteSubsection(item.id, item.url)
-                          }
-                        >
-                          Delete image
-                        </button>
-                      ) : null}
-                    </div>
-                  ) : null}
-                  {item.type === "VIDEO" ? (
-                    <div>
-                      <p>Item type: {item.type}</p>
-                      <p>Video {item.url}</p>
-                      <p onClick={() => handleDeleteSubsection(item.id)}>
-                        delete
-                      </p>
-                    </div>
-                  ) : null}
-                  {item.type === "IMAGE_360" ? (
-                    <div>
-                      <p>Item type: {item.type}</p>
-                      <p>360 image {item.url}</p>
-                      <p onClick={() => handleDeleteSubsection(item.id)}>
-                        delete
-                      </p>
-                    </div>
-                  ) : null}
-                  {item.type === "VIDEO_360" ? (
-                    <div>
-                      <p>Item type: {item.type}</p>
-                      <p>360 video {item.url}</p>
-                      <p onClick={() => handleDeleteSubsection(item.id)}>
-                        delete
-                      </p>
-                    </div>
-                  ) : null}
-                </div>
-              ))
-            : null}
+          {subsections &&
+            subsections.sort(compare).map(item => (
+              <div key={item.id}>
+                {item.type === "TEXT" && (
+                  <div>
+                    {editText === false ? (
+                      <div className="section-sub-textType-container">
+                        <h2>{item.title}</h2>
+                        <p>{item.text}</p>{" "}
+                        {user && group === "admin" && (
+                          <div>
+                            <button
+                              className="primary-button button-dark"
+                              onClick={() => setEditText(true)}
+                            >
+                              Edit text
+                            </button>
+                            <button
+                              className="delete-section-button"
+                              onClick={() => handleDeleteSubsection(item.id)}
+                            >
+                              Delete text
+                            </button>
+                          </div>
+                        )}
+                      </div>
+                    ) : (
+                      <EditSubsection
+                        subsectionId={item.id}
+                        iniTitle={item.title}
+                        iniText={item.text}
+                        getPublicData={getPublicData}
+                        setEditText={setEditText}
+                      />
+                    )}
+                  </div>
+                )}
+
+                {item.type === "VIDEO" && (
+                  <div>
+                    <p>Item type: {item.type}</p>
+                    <p>Video {item.url}</p>
+                    <p onClick={() => handleDeleteSubsection(item.id)}>
+                      delete
+                    </p>
+                  </div>
+                )}
+
+                {item.type === "IMAGE_360" && (
+                  <div>
+                    <p>Item type: {item.type}</p>
+                    <p>360 image {item.url}</p>
+                    <p onClick={() => handleDeleteSubsection(item.id)}>
+                      delete
+                    </p>
+                  </div>
+                )}
+
+                {item.type === "VIDEO_360" && (
+                  <div>
+                    <p>Item type: {item.type}</p>
+                    <p>360 video {item.url}</p>
+                    <p onClick={() => handleDeleteSubsection(item.id)}>
+                      delete
+                    </p>
+                  </div>
+                )}
+              </div>
+            ))}
         </div>
       )}
     </UserContext.Consumer>

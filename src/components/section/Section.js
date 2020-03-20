@@ -46,11 +46,19 @@ const Section = () => {
   return (
     <UserContext.Consumer>
       {({ user, group }) => (
-        <div className="section-list-container">
-          {user && group === "admin" ? (
-            <CreateSection user={user} sections={sections} />
-          ) : null}
-          <ListSection user={user} group={group} sections={sections} />
+        <div className="section-desktop-flex">
+          <div className="section-list-container">
+            {user && group === "admin" && (
+              <CreateSection user={user} sections={sections} />
+            )}
+            <ListSection user={user} group={group} sections={sections} />
+          </div>
+          <div className="section-desktop-right">
+            <img
+              className="section-card-image"
+              src="/images/vibrationsHeader.jpg"
+            />
+          </div>
         </div>
       )}
     </UserContext.Consumer>

@@ -26,9 +26,12 @@ a {
   padding-top: $space-xm / 2;
 }
 
-.app-login {
-  background-color: red;
-  width: 300px;
+.app-login-container {
+  width: 100%;
+
+  @media (min-width: $screen-lg-min) {
+    width: 500px;
+  }
 }
 
 .button-dark {
