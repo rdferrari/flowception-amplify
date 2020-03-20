@@ -1,13 +1,11 @@
 import React, { useState } from "react";
-import { withRouter, Link, NavLink } from "react-router-dom";
+import { withRouter, NavLink } from "react-router-dom";
 import { UserContext } from "../App";
 
-function Header(props, { handleSignOut }) {
+function Header({ history, handleSignOut }) {
   const [showMenu, setShowMenu] = useState(false);
 
-  const path = props.history.location.pathname;
-
-  console.log(props.history);
+  const path = history.location.pathname;
 
   return (
     <UserContext.Consumer>
@@ -21,7 +19,7 @@ function Header(props, { handleSignOut }) {
             ) : (
               <div>
                 <img
-                  onClick={() => props.history.goBack()}
+                  onClick={() => history.goBack()}
                   className="header-back"
                   src="/images/backHeader.svg"
                 />

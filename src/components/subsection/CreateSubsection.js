@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Auth, API, graphqlOperation, Storage } from "aws-amplify";
-import { S3Image } from "aws-amplify-react";
-import { createSubsection, deleteSubsection } from "../../graphql/mutations";
+import { createSubsection } from "../../graphql/mutations";
 import { useInput } from "../auth/useInput";
 
 function CreateSubsection({ sectionId, getData, subsections }) {

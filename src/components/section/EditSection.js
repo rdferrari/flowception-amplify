@@ -10,13 +10,14 @@ function EditSection({
   iniIntro,
   iniBody,
   iniUrl,
-  getData,
+  getPublicData,
   setEditSection
 }) {
   const { value: title, bind: bindTitle } = useInput(iniTitle);
   const { value: intro, bind: bindIntro } = useInput(iniIntro);
   const { value: body, bind: bindBody } = useInput(iniBody);
   const [url, setUrl] = useState(iniUrl);
+  const [uploading, setUploading] = useState(false);
 
   const handleSubmit = async evt => {
     evt.preventDefault();
@@ -36,7 +37,7 @@ function EditSection({
         input
       })
     );
-    getData();
+    getPublicData();
     setEditSection(false);
     console.info(`Updated section: id ${result.data.updateSection.id}`);
   };
@@ -53,7 +54,7 @@ function EditSection({
         input
       })
     );
-    getData();
+    getPublicData();
     console.info(`Updated section: id ${result.data.updateSection.id}`);
   };
 
@@ -70,6 +71,7 @@ function EditSection({
     });
 
     updateUrl(name);
+    setUploading(false);
   };
 
   const handleDeleteImage = async imageUrl => {
@@ -78,33 +80,74 @@ function EditSection({
     });
 
     updateUrl(null);
+    setUploading(false);
   };
 
   return (
     <div>
       {url ? (
         <div>
-          <S3Image imgKey={url} />
-          <p onClick={() => handleDeleteImage(url)}>Delete image</p>
+          <S3Image className="section-card-image" imgKey={url} />
+          <button
+            className="primary-button button-transparent"
+            onClick={() => handleDeleteImage(url)}
+          >
+            Delete image
+          </button>
         </div>
       ) : (
-        <input type="file" onChange={handleUploadFile} />
+        <div className="upload-btn-wrapper">
+          <input
+            onClick={() => setUploading(true)}
+            type="file"
+            onChange={handleUploadFile}
+            className="myfile"
+          />
+          {uploading === false ? (
+            <img className="btn" src="/images/UploadBt.svg" />
+          ) : (
+            <img className="btn" src="/images/Uploading.svg" />
+          )}
+        </div>
       )}
       <form onSubmit={handleSubmit}>
-        <label>
-          Title:
-          <input type="text" {...bindTitle} />
-        </label>
-        <label>
-          Intro:
-          <input type="text" {...bindIntro} />
-        </label>
-        <label>
-          Body:
-          <input type="text" {...bindBody} />
-        </label>
-        <input type="submit" value="Submit" />
+        <input
+          placeholder="Section title"
+          className="input-light"
+          type="text"
+          {...bindTitle}
+        />
+
+        <textarea
+          rows="6"
+          cols="60"
+          placeholder="Section introduction"
+          className="input-light"
+          type="text"
+          {...bindIntro}
+        />
+
+        <textarea
+          rows="6"
+          cols="60"
+          placeholder="Section body text"
+          className="input-light"
+          type="text"
+          {...bindBody}
+        />
+
+        <input
+          className="primary-button button-dark"
+          type="submit"
+          value="Edit section"
+        />
       </form>
+      <button
+        className="primary-button button-transparent"
+        onClick={() => setEditSection(false)}
+      >
+        Close form
+      </button>
     </div>
   );
 }

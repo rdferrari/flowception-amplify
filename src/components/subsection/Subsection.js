@@ -94,6 +94,16 @@ function Subsection(props) {
     props.history.push("/");
   };
 
+  function compare(a, b) {
+    if (a.order < b.order) {
+      return -1;
+    }
+    if (a.order > b.order) {
+      return 1;
+    }
+    return 0;
+  }
+
   return (
     <UserContext.Consumer>
       {({ user, group }) => (
@@ -116,7 +126,6 @@ function Subsection(props) {
             <div>
               {title && intro && body && user && group === "admin" ? (
                 <div>
-                  <h2>Edit Section</h2>
                   <EditSection
                     sectionId={id}
                     iniTitle={title}
@@ -140,7 +149,7 @@ function Subsection(props) {
           ) : null}
 
           {subsections
-            ? subsections.map(item => (
+            ? subsections.sort(compare).map(item => (
                 <div key={item.id}>
                   {item.type === "TEXT" ? (
                     <div>
