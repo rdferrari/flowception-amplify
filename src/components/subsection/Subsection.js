@@ -1,21 +1,26 @@
 import React, { useState, useEffect } from "react";
 import { API, graphqlOperation, Storage } from "aws-amplify";
-import { S3Image } from "aws-amplify-react";
+import { useParams } from "react-router-dom";
+import { UserContext } from "../../App";
 
 import { onCreateSubsection } from "../../graphql/subscriptions";
-import { getSection } from "../../graphql/queries";
-import { useParams } from "react-router-dom";
+import { deleteSubsection, deleteSection } from "../../graphql/mutations";
+import { getSection, listSections } from "../../graphql/queries";
+
 import EditSection from "../section/EditSection";
 import EditSubsection from "./EditSubsection";
-import { UserContext } from "../../App";
+import MediaItem from "./MediaItem";
 import DetailSection from "../section/DetailSection";
+import TextItem from "./TextItem";
 import CreateSubsection from "./CreateSubsection";
-import { deleteSubsection, deleteSection } from "../../graphql/mutations";
+import ListSection from "../section/ListSection";
 
 function Subsection(props) {
   let { id } = useParams();
+  const [sectionId, setSectionId] = useState(null);
+  // const [paramId, setParamId] = useState(id);
+  const [sections, updateSections] = useState([]);
   const [subsections, setSubsections] = useState(null);
-  const [idDelete, setIdDelete] = useState(null);
   const [title, setTitle] = useState(null);
   const [intro, setIntro] = useState(null);
   const [body, setBody] = useState(null);
@@ -23,8 +28,12 @@ function Subsection(props) {
   const [editSection, setEditSection] = useState(false);
   const [editText, setEditText] = useState(false);
 
+  // const path = props.location.pathname.slice(9);
+  // console.log(path, id);
+
   useEffect(() => {
     getPublicData();
+    getPublicListData();
   }, []);
 
   const getPublicData = async () => {
@@ -36,7 +45,7 @@ function Subsection(props) {
       });
 
       setSubsections(sectionData.data.getSection.subsections.items);
-      setIdDelete(sectionData.data.getSection.id);
+      setSectionId(sectionData.data.getSection.id);
       setTitle(sectionData.data.getSection.title);
       setIntro(sectionData.data.getSection.intro);
       setBody(sectionData.data.getSection.body);
@@ -44,6 +53,17 @@ function Subsection(props) {
     } catch (err) {
       console.log("error fetching data..", err);
     }
+  };
+
+  const getPublicListData = async () => {
+    const sectionData = await API.graphql({
+      query: listSections,
+      variables: {},
+      authMode: "API_KEY"
+    });
+
+    const sectionArray = sectionData.data.listSections.items;
+    updateSections(sectionArray);
   };
 
   useEffect(() => {
@@ -107,9 +127,13 @@ function Subsection(props) {
   return (
     <UserContext.Consumer>
       {({ user, group }) => (
-        <div className="section-list-container">
-          {editSection === false ? (
-            <div>
+        <div className="section-sub-container">
+          <div className="section-sub-container-menu">
+            <ListSection user={user} group={group} sections={sections} />
+          </div>
+
+          <div className="section-sub-container-content">
+            {editSection === false ? (
               <DetailSection
                 url={url}
                 title={title}
@@ -119,104 +143,70 @@ function Subsection(props) {
                 group={group}
                 setEditSection={setEditSection}
                 handleDeleteSection={handleDeleteSection}
-                idDelete={idDelete}
+                sectionId={sectionId}
               />
-            </div>
-          ) : (
-            <div>
-              {title && intro && body && user && group === "admin" && (
-                <div>
-                  <EditSection
-                    sectionId={id}
-                    iniTitle={title}
-                    iniIntro={intro}
-                    iniBody={body}
-                    iniUrl={url}
-                    getPublicData={getPublicData}
-                    setEditSection={setEditSection}
+            ) : (
+              title &&
+              intro &&
+              body &&
+              user &&
+              group === "admin" && (
+                <EditSection
+                  sectionId={id}
+                  iniTitle={title}
+                  iniIntro={intro}
+                  iniBody={body}
+                  iniUrl={url}
+                  getPublicData={getPublicData}
+                  setEditSection={setEditSection}
+                />
+              )
+            )}
+
+            {user && group === "admin" && (
+              <CreateSubsection
+                sectionId={id}
+                getPublicData={getPublicData}
+                subsections={subsections}
+              />
+            )}
+
+            {subsections &&
+              subsections.sort(compare).map(item => (
+                <div key={item.id}>
+                  {item.type === "TEXT" && (
+                    <div>
+                      {editText === false ? (
+                        <TextItem
+                          title={item.title}
+                          text={item.text}
+                          id={item.id}
+                          user={user}
+                          group={group}
+                          setEditText={setEditText}
+                          handleDeleteSubsection={handleDeleteSubsection}
+                        />
+                      ) : (
+                        <EditSubsection
+                          subsectionId={item.id}
+                          iniTitle={item.title}
+                          iniText={item.text}
+                          getPublicData={getPublicData}
+                          setEditText={setEditText}
+                        />
+                      )}
+                    </div>
+                  )}
+
+                  <MediaItem
+                    type={item.type}
+                    url={item.url}
+                    id={item.id}
+                    handleDeleteSubsection={handleDeleteSubsection}
                   />
                 </div>
-              )}
-            </div>
-          )}
-
-          {user && group === "admin" && (
-            <CreateSubsection
-              sectionId={id}
-              getPublicData={getPublicData}
-              subsections={subsections}
-            />
-          )}
-
-          {subsections &&
-            subsections.sort(compare).map(item => (
-              <div key={item.id}>
-                {item.type === "TEXT" && (
-                  <div>
-                    {editText === false ? (
-                      <div className="section-sub-textType-container">
-                        <h2>{item.title}</h2>
-                        <p>{item.text}</p>{" "}
-                        {user && group === "admin" && (
-                          <div>
-                            <button
-                              className="primary-button button-dark"
-                              onClick={() => setEditText(true)}
-                            >
-                              Edit text
-                            </button>
-                            <button
-                              className="delete-section-button"
-                              onClick={() => handleDeleteSubsection(item.id)}
-                            >
-                              Delete text
-                            </button>
-                          </div>
-                        )}
-                      </div>
-                    ) : (
-                      <EditSubsection
-                        subsectionId={item.id}
-                        iniTitle={item.title}
-                        iniText={item.text}
-                        getPublicData={getPublicData}
-                        setEditText={setEditText}
-                      />
-                    )}
-                  </div>
-                )}
-
-                {item.type === "VIDEO" && (
-                  <div>
-                    <p>Item type: {item.type}</p>
-                    <p>Video {item.url}</p>
-                    <p onClick={() => handleDeleteSubsection(item.id)}>
-                      delete
-                    </p>
-                  </div>
-                )}
-
-                {item.type === "IMAGE_360" && (
-                  <div>
-                    <p>Item type: {item.type}</p>
-                    <p>360 image {item.url}</p>
-                    <p onClick={() => handleDeleteSubsection(item.id)}>
-                      delete
-                    </p>
-                  </div>
-                )}
-
-                {item.type === "VIDEO_360" && (
-                  <div>
-                    <p>Item type: {item.type}</p>
-                    <p>360 video {item.url}</p>
-                    <p onClick={() => handleDeleteSubsection(item.id)}>
-                      delete
-                    </p>
-                  </div>
-                )}
-              </div>
-            ))}
+              ))}
+          </div>
         </div>
       )}
     </UserContext.Consumer>

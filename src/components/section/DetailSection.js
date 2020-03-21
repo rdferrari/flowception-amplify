@@ -10,7 +10,7 @@ function DetailSection({
   group,
   setEditSection,
   handleDeleteSection,
-  idDelete
+  sectionId
 }) {
   return (
     <div>
@@ -29,7 +29,7 @@ function DetailSection({
             </button>
             <button
               className="delete-section-button"
-              onClick={() => handleDeleteSection(idDelete, url)}
+              onClick={() => handleDeleteSection(sectionId, url)}
             >
               Delete section
             </button>
