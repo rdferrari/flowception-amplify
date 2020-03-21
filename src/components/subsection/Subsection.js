@@ -18,7 +18,6 @@ import ListSection from "../section/ListSection";
 function Subsection(props) {
   let { id } = useParams();
   const [sectionId, setSectionId] = useState(null);
-  // const [paramId, setParamId] = useState(id);
   const [sections, updateSections] = useState([]);
   const [subsections, setSubsections] = useState(null);
   const [title, setTitle] = useState(null);
@@ -29,7 +28,7 @@ function Subsection(props) {
   const [editText, setEditText] = useState(false);
 
   // const path = props.location.pathname.slice(9);
-  // console.log(path, id);
+  console.log(id);
 
   useEffect(() => {
     getPublicData();
@@ -122,6 +121,10 @@ function Subsection(props) {
       return 1;
     }
     return 0;
+  }
+
+  if (id !== sectionId) {
+    getPublicData();
   }
 
   return (
