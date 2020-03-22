@@ -31,6 +31,20 @@
   }
 }
 
+.section-desktop-right-image {
+  height: 100vh;
+}
+
+.section-desktop-right-text {
+  color: $secondary-color;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  text-align: center;
+  transform: translate(-50%, -50%);
+}
+
 .section-desktop-list-scroll {
   @media (min-width: $screen-lg-min) {
     height: 85vh;
@@ -53,12 +67,32 @@
   width: 100%;
 }
 
+.section-title {
+  font-size: $font-xl;
+
+  @media (min-width: $screen-lg-min) {
+    font-size: $font-xxl;
+  }
+}
+
+.section-text {
+  font-size: $font-md;
+}
+
 .section-card-text-container {
   margin: $space-md;
 }
 
 .section-detail-text-container {
   padding: 0 $space-xm;
+  @media (min-width: $screen-lg-min) {
+    padding: 0 $space-xl * 2;
+  }
+}
+
+.section-button-flex {
+  display: flex;
+  margin: $space-lg 0;
 }
 
 // Subsection
@@ -67,6 +101,10 @@
   background-color: $primary-color;
   color: $secondary-color;
   padding: $space-xm;
+
+  @media (min-width: $screen-lg-min) {
+    margin: $space-xl * 2 0;
+  }
 }
 
 .section-sub-container {
@@ -106,10 +144,17 @@
 
 .section-sub-container-content {
   @media (min-width: $screen-lg-min) {
+    background-color: $primary-color-2;
     overflow-y: scroll;
     position: static;
     margin-top: -63px;
     height: 100vh;
     width: 65%;
+  }
+}
+
+.section-sub-create-icon {
+  @media (min-width: $screen-lg-min) {
+    height: 80px;
   }
 }

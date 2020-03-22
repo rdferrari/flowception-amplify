@@ -86,86 +86,92 @@ function CreateSubsection({ sectionId, getData, subsections }) {
 
   return (
     <div className="section-sub-create">
-      <h2>Create Subsection</h2>
+      <div className="section-detail-text-container">
+        <h2 className="section-title">Create Subsection</h2>
 
-      {showForm === false ? (
-        <div className="section-sub-type-container">
-          <img
-            className="section-sub-create-bt"
-            onClick={() => handleTypeForm("TEXT")}
-            src="/images/subText.svg"
-          />
-          <img
-            onClick={() => handleTypeForm("IMAGE")}
-            src="/images/subImage.svg"
-          />
-          <img
-            onClick={() => handleTypeForm("IMAGE_360")}
-            src="/images/subImage360.svg"
-          />
-          <img
-            onClick={() => handleTypeForm("VIDEO")}
-            src="/images/subVideo.svg"
-          />
-          <img
-            onClick={() => handleTypeForm("VIDEO_360")}
-            src="/images/subVideo360.svg"
-          />
-        </div>
-      ) : (
-        <div>
-          {mediaType === "IMAGE" ||
-            mediaType === "IMAGE_360" ||
-            mediaType === "VIDEO" ||
-            (mediaType === "VIDEO_360" && (
-              <div className="upload-btn-wrapper">
-                <input
-                  onClick={() => setUploading(true)}
-                  type="file"
-                  onChange={handleUploadFile}
-                  className="myfile"
-                />
-                {uploading === false ? (
-                  <img className="btn" src="/images/UploadBt.svg" />
-                ) : (
-                  <img className="btn" src="/images/Uploading.svg" />
-                )}
-              </div>
-            ))}
+        {showForm === false ? (
+          <div className="section-sub-type-container">
+            <img
+              className="section-sub-create-icon"
+              onClick={() => handleTypeForm("TEXT")}
+              src="/images/subText.svg"
+            />
+            <img
+              className="section-sub-create-icon"
+              onClick={() => handleTypeForm("IMAGE")}
+              src="/images/subImage.svg"
+            />
+            <img
+              className="section-sub-create-icon"
+              onClick={() => handleTypeForm("IMAGE_360")}
+              src="/images/subImage360.svg"
+            />
+            <img
+              className="section-sub-create-icon"
+              onClick={() => handleTypeForm("VIDEO")}
+              src="/images/subVideo.svg"
+            />
+            <img
+              className="section-sub-create-icon"
+              onClick={() => handleTypeForm("VIDEO_360")}
+              src="/images/subVideo360.svg"
+            />
+          </div>
+        ) : (
+          <div>
+            {mediaType === "IMAGE" ||
+              mediaType === "IMAGE_360" ||
+              mediaType === "VIDEO" ||
+              (mediaType === "VIDEO_360" && (
+                <div className="upload-btn-wrapper">
+                  <input
+                    onClick={() => setUploading(true)}
+                    type="file"
+                    onChange={handleUploadFile}
+                    className="myfile"
+                  />
+                  {uploading === false ? (
+                    <img className="btn" src="/images/UploadBt.svg" />
+                  ) : (
+                    <img className="btn" src="/images/Uploading.svg" />
+                  )}
+                </div>
+              ))}
 
-          <form onSubmit={handleSubmit}>
-            {mediaType === "TEXT" && (
-              <div>
-                <input
-                  placeholder="Subsection title"
-                  className="input-light"
-                  type="text"
-                  {...bindTitle}
-                />
-                <textarea
-                  rows="6"
-                  cols="60"
-                  placeholder="Subsection text"
-                  className="input-light"
-                  type="text"
-                  {...bindText}
-                />
-                <input
-                  className="primary-button button-light"
-                  type="submit"
-                  value="Add new subsection"
-                />
-              </div>
-            )}
-          </form>
-          <button
-            className="primary-button button-transparent-light"
-            onClick={() => setShowForm(false)}
-          >
-            Close form
-          </button>
-        </div>
-      )}
+            <form onSubmit={handleSubmit}>
+              {mediaType === "TEXT" && (
+                <div>
+                  <input
+                    placeholder="Subsection title"
+                    className="input-light"
+                    type="text"
+                    {...bindTitle}
+                  />
+                  <textarea
+                    rows="6"
+                    cols="60"
+                    placeholder="Subsection text"
+                    className="input-light"
+                    type="text"
+                    {...bindText}
+                  />
+                  <input
+                    className="primary-button button-light"
+                    type="submit"
+                    value="Add new subsection"
+                  />
+                </div>
+              )}
+            </form>
+            <button
+              className="primary-button button-transparent-light"
+              onClick={() => setShowForm(false)}
+            >
+              Close form
+            </button>
+          </div>
+        )}
+      </div>
     </div>
   );
 }

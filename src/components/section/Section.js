@@ -56,7 +56,15 @@ const Section = () => {
             <ListSection user={user} group={group} sections={sections} />
           </div>
           <div className="section-desktop-right">
-            <p>section right</p>
+            <div>
+              <h1 className="section-desktop-right-text">
+                Education + Technology for meaningful learning
+              </h1>
+              <img
+                className="section-desktop-right-image"
+                src="/images/vibrationsHeader.jpg"
+              />
+            </div>
           </div>
           ​
         </div>

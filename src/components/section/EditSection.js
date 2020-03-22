@@ -89,7 +89,7 @@ function EditSection({
         <div>
           <S3Image className="section-card-image" imgKey={url} />
           <button
-            className="primary-button button-transparent"
+            className="primary-button button-dark"
             onClick={() => handleDeleteImage(url)}
           >
             Delete image
@@ -110,44 +110,48 @@ function EditSection({
           )}
         </div>
       )}
-      <form onSubmit={handleSubmit}>
-        <input
-          placeholder="Section title"
-          className="input-light"
-          type="text"
-          {...bindTitle}
-        />
+      <div className="section-detail-text-container">
+        <form onSubmit={handleSubmit}>
+          <input
+            placeholder="Section title"
+            className="input-light"
+            type="text"
+            {...bindTitle}
+          />
 
-        <textarea
-          rows="6"
-          cols="60"
-          placeholder="Section introduction"
-          className="input-light"
-          type="text"
-          {...bindIntro}
-        />
+          <textarea
+            rows="6"
+            cols="60"
+            placeholder="Section introduction"
+            className="input-light"
+            type="text"
+            {...bindIntro}
+          />
 
-        <textarea
-          rows="6"
-          cols="60"
-          placeholder="Section body text"
-          className="input-light"
-          type="text"
-          {...bindBody}
-        />
+          <textarea
+            rows="6"
+            cols="60"
+            placeholder="Section body text"
+            className="input-light"
+            type="text"
+            {...bindBody}
+          />
 
-        <input
-          className="primary-button button-dark"
-          type="submit"
-          value="Edit section"
-        />
-      </form>
-      <button
-        className="primary-button button-transparent"
-        onClick={() => setEditSection(false)}
-      >
-        Close form
-      </button>
+          <div className="section-button-flex">
+            <input
+              className="primary-button button-dark"
+              type="submit"
+              value="Edit section"
+            />
+            <button
+              className="primary-button button-transparent"
+              onClick={() => setEditSection(false)}
+            >
+              Close form
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 }

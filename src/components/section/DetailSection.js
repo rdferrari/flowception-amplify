@@ -16,25 +16,27 @@ function DetailSection({
     <div>
       {url && <S3Image className="section-card-image" imgKey={url} />}
       <div className="section-detail-text-container">
-        <h2>{title}</h2>
-        <p>{intro}</p>
-        <p>{body}</p>
-        {user && group === "admin" && (
-          <div>
-            <button
-              className="primary-button button-transparent"
-              onClick={() => setEditSection(true)}
-            >
-              Edit section
-            </button>
-            <button
-              className="delete-section-button"
-              onClick={() => handleDeleteSection(sectionId, url)}
-            >
-              Delete section
-            </button>
-          </div>
-        )}
+        <div>
+          <h2 className="section-title">{title}</h2>
+          <p className="section-text">{intro}</p>
+          <p className="section-text">{body}</p>
+          {user && group === "admin" && (
+            <div className="section-button-flex">
+              <button
+                className="primary-button button-transparent"
+                onClick={() => setEditSection(true)}
+              >
+                Edit section
+              </button>
+              <button
+                className="delete-section-button"
+                onClick={() => handleDeleteSection(sectionId, url)}
+              >
+                Delete section
+              </button>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

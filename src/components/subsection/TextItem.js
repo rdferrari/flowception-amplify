@@ -10,7 +10,7 @@ function TextItem({
   handleDeleteSubsection
 }) {
   return (
-    <div className="section-sub-textType-container">
+    <div className="section-detail-text-container">
       <h2>{title}</h2>
       <p>{text}</p>
       {user && group === "admin" && (

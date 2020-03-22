@@ -60,9 +60,16 @@ a {
 
 .primary-button {
   font-family: $secondary-font-medium, sans-serif;
+  font-size: $font-md;
   margin-bottom: $space-sm;
+  margin-right: $space-sm;
   padding: $space-xm;
   width: 100%;
+
+  @media (min-width: $screen-lg-min) {
+    width: 300px;
+    margin-right: $space-xm;
+  }
 }
 
 .delete-section-button {
@@ -70,14 +77,20 @@ a {
   border: 1px solid $primary-color-1;
   color: $primary-color-1;
   font-family: $secondary-font-medium, sans-serif;
+  font-size: $font-md;
   margin-bottom: $space-sm;
   padding: $space-xm;
   width: 100%;
+
+  @media (min-width: $screen-lg-min) {
+    width: 300px;
+  }
 }
 
 .input-light {
   border: 1px solid $primary-color-2;
   font-family: $secondary-font-light, sans-serif;
+  font-size: $font-md;
   margin-bottom: $space-sm;
   padding: $space-xm 0 $space-xm $space-xm;
   width: 95%;

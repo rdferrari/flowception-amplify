@@ -3,7 +3,7 @@ import { S3Image } from "aws-amplify-react";
 
 function MediaItem({ type, url, id, handleDeleteSubsection }) {
   return (
-    <div>
+    <div className="section-detail-text-container">
       {type === "IMAGE" && (
         <div>
           <S3Image className="section-card-image" imgKey={url} />
