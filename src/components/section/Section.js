@@ -49,16 +49,16 @@ const Section = () => {
         <div className="section-desktop-flex">
           <div className="section-list-container">
             {user && group === "admin" && (
-              <CreateSection user={user} sections={sections} />
+              <div className="section-create-container">
+                <CreateSection user={user} sections={sections} />
+              </div>
             )}
             <ListSection user={user} group={group} sections={sections} />
           </div>
           <div className="section-desktop-right">
-            <img
-              className="section-card-image"
-              src="/images/vibrationsHeader.jpg"
-            />
+            <p>section right</p>
           </div>
+          ​
         </div>
       )}
     </UserContext.Consumer>

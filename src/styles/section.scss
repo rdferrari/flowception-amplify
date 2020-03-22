@@ -7,6 +7,12 @@
   }
 }
 
+.section-create-container {
+  @media (min-width: $screen-lg-min) {
+    width: 95%;
+  }
+}
+
 .section-desktop-flex {
   display: flex;
 }
@@ -15,11 +21,13 @@
   display: none;
 
   @media (min-width: $screen-lg-min) {
-    background-color: $primary-color;
+    background-color: red;
     display: inherit;
     margin-top: -63px;
     height: 100vh;
-    position: static;
+    right: 0;
+    position: fixed;
+    width: 65%;
   }
 }
 

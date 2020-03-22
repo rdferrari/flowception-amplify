@@ -27,9 +27,6 @@ function Subsection(props) {
   const [editSection, setEditSection] = useState(false);
   const [editText, setEditText] = useState(false);
 
-  // const path = props.location.pathname.slice(9);
-  console.log(id);
-
   useEffect(() => {
     getPublicData();
     getPublicListData();
@@ -98,7 +95,6 @@ function Subsection(props) {
   };
 
   const handleDeleteSection = async (sectionId, url) => {
-    console.log(subsections);
     subsections.map(subsection =>
       handleDeleteSubsection(subsection.id, subsection.url)
     );
@@ -132,7 +128,13 @@ function Subsection(props) {
       {({ user, group }) => (
         <div className="section-sub-container">
           <div className="section-sub-container-menu">
-            <ListSection user={user} group={group} sections={sections} />
+            <ListSection
+              user={user}
+              group={group}
+              sections={sections}
+              sectionId={sectionId}
+              id={id}
+            />
           </div>
 
           <div className="section-sub-container-content">
