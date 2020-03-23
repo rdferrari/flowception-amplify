@@ -72,6 +72,15 @@ a {
   }
 }
 
+.add-section-button {
+  font-family: $secondary-font-medium, sans-serif;
+  font-size: $font-md;
+  margin-bottom: $space-sm;
+  margin-right: $space-sm;
+  padding: $space-xm;
+  width: 100%;
+}
+
 .delete-section-button {
   background-color: transparent;
   border: 1px solid $primary-color-1;
@@ -104,6 +113,11 @@ a {
 
 .btn {
   width: 100%;
+}
+
+.myfile {
+  width: 100%;
+  height: 100%;
 }
 
 .upload-btn-wrapper input[type="file"] {

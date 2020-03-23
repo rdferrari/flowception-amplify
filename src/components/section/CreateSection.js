@@ -46,31 +46,21 @@ function CreateSection({ sections }) {
 
     const name = randomExtension + file.name;
 
-    Storage.put(name, file, {
-      progressCallback(progress) {
-        console.log(
-          `Uploaded: ${progress} ${progress.loaded}/${progress.total}`
-        );
-      }
-    }).then(() => {
+    Storage.put(name, file).then(() => {
       setUrl(name);
     });
-
-    setUploading(false);
   };
 
   const handleDeleteImage = async imageUrl => {
     Storage.remove(imageUrl).then(() => {
       setUrl(null);
     });
-
-    setUploading(false);
   };
 
   if (showForm === false) {
     return (
       <button
-        className="primary-button button-dark"
+        className="add-section-button button-dark"
         onClick={() => setShowForm(true)}
       >
         Add new section
@@ -97,11 +87,8 @@ function CreateSection({ sections }) {
               onChange={handleUploadFile}
               className="myfile"
             />
-            {uploading === false ? (
-              <img className="btn" src="/images/UploadBt.svg" />
-            ) : (
-              <img className="btn" src="/images/Uploading.svg" />
-            )}
+
+            <img className="btn" src="/images/UploadBt.svg" />
           </div>
         )}
 
@@ -134,19 +121,20 @@ function CreateSection({ sections }) {
               {...bindBody}
             />
           </label>
-          <input
-            className="primary-button button-dark"
-            type="submit"
-            value="Add new section"
-          />
+          <div className="section-button-flex">
+            <input
+              className="primary-button button-dark"
+              type="submit"
+              value="Add new section"
+            />
+            <button
+              className="primary-button button-transparent"
+              onClick={() => setShowForm(false)}
+            >
+              Close form
+            </button>
+          </div>
         </form>
-
-        <button
-          className="primary-button button-transparent"
-          onClick={() => setShowForm(false)}
-        >
-          Close form
-        </button>
       </div>
     );
   }

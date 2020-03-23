@@ -208,6 +208,8 @@ function Subsection(props) {
                     url={item.url}
                     id={item.id}
                     handleDeleteSubsection={handleDeleteSubsection}
+                    user={user}
+                    group={group}
                   />
                 </div>
               ))}

@@ -50,18 +50,20 @@ function EditSubsection({
           type="text"
           {...bindText}
         />
-        <input
-          className="primary-button button-dark"
-          type="submit"
-          value="Edit subsection"
-        />
+        <div className="section-button-flex">
+          <input
+            className="primary-button button-dark"
+            type="submit"
+            value="Edit subsection"
+          />
+          <button
+            className="primary-button button-transparent"
+            onClick={() => setEditText(false)}
+          >
+            Close form
+          </button>
+        </div>
       </form>
-      <button
-        className="primary-button button-transparent"
-        onClick={() => setEditText(false)}
-      >
-        Close form
-      </button>
     </div>
   );
 }

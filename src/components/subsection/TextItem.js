@@ -14,7 +14,7 @@ function TextItem({
       <h2>{title}</h2>
       <p>{text}</p>
       {user && group === "admin" && (
-        <div>
+        <div className="section-button-flex">
           <button
             className="primary-button button-dark"
             onClick={() => setEditText(true)}

@@ -3,7 +3,37 @@ import { Auth, API, graphqlOperation, Storage } from "aws-amplify";
 import { createSubsection } from "../../graphql/mutations";
 import { useInput } from "../auth/useInput";
 
-function CreateSubsection({ sectionId, getData, subsections }) {
+const MediaType = ({
+  mediaType,
+  type,
+  setUploading,
+  handleUploadFile,
+  setShowForm
+}) => {
+  return (
+    mediaType === type && (
+      <div className="upload-btn-wrapper">
+        <input
+          onClick={() => setUploading(true)}
+          type="file"
+          onChange={handleUploadFile}
+          className="myfile"
+        />
+
+        <img className="btn" src="/images/UploadBt.svg" />
+
+        <button
+          className="primary-button button-transparent-light"
+          onClick={() => setShowForm(false)}
+        >
+          Close form
+        </button>
+      </div>
+    )
+  );
+};
+
+function CreateSubsection({ sectionId, subsections }) {
   const { value: title, bind: bindTitle, reset: resetTitle } = useInput(null);
   const { value: text, bind: bindText, reset: resetText } = useInput(null);
   const [url, setUrl] = useState(null);
@@ -33,6 +63,7 @@ function CreateSubsection({ sectionId, getData, subsections }) {
     console.info(`Created section: id ${result.data.createSubsection.id}`);
 
     resetText();
+    resetTitle();
     setUrl(null);
     setMediaType(null);
     setShowForm(false);
@@ -119,24 +150,34 @@ function CreateSubsection({ sectionId, getData, subsections }) {
           </div>
         ) : (
           <div>
-            {mediaType === "IMAGE" ||
-              mediaType === "IMAGE_360" ||
-              mediaType === "VIDEO" ||
-              (mediaType === "VIDEO_360" && (
-                <div className="upload-btn-wrapper">
-                  <input
-                    onClick={() => setUploading(true)}
-                    type="file"
-                    onChange={handleUploadFile}
-                    className="myfile"
-                  />
-                  {uploading === false ? (
-                    <img className="btn" src="/images/UploadBt.svg" />
-                  ) : (
-                    <img className="btn" src="/images/Uploading.svg" />
-                  )}
-                </div>
-              ))}
+            <MediaType
+              mediaType={mediaType}
+              type="IMAGE"
+              setUploading={setUploading}
+              handleUploadFile={handleUploadFile}
+              setShowForm={setShowForm}
+            />
+            <MediaType
+              mediaType={mediaType}
+              type="VIDEO"
+              setUploading={setUploading}
+              handleUploadFile={handleUploadFile}
+              setShowForm={setShowForm}
+            />
+            <MediaType
+              mediaType={mediaType}
+              type="IMAGE_360"
+              setUploading={setUploading}
+              handleUploadFile={handleUploadFile}
+              setShowForm={setShowForm}
+            />
+            <MediaType
+              mediaType={mediaType}
+              type="VIDEO_360"
+              setUploading={setUploading}
+              handleUploadFile={handleUploadFile}
+              setShowForm={setShowForm}
+            />
 
             <form onSubmit={handleSubmit}>
               {mediaType === "TEXT" && (
@@ -155,20 +196,22 @@ function CreateSubsection({ sectionId, getData, subsections }) {
                     type="text"
                     {...bindText}
                   />
-                  <input
-                    className="primary-button button-light"
-                    type="submit"
-                    value="Add new subsection"
-                  />
+                  <div className="section-button-flex">
+                    <input
+                      className="primary-button button-light"
+                      type="submit"
+                      value="Add new subsection"
+                    />
+                    <button
+                      className="primary-button button-transparent-light"
+                      onClick={() => setShowForm(false)}
+                    >
+                      Close form
+                    </button>
+                  </div>
                 </div>
               )}
             </form>
-            <button
-              className="primary-button button-transparent-light"
-              onClick={() => setShowForm(false)}
-            >
-              Close form
-            </button>
           </div>
         )}
       </div>

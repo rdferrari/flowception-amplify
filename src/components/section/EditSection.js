@@ -17,11 +17,9 @@ function EditSection({
   const { value: intro, bind: bindIntro } = useInput(iniIntro);
   const { value: body, bind: bindBody } = useInput(iniBody);
   const [url, setUrl] = useState(iniUrl);
-  const [uploading, setUploading] = useState(false);
 
   const handleSubmit = async evt => {
     evt.preventDefault();
-    // alert(`Submitting ${title} ${intro} ${body}`);
 
     const input = {
       id: sectionId,
@@ -71,7 +69,6 @@ function EditSection({
     });
 
     updateUrl(name);
-    setUploading(false);
   };
 
   const handleDeleteImage = async imageUrl => {
@@ -80,7 +77,6 @@ function EditSection({
     });
 
     updateUrl(null);
-    setUploading(false);
   };
 
   return (
@@ -88,26 +84,20 @@ function EditSection({
       {url ? (
         <div>
           <S3Image className="section-card-image" imgKey={url} />
-          <button
-            className="primary-button button-dark"
-            onClick={() => handleDeleteImage(url)}
-          >
-            Delete image
-          </button>
+          <div className="section-detail-text-container">
+            <button
+              className="primary-button button-dark"
+              onClick={() => handleDeleteImage(url)}
+            >
+              Delete image
+            </button>
+          </div>
         </div>
       ) : (
         <div className="upload-btn-wrapper">
-          <input
-            onClick={() => setUploading(true)}
-            type="file"
-            onChange={handleUploadFile}
-            className="myfile"
-          />
-          {uploading === false ? (
-            <img className="btn" src="/images/UploadBt.svg" />
-          ) : (
-            <img className="btn" src="/images/Uploading.svg" />
-          )}
+          <input type="file" onChange={handleUploadFile} className="myfile" />
+
+          <img className="btn" src="/images/UploadBt.svg" />
         </div>
       )}
       <div className="section-detail-text-container">
@@ -141,7 +131,7 @@ function EditSection({
             <input
               className="primary-button button-dark"
               type="submit"
-              value="Edit section"
+              value="Save section"
             />
             <button
               className="primary-button button-transparent"
