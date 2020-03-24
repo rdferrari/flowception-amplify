@@ -7,7 +7,6 @@ const MediaType = ({
   mediaType,
   type,
   uploading,
-  setUploading,
   handleUploadFile,
   setShowForm
 }) => {
@@ -18,7 +17,7 @@ const MediaType = ({
         {uploading === false ? (
           <img className="btn" src="/images/UploadBt.svg" />
         ) : (
-          <p>uploading</p>
+          <img className="btn" src="/images/Uploading.svg" />
         )}
 
         <button

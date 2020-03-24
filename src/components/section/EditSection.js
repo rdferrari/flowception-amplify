@@ -16,6 +16,7 @@ function EditSection({
   const { value: title, bind: bindTitle } = useInput(iniTitle);
   const { value: intro, bind: bindIntro } = useInput(iniIntro);
   const { value: body, bind: bindBody } = useInput(iniBody);
+  const [uploading, setUploading] = useState(false);
   const [url, setUrl] = useState(iniUrl);
 
   const handleSubmit = async evt => {
@@ -64,11 +65,13 @@ function EditSection({
 
     const name = randomExtension + file.name;
 
+    setUploading(true);
+
     Storage.put(name, file).then(() => {
       setUrl(name);
+      setUploading(false);
+      updateUrl(name);
     });
-
-    updateUrl(name);
   };
 
   const handleDeleteImage = async imageUrl => {
@@ -96,8 +99,11 @@ function EditSection({
       ) : (
         <div className="upload-btn-wrapper">
           <input type="file" onChange={handleUploadFile} className="myfile" />
-
-          <img className="btn" src="/images/UploadBt.svg" />
+          {uploading === false ? (
+            <img className="btn" src="/images/UploadBt.svg" />
+          ) : (
+            <img className="btn" src="/images/Uploading.svg" />
+          )}
         </div>
       )}
       <div className="section-detail-text-container">

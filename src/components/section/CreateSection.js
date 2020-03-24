@@ -46,8 +46,11 @@ function CreateSection({ sections }) {
 
     const name = randomExtension + file.name;
 
+    setUploading(true);
+
     Storage.put(name, file).then(() => {
       setUrl(name);
+      setUploading(false);
     });
   };
 
@@ -81,14 +84,12 @@ function CreateSection({ sections }) {
           </div>
         ) : (
           <div className="upload-btn-wrapper">
-            <input
-              onClick={() => setUploading(true)}
-              type="file"
-              onChange={handleUploadFile}
-              className="myfile"
-            />
-
-            <img className="btn" src="/images/UploadBt.svg" />
+            <input type="file" onChange={handleUploadFile} className="myfile" />
+            {uploading === false ? (
+              <img className="btn" src="/images/UploadBt.svg" />
+            ) : (
+              <img className="btn" src="/images/Uploading.svg" />
+            )}
           </div>
         )}
 
