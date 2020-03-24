@@ -73,6 +73,7 @@ function MediaItem({ type, urlKey, id, handleDeleteSubsection, user, group }) {
           <PannellumVideo
             video={urlPath}
             mouseZoom={false}
+            showControls
             loop
             width="100%"
             height="400px"
