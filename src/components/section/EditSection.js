@@ -9,7 +9,8 @@ function EditSection({
   iniTitle,
   iniIntro,
   iniBody,
-  iniUrl,
+  iniUrlKey,
+  iniUrlPath,
   getPublicData,
   setEditSection
 }) {
@@ -17,7 +18,8 @@ function EditSection({
   const { value: intro, bind: bindIntro } = useInput(iniIntro);
   const { value: body, bind: bindBody } = useInput(iniBody);
   const [uploading, setUploading] = useState(false);
-  const [url, setUrl] = useState(iniUrl);
+  const [urlKey, setUrlKey] = useState(iniUrlKey);
+  const [urlPath, setUrlPath] = useState(iniUrlPath);
 
   const handleSubmit = async evt => {
     evt.preventDefault();
@@ -27,7 +29,8 @@ function EditSection({
       title,
       intro,
       body,
-      url,
+      urlKey,
+      urlPath,
       updatedAt: Date.now()
     };
 
@@ -41,10 +44,11 @@ function EditSection({
     console.info(`Updated section: id ${result.data.updateSection.id}`);
   };
 
-  const updateUrl = async name => {
+  const updateUrl = async (name, path) => {
     const input = {
       id: sectionId,
-      url: name,
+      urlKey: name,
+      urlPath: path,
       updatedAt: Date.now()
     };
 
@@ -68,29 +72,31 @@ function EditSection({
     setUploading(true);
 
     Storage.put(name, file).then(() => {
-      setUrl(name);
+      setUrlKey(name);
       setUploading(false);
-      updateUrl(name);
+      Storage.get(name)
+        .then(result => setUrlPath(result))
+        .catch(err => console.log(err));
+      updateUrl(name, urlPath);
     });
   };
 
   const handleDeleteImage = async imageUrl => {
     Storage.remove(imageUrl).then(() => {
-      setUrl(null);
+      setUrlKey(null);
+      updateUrl(null, null);
     });
-
-    updateUrl(null);
   };
 
   return (
     <div>
-      {url ? (
+      {urlKey ? (
         <div>
-          <S3Image className="section-card-image" imgKey={url} />
+          <S3Image className="section-card-image" imgKey={urlKey} />
           <div className="section-detail-text-container">
             <button
               className="primary-button button-dark"
-              onClick={() => handleDeleteImage(url)}
+              onClick={() => handleDeleteImage(urlKey)}
             >
               Delete image
             </button>

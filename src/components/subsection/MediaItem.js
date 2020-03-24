@@ -1,24 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Storage } from "aws-amplify";
 import { S3Image } from "aws-amplify-react";
 import { Player } from "video-react";
 
-function MediaItem({ type, url, id, handleDeleteSubsection, user, group }) {
-  const [mediaUrl, setMediaUrl] = useState(null);
+function MediaItem({ type, urlKey, id, handleDeleteSubsection, user, group }) {
+  const [urlPath, setUrlPath] = useState(null);
 
-  const getStorageUrl = url => {
-    Storage.get(url)
-      .then(result => setMediaUrl(result))
-      .catch(err => console.log(err));
-  };
+  Storage.get(urlKey)
+    .then(result => setUrlPath(result))
+    .catch(err => console.log(err));
 
-  // console.log(getStorageUrl("22380vibrations-two.jpeg"), mediaUrl);
-
+  console.log(urlPath);
   return (
     <div className="section-detail-text-container">
-      {url && type === "IMAGE" && (
+      {urlKey && type === "IMAGE" && (
         <div>
-          <S3Image className="section-card-image" imgKey={url} />
+          <S3Image className="section-card-image" imgKey={urlKey} />
           {user && group === "admin" && (
             <button
               className="primary-button button-dark"
@@ -30,7 +27,19 @@ function MediaItem({ type, url, id, handleDeleteSubsection, user, group }) {
         </div>
       )}
 
-      {type === "IMAGE_360" && (
+      {urlPath && type === "VIDEO" && (
+        <div>
+          <Player playsInline src={urlPath} />
+          <button
+            className="primary-button button-dark"
+            onClick={() => handleDeleteSubsection(id)}
+          >
+            Delete video
+          </button>
+        </div>
+      )}
+
+      {urlKey && type === "IMAGE_360" && (
         <div>
           <p>Image 360</p>
           <button
@@ -42,19 +51,7 @@ function MediaItem({ type, url, id, handleDeleteSubsection, user, group }) {
         </div>
       )}
 
-      {type === "VIDEO" && (
-        <div>
-          <Player playsInline src="/videos/Baumann.mp4" />
-          <button
-            className="primary-button button-dark"
-            onClick={() => handleDeleteSubsection(id)}
-          >
-            Delete video
-          </button>
-        </div>
-      )}
-
-      {type === "VIDEO_360" && (
+      {urlKey && type === "VIDEO_360" && (
         <div>
           <p>Video 360</p>
           <button

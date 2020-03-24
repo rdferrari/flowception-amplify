@@ -8,7 +8,8 @@ function CreateSection({ sections }) {
   const { value: title, bind: bindTitle, reset: resetTitle } = useInput(null);
   const { value: intro, bind: bindIntro, reset: resetIntro } = useInput(null);
   const { value: body, bind: bindBody, reset: resetBody } = useInput(null);
-  const [url, setUrl] = useState(null);
+  const [urlKey, setUrlKey] = useState(null);
+  const [urlPath, setUrlPath] = useState(null);
   const [showForm, setShowForm] = useState(false);
   const [uploading, setUploading] = useState(false);
 
@@ -19,7 +20,8 @@ function CreateSection({ sections }) {
       title,
       intro,
       body,
-      url,
+      urlKey,
+      urlPath,
       order: sections.length,
       ownerUsername: Auth.user.username,
       createdAt: Date.now()
@@ -35,7 +37,8 @@ function CreateSection({ sections }) {
     resetTitle();
     resetIntro();
     resetBody();
-    setUrl(null);
+    setUrlKey(null);
+    setUrlPath(null);
   };
 
   const handleUploadFile = async event => {
@@ -49,14 +52,17 @@ function CreateSection({ sections }) {
     setUploading(true);
 
     Storage.put(name, file).then(() => {
-      setUrl(name);
+      setUrlKey(name);
       setUploading(false);
+      Storage.get(name)
+        .then(result => setUrlPath(result))
+        .catch(err => console.log(err));
     });
   };
 
   const handleDeleteImage = async imageUrl => {
     Storage.remove(imageUrl).then(() => {
-      setUrl(null);
+      setUrlKey(null);
     });
   };
 
@@ -72,12 +78,12 @@ function CreateSection({ sections }) {
   } else {
     return (
       <div>
-        {url ? (
+        {urlKey ? (
           <div>
-            <S3Image className="section-card-image" imgKey={url} />
+            <S3Image className="section-card-image" imgKey={urlKey} />
             <button
               className="primary-button button-transparent"
-              onClick={() => handleDeleteImage(url)}
+              onClick={() => handleDeleteImage(urlKey)}
             >
               Delete image
             </button>

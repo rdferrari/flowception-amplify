@@ -13,7 +13,8 @@ type Section
   intro: String!
   body: String
   file: S3Object
-  url: String
+  urlKey: String
+  urlPath: String
   createdAt: String!
   updatedAt: String
   subsections: [Subsection] @connection(keyName: "bySection", fields: ["id"])
@@ -34,7 +35,8 @@ type Subsection
   sectionId: ID!
   section: Section @connection(fields: ["sectionId"])
   file: S3Object
-  url: String
+  urlKey: String
+  urlPath: String
   type: String!
   title: String
   text: String

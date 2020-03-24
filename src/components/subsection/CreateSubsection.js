@@ -8,24 +8,38 @@ const MediaType = ({
   type,
   uploading,
   handleUploadFile,
-  setShowForm
+  createSubsectionMedia,
+  setShowForm,
+  urlKey
 }) => {
   return (
     mediaType === type && (
       <div className="upload-btn-wrapper">
-        <input type="file" onChange={handleUploadFile} className="myfile" />
-        {uploading === false ? (
-          <img className="btn" src="/images/UploadBt.svg" />
-        ) : (
-          <img className="btn" src="/images/Uploading.svg" />
-        )}
+        <div>
+          <input type="file" onChange={handleUploadFile} className="myfile" />
+          {uploading === false ? (
+            <img className="btn" src="/images/UploadBt.svg" />
+          ) : (
+            <img className="btn" src="/images/Uploading.svg" />
+          )}
+        </div>
+        <div className="section-button-flex">
+          {urlKey && (
+            <button
+              className="primary-button button-transparent-light"
+              onClick={createSubsectionMedia}
+            >
+              Confirm add content
+            </button>
+          )}
 
-        <button
-          className="primary-button button-transparent-light"
-          onClick={() => setShowForm(false)}
-        >
-          Close form
-        </button>
+          <button
+            className="primary-button button-transparent-light"
+            onClick={() => setShowForm(false)}
+          >
+            Close form
+          </button>
+        </div>
       </div>
     )
   );
@@ -34,7 +48,8 @@ const MediaType = ({
 function CreateSubsection({ sectionId, subsections }) {
   const { value: title, bind: bindTitle, reset: resetTitle } = useInput(null);
   const { value: text, bind: bindText, reset: resetText } = useInput(null);
-  const [url, setUrl] = useState(null);
+  const [urlKey, setUrlKey] = useState(null);
+  const [urlPath, setUrlPath] = useState(null);
   const [mediaType, setMediaType] = useState(null);
   const [showForm, setShowForm] = useState(false);
   const [uploading, setUploading] = useState(false);
@@ -47,7 +62,8 @@ function CreateSubsection({ sectionId, subsections }) {
       type: mediaType,
       title,
       text,
-      url,
+      urlKey,
+      urlPath,
       order: subsections.length,
       ownerUsername: Auth.user.username,
       createdAt: Date.now()
@@ -62,16 +78,18 @@ function CreateSubsection({ sectionId, subsections }) {
 
     resetText();
     resetTitle();
-    setUrl(null);
+    setUrlKey(null);
+    setUrlPath(null);
     setMediaType(null);
     setShowForm(false);
   };
 
-  const createSubsectionMedia = async name => {
+  const createSubsectionMedia = async urlKey => {
     const input = {
       sectionId,
       type: mediaType,
-      url: name,
+      urlKey,
+      urlPath,
       text: null,
       title: null,
       ownerUsername: Auth.user.username,
@@ -85,7 +103,8 @@ function CreateSubsection({ sectionId, subsections }) {
     );
     console.info(`Created section: id ${result.data.createSubsection.id}`);
     resetText();
-    setUrl(null);
+    setUrlKey(null);
+    setUrlPath(null);
     setMediaType(null);
     setShowForm(false);
   };
@@ -101,10 +120,8 @@ function CreateSubsection({ sectionId, subsections }) {
     setUploading(true);
 
     Storage.put(name, file).then(() => {
-      setUrl(name);
+      setUrlKey(name);
       setUploading(false);
-      setShowForm(false);
-      createSubsectionMedia(name);
     });
   };
 
@@ -155,6 +172,9 @@ function CreateSubsection({ sectionId, subsections }) {
               handleUploadFile={handleUploadFile}
               uploading={uploading}
               setShowForm={setShowForm}
+              createSubsectionMedia={() => createSubsectionMedia(urlKey)}
+              urlKey={urlKey}
+              setUrlPath={setUrlPath}
             />
             <MediaType
               mediaType={mediaType}
@@ -163,6 +183,9 @@ function CreateSubsection({ sectionId, subsections }) {
               handleUploadFile={handleUploadFile}
               uploading={uploading}
               setShowForm={setShowForm}
+              createSubsectionMedia={() => createSubsectionMedia(urlKey)}
+              urlKey={urlKey}
+              setUrlPath={setUrlPath}
             />
             <MediaType
               mediaType={mediaType}

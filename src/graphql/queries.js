@@ -20,7 +20,8 @@ export const listSections = /* GraphQL */ `
           region
           key
         }
-        url
+        urlKey
+        urlPath
         createdAt
         updatedAt
         subsections {
@@ -45,7 +46,8 @@ export const getSection = /* GraphQL */ `
         region
         key
       }
-      url
+      urlKey
+      urlPath
       createdAt
       updatedAt
       subsections {
@@ -54,7 +56,8 @@ export const getSection = /* GraphQL */ `
           order
           ownerUsername
           sectionId
-          url
+          urlKey
+          urlPath
           type
           title
           text
@@ -78,7 +81,8 @@ export const getSubsection = /* GraphQL */ `
         region
         key
       }
-      url
+      urlKey
+      urlPath
       type
       title
       text
@@ -96,7 +100,8 @@ export const getSubsection = /* GraphQL */ `
           region
           key
         }
-        url
+        urlKey
+        urlPath
         createdAt
         updatedAt
         subsections {
@@ -123,7 +128,8 @@ export const listSubsections = /* GraphQL */ `
           region
           key
         }
-        url
+        urlKey
+        urlPath
         type
         title
         text
@@ -136,7 +142,8 @@ export const listSubsections = /* GraphQL */ `
           title
           intro
           body
-          url
+          urlKey
+          urlPath
           createdAt
           updatedAt
         }

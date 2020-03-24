@@ -23,7 +23,8 @@ function Subsection(props) {
   const [title, setTitle] = useState(null);
   const [intro, setIntro] = useState(null);
   const [body, setBody] = useState(null);
-  const [url, setUrl] = useState(null);
+  const [urlKey, setUrlKey] = useState(null);
+  const [urlPath, setUrlPath] = useState(null);
   const [editSection, setEditSection] = useState(false);
   const [editText, setEditText] = useState(false);
 
@@ -45,7 +46,8 @@ function Subsection(props) {
       setTitle(sectionData.data.getSection.title);
       setIntro(sectionData.data.getSection.intro);
       setBody(sectionData.data.getSection.body);
-      setUrl(sectionData.data.getSection.url);
+      setUrlKey(sectionData.data.getSection.urlKey);
+      setUrlPath(sectionData.data.getSection.urlPath);
     } catch (err) {
       console.log("error fetching data..", err);
     }
@@ -79,12 +81,12 @@ function Subsection(props) {
     return () => subscription.unsubscribe();
   }, [subsections]);
 
-  const handleDeleteSubsection = async (subsectionId, url) => {
+  const handleDeleteSubsection = async (subsectionId, urlKey) => {
     const input = { id: subsectionId };
     await API.graphql(graphqlOperation(deleteSubsection, { input }));
 
-    if (url) {
-      handleDeleteImage(url);
+    if (urlKey) {
+      handleDeleteImage(urlKey);
     }
 
     getPublicData();
@@ -94,16 +96,16 @@ function Subsection(props) {
     Storage.remove(imageUrl);
   };
 
-  const handleDeleteSection = async (sectionId, url) => {
+  const handleDeleteSection = async (sectionId, urlKey) => {
     subsections.map(subsection =>
-      handleDeleteSubsection(subsection.id, subsection.url)
+      handleDeleteSubsection(subsection.id, subsection.urlKey)
     );
 
     const input = { id: sectionId };
     await API.graphql(graphqlOperation(deleteSection, { input }));
 
-    if (url) {
-      handleDeleteImage(url);
+    if (urlKey) {
+      handleDeleteImage(urlKey);
     }
 
     props.history.push("/");
@@ -140,7 +142,8 @@ function Subsection(props) {
           <div className="section-sub-container-content">
             {editSection === false ? (
               <DetailSection
-                url={url}
+                urlKey={urlKey}
+                urlPath={urlPath}
                 title={title}
                 intro={intro}
                 body={body}
@@ -161,7 +164,8 @@ function Subsection(props) {
                   iniTitle={title}
                   iniIntro={intro}
                   iniBody={body}
-                  iniUrl={url}
+                  iniUrlKey={urlKey}
+                  iniUrlPath={urlPath}
                   getPublicData={getPublicData}
                   setEditSection={setEditSection}
                 />
@@ -205,7 +209,7 @@ function Subsection(props) {
 
                   <MediaItem
                     type={item.type}
-                    url={item.url}
+                    urlKey={item.urlKey}
                     id={item.id}
                     handleDeleteSubsection={handleDeleteSubsection}
                     user={user}

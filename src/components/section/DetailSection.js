@@ -2,7 +2,7 @@ import React from "react";
 import { S3Image } from "aws-amplify-react";
 
 function DetailSection({
-  url,
+  urlKey,
   title,
   intro,
   body,
@@ -14,7 +14,7 @@ function DetailSection({
 }) {
   return (
     <div>
-      {url && <S3Image className="section-card-image" imgKey={url} />}
+      {urlKey && <S3Image className="section-card-image" imgKey={urlKey} />}
       <div className="section-detail-text-container">
         <div>
           <h2 className="section-title">{title}</h2>
@@ -30,7 +30,7 @@ function DetailSection({
               </button>
               <button
                 className="delete-section-button"
-                onClick={() => handleDeleteSection(sectionId, url)}
+                onClick={() => handleDeleteSection(sectionId, urlKey)}
               >
                 Delete section
               </button>

@@ -24,8 +24,8 @@ function ItemSection({ sections }) {
       locationSectionId !== section.id && (
         <div className="section-card" key={section.id}>
           <Link to={`/section/${section.id}`}>
-            {section.url && (
-              <S3Image className="section-card-image" imgKey={section.url} />
+            {section.urlKey && (
+              <S3Image className="section-card-image" imgKey={section.urlKey} />
             )}
             <div className="section-card-text-container">
               <h2>{section.title}</h2>

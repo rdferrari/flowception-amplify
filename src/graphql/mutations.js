@@ -18,7 +18,8 @@ export const createSection = /* GraphQL */ `
         region
         key
       }
-      url
+      urlKey
+      urlPath
       createdAt
       updatedAt
       subsections {
@@ -27,7 +28,8 @@ export const createSection = /* GraphQL */ `
           order
           ownerUsername
           sectionId
-          url
+          urlKey
+          urlPath
           type
           title
           text
@@ -56,7 +58,8 @@ export const updateSection = /* GraphQL */ `
         region
         key
       }
-      url
+      urlKey
+      urlPath
       createdAt
       updatedAt
       subsections {
@@ -65,7 +68,8 @@ export const updateSection = /* GraphQL */ `
           order
           ownerUsername
           sectionId
-          url
+          urlKey
+          urlPath
           type
           title
           text
@@ -94,7 +98,8 @@ export const deleteSection = /* GraphQL */ `
         region
         key
       }
-      url
+      urlKey
+      urlPath
       createdAt
       updatedAt
       subsections {
@@ -103,7 +108,8 @@ export const deleteSection = /* GraphQL */ `
           order
           ownerUsername
           sectionId
-          url
+          urlKey
+          urlPath
           type
           title
           text
@@ -130,7 +136,8 @@ export const createSubsection = /* GraphQL */ `
         region
         key
       }
-      url
+      urlKey
+      urlPath
       type
       title
       text
@@ -148,7 +155,8 @@ export const createSubsection = /* GraphQL */ `
           region
           key
         }
-        url
+        urlKey
+        urlPath
         createdAt
         updatedAt
         subsections {
@@ -173,7 +181,8 @@ export const updateSubsection = /* GraphQL */ `
         region
         key
       }
-      url
+      urlKey
+      urlPath
       type
       title
       text
@@ -191,7 +200,8 @@ export const updateSubsection = /* GraphQL */ `
           region
           key
         }
-        url
+        urlKey
+        urlPath
         createdAt
         updatedAt
         subsections {
@@ -216,7 +226,8 @@ export const deleteSubsection = /* GraphQL */ `
         region
         key
       }
-      url
+      urlKey
+      urlPath
       type
       title
       text
@@ -234,7 +245,8 @@ export const deleteSubsection = /* GraphQL */ `
           region
           key
         }
-        url
+        urlKey
+        urlPath
         createdAt
         updatedAt
         subsections {
