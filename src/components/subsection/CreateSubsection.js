@@ -6,6 +6,7 @@ import { useInput } from "../auth/useInput";
 const MediaType = ({
   mediaType,
   type,
+  uploading,
   setUploading,
   handleUploadFile,
   setShowForm
@@ -13,14 +14,12 @@ const MediaType = ({
   return (
     mediaType === type && (
       <div className="upload-btn-wrapper">
-        <input
-          onClick={() => setUploading(true)}
-          type="file"
-          onChange={handleUploadFile}
-          className="myfile"
-        />
-
-        <img className="btn" src="/images/UploadBt.svg" />
+        <input type="file" onChange={handleUploadFile} className="myfile" />
+        {uploading === false ? (
+          <img className="btn" src="/images/UploadBt.svg" />
+        ) : (
+          <p>uploading</p>
+        )}
 
         <button
           className="primary-button button-transparent-light"
@@ -100,14 +99,14 @@ function CreateSubsection({ sectionId, subsections }) {
 
     const name = randomExtension + file.name;
 
-    setUrl(name);
+    setUploading(true);
 
-    Storage.put(name, file);
-
-    createSubsectionMedia(name);
-
-    setUploading(false);
-    setShowForm(false);
+    Storage.put(name, file).then(() => {
+      setUrl(name);
+      setUploading(false);
+      setShowForm(false);
+      createSubsectionMedia(name);
+    });
   };
 
   const handleTypeForm = type => {
@@ -155,6 +154,7 @@ function CreateSubsection({ sectionId, subsections }) {
               type="IMAGE"
               setUploading={setUploading}
               handleUploadFile={handleUploadFile}
+              uploading={uploading}
               setShowForm={setShowForm}
             />
             <MediaType
@@ -162,6 +162,7 @@ function CreateSubsection({ sectionId, subsections }) {
               type="VIDEO"
               setUploading={setUploading}
               handleUploadFile={handleUploadFile}
+              uploading={uploading}
               setShowForm={setShowForm}
             />
             <MediaType
@@ -169,6 +170,7 @@ function CreateSubsection({ sectionId, subsections }) {
               type="IMAGE_360"
               setUploading={setUploading}
               handleUploadFile={handleUploadFile}
+              uploading={uploading}
               setShowForm={setShowForm}
             />
             <MediaType
@@ -176,6 +178,7 @@ function CreateSubsection({ sectionId, subsections }) {
               type="VIDEO_360"
               setUploading={setUploading}
               handleUploadFile={handleUploadFile}
+              uploading={uploading}
               setShowForm={setShowForm}
             />
 

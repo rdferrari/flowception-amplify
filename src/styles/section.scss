@@ -30,6 +30,13 @@
   }
 }
 
+.section-desktop-left {
+  width: 100%;
+  @media (min-width: $screen-lg-min) {
+    width: 300px;
+  }
+}
+
 .section-desktop-right-image {
   height: 100vh;
 }

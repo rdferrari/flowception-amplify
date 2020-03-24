@@ -22,8 +22,21 @@ export const UserContext = React.createContext();
 
 function LoginApp() {
   return (
-    <div className="app-login-container">
-      <Authenticator theme={theme} />
+    <div className="section-desktop-flex">
+      <div className="section-desktop-left">
+        <Authenticator theme={theme} />
+      </div>
+      <div className="section-desktop-right">
+        <div>
+          <h1 className="section-desktop-right-text">
+            Education + Technology for meaningful learning
+          </h1>
+          <img
+            className="section-desktop-right-image"
+            src="/images/vibrationsHeader.jpg"
+          />
+        </div>
+      </div>
     </div>
   );
 }

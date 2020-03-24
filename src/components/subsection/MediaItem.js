@@ -1,7 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
+import { Storage } from "aws-amplify";
 import { S3Image } from "aws-amplify-react";
+import { Player } from "video-react";
 
 function MediaItem({ type, url, id, handleDeleteSubsection, user, group }) {
+  const [mediaUrl, setMediaUrl] = useState(null);
+
+  const getStorageUrl = url => {
+    Storage.get(url)
+      .then(result => setMediaUrl(result))
+      .catch(err => console.log(err));
+  };
+
+  // console.log(getStorageUrl("22380vibrations-two.jpeg"), mediaUrl);
+
   return (
     <div className="section-detail-text-container">
       {url && type === "IMAGE" && (
@@ -32,7 +44,7 @@ function MediaItem({ type, url, id, handleDeleteSubsection, user, group }) {
 
       {type === "VIDEO" && (
         <div>
-          <p>Video</p>
+          <Player playsInline src="/videos/Baumann.mp4" />
           <button
             className="primary-button button-dark"
             onClick={() => handleDeleteSubsection(id)}
