@@ -15,24 +15,25 @@ const MediaType = ({
   return (
     mediaType === type && (
       <div className="upload-btn-wrapper">
-        <div>
-          <input type="file" onChange={handleUploadFile} className="myfile" />
-          {uploading === false ? (
-            <img className="btn" src="/images/UploadBt.svg" />
-          ) : (
-            <img className="btn" src="/images/Uploading.svg" />
-          )}
-        </div>
-        <div className="section-button-flex">
-          {urlKey && (
-            <button
-              className="primary-button button-transparent-light"
-              onClick={createSubsectionMedia}
-            >
-              Confirm add content
-            </button>
-          )}
+        {!urlKey ? (
+          <div>
+            <input type="file" onChange={handleUploadFile} className="myfile" />
+            {uploading === false ? (
+              <img className="btn" src="/images/UploadBt.svg" />
+            ) : (
+              <img className="btn" src="/images/Uploading.svg" />
+            )}
+          </div>
+        ) : (
+          <button
+            className="primary-button button-transparent-light"
+            onClick={createSubsectionMedia}
+          >
+            Confirm add content
+          </button>
+        )}
 
+        <div className="section-button-flex">
           <button
             className="primary-button button-transparent-light"
             onClick={() => setShowForm(false)}
@@ -92,6 +93,7 @@ function CreateSubsection({ sectionId, subsections }) {
       urlPath,
       text: null,
       title: null,
+      order: subsections.length,
       ownerUsername: Auth.user.username,
       createdAt: Date.now()
     };

@@ -19,7 +19,7 @@ function MediaItem({ type, urlKey, id, handleDeleteSubsection, user, group }) {
           {user && group === "admin" && (
             <button
               className="primary-button button-dark"
-              onClick={() => handleDeleteSubsection(id)}
+              onClick={() => handleDeleteSubsection(id, urlKey)}
             >
               Delete image
             </button>
@@ -32,7 +32,7 @@ function MediaItem({ type, urlKey, id, handleDeleteSubsection, user, group }) {
           <Player playsInline src={urlPath} />
           <button
             className="primary-button button-dark"
-            onClick={() => handleDeleteSubsection(id)}
+            onClick={() => handleDeleteSubsection(id, urlKey)}
           >
             Delete video
           </button>
@@ -44,7 +44,7 @@ function MediaItem({ type, urlKey, id, handleDeleteSubsection, user, group }) {
           <p>Image 360</p>
           <button
             className="primary-button button-dark"
-            onClick={() => handleDeleteSubsection(id)}
+            onClick={() => handleDeleteSubsection(id, urlKey)}
           >
             Delete 360 image
           </button>
@@ -56,7 +56,7 @@ function MediaItem({ type, urlKey, id, handleDeleteSubsection, user, group }) {
           <p>Video 360</p>
           <button
             className="primary-button button-dark"
-            onClick={() => handleDeleteSubsection(id)}
+            onClick={() => handleDeleteSubsection(id, urlKey)}
           >
             Delete 360 video
           </button>

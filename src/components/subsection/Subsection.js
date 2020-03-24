@@ -182,7 +182,7 @@ function Subsection(props) {
 
             {subsections &&
               subsections.sort(compare).map(item => (
-                <div key={item.id}>
+                <div className="section-sub-item" key={item.id}>
                   {item.type === "TEXT" && (
                     <div>
                       {editText === false ? (
