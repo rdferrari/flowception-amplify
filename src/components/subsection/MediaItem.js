@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Storage } from "aws-amplify";
 import { S3Image } from "aws-amplify-react";
 import { Player } from "video-react";
+import { Pannellum, PannellumVideo } from "pannellum-react";
 
 function MediaItem({ type, urlKey, id, handleDeleteSubsection, user, group }) {
   const [urlPath, setUrlPath] = useState(null);
@@ -30,36 +31,65 @@ function MediaItem({ type, urlKey, id, handleDeleteSubsection, user, group }) {
       {urlPath && type === "VIDEO" && (
         <div>
           <Player playsInline src={urlPath} />
-          <button
-            className="primary-button button-dark"
-            onClick={() => handleDeleteSubsection(id, urlKey)}
-          >
-            Delete video
-          </button>
+          {user && group === "admin" && (
+            <button
+              className="primary-button button-dark"
+              onClick={() => handleDeleteSubsection(id, urlKey)}
+            >
+              Delete video
+            </button>
+          )}
         </div>
       )}
 
-      {urlKey && type === "IMAGE_360" && (
+      {urlPath && type === "IMAGE_360" && (
         <div>
-          <p>Image 360</p>
-          <button
-            className="primary-button button-dark"
-            onClick={() => handleDeleteSubsection(id, urlKey)}
-          >
-            Delete 360 image
-          </button>
+          <Pannellum
+            width="100%"
+            height="400px"
+            image={urlPath}
+            mouseZoom={false}
+            pitch={10}
+            yaw={180}
+            hfov={110}
+            autoLoad
+            onLoad={() => {
+              console.log("panorama loaded");
+            }}
+          ></Pannellum>
+          {user && group === "admin" && (
+            <button
+              className="primary-button button-dark"
+              onClick={() => handleDeleteSubsection(id, urlKey)}
+            >
+              Delete 360 image
+            </button>
+          )}
         </div>
       )}
 
-      {urlKey && type === "VIDEO_360" && (
+      {urlPath && type === "VIDEO_360" && (
         <div>
-          <p>Video 360</p>
-          <button
-            className="primary-button button-dark"
-            onClick={() => handleDeleteSubsection(id, urlKey)}
-          >
-            Delete 360 video
-          </button>
+          <PannellumVideo
+            video={urlPath}
+            mouseZoom={false}
+            loop
+            width="100%"
+            height="400px"
+            pitch={10}
+            yaw={180}
+            hfov={140}
+            minHfov={50}
+            maxHfov={180}
+          ></PannellumVideo>
+          {user && group === "admin" && (
+            <button
+              className="primary-button button-dark"
+              onClick={() => handleDeleteSubsection(id, urlKey)}
+            >
+              Delete 360 video
+            </button>
+          )}
         </div>
       )}
     </div>

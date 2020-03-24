@@ -196,6 +196,9 @@ function CreateSubsection({ sectionId, subsections }) {
               handleUploadFile={handleUploadFile}
               uploading={uploading}
               setShowForm={setShowForm}
+              createSubsectionMedia={() => createSubsectionMedia(urlKey)}
+              urlKey={urlKey}
+              setUrlPath={setUrlPath}
             />
             <MediaType
               mediaType={mediaType}
@@ -204,6 +207,9 @@ function CreateSubsection({ sectionId, subsections }) {
               handleUploadFile={handleUploadFile}
               uploading={uploading}
               setShowForm={setShowForm}
+              createSubsectionMedia={() => createSubsectionMedia(urlKey)}
+              urlKey={urlKey}
+              setUrlPath={setUrlPath}
             />
 
             <form onSubmit={handleSubmit}>
