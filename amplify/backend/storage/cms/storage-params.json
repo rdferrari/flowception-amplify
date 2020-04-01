@@ -1,9 +1,0 @@
-{
-    "groupPermissionMap": {
-        "admin": [
-            "create/update",
-            "read",
-            "delete"
-        ]
-    }
-}
