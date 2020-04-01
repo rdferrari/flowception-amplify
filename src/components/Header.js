@@ -14,7 +14,7 @@ function Header({ history, handleSignOut }) {
           <div className="header-container">
             {path === "/" ? (
               <div>
-                <img className="header-logo" src="/images/AppLabLogo.svg" />
+                <img className="header-logo" src="/images/app-logo.svg" />
               </div>
             ) : (
               <div>
@@ -27,7 +27,7 @@ function Header({ history, handleSignOut }) {
             )}
 
             <div>
-              <p className="header-title">AppLab</p>
+              <p className="header-title">Mate wareware</p>
             </div>
             <div>
               {showMenu === false ? (

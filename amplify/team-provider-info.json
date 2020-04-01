@@ -14,6 +14,12 @@
         "categories": {
             "auth": {
                 "dementia81bf7678": {}
+            },
+            "hosting": {
+                "amplifyhosting": {
+                    "appId": "d28dushhsvn4pj",
+                    "type": "cicd"
+                }
             }
         }
     }

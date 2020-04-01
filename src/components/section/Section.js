@@ -48,6 +48,18 @@ const Section = () => {
       {({ user, group }) => (
         <div className="section-desktop-flex">
           <div className="section-list-container">
+            <div className="section-hero-container">
+              <img className="section-hero-image" src="/images/app-logo.svg" />
+              <div className="section-hero-tag-container">
+                <h1 className="section-hero-tag">
+                  Maumahara ka mau oranga, ake, ake.
+                </h1>
+                <p className="section-hero-subtag">
+                  To hold a memory is to hold a lifetime for ever and ever.
+                </p>
+              </div>
+            </div>
+
             {user && group === "admin" && (
               <div className="section-create-container">
                 <CreateSection user={user} sections={sections} />
