@@ -1,0 +1,53 @@
+type Section
+  @model(subscriptions: { level: public })
+  @auth(
+    rules: [
+      { allow: groups, groups: ["admin"] }
+      { allow: public, provider: apiKey, operations: [read] }
+    ]
+  ) {
+  id: ID!
+  ownerUsername: String!
+  owner: String
+  title: String!
+  intro: String!
+  body: String
+  file: S3Object
+  url: String
+  createdAt: String!
+  updatedAt: String
+  subsections: [Subsection] @connection(name: "SectionSubsections")
+}
+
+type Subsection
+  @model(subscriptions: { level: public })
+  @auth(
+    rules: [
+      { allow: groups, groups: ["admin"] }
+      { allow: public, provider: apiKey, operations: [read] }
+    ]
+  ) {
+  id: ID!
+  ownerUsername: String!
+  owner: String
+  section: Section @connection(name: "SectionSubsections")
+  file: S3Object
+  url: String
+  type: String!
+  text: String
+  createdAt: String!
+  updatedAt: String
+}
+
+type S3Object
+  @model(subscriptions: { level: public })
+  @auth(
+    rules: [
+      { allow: groups, groups: ["admin"] }
+      { allow: public, provider: apiKey, operations: [read] }
+    ]
+  ) {
+  bucket: String!
+  region: String!
+  key: String!
+}

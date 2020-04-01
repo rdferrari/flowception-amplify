@@ -5,8 +5,8 @@ export const onCreateSection = /* GraphQL */ `
   subscription OnCreateSection {
     onCreateSection {
       id
-      order
       ownerUsername
+      owner
       title
       intro
       body
@@ -15,20 +15,16 @@ export const onCreateSection = /* GraphQL */ `
         region
         key
       }
-      urlKey
-      urlPath
+      url
       createdAt
       updatedAt
       subsections {
         items {
           id
-          order
           ownerUsername
-          sectionId
-          urlKey
-          urlPath
+          owner
+          url
           type
-          title
           text
           createdAt
           updatedAt
@@ -42,8 +38,8 @@ export const onUpdateSection = /* GraphQL */ `
   subscription OnUpdateSection {
     onUpdateSection {
       id
-      order
       ownerUsername
+      owner
       title
       intro
       body
@@ -52,20 +48,16 @@ export const onUpdateSection = /* GraphQL */ `
         region
         key
       }
-      urlKey
-      urlPath
+      url
       createdAt
       updatedAt
       subsections {
         items {
           id
-          order
           ownerUsername
-          sectionId
-          urlKey
-          urlPath
+          owner
+          url
           type
-          title
           text
           createdAt
           updatedAt
@@ -79,8 +71,8 @@ export const onDeleteSection = /* GraphQL */ `
   subscription OnDeleteSection {
     onDeleteSection {
       id
-      order
       ownerUsername
+      owner
       title
       intro
       body
@@ -89,20 +81,16 @@ export const onDeleteSection = /* GraphQL */ `
         region
         key
       }
-      urlKey
-      urlPath
+      url
       createdAt
       updatedAt
       subsections {
         items {
           id
-          order
           ownerUsername
-          sectionId
-          urlKey
-          urlPath
+          owner
+          url
           type
-          title
           text
           createdAt
           updatedAt
@@ -116,25 +104,22 @@ export const onCreateSubsection = /* GraphQL */ `
   subscription OnCreateSubsection {
     onCreateSubsection {
       id
-      order
       ownerUsername
-      sectionId
+      owner
       file {
         bucket
         region
         key
       }
-      urlKey
-      urlPath
+      url
       type
-      title
       text
       createdAt
       updatedAt
       section {
         id
-        order
         ownerUsername
+        owner
         title
         intro
         body
@@ -143,8 +128,7 @@ export const onCreateSubsection = /* GraphQL */ `
           region
           key
         }
-        urlKey
-        urlPath
+        url
         createdAt
         updatedAt
         subsections {
@@ -158,25 +142,22 @@ export const onUpdateSubsection = /* GraphQL */ `
   subscription OnUpdateSubsection {
     onUpdateSubsection {
       id
-      order
       ownerUsername
-      sectionId
+      owner
       file {
         bucket
         region
         key
       }
-      urlKey
-      urlPath
+      url
       type
-      title
       text
       createdAt
       updatedAt
       section {
         id
-        order
         ownerUsername
+        owner
         title
         intro
         body
@@ -185,8 +166,7 @@ export const onUpdateSubsection = /* GraphQL */ `
           region
           key
         }
-        urlKey
-        urlPath
+        url
         createdAt
         updatedAt
         subsections {
@@ -200,25 +180,22 @@ export const onDeleteSubsection = /* GraphQL */ `
   subscription OnDeleteSubsection {
     onDeleteSubsection {
       id
-      order
       ownerUsername
-      sectionId
+      owner
       file {
         bucket
         region
         key
       }
-      urlKey
-      urlPath
+      url
       type
-      title
       text
       createdAt
       updatedAt
       section {
         id
-        order
         ownerUsername
+        owner
         title
         intro
         body
@@ -227,8 +204,7 @@ export const onDeleteSubsection = /* GraphQL */ `
           region
           key
         }
-        urlKey
-        urlPath
+        url
         createdAt
         updatedAt
         subsections {

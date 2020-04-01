@@ -10,8 +10,8 @@ export const listSections = /* GraphQL */ `
     listSections(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
-        order
         ownerUsername
+        owner
         title
         intro
         body
@@ -20,8 +20,7 @@ export const listSections = /* GraphQL */ `
           region
           key
         }
-        urlKey
-        urlPath
+        url
         createdAt
         updatedAt
         subsections {
@@ -36,8 +35,8 @@ export const getSection = /* GraphQL */ `
   query GetSection($id: ID!) {
     getSection(id: $id) {
       id
-      order
       ownerUsername
+      owner
       title
       intro
       body
@@ -46,20 +45,16 @@ export const getSection = /* GraphQL */ `
         region
         key
       }
-      urlKey
-      urlPath
+      url
       createdAt
       updatedAt
       subsections {
         items {
           id
-          order
           ownerUsername
-          sectionId
-          urlKey
-          urlPath
+          owner
+          url
           type
-          title
           text
           createdAt
           updatedAt
@@ -73,25 +68,22 @@ export const getSubsection = /* GraphQL */ `
   query GetSubsection($id: ID!) {
     getSubsection(id: $id) {
       id
-      order
       ownerUsername
-      sectionId
+      owner
       file {
         bucket
         region
         key
       }
-      urlKey
-      urlPath
+      url
       type
-      title
       text
       createdAt
       updatedAt
       section {
         id
-        order
         ownerUsername
+        owner
         title
         intro
         body
@@ -100,8 +92,7 @@ export const getSubsection = /* GraphQL */ `
           region
           key
         }
-        urlKey
-        urlPath
+        url
         createdAt
         updatedAt
         subsections {
@@ -120,30 +111,26 @@ export const listSubsections = /* GraphQL */ `
     listSubsections(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
-        order
         ownerUsername
-        sectionId
+        owner
         file {
           bucket
           region
           key
         }
-        urlKey
-        urlPath
+        url
         type
-        title
         text
         createdAt
         updatedAt
         section {
           id
-          order
           ownerUsername
+          owner
           title
           intro
           body
-          urlKey
-          urlPath
+          url
           createdAt
           updatedAt
         }
