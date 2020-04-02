@@ -7,9 +7,11 @@ import { API, graphqlOperation } from "aws-amplify";
 
 import { listSections } from "../../graphql/queries";
 import { onCreateSection } from "../../graphql/subscriptions";
+import HeroSection from "./HeroSection";
 
 const Section = () => {
   const [sections, updateSections] = useState([]);
+  const [showHero, setShowHero] = useState(true);
 
   useEffect(() => {
     getPublicData();
@@ -48,30 +50,18 @@ const Section = () => {
       {({ user, group }) => (
         <div className="section-desktop-flex">
           <div className="section-list-container">
-            <div className="section-hero-container">
-              <img className="section-hero-image" src="/images/app-logo.svg" />
-              <div className="section-hero-tag-container">
-                <h1 className="section-hero-tag">
-                  Maumahara ka mau oranga, ake, ake.
-                </h1>
-                <p className="section-hero-subtag">
-                  To hold a memory is to hold a lifetime for ever and ever.
-                </p>
-              </div>
-            </div>
+            <HeroSection showHero={showHero} setShowHero={setShowHero} />
 
             {user && group === "admin" && (
               <div className="section-create-container">
                 <CreateSection user={user} sections={sections} />
               </div>
             )}
+
             <ListSection user={user} group={group} sections={sections} />
           </div>
           <div className="section-desktop-right">
             <div>
-              <h1 className="section-desktop-right-text">
-                Education + Technology for meaningful learning
-              </h1>
               <img
                 className="section-desktop-right-image"
                 src="/images/vibrationsHeader.jpg"
