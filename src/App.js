@@ -127,7 +127,7 @@ function App() {
             <Route path="/section/:id" component={Subsection} />
 
             {user ? (
-              <Route path="/login" render={() => <Redirect to="/" />} />
+              <Route path="/login" render={() => <Redirect to="/sections" />} />
             ) : (
               <Route path="/login" component={LoginApp} />
             )}

@@ -72,7 +72,23 @@
     "storage": {
         "newdementia": {
             "service": "S3",
-            "providerPlugin": "awscloudformation"
+            "providerPlugin": "awscloudformation",
+            "dependsOn": [
+                {
+                    "category": "auth",
+                    "resourceName": "dementia81bf7678",
+                    "attributes": [
+                        "UserPoolId"
+                    ]
+                },
+                {
+                    "category": "auth",
+                    "resourceName": "userPoolGroups",
+                    "attributes": [
+                        "adminGroupRole"
+                    ]
+                }
+            ]
         }
     },
     "function": {

@@ -9,7 +9,13 @@
 
 .section-create-container {
   @media (min-width: $screen-lg-min) {
-    width: 95%;
+    width: 100%;
+  }
+}
+
+.section-create-container-detail {
+  @media (min-width: $screen-lg-min) {
+    padding: 0 $space-xl 0 $space-md;
   }
 }
 
