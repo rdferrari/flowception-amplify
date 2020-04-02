@@ -7,11 +7,9 @@ import { API, graphqlOperation } from "aws-amplify";
 
 import { listSections } from "../../graphql/queries";
 import { onCreateSection } from "../../graphql/subscriptions";
-import HeroSection from "./HeroSection";
 
 const Section = () => {
   const [sections, updateSections] = useState([]);
-  const [showHero, setShowHero] = useState(true);
 
   useEffect(() => {
     getPublicData();
@@ -50,8 +48,6 @@ const Section = () => {
       {({ user, group }) => (
         <div className="section-desktop-flex">
           <div className="section-list-container">
-            <HeroSection showHero={showHero} setShowHero={setShowHero} />
-
             {user && group === "admin" && (
               <div className="section-create-container">
                 <CreateSection user={user} sections={sections} />

@@ -1,18 +1,16 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
-const HeroSection = ({ showHero, setShowHero }) => {
+const HeroSection = () => {
   return (
-    showHero && (
-      <div className="section-hero-container">
+    <div className="section-hero-container">
+      <Link to="/sections">
         <img
           className="section-hero-image"
           src="/images/app-logo.svg"
           alt="Mate ware ware logo"
         />
-        <div
-          onClick={() => setShowHero(false)}
-          className="section-hero-tag-container"
-        >
+        <div className="section-hero-tag-container">
           <h1 className="section-hero-tag">
             Maumahara ka mau <br /> oranga, ake, ake.
           </h1>
@@ -23,8 +21,8 @@ const HeroSection = ({ showHero, setShowHero }) => {
           {/* <button className="primary-button button-dark">Learn more</button> */}
           <p className="section-hero-disclaimer">Disclaimer</p>
         </div>
-      </div>
-    )
+      </Link>
+    </div>
   );
 };
 

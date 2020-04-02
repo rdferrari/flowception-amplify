@@ -8,6 +8,7 @@ import {
 import "./index.scss";
 import Header from "./components/Header";
 import Section from "./components/section/Section";
+import HeroSection from "./components/section/HeroSection";
 import Subsection from "./components/subsection/Subsection";
 
 import { Authenticator, AmplifyTheme } from "aws-amplify-react";
@@ -121,7 +122,8 @@ function App() {
         <Header handleSignOut={handleSignOut} />
         <div className="app-container">
           <Switch>
-            <Route exact path="/" component={Section} />
+            <Route exact path="/" component={HeroSection} />
+            <Route exact path="/sections" component={Section} />
             <Route path="/section/:id" component={Subsection} />
 
             {user ? (
