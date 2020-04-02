@@ -183,6 +183,14 @@
   }
 }
 
+.section-sub-create-title {
+  color: white;
+  font-size: $font-lg;
+  @media (min-width: $screen-lg-min) {
+    font-size: $font-xl;
+  }
+}
+
 .section-sub-container {
   width: 100%;
 

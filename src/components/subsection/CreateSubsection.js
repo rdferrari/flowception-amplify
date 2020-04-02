@@ -135,7 +135,7 @@ function CreateSubsection({ sectionId, subsections }) {
   return (
     <div className="section-sub-create">
       <div className="section-detail-text-container">
-        <h2 className="section-title">Create Subsection</h2>
+        <h2 className="section-sub-create-title">Create Subsection</h2>
 
         {showForm === false ? (
           <div className="section-sub-type-container">
