@@ -134,10 +134,13 @@
 
 .section-hero-subtag {
   font-size: $font-md;
-  margin-bottom: 60px;
   @media (min-width: $screen-lg-min) {
     font-size: $font-lg;
   }
+}
+
+.section-hero-disclaimer {
+  margin-top: 50px;
 }
 
 // Subsection

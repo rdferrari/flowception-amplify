@@ -20,7 +20,8 @@ const HeroSection = ({ showHero, setShowHero }) => {
             To hold a memory is to hold a <br />
             lifetime for ever and ever.
           </p>
-          <p>Disclaimer</p>
+          {/* <button className="primary-button button-dark">Learn more</button> */}
+          <p className="section-hero-disclaimer">Disclaimer</p>
         </div>
       </div>
     )
