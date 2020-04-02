@@ -81,24 +81,8 @@
 		},
 		"triggerFunction": {
 			"Type": "String"
-		},
+		}
 	
-    
-    
-        "authdementia81bf7678UserPoolId": {
-            "Type": "String",
-            "Default": "authdementia81bf7678UserPoolId"
-        },
-        
-        
-    
-        "authuserPoolGroupsadminGroupRole": {
-            "Type": "String",
-            "Default": "authuserPoolGroupsadminGroupRole"
-        }
-        
-        
-    
 
 	},
 	"Conditions": {
@@ -246,51 +230,6 @@
 				}
 			}
 		},
-      
-      
-	    "adminGroupPolicy": {
-	      "Type": "AWS::IAM::Policy",
-	      "Properties": {
-	        "PolicyName": "admin-group-s3-policy",
-	        "Roles": [
-	        	{
-                    "Fn::Join": [
-                        "",
-                        [
-                          {
-                            "Ref": "authdementia81bf7678UserPoolId"
-                          },
-                          "-adminGroupRole"
-                        ]
-                    ]
-                }
-	        ],
-	        "PolicyDocument": {
-	          "Version": "2012-10-17",
-	          "Statement": [
-	            {
-	              "Effect": "Allow",
-	              "Action": ["s3:PutObject","s3:GetObject","s3:ListBucket","s3:DeleteObject"],
-	              "Resource": [
-	                  {
-	                      "Fn::Join": [
-	                          "",
-	                          [
-	                              "arn:aws:s3:::",
-	                              {
-	                                  "Ref": "S3Bucket"
-	                              },
-	                              "/*"
-	                          ]
-	                      ]
-	                  }
-	              ]
-	            }
-	          ]
-	        }
-	      }
-	    },
-      
       
 	    
 		"S3AuthPublicPolicy": {

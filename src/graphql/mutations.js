@@ -8,8 +8,8 @@ export const createSection = /* GraphQL */ `
   ) {
     createSection(input: $input, condition: $condition) {
       id
+      order
       ownerUsername
-      owner
       title
       intro
       body
@@ -18,16 +18,20 @@ export const createSection = /* GraphQL */ `
         region
         key
       }
-      url
+      urlKey
+      urlPath
       createdAt
       updatedAt
       subsections {
         items {
           id
+          order
           ownerUsername
-          owner
-          url
+          sectionId
+          urlKey
+          urlPath
           type
+          title
           text
           createdAt
           updatedAt
@@ -44,8 +48,8 @@ export const updateSection = /* GraphQL */ `
   ) {
     updateSection(input: $input, condition: $condition) {
       id
+      order
       ownerUsername
-      owner
       title
       intro
       body
@@ -54,16 +58,20 @@ export const updateSection = /* GraphQL */ `
         region
         key
       }
-      url
+      urlKey
+      urlPath
       createdAt
       updatedAt
       subsections {
         items {
           id
+          order
           ownerUsername
-          owner
-          url
+          sectionId
+          urlKey
+          urlPath
           type
+          title
           text
           createdAt
           updatedAt
@@ -80,8 +88,8 @@ export const deleteSection = /* GraphQL */ `
   ) {
     deleteSection(input: $input, condition: $condition) {
       id
+      order
       ownerUsername
-      owner
       title
       intro
       body
@@ -90,16 +98,20 @@ export const deleteSection = /* GraphQL */ `
         region
         key
       }
-      url
+      urlKey
+      urlPath
       createdAt
       updatedAt
       subsections {
         items {
           id
+          order
           ownerUsername
-          owner
-          url
+          sectionId
+          urlKey
+          urlPath
           type
+          title
           text
           createdAt
           updatedAt
@@ -116,22 +128,25 @@ export const createSubsection = /* GraphQL */ `
   ) {
     createSubsection(input: $input, condition: $condition) {
       id
+      order
       ownerUsername
-      owner
+      sectionId
       file {
         bucket
         region
         key
       }
-      url
+      urlKey
+      urlPath
       type
+      title
       text
       createdAt
       updatedAt
       section {
         id
+        order
         ownerUsername
-        owner
         title
         intro
         body
@@ -140,7 +155,8 @@ export const createSubsection = /* GraphQL */ `
           region
           key
         }
-        url
+        urlKey
+        urlPath
         createdAt
         updatedAt
         subsections {
@@ -157,22 +173,25 @@ export const updateSubsection = /* GraphQL */ `
   ) {
     updateSubsection(input: $input, condition: $condition) {
       id
+      order
       ownerUsername
-      owner
+      sectionId
       file {
         bucket
         region
         key
       }
-      url
+      urlKey
+      urlPath
       type
+      title
       text
       createdAt
       updatedAt
       section {
         id
+        order
         ownerUsername
-        owner
         title
         intro
         body
@@ -181,7 +200,8 @@ export const updateSubsection = /* GraphQL */ `
           region
           key
         }
-        url
+        urlKey
+        urlPath
         createdAt
         updatedAt
         subsections {
@@ -198,22 +218,25 @@ export const deleteSubsection = /* GraphQL */ `
   ) {
     deleteSubsection(input: $input, condition: $condition) {
       id
+      order
       ownerUsername
-      owner
+      sectionId
       file {
         bucket
         region
         key
       }
-      url
+      urlKey
+      urlPath
       type
+      title
       text
       createdAt
       updatedAt
       section {
         id
+        order
         ownerUsername
-        owner
         title
         intro
         body
@@ -222,7 +245,8 @@ export const deleteSubsection = /* GraphQL */ `
           region
           key
         }
-        url
+        urlKey
+        urlPath
         createdAt
         updatedAt
         subsections {

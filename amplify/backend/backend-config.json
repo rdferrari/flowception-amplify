@@ -60,7 +60,7 @@
                 },
                 {
                     "category": "function",
-                    "resourceName": "AdminQueriesb3c08c45",
+                    "resourceName": "AdminQueries20da71f3",
                     "attributes": [
                         "Arn",
                         "Name"
@@ -70,9 +70,16 @@
         }
     },
     "storage": {
-        "dementia": {
+        "newdementia": {
             "service": "S3",
+            "providerPlugin": "awscloudformation"
+        }
+    },
+    "function": {
+        "AdminQueriesb3c08c45": {
+            "service": "Lambda",
             "providerPlugin": "awscloudformation",
+            "build": true,
             "dependsOn": [
                 {
                     "category": "auth",
@@ -80,19 +87,10 @@
                     "attributes": [
                         "UserPoolId"
                     ]
-                },
-                {
-                    "category": "auth",
-                    "resourceName": "userPoolGroups",
-                    "attributes": [
-                        "adminGroupRole"
-                    ]
                 }
             ]
-        }
-    },
-    "function": {
-        "AdminQueriesb3c08c45": {
+        },
+        "AdminQueries20da71f3": {
             "service": "Lambda",
             "providerPlugin": "awscloudformation",
             "build": true,
