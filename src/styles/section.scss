@@ -33,6 +33,11 @@
 .section-desktop-left {
   width: 100%;
   @media (min-width: $screen-lg-min) {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 12%;
+    transform: translate(-50%, -50%);
     width: 300px;
   }
 }
@@ -55,6 +60,7 @@
   @media (min-width: $screen-lg-min) {
     height: 85vh;
     overflow: scroll;
+    padding: $space-md;
   }
 }
 
@@ -75,6 +81,7 @@
 
 .section-title {
   font-size: $font-xl;
+  color: $primary-color-0;
 
   @media (min-width: $screen-lg-min) {
     font-size: $font-xxl;
@@ -87,12 +94,31 @@
 
 .section-card-text-container {
   margin: $space-md;
+
+  @media (min-width: $screen-lg-min) {
+    margin: $space-lg $space-xl;
+  }
 }
 
 .section-detail-text-container {
   padding: 0 $space-xm;
   @media (min-width: $screen-lg-min) {
     padding: 0 $space-xl * 2;
+  }
+}
+
+.section-card-text-title {
+  color: $primary-color-0;
+  font-size: $font-lg;
+  @media (min-width: $screen-lg-min) {
+    font-size: $font-xl;
+  }
+}
+
+.section-card-text {
+  font-size: $font-md;
+  @media (min-width: $screen-lg-min) {
+    font-size: $font-lg;
   }
 }
 
@@ -112,11 +138,7 @@
 }
 
 .section-hero-image {
-  width: 200px;
-
-  @media (min-width: $screen-lg-min) {
-    width: 300px;
-  }
+  width: 100%;
 }
 
 .section-hero-tag-container {
@@ -191,6 +213,7 @@
 }
 
 .section-sub-container-content {
+  padding-bottom: $space-xl;
   @media (min-width: $screen-lg-min) {
     background-color: $primary-color-2;
     overflow-y: scroll;

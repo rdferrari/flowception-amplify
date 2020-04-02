@@ -30,7 +30,7 @@ function LoginApp() {
       <div className="section-desktop-right">
         <div>
           <h1 className="section-desktop-right-text">
-            Education + Technology for meaningful learning
+            Maumahara ka mau oranga, ake, ake.
           </h1>
           <img
             className="section-desktop-right-image"

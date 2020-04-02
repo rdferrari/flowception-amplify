@@ -28,9 +28,9 @@ function ItemSection({ sections }) {
               <S3Image className="section-card-image" imgKey={section.urlKey} />
             )}
             <div className="section-card-text-container">
-              <h2>{section.title}</h2>
-              <p>{section.intro}</p>
-              {location.pathname !== "/" && <p>{section.body}</p>}
+              <h2 className="section-card-text-title">{section.title}</h2>
+              <p className="section-card-text">{section.intro}</p>
+              {location.pathname !== "/sections" && <p>{section.body}</p>}
             </div>
           </Link>
         </div>

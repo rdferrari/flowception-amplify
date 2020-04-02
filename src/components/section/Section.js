@@ -58,6 +58,9 @@ const Section = () => {
           </div>
           <div className="section-desktop-right">
             <div>
+              <h1 className="section-desktop-right-text">
+                Maumahara ka mau oranga, ake, ake.
+              </h1>
               <img
                 className="section-desktop-right-image"
                 src="/images/vibrationsHeader.jpg"
