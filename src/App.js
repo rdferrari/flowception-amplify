@@ -3,7 +3,7 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Redirect
+  Redirect,
 } from "react-router-dom";
 import "./index.scss";
 import Header from "./components/Header";
@@ -13,7 +13,9 @@ import Subsection from "./components/subsection/Subsection";
 
 import { Authenticator, AmplifyTheme } from "aws-amplify-react";
 import Amplify from "@aws-amplify/core";
-import { Auth, Hub } from "aws-amplify";
+import Auth from "@aws-amplify/auth";
+import { Hub } from "@aws-amplify/core";
+// import { Auth, Hub } from "aws-amplify";
 // This was added by amplify when we initialized it and added auth.
 import aws_exports from "./aws-exports";
 // We use the generated file to config Amplify with our desired settings
@@ -59,7 +61,7 @@ function App() {
     getUserData();
     console.dir(AmplifyTheme);
 
-    Hub.listen("auth", data => {
+    Hub.listen("auth", (data) => {
       const { payload } = data;
       listener(payload);
 
@@ -88,7 +90,7 @@ function App() {
     }
   };
 
-  const listener = payload => {
+  const listener = (payload) => {
     switch (payload.event) {
       case "signIn":
         getUserData();
@@ -144,46 +146,46 @@ const theme = {
   container: {
     ...AmplifyTheme.container,
     paddingLeft: "1px",
-    paddingRight: "1px"
+    paddingRight: "1px",
   },
   nav: {
     ...AmplifyTheme.nav,
-    margin: "1px"
+    margin: "1px",
   },
   navButton: {
     ...AmplifyTheme.navButton,
-    display: "inline-block"
+    display: "inline-block",
   },
   formSection: {
     ...AmplifyTheme.formSection,
     backgroundColor: "#fff",
     border: "none",
-    width: "320px"
+    width: "320px",
   },
   sectionHeader: {
     ...AmplifyTheme.sectionHeader,
     backgroundColor: "#ffffff",
-    color: "#000000"
+    color: "#000000",
   },
   sectionBody: {
     ...AmplifyTheme.sectionBody,
-    padding: "5px"
+    padding: "5px",
   },
   sectionFooter: {
     ...AmplifyTheme.sectionFooter,
     backgroundColor: "#ffffff",
     padding: "5px",
-    borderTop: "none"
+    borderTop: "none",
   },
 
   navBar: {
     ...AmplifyTheme.navBar,
-    backgroundColor: "#ffffff"
+    backgroundColor: "#ffffff",
   },
   button: {
     ...AmplifyTheme.button,
-    backgroundColor: "#ffffff"
-  }
+    backgroundColor: "#ffffff",
+  },
 };
 
 export default App;
