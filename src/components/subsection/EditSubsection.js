@@ -1,31 +1,33 @@
 import React from "react";
 import { API, graphqlOperation } from "aws-amplify";
 import { updateSubsection } from "../../graphql/mutations";
-import { useInput } from "../auth/useInput";
+
+import useForm from "../form/useForm";
+import validate from "../form/subsectionFormValidation";
 
 function EditSubsection({
   subsectionId,
   iniTitle,
   iniText,
   getPublicData,
-  setEditText
+  setEditText,
 }) {
-  const { value: title, bind: bindTitle } = useInput(iniTitle);
-  const { value: text, bind: bindText } = useInput(iniText);
+  const INIT_VALUES = {
+    title: iniTitle,
+    text: iniText,
+  };
 
-  const handleSubmit = async evt => {
-    evt.preventDefault();
-
+  const handleSubmitApi = async () => {
     const input = {
       id: subsectionId,
-      title,
-      text,
-      updatedAt: Date.now()
+      title: values.title,
+      text: values.text,
+      updatedAt: Date.now(),
     };
 
     const result = await API.graphql(
       graphqlOperation(updateSubsection, {
-        input
+        input,
       })
     );
     console.log(`Subsectio id: ${result.data.updateSubsection.id} was edited`);
@@ -33,29 +35,42 @@ function EditSubsection({
     getPublicData();
   };
 
+  const { values, errors, handleChange, handleSubmit } = useForm(
+    INIT_VALUES,
+    handleSubmitApi,
+    validate
+  );
+
   return (
     <div>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} noValidate>
         <input
           placeholder="Subsection title"
           className="input-light"
           type="text"
-          {...bindTitle}
+          name="title"
+          onChange={handleChange}
+          value={values.title || ""}
+          required
         />
+        {errors.title && <p>{errors.title}</p>}
         <textarea
           rows="6"
           cols="60"
-          placeholder="Subsection text"
+          placeholder="Section introduction"
           className="input-light"
           type="text"
-          {...bindText}
+          name="text"
+          onChange={handleChange}
+          value={values.text || ""}
+          required
         />
+
+        {errors.text && <p>{errors.text}</p>}
         <div className="section-button-flex">
-          <input
-            className="primary-button button-dark"
-            type="submit"
-            value="Edit subsection"
-          />
+          <button className="primary-button button-dark" type="submit">
+            Save subsection
+          </button>
           <button
             className="primary-button button-transparent"
             onClick={() => setEditText(false)}

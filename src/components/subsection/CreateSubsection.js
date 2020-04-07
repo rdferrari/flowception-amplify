@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Auth, API, graphqlOperation, Storage } from "aws-amplify";
 import { createSubsection } from "../../graphql/mutations";
-// import { useInput } from "../auth/useInput";
 
 import useForm from "../form/useForm";
 import validate from "../form/subsectionFormValidation";
@@ -221,7 +220,7 @@ function CreateSubsection({ sectionId, subsections }) {
               setUrlPath={setUrlPath}
             />
 
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} noValidate>
               {mediaType === "TEXT" && (
                 <div>
                   <input
@@ -237,7 +236,7 @@ function CreateSubsection({ sectionId, subsections }) {
                   <textarea
                     rows="6"
                     cols="60"
-                    placeholder="Section introduction"
+                    placeholder="Subsection text"
                     className="input-light"
                     type="text"
                     name="text"
@@ -248,11 +247,12 @@ function CreateSubsection({ sectionId, subsections }) {
 
                   {errors.text && <p>{errors.text}</p>}
                   <div className="section-button-flex">
-                    <input
-                      className="primary-button button-light"
+                    <button
+                      className="primary-button button-dark"
                       type="submit"
-                      value="Add new subsection"
-                    />
+                    >
+                      Add new subsection
+                    </button>
                     <button
                       className="primary-button button-transparent-light"
                       onClick={() => setShowForm(false)}
