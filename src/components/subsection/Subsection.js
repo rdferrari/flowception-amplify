@@ -3,7 +3,10 @@ import { API, graphqlOperation, Storage } from "aws-amplify";
 import { useParams } from "react-router-dom";
 import { UserContext } from "../../App";
 
-import { onCreateSubsection } from "../../graphql/subscriptions";
+import {
+  onCreateSubsection,
+  onUpdateSection,
+} from "../../graphql/subscriptions";
 import { deleteSubsection, deleteSection } from "../../graphql/mutations";
 import { getSection, listSections } from "../../graphql/queries";
 
@@ -38,7 +41,7 @@ function Subsection(props) {
       const sectionData = await API.graphql({
         query: getSection,
         variables: { id },
-        authMode: "API_KEY"
+        authMode: "API_KEY",
       });
 
       setSubsections(sectionData.data.getSection.subsections.items);
@@ -57,7 +60,7 @@ function Subsection(props) {
     const sectionData = await API.graphql({
       query: listSections,
       variables: {},
-      authMode: "API_KEY"
+      authMode: "API_KEY",
     });
 
     const sectionArray = sectionData.data.listSections.items;
@@ -68,15 +71,15 @@ function Subsection(props) {
     const subscription = API.graphql(
       graphqlOperation(onCreateSubsection)
     ).subscribe({
-      next: data => {
+      next: (data) => {
         const {
           value: {
-            data: { onCreateSubsection }
-          }
+            data: { onCreateSubsection },
+          },
         } = data;
         const subsectionData = [onCreateSubsection, ...subsections];
         setSubsections(subsectionData);
-      }
+      },
     });
     return () => subscription.unsubscribe();
   }, [subsections]);
@@ -92,12 +95,12 @@ function Subsection(props) {
     getPublicData();
   };
 
-  const handleDeleteImage = async imageUrl => {
+  const handleDeleteImage = async (imageUrl) => {
     Storage.remove(imageUrl);
   };
 
   const handleDeleteSection = async (sectionId, urlKey) => {
-    subsections.map(subsection =>
+    subsections.map((subsection) =>
       handleDeleteSubsection(subsection.id, subsection.urlKey)
     );
 
@@ -108,7 +111,7 @@ function Subsection(props) {
       handleDeleteImage(urlKey);
     }
 
-    props.history.push("/");
+    props.history.push("/sections");
   };
 
   function compare(a, b) {
@@ -181,7 +184,7 @@ function Subsection(props) {
             )}
 
             {subsections &&
-              subsections.sort(compare).map(item => (
+              subsections.sort(compare).map((item) => (
                 <div className="section-sub-item" key={item.id}>
                   {item.type === "TEXT" && (
                     <div>

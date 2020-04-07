@@ -6,7 +6,7 @@ import { UserContext } from "../../App";
 import { API, graphqlOperation } from "aws-amplify";
 
 import { listSections } from "../../graphql/queries";
-import { onCreateSection } from "../../graphql/subscriptions";
+import { onCreateSection, onUpdateSection } from "../../graphql/subscriptions";
 
 const Section = () => {
   const [sections, updateSections] = useState([]);
@@ -19,15 +19,15 @@ const Section = () => {
     const subscription = API.graphql(
       graphqlOperation(onCreateSection)
     ).subscribe({
-      next: data => {
+      next: (data) => {
         const {
           value: {
-            data: { onCreateSection }
-          }
+            data: { onCreateSection },
+          },
         } = data;
         const sectionData = [onCreateSection, ...sections];
         updateSections(sectionData);
-      }
+      },
     });
     return () => subscription.unsubscribe();
   }, [sections]);
@@ -36,7 +36,7 @@ const Section = () => {
     const sectionData = await API.graphql({
       query: listSections,
       variables: {},
-      authMode: "API_KEY"
+      authMode: "API_KEY",
     });
 
     const sectionArray = sectionData.data.listSections.items;
