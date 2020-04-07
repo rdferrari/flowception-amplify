@@ -2,19 +2,16 @@ import React, { useState } from "react";
 import { Auth, API, graphqlOperation, Storage } from "aws-amplify";
 import { S3Image } from "aws-amplify-react";
 import { createSection } from "../../graphql/mutations";
-// import { useInput } from "../auth/useInput";
 import useForm from "../form/useForm";
 import validate from "../form/sectionFormValidation";
 
+const INIT_VALUES = {
+  title: "",
+  intro: "",
+  body: "",
+};
+
 function CreateSection({ sections }) {
-  // const { value: title, bind: bindTitle, reset: resetTitle } = useInput(null);
-  // const { value: intro, bind: bindIntro, reset: resetIntro } = useInput(null);
-  // const { value: body, bind: bindBody, reset: resetBody } = useInput(null);
-
-  // function login() {
-  //   console.log("No errors, submit callback called!");
-  // }
-
   const [urlKey, setUrlKey] = useState(null);
   const [urlPath, setUrlPath] = useState(null);
   const [showForm, setShowForm] = useState(false);
@@ -39,14 +36,12 @@ function CreateSection({ sections }) {
     );
     console.info(`Created section: id ${result.data.createSection.id}`);
 
-    // resetTitle();
-    // resetIntro();
-    // resetBody();
     setUrlKey(null);
     setUrlPath(null);
   };
 
   const { values, errors, handleChange, handleSubmit } = useForm(
+    INIT_VALUES,
     handleSubmitApi,
     validate
   );

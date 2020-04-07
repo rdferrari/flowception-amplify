@@ -8,10 +8,8 @@ function MediaItem({ type, urlKey, id, handleDeleteSubsection, user, group }) {
   const [urlPath, setUrlPath] = useState(null);
 
   Storage.get(urlKey)
-    .then(result => setUrlPath(result))
-    .catch(err => console.log(err));
-
-  console.log(urlPath);
+    .then((result) => setUrlPath(result))
+    .catch((err) => console.log(err));
   return (
     <div className="section-detail-text-container">
       {urlKey && type === "IMAGE" && (
