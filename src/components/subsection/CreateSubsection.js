@@ -1,7 +1,15 @@
 import React, { useState } from "react";
 import { Auth, API, graphqlOperation, Storage } from "aws-amplify";
 import { createSubsection } from "../../graphql/mutations";
-import { useInput } from "../auth/useInput";
+// import { useInput } from "../auth/useInput";
+
+import useForm from "../form/useForm";
+import validate from "../form/subsectionFormValidation";
+
+const INIT_VALUES = {
+  title: "",
+  text: "",
+};
 
 const MediaType = ({
   mediaType,
@@ -10,7 +18,7 @@ const MediaType = ({
   handleUploadFile,
   createSubsectionMedia,
   setShowForm,
-  urlKey
+  urlKey,
 }) => {
   return (
     mediaType === type && (
@@ -47,45 +55,47 @@ const MediaType = ({
 };
 
 function CreateSubsection({ sectionId, subsections }) {
-  const { value: title, bind: bindTitle, reset: resetTitle } = useInput(null);
-  const { value: text, bind: bindText, reset: resetText } = useInput(null);
+  // const { value: title, bind: bindTitle, reset: resetTitle } = useInput(null);
+  // const { value: text, bind: bindText, reset: resetText } = useInput(null);
   const [urlKey, setUrlKey] = useState(null);
   const [urlPath, setUrlPath] = useState(null);
   const [mediaType, setMediaType] = useState(null);
   const [showForm, setShowForm] = useState(false);
   const [uploading, setUploading] = useState(false);
 
-  const handleSubmit = async evt => {
-    evt.preventDefault();
-
+  const handleSubmitApi = async () => {
     const input = {
       sectionId,
       type: mediaType,
-      title,
-      text,
+      title: values.title,
+      text: values.text,
       urlKey,
       urlPath,
       order: subsections.length,
       ownerUsername: Auth.user.username,
-      createdAt: Date.now()
+      createdAt: Date.now(),
     };
 
     const result = await API.graphql(
       graphqlOperation(createSubsection, {
-        input
+        input,
       })
     );
     console.info(`Created section: id ${result.data.createSubsection.id}`);
 
-    resetText();
-    resetTitle();
     setUrlKey(null);
     setUrlPath(null);
     setMediaType(null);
     setShowForm(false);
   };
 
-  const createSubsectionMedia = async urlKey => {
+  const { values, errors, handleChange, handleSubmit } = useForm(
+    INIT_VALUES,
+    handleSubmitApi,
+    validate
+  );
+
+  const createSubsectionMedia = async (urlKey) => {
     const input = {
       sectionId,
       type: mediaType,
@@ -95,23 +105,22 @@ function CreateSubsection({ sectionId, subsections }) {
       title: null,
       order: subsections.length,
       ownerUsername: Auth.user.username,
-      createdAt: Date.now()
+      createdAt: Date.now(),
     };
 
     const result = await API.graphql(
       graphqlOperation(createSubsection, {
-        input
+        input,
       })
     );
     console.info(`Created section: id ${result.data.createSubsection.id}`);
-    resetText();
     setUrlKey(null);
     setUrlPath(null);
     setMediaType(null);
     setShowForm(false);
   };
 
-  const handleUploadFile = async event => {
+  const handleUploadFile = async (event) => {
     event.preventDefault();
     const file = event.target.files[0];
 
@@ -127,7 +136,7 @@ function CreateSubsection({ sectionId, subsections }) {
     });
   };
 
-  const handleTypeForm = type => {
+  const handleTypeForm = (type) => {
     setMediaType(type);
     setShowForm(true);
   };
@@ -219,16 +228,25 @@ function CreateSubsection({ sectionId, subsections }) {
                     placeholder="Subsection title"
                     className="input-light"
                     type="text"
-                    {...bindTitle}
+                    name="title"
+                    onChange={handleChange}
+                    value={values.title || ""}
+                    required
                   />
+                  {errors.title && <p>{errors.title}</p>}
                   <textarea
                     rows="6"
                     cols="60"
-                    placeholder="Subsection text"
+                    placeholder="Section introduction"
                     className="input-light"
                     type="text"
-                    {...bindText}
+                    name="text"
+                    onChange={handleChange}
+                    value={values.text || ""}
+                    required
                   />
+
+                  {errors.text && <p>{errors.text}</p>}
                   <div className="section-button-flex">
                     <input
                       className="primary-button button-light"
