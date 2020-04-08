@@ -1,21 +1,23 @@
 {
     "AWSTemplateFormatVersion": "2010-09-09",
     "Parameters": {
-        "authdementia81bf7678UserPoolId": {
+        "authdementiacd4a0ce0UserPoolId": {
             "Type": "String",
-            "Default": "authdementia81bf7678UserPoolId"
+            "Default": "authdementiacd4a0ce0UserPoolId"
         },
-        "authdementia81bf7678IdentityPoolId": {
+        
+        "authdementiacd4a0ce0IdentityPoolId": {
             "Type": "String",
-            "Default": "authdementia81bf7678IdentityPoolId"
+            "Default": "authdementiacd4a0ce0IdentityPoolId"
         },
-        "authdementia81bf7678AppClientID": {
+        
+        "authdementiacd4a0ce0AppClientID": {
             "Type": "String",
-            "Default": "authdementia81bf7678AppClientID"
+            "Default": "authdementiacd4a0ce0AppClientID"
         },
-        "authdementia81bf7678AppClientIDWeb": {
+        "authdementiacd4a0ce0AppClientIDWeb": {
             "Type": "String",
-            "Default": "authdementia81bf7678AppClientIDWeb"
+            "Default": "authdementiacd4a0ce0AppClientIDWeb"
         },
         "AuthRoleArn": {
             "Type": "String"
@@ -44,17 +46,20 @@
           "Properties" : {
               "GroupName" : "admin",
               "Precedence" : 1,
+              
               "RoleArn" : {
                 "Fn::GetAtt": [
                     "adminGroupRole",
                     "Arn"
                 ]
               },
+              
               "UserPoolId" : {
-                "Ref": "authdementia81bf7678UserPoolId"
+                "Ref": "authdementiacd4a0ce0UserPoolId"
               } 
             }
         },
+        
         "adminGroupRole": {
             "Type": "AWS::IAM::Role",
             "Properties": {
@@ -63,7 +68,7 @@
                         "",
                         [
                           {
-                            "Ref": "authdementia81bf7678UserPoolId"
+                            "Ref": "authdementiacd4a0ce0UserPoolId"
                           },
                           "-adminGroupRole"
                         ]
@@ -80,7 +85,7 @@
                             },
                             "Action": "sts:AssumeRoleWithWebIdentity",
                             "Condition": {
-                              "StringEquals": {"cognito-identity.amazonaws.com:aud": "authdementia81bf7678IdentityPoolId"},
+                              "StringEquals": {"cognito-identity.amazonaws.com:aud": {"Ref":"authdementiacd4a0ce0IdentityPoolId"}},
                               "ForAnyValue:StringLike": {"cognito-identity.amazonaws.com:amr": "authenticated"}
                             }
                         }
@@ -88,6 +93,8 @@
                 }
             }
         },
+     
+    
     
         "LambdaExecutionRole": {
             "Type": "AWS::IAM::Role",
@@ -104,7 +111,7 @@
                                 "",
                                 [
                                   
-                                  "dementia81bf7678",
+                                  "dementiacd4a0ce0",
                                   "-ExecutionRole-",
                                   {
                                     "Ref": "env"
@@ -263,16 +270,16 @@
                     "Ref": "UnauthRoleArn"
                 },
                 "identityPoolId": {
-                    "Ref": "authdementia81bf7678IdentityPoolId"
+                    "Ref": "authdementiacd4a0ce0IdentityPoolId"
                 },
                 "userPoolId": {
-                    "Ref": "authdementia81bf7678UserPoolId"
+                    "Ref": "authdementiacd4a0ce0UserPoolId"
                 },
                 "appClientIDWeb": {
-                    "Ref": "authdementia81bf7678AppClientIDWeb"
+                    "Ref": "authdementiacd4a0ce0AppClientIDWeb"
                 },
                 "appClientID": {
-                    "Ref": "authdementia81bf7678AppClientID"
+                    "Ref": "authdementiacd4a0ce0AppClientID"
                 },
                 "region": {
                     "Ref": "AWS::Region"
@@ -283,7 +290,9 @@
             },
             "DependsOn": ["RoleMapFunction"]
         }
+   
     },
+    
     "Outputs": {
       
         "adminGroupRole": {
@@ -298,4 +307,5 @@
         
       
     }
+    
 }

@@ -1,8 +1,8 @@
 {
-    "identityPoolName": "dementia81bf7678_identitypool_81bf7678",
+    "identityPoolName": "dementiacd4a0ce0_identitypool_cd4a0ce0",
     "allowUnauthenticatedIdentities": true,
-    "resourceNameTruncated": "dement81bf7678",
-    "userPoolName": "dementia81bf7678_userpool_81bf7678",
+    "resourceNameTruncated": "dementcd4a0ce0",
+    "userPoolName": "dementiacd4a0ce0_userpool_cd4a0ce0",
     "autoVerifiedAttributes": [
         "email"
     ],
@@ -28,9 +28,9 @@
     "userpoolClientReadAttributes": [
         "email"
     ],
-    "userpoolClientLambdaRole": "dement81bf7678_userpoolclient_lambda_role",
+    "userpoolClientLambdaRole": "dementcd4a0ce0_userpoolclient_lambda_role",
     "userpoolClientSetAttributes": false,
-    "resourceName": "dementia81bf7678",
+    "resourceName": "dementiacd4a0ce0",
     "authSelections": "identityPoolAndUserPool",
     "authRoleArn": {
         "Fn::GetAtt": [
@@ -45,9 +45,6 @@
         ]
     },
     "useDefault": "default",
-    "userPoolGroupList": [
-        "admin"
-    ],
-    "dependsOn": [],
-    "adminQueryGroup": "admin"
+    "userPoolGroupList": [],
+    "dependsOn": []
 }

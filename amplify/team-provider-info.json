@@ -1,25 +1,19 @@
 {
     "master": {
         "awscloudformation": {
-            "AuthRoleName": "amplify-dementia-master-100224-authRole",
-            "UnauthRoleArn": "arn:aws:iam::837623038432:role/amplify-dementia-master-100224-unauthRole",
-            "AuthRoleArn": "arn:aws:iam::837623038432:role/amplify-dementia-master-100224-authRole",
+            "AuthRoleName": "amplify-dementia-master-135101-authRole",
+            "UnauthRoleArn": "arn:aws:iam::180844034732:role/amplify-dementia-master-135101-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::180844034732:role/amplify-dementia-master-135101-authRole",
             "Region": "ap-southeast-2",
-            "DeploymentBucketName": "amplify-dementia-master-100224-deployment",
-            "UnauthRoleName": "amplify-dementia-master-100224-unauthRole",
-            "StackName": "amplify-dementia-master-100224",
-            "StackId": "arn:aws:cloudformation:ap-southeast-2:837623038432:stack/amplify-dementia-master-100224/225c0290-745c-11ea-9f50-0ad0425fd8cc",
-            "AmplifyAppId": "d28dushhsvn4pj"
+            "DeploymentBucketName": "amplify-dementia-master-135101-deployment",
+            "UnauthRoleName": "amplify-dementia-master-135101-unauthRole",
+            "StackName": "amplify-dementia-master-135101",
+            "StackId": "arn:aws:cloudformation:ap-southeast-2:180844034732:stack/amplify-dementia-master-135101/725a3fd0-793b-11ea-9ce8-0a564743ac36",
+            "AmplifyAppId": "d2aq334lptqgqm"
         },
         "categories": {
             "auth": {
-                "dementia81bf7678": {}
-            },
-            "hosting": {
-                "amplifyhosting": {
-                    "appId": "d28dushhsvn4pj",
-                    "type": "cicd"
-                }
+                "dementiacd4a0ce0": {}
             }
         }
     }

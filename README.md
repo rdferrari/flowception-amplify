@@ -1,5 +1,13 @@
 React JS and AWS-amplify Content Management System - CMS developed by Rodrigo Ferrari.
 
+- Clone the repo, then:
+
+### `git remote -v`
+
+### `git remote rm origin`
+
+### `git remote -v`
+
 Demo = https://master.d2bkfq99j0cffj.amplifyapp.com/
 
 ## AWS Amplify

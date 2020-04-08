@@ -1,6 +1,6 @@
 {
     "auth": {
-        "dementia81bf7678": {
+        "dementiacd4a0ce0": {
             "service": "Cognito",
             "providerPlugin": "awscloudformation",
             "dependsOn": [],
@@ -12,7 +12,7 @@
             "dependsOn": [
                 {
                     "category": "auth",
-                    "resourceName": "dementia81bf7678",
+                    "resourceName": "dementiacd4a0ce0",
                     "attributes": [
                         "UserPoolId",
                         "AppClientIDWeb",
@@ -33,7 +33,7 @@
                         {
                             "authenticationType": "API_KEY",
                             "apiKeyConfig": {
-                                "description": "dementia",
+                                "description": "dementiapi",
                                 "apiKeyExpirationDays": "300"
                             }
                         }
@@ -41,7 +41,7 @@
                     "defaultAuthentication": {
                         "authenticationType": "AMAZON_COGNITO_USER_POOLS",
                         "userPoolConfig": {
-                            "userPoolId": "authdementia81bf7678"
+                            "userPoolId": "authdementiacd4a0ce0"
                         }
                     }
                 }
@@ -53,14 +53,14 @@
             "dependsOn": [
                 {
                     "category": "auth",
-                    "resourceName": "dementia81bf7678",
+                    "resourceName": "dementiacd4a0ce0",
                     "attributes": [
                         "UserPoolId"
                     ]
                 },
                 {
                     "category": "function",
-                    "resourceName": "AdminQueries20da71f3",
+                    "resourceName": "AdminQueries440f01df",
                     "attributes": [
                         "Arn",
                         "Name"
@@ -70,13 +70,13 @@
         }
     },
     "storage": {
-        "newdementia": {
+        "dementiaStorage": {
             "service": "S3",
             "providerPlugin": "awscloudformation",
             "dependsOn": [
                 {
                     "category": "auth",
-                    "resourceName": "dementia81bf7678",
+                    "resourceName": "dementiacd4a0ce0",
                     "attributes": [
                         "UserPoolId"
                     ]
@@ -92,39 +92,19 @@
         }
     },
     "function": {
-        "AdminQueriesb3c08c45": {
+        "AdminQueries440f01df": {
             "service": "Lambda",
             "providerPlugin": "awscloudformation",
             "build": true,
             "dependsOn": [
                 {
                     "category": "auth",
-                    "resourceName": "dementia81bf7678",
+                    "resourceName": "dementiacd4a0ce0",
                     "attributes": [
                         "UserPoolId"
                     ]
                 }
             ]
-        },
-        "AdminQueries20da71f3": {
-            "service": "Lambda",
-            "providerPlugin": "awscloudformation",
-            "build": true,
-            "dependsOn": [
-                {
-                    "category": "auth",
-                    "resourceName": "dementia81bf7678",
-                    "attributes": [
-                        "UserPoolId"
-                    ]
-                }
-            ]
-        }
-    },
-    "hosting": {
-        "amplifyhosting": {
-            "service": "amplifyhosting",
-            "type": "cicd"
         }
     }
 }
