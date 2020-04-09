@@ -132,16 +132,6 @@ function Subsection(props) {
     <UserContext.Consumer>
       {({ user, group }) => (
         <div className="section-sub-container">
-          <div className="section-sub-container-menu">
-            <ListSection
-              user={user}
-              group={group}
-              sections={sections}
-              sectionId={sectionId}
-              id={id}
-            />
-          </div>
-
           <div className="section-sub-container-content">
             {editSection === false ? (
               <DetailSection
