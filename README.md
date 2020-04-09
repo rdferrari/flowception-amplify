@@ -37,3 +37,5 @@ Clone this repository than in the project directory run:
 ### `amplify add api`
 
 ### `amplify add storage`
+
+### `amplify add host`
