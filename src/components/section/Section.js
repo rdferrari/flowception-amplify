@@ -3,20 +3,11 @@ import { API, graphqlOperation } from "aws-amplify";
 import { UserContext } from "../../App";
 import { listSections } from "../../graphql/queries";
 import { updateSection } from "../../graphql/mutations";
-import { onCreateSection, onUpdateSection } from "../../graphql/subscriptions";
+import { onCreateSection } from "../../graphql/subscriptions";
 import CreateSection from "./CreateSection";
 import ListSection from "./ListSection";
-// import DragDrop from "./DragDrop";
 
 import { DragDropContext, Droppable } from "react-beautiful-dnd";
-
-const reorder = (list, startIndex, endIndex) => {
-  const result = Array.from(list);
-  const [removed] = result.splice(startIndex, 1);
-  result.splice(endIndex, 0, removed);
-
-  return result;
-};
 
 const Section = () => {
   const [sections, updateSections] = useState([]);
@@ -41,23 +32,6 @@ const Section = () => {
     });
     return () => subscription.unsubscribe();
   }, [sections]);
-
-  // useEffect(() => {
-  //   const subscription = API.graphql(
-  //     graphqlOperation(onUpdateSection)
-  //   ).subscribe({
-  //     next: (data) => {
-  //       const {
-  //         value: {
-  //           data: { onUpdateSection },
-  //         },
-  //       } = data;
-  //       const sectionData = [onUpdateSection, ...sections];
-  //       updateSections(sectionData);
-  //     },
-  //   });
-  //   return () => subscription.unsubscribe();
-  // }, [sections]);
 
   const getPublicData = async () => {
     const sectionData = await API.graphql({
@@ -107,23 +81,7 @@ const Section = () => {
     const dropSourceOrderCopy = sections[dropSource].order;
 
     reorderUpdate(sections[dropSource].id, sections[dropDestination].order);
-
     reorderUpdate(sections[dropDestination].id, dropSourceOrderCopy);
-
-    // const resultArray = Array.from(sections);
-    // console.log(resultArray, sections);
-    // const [removed] = resultArray.splice(result.source.index, 1);
-    // console.log(resultArray);
-    // resultArray.splice(result.destination.index, 0, removed);
-    // console.log(resultArray);
-
-    // const reorderedSections = reorder(
-    //   sections,
-    //   result.source.index,
-    //   result.destination.index
-    // );
-
-    // updateSections(resultArray);
   }
 
   return (
