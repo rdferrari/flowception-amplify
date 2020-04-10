@@ -2,26 +2,24 @@ import React, { useState, useEffect } from "react";
 import { API, graphqlOperation, Storage } from "aws-amplify";
 import { useParams } from "react-router-dom";
 import { UserContext } from "../../App";
+import { DragDropContext, Droppable } from "react-beautiful-dnd";
 
+import { onCreateSubsection } from "../../graphql/subscriptions";
 import {
-  onCreateSubsection,
-  onUpdateSection,
-} from "../../graphql/subscriptions";
-import { deleteSubsection, deleteSection } from "../../graphql/mutations";
-import { getSection, listSections } from "../../graphql/queries";
+  deleteSubsection,
+  deleteSection,
+  updateSubsection,
+} from "../../graphql/mutations";
+import { getSection } from "../../graphql/queries";
 
 import EditSection from "../section/EditSection";
-import EditSubsection from "./EditSubsection";
-import MediaItem from "./MediaItem";
+import ItemsSubsection from "./ItemsSubsection";
 import DetailSection from "../section/DetailSection";
-import TextItem from "./TextItem";
 import CreateSubsection from "./CreateSubsection";
-import ListSection from "../section/ListSection";
 
 function Subsection(props) {
   let { id } = useParams();
   const [sectionId, setSectionId] = useState(null);
-  const [sections, updateSections] = useState([]);
   const [subsections, setSubsections] = useState(null);
   const [title, setTitle] = useState(null);
   const [intro, setIntro] = useState(null);
@@ -29,11 +27,10 @@ function Subsection(props) {
   const [urlKey, setUrlKey] = useState(null);
   const [urlPath, setUrlPath] = useState(null);
   const [editSection, setEditSection] = useState(false);
-  const [editText, setEditText] = useState(false);
+  const [isDraggable, setIsDraggable] = useState(false);
 
   useEffect(() => {
     getPublicData();
-    getPublicListData();
   }, []);
 
   const getPublicData = async () => {
@@ -54,17 +51,6 @@ function Subsection(props) {
     } catch (err) {
       console.log("error fetching data..", err);
     }
-  };
-
-  const getPublicListData = async () => {
-    const sectionData = await API.graphql({
-      query: listSections,
-      variables: {},
-      authMode: "API_KEY",
-    });
-
-    const sectionArray = sectionData.data.listSections.items;
-    updateSections(sectionArray);
   };
 
   useEffect(() => {
@@ -128,88 +114,132 @@ function Subsection(props) {
     getPublicData();
   }
 
+  function onDragEnd(result) {
+    if (!result.destination) {
+      return;
+    }
+
+    const dropSource = result.source.index;
+    const dropDestination = result.destination.index;
+
+    if (dropDestination === dropSource) {
+      return;
+    }
+
+    setSubsections([]);
+    console.log("source:", dropSource);
+    console.log("destination", dropDestination);
+    console.log(subsections[dropDestination].order);
+
+    const reorderUpdate = async (sectionId, drop) => {
+      const input = {
+        id: sectionId,
+        order: drop,
+      };
+
+      const result = await API.graphql(
+        graphqlOperation(updateSubsection, {
+          input,
+        })
+      );
+      getPublicData();
+      console.info(`Updated section: id ${result.data.updateSubsection.id}`);
+    };
+
+    const dropSourceOrderCopy = subsections[dropSource].order;
+
+    reorderUpdate(
+      subsections[dropSource].id,
+      subsections[dropDestination].order
+    );
+    reorderUpdate(subsections[dropDestination].id, dropSourceOrderCopy);
+  }
+
   return (
     <UserContext.Consumer>
       {({ user, group }) => (
         <div className="section-sub-container">
           <div className="section-sub-container-content">
-            {editSection === false ? (
-              <DetailSection
-                urlKey={urlKey}
-                urlPath={urlPath}
-                title={title}
-                intro={intro}
-                body={body}
-                user={user}
-                group={group}
-                setEditSection={setEditSection}
-                handleDeleteSection={handleDeleteSection}
-                sectionId={sectionId}
-              />
-            ) : (
-              title &&
-              intro &&
-              body &&
-              user &&
-              group === "admin" && (
-                <EditSection
-                  sectionId={id}
-                  iniTitle={title}
-                  iniIntro={intro}
-                  iniBody={body}
-                  iniUrlKey={urlKey}
-                  iniUrlPath={urlPath}
-                  getPublicData={getPublicData}
-                  setEditSection={setEditSection}
-                />
-              )
-            )}
-
-            {user && group === "admin" && (
-              <CreateSubsection
-                sectionId={id}
-                getPublicData={getPublicData}
-                subsections={subsections}
-              />
-            )}
-
-            {subsections &&
-              subsections.sort(compare).map((item) => (
-                <div className="section-sub-item" key={item.id}>
-                  {item.type === "TEXT" && (
-                    <div>
-                      {editText === false ? (
-                        <TextItem
-                          title={item.title}
-                          text={item.text}
-                          id={item.id}
-                          user={user}
-                          group={group}
-                          setEditText={setEditText}
-                          handleDeleteSubsection={handleDeleteSubsection}
-                        />
-                      ) : (
-                        <EditSubsection
-                          subsectionId={item.id}
-                          iniTitle={item.title}
-                          iniText={item.text}
-                          getPublicData={getPublicData}
-                          setEditText={setEditText}
-                        />
-                      )}
-                    </div>
-                  )}
-
-                  <MediaItem
-                    type={item.type}
-                    urlKey={item.urlKey}
-                    id={item.id}
-                    handleDeleteSubsection={handleDeleteSubsection}
+            {isDraggable === false && (
+              <div>
+                {editSection === false ? (
+                  <DetailSection
+                    urlKey={urlKey}
+                    urlPath={urlPath}
+                    title={title}
+                    intro={intro}
+                    body={body}
                     user={user}
                     group={group}
+                    setEditSection={setEditSection}
+                    handleDeleteSection={handleDeleteSection}
+                    sectionId={sectionId}
                   />
-                </div>
-              ))}
+                ) : (
+                  title &&
+                  intro &&
+                  body &&
+                  user &&
+                  group === "admin" && (
+                    <EditSection
+                      sectionId={id}
+                      iniTitle={title}
+                      iniIntro={intro}
+                      iniBody={body}
+                      iniUrlKey={urlKey}
+                      iniUrlPath={urlPath}
+                      getPublicData={getPublicData}
+                      setEditSection={setEditSection}
+                    />
+                  )
+                )}
+
+                {user && group === "admin" && (
+                  <CreateSubsection
+                    sectionId={id}
+                    getPublicData={getPublicData}
+                    subsections={subsections}
+                  />
+                )}
+              </div>
+            )}
+
+            <button onClick={() => setIsDraggable(!isDraggable)}>
+              {isDraggable === true
+                ? "Reorder List: active"
+                : "Reorder List: NO active"}{" "}
+            </button>
+
+            <DragDropContext onDragEnd={onDragEnd}>
+              <Droppable droppableId="list">
+                {(provided) => (
+                  <div ref={provided.innerRef} {...provided.droppableProps}>
+                    {subsections &&
+                      subsections.sort(compare).map((item, index) => (
+                        <div className="section-sub-item" key={item.id}>
+                          <ItemsSubsection
+                            title={item.title}
+                            text={item.text}
+                            id={item.id}
+                            user={user}
+                            group={group}
+                            handleDeleteSubsection={handleDeleteSubsection}
+                            subsectionId={item.id}
+                            iniTitle={item.title}
+                            iniText={item.text}
+                            getPublicData={getPublicData}
+                            type={item.type}
+                            urlKey={item.urlKey}
+                            index={index}
+                            isDraggable={isDraggable}
+                          />
+                          {provided.placeholder}
+                        </div>
+                      ))}
+                  </div>
+                )}
+              </Droppable>
+            </DragDropContext>
           </div>
         </div>
       )}

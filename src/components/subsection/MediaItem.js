@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Storage } from "aws-amplify";
 import { S3Image } from "aws-amplify-react";
 import { Player } from "video-react";
@@ -7,9 +7,12 @@ import { Pannellum, PannellumVideo } from "pannellum-react";
 function MediaItem({ type, urlKey, id, handleDeleteSubsection, user, group }) {
   const [urlPath, setUrlPath] = useState(null);
 
-  Storage.get(urlKey)
-    .then((result) => setUrlPath(result))
-    .catch((err) => console.log(err));
+  useEffect(() => {
+    Storage.get(urlKey)
+      .then((result) => setUrlPath(result))
+      .catch((err) => console.log(err));
+  }, []);
+
   return (
     <div className="section-detail-text-container">
       {urlKey && type === "IMAGE" && (
