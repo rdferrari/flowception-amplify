@@ -16,6 +16,7 @@ import EditSection from "../section/EditSection";
 import ItemsSubsection from "./ItemsSubsection";
 import DetailSection from "../section/DetailSection";
 import CreateSubsection from "./CreateSubsection";
+import ListSubsectionDraggable from "./ListSubsectionDraggable";
 
 function Subsection(props) {
   let { id } = useParams();
@@ -114,7 +115,7 @@ function Subsection(props) {
     getPublicData();
   }
 
-  function onDragEnd(result) {
+  const onDragEnd = (result) => {
     if (!result.destination) {
       return;
     }
@@ -153,13 +154,13 @@ function Subsection(props) {
       subsections[dropDestination].order
     );
     reorderUpdate(subsections[dropDestination].id, dropSourceOrderCopy);
-  }
+  };
 
   return (
     <UserContext.Consumer>
       {({ user, group }) => (
-        <div className="section-sub-container">
-          <div className="section-sub-container-content">
+        <div>
+          <div>
             {isDraggable === false && (
               <div>
                 {editSection === false ? (
@@ -210,36 +211,44 @@ function Subsection(props) {
                 : "Reorder List: NO active"}{" "}
             </button>
 
-            <DragDropContext onDragEnd={onDragEnd}>
-              <Droppable droppableId="list">
-                {(provided) => (
-                  <div ref={provided.innerRef} {...provided.droppableProps}>
-                    {subsections &&
-                      subsections.sort(compare).map((item, index) => (
-                        <div className="section-sub-item" key={item.id}>
-                          <ItemsSubsection
-                            title={item.title}
-                            text={item.text}
-                            id={item.id}
-                            user={user}
-                            group={group}
-                            handleDeleteSubsection={handleDeleteSubsection}
-                            subsectionId={item.id}
-                            iniTitle={item.title}
-                            iniText={item.text}
-                            getPublicData={getPublicData}
-                            type={item.type}
-                            urlKey={item.urlKey}
-                            index={index}
-                            isDraggable={isDraggable}
-                          />
-                          {provided.placeholder}
-                        </div>
-                      ))}
-                  </div>
-                )}
-              </Droppable>
-            </DragDropContext>
+            {isDraggable === false ? (
+              subsections &&
+              subsections.sort(compare).map((item, index) => (
+                <div key={item.id}>
+                  <ItemsSubsection
+                    title={item.title}
+                    text={item.text}
+                    id={item.id}
+                    user={user}
+                    group={group}
+                    handleDeleteSubsection={handleDeleteSubsection}
+                    subsectionId={item.id}
+                    iniTitle={item.title}
+                    iniText={item.text}
+                    getPublicData={getPublicData}
+                    type={item.type}
+                    urlKey={item.urlKey}
+                    index={index}
+                    isDraggable={isDraggable}
+                    order={item.order}
+                  />
+                </div>
+              ))
+            ) : (
+              <DragDropContext onDragEnd={onDragEnd}>
+                <Droppable droppableId="list">
+                  {(provided) => (
+                    <div ref={provided.innerRef} {...provided.droppableProps}>
+                      <ListSubsectionDraggable
+                        subsections={subsections}
+                        compare={compare}
+                      />
+                      {provided.placeholder}
+                    </div>
+                  )}
+                </Droppable>
+              </DragDropContext>
+            )}
           </div>
         </div>
       )}

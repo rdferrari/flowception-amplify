@@ -44,9 +44,7 @@ const Section = () => {
     updateSections(sectionArray);
   };
 
-  console.log(sections);
-
-  function onDragEnd(result) {
+  const onDragEnd = (result) => {
     if (!result.destination) {
       return;
     }
@@ -82,7 +80,7 @@ const Section = () => {
 
     reorderUpdate(sections[dropSource].id, sections[dropDestination].order);
     reorderUpdate(sections[dropDestination].id, dropSourceOrderCopy);
-  }
+  };
 
   return (
     <UserContext.Consumer>

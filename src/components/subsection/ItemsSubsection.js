@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { API, graphqlOperation } from "aws-amplify";
 import { updateSubsection } from "../../graphql/mutations";
-import { Draggable } from "react-beautiful-dnd";
+// import { Draggable } from "react-beautiful-dnd";
 import MediaItem from "./MediaItem";
 
 import useForm from "../form/useForm";
@@ -20,8 +20,6 @@ function ItemsSubsection({
   getPublicData,
   type,
   urlKey,
-  index,
-  isDraggable,
 }) {
   const [editText, setEditText] = useState(false);
 
@@ -122,49 +120,18 @@ function ItemsSubsection({
     }
   };
 
-  if (isDraggable === true) {
-    return (
-      <Draggable key={id} draggableId={id} index={index}>
-        {(provided) => (
-          <div
-            ref={provided.innerRef}
-            {...provided.draggableProps}
-            {...provided.dragHandleProps}
-          >
-            <div>
-              <p>{id}</p>
-            </div>
-
-            {/*  {type === "TEXT" ? (
-              <TextItemEdit />
-            ) : (
-              <MediaItem
-                type={type}
-                urlKey={urlKey}
-                id={id}
-                handleDeleteSubsection={handleDeleteSubsection}
-                user={user}
-                group={group}
-              />
-            )} */}
-          </div>
-        )}
-      </Draggable>
-    );
-  } else {
-    return type === "TEXT" ? (
-      <TextItemEdit />
-    ) : (
-      <MediaItem
-        type={type}
-        urlKey={urlKey}
-        id={id}
-        handleDeleteSubsection={handleDeleteSubsection}
-        user={user}
-        group={group}
-      />
-    );
-  }
+  return type === "TEXT" ? (
+    <TextItemEdit />
+  ) : (
+    <MediaItem
+      type={type}
+      urlKey={urlKey}
+      id={id}
+      handleDeleteSubsection={handleDeleteSubsection}
+      user={user}
+      group={group}
+    />
+  );
 }
 
 export default ItemsSubsection;
