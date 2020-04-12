@@ -19,6 +19,8 @@ function EditSection({
   const [uploading, setUploading] = useState(false);
   const [urlKey, setUrlKey] = useState(iniUrlKey);
   const [urlPath, setUrlPath] = useState(iniUrlPath);
+  const [progressLoaded, setProgressLoaded] = useState("");
+  const [progressTotal, setProgressTotal] = useState("");
 
   const INIT_VALUES = {
     title: iniTitle,
@@ -80,7 +82,12 @@ function EditSection({
 
     setUploading(true);
 
-    Storage.put(name, file).then(() => {
+    Storage.put(name, file, {
+      progressCallback(progress) {
+        setProgressLoaded(progress.loaded);
+        setProgressTotal(progress.total);
+      },
+    }).then(() => {
       setUrlKey(name);
       setUploading(false);
       Storage.get(name)
@@ -117,7 +124,10 @@ function EditSection({
           {uploading === false ? (
             <img className="btn" src="/images/UploadBt.svg" />
           ) : (
-            <img className="btn" src="/images/Uploading.svg" />
+            <div>
+              <img className="btn" src="/images/Uploading.svg" />
+              <p>Uploading: {(progressLoaded / progressTotal) * 100} %</p>
+            </div>
           )}
         </div>
       )}
