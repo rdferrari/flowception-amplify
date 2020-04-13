@@ -23,10 +23,9 @@ export const UserContext = React.createContext();
 
 function LoginApp() {
   return (
-    <div className="section-desktop-flex">
-      <div className="section-desktop-left">
-        <Authenticator theme={theme} />
-      </div>
+    <div>
+      <h1 className="authenticator-title">Sign in</h1>
+      <Authenticator theme={theme} />
     </div>
   );
 }
@@ -131,6 +130,7 @@ const theme = {
   ...AmplifyTheme,
   container: {
     ...AmplifyTheme.container,
+    fontFamily: "Rajdhani-Regular",
     paddingLeft: "1px",
     paddingRight: "1px",
   },
@@ -146,12 +146,13 @@ const theme = {
     ...AmplifyTheme.formSection,
     backgroundColor: "#fff",
     border: "none",
-    width: "320px",
+    width: "300px",
   },
   sectionHeader: {
     ...AmplifyTheme.sectionHeader,
     backgroundColor: "#ffffff",
     color: "#000000",
+    display: "none",
   },
   sectionBody: {
     ...AmplifyTheme.sectionBody,
@@ -162,15 +163,33 @@ const theme = {
     backgroundColor: "#ffffff",
     padding: "5px",
     borderTop: "none",
+    margin: "10px 0px",
   },
 
   navBar: {
     ...AmplifyTheme.navBar,
     backgroundColor: "#ffffff",
   },
+
+  input: {
+    ...AmplifyTheme.input,
+    fontFamily: "Rajdhani-Regular",
+    fontSize: "15px",
+    margin: "10px 0px",
+    padding: "20px",
+  },
   button: {
     ...AmplifyTheme.button,
-    backgroundColor: "#ffffff",
+    backgroundColor: "#29ad85",
+    border: "none",
+    color: "#fff",
+    marginBottom: "10px",
+    padding: "10px",
+    width: "290px",
+  },
+  a: {
+    ...AmplifyTheme.a,
+    color: "#29ad85",
   },
 };
 

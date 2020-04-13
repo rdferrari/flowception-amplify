@@ -17,9 +17,13 @@ function Header({ history, handleSignOut }) {
                   className="header-signing"
                   src="/images/signout.svg"
                 />
-              ) : (
+              ) : path !== "/login" ? (
                 <NavLink to="/login">
                   <img className="header-signing" src="/images/signin.svg" />
+                </NavLink>
+              ) : (
+                <NavLink to="/">
+                  <img className="header-signing" src="/images/close.svg" />
                 </NavLink>
               )}
             </div>
@@ -30,18 +34,20 @@ function Header({ history, handleSignOut }) {
               </div>
             ) : (
               <div>
-                <p
-                  onClick={() => history.goBack()}
-                  className="header-title-back"
-                >
-                  <span>
-                    <img
-                      className="header-title-back-icon"
-                      src="/images/backHeader.svg"
-                    />
-                  </span>
-                  WHAT WE CAN DESCRIBE IS IMPERMANENT
-                </p>
+                {path !== "/login" && (
+                  <p
+                    onClick={() => history.goBack()}
+                    className="header-title-back"
+                  >
+                    <span>
+                      <img
+                        className="header-title-back-icon"
+                        src="/images/backHeader.svg"
+                      />
+                    </span>
+                    WHAT WE CAN DESCRIBE IS IMPERMANENT
+                  </p>
+                )}
               </div>
             )}
           </div>
