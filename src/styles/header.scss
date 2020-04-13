@@ -1,35 +1,65 @@
 .header-container {
   display: flex;
-  background-color: white;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
   justify-content: space-between;
+  flex-direction: column;
   top: 0;
-  position: fixed;
   width: 100%;
   z-index: 99;
 
   @media (min-width: $screen-lg-min) {
-    width: 35%;
   }
 }
 
-.header-logo {
-  margin: $space-xm / 2 $space-xm;
-  width: 44px;
-}
-
-.header-back {
-  margin: $space-xm $space-xm;
-  width: 20px;
-}
-
 .header-title {
-  margin-top: $space-md;
+  border-bottom: 0.5px solid $grey;
+  font-size: $font-sm;
+  margin-left: $space-sm;
+  padding-bottom: $font-sm / 2;
+  width: 80%;
+
+  @media (min-width: $screen-lg-min) {
+    font-size: $font-lg;
+    margin-left: $space-xl * 3;
+    padding-bottom: $font-sm;
+    width: 60%;
+  }
 }
 
-.header-menu {
-  margin: $space-md $space-xm 0 0;
-  width: 30px;
+.header-title-back {
+  border-bottom: 0.5px solid $secondary-color;
+  color: $secondary-color;
+  cursor: pointer;
+  font-size: $font-sm;
+  margin-left: $space-sm;
+  padding-bottom: $font-sm / 2;
+  width: 80%;
+
+  @media (min-width: $screen-lg-min) {
+    font-size: $font-lg;
+    margin-left: $space-xl * 3;
+    padding-bottom: $font-sm;
+    width: 60%;
+  }
+}
+
+.header-title-back-icon {
+  cursor: pointer;
+  margin-right: 10px;
+  width: 10px;
+}
+
+.header-signin-container {
+  text-align: right;
+}
+
+.header-signing {
+  margin: $space-sm $space-sm 0 0;
+  width: 50px;
+
+  @media (min-width: $screen-lg-min) {
+    margin: $space-sm * 2 $space-xl * 3 0 0;
+    width: 80px;
+  }
 }
 
 .header-menu-body {

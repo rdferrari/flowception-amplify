@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="126" height="150" viewBox="0 0 126 150">
+  <g id="Group_136" data-name="Group 136" transform="translate(-1566 -84)">
+    <g id="login" transform="translate(1566 61.593)">
+      <g id="Group_2" data-name="Group 2" transform="translate(89.304 93.108) rotate(180)">
+        <g id="Group_1" data-name="Group 1">
+          <path id="Path_1" data-name="Path 1" d="M87.742,10.186,74.258.679A3.7,3.7,0,0,0,68.438,3.7V9.511H3.692a3.692,3.692,0,1,0,0,7.385H68.438V22.71a3.7,3.7,0,0,0,5.82,3.018l13.485-9.506A3.7,3.7,0,0,0,87.742,10.186Z" fill="#fff"/>
+        </g>
+      </g>
+      <g id="Group_4" data-name="Group 4" transform="translate(18.228 22.407)">
+        <g id="Group_3" data-name="Group 3" transform="translate(0 0)">
+          <path id="Path_2" data-name="Path 2" d="M124.341,22.407A57.475,57.475,0,0,0,74.55,51.154a3.691,3.691,0,1,0,6.39,3.7,50.116,50.116,0,1,1,0,50.111,3.691,3.691,0,1,0-6.39,3.7,57.493,57.493,0,1,0,49.791-86.253Z" transform="translate(-74.053 -22.407)" fill="#fff"/>
+        </g>
+      </g>
+    </g>
+    <text id="Sign_out" data-name="Sign out" transform="translate(1629 229)" fill="#fff" font-size="20" font-family="Raleway-Regular, Raleway"><tspan x="-38.05" y="0">Sign out</tspan></text>
+  </g>
+</svg>

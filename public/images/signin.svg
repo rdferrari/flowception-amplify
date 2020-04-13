@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="126.031" height="159" viewBox="0 0 126.031 159">
+  <g id="Group_135" data-name="Group 135" transform="translate(-1589.969 -84)">
+    <g id="login" transform="translate(1589.969 61.593)">
+      <g id="Group_2" data-name="Group 2" transform="translate(0 66.704)">
+        <g id="Group_1" data-name="Group 1" transform="translate(0 0)">
+          <path id="Path_1" data-name="Path 1" d="M87.742,212.547,74.258,203.04a3.7,3.7,0,0,0-5.82,3.018v5.814H3.692a3.692,3.692,0,1,0,0,7.385H68.438v5.814a3.7,3.7,0,0,0,5.82,3.018l13.485-9.506A3.7,3.7,0,0,0,87.742,212.547Z" transform="translate(0 -202.361)" fill="#29ad85"/>
+        </g>
+      </g>
+      <g id="Group_4" data-name="Group 4" transform="translate(18.228 22.407)">
+        <g id="Group_3" data-name="Group 3" transform="translate(0 0)">
+          <path id="Path_2" data-name="Path 2" d="M124.355,22.407A57.494,57.494,0,0,0,74.55,51.154a3.692,3.692,0,1,0,6.392,3.7,50.116,50.116,0,1,1,0,50.111,3.692,3.692,0,1,0-6.392,3.7,57.5,57.5,0,1,0,49.805-86.253Z" transform="translate(-74.053 -22.407)" fill="#29ad85"/>
+        </g>
+      </g>
+    </g>
+    <text id="Sign_in" data-name="Sign in" transform="translate(1627 238)" fill="#29ad85" font-size="20" font-family="Raleway-Regular, Raleway"><tspan x="0" y="0">Sign in</tspan></text>
+  </g>
+</svg>

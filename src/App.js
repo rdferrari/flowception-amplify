@@ -8,17 +8,15 @@ import {
 import "./index.scss";
 import Header from "./components/Header";
 import Section from "./components/section/Section";
-import HeroSection from "./components/section/HeroSection";
 import Subsection from "./components/subsection/Subsection";
 
 import { Authenticator, AmplifyTheme } from "aws-amplify-react";
 import Amplify from "@aws-amplify/core";
 import Auth from "@aws-amplify/auth";
 import { Hub } from "@aws-amplify/core";
-// import { Auth, Hub } from "aws-amplify";
-// This was added by amplify when we initialized it and added auth.
+
 import aws_exports from "./aws-exports";
-// We use the generated file to config Amplify with our desired settings
+
 Amplify.configure(aws_exports);
 
 export const UserContext = React.createContext();
@@ -28,17 +26,6 @@ function LoginApp() {
     <div className="section-desktop-flex">
       <div className="section-desktop-left">
         <Authenticator theme={theme} />
-      </div>
-      <div className="section-desktop-right">
-        <div>
-          <h1 className="section-desktop-right-text">
-            Maumahara ka mau oranga, ake, ake.
-          </h1>
-          <img
-            className="section-desktop-right-image"
-            src="/images/vibrationsHeader.jpg"
-          />
-        </div>
       </div>
     </div>
   );
@@ -124,12 +111,11 @@ function App() {
         <Header handleSignOut={handleSignOut} />
         <div className="app-container">
           <Switch>
-            <Route exact path="/" component={HeroSection} />
-            <Route exact path="/sections" component={Section} />
+            <Route exact path="/" component={Section} />
             <Route path="/section/:id" component={Subsection} />
 
             {user ? (
-              <Route path="/login" render={() => <Redirect to="/sections" />} />
+              <Route path="/login" render={() => <Redirect to="/" />} />
             ) : (
               <Route path="/login" component={LoginApp} />
             )}

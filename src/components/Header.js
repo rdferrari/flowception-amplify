@@ -3,74 +3,50 @@ import { withRouter, NavLink } from "react-router-dom";
 import { UserContext } from "../App";
 
 function Header({ history, handleSignOut }) {
-  const [showMenu, setShowMenu] = useState(false);
-
   const path = history.location.pathname;
 
   return (
     <UserContext.Consumer>
-      {({ user }) =>
-        path !== "/" && (
-          <div>
-            <div className="header-container">
-              {path === "/" ? (
-                <div>
-                  <img className="header-logo" src="/images/app-logo.svg" />
-                </div>
+      {({ user }) => (
+        <div>
+          <div className="header-container">
+            <div className="header-signin-container">
+              {user ? (
+                <img
+                  onClick={() => handleSignOut()}
+                  className="header-signing"
+                  src="/images/signout.svg"
+                />
               ) : (
-                <div>
-                  <img
-                    onClick={() => history.goBack()}
-                    className="header-back"
-                    src="/images/backHeader.svg"
-                  />
-                </div>
+                <NavLink to="/login">
+                  <img className="header-signing" src="/images/signin.svg" />
+                </NavLink>
               )}
+            </div>
 
+            {path === "/" ? (
               <div>
-                <p className="header-title">Mate wareware</p>
+                <p className="header-title">CONTENT BY RODRIGO FERRARI, PHD.</p>
               </div>
+            ) : (
               <div>
-                {showMenu === false ? (
-                  <img
-                    onClick={() => setShowMenu(true)}
-                    className="header-menu"
-                    src="/images/HamburgerMenu.svg"
-                  />
-                ) : (
-                  <div>
+                <p
+                  onClick={() => history.goBack()}
+                  className="header-title-back"
+                >
+                  <span>
                     <img
-                      onClick={() => setShowMenu(false)}
-                      className="header-menu"
-                      src="/images/CloseMenu.svg"
+                      className="header-title-back-icon"
+                      src="/images/backHeader.svg"
                     />
-                  </div>
-                )}
+                  </span>
+                  WHAT WE CAN DESCRIBE IS IMPERMANENT
+                </p>
               </div>
-            </div>
-
-            <div>
-              {showMenu === true && (
-                <div className="header-menu-body">
-                  <NavLink to="/">
-                    <p onClick={() => setShowMenu(false)}>Home</p>
-                  </NavLink>
-                  <NavLink to="/sections">
-                    <p onClick={() => setShowMenu(false)}>Sections</p>
-                  </NavLink>
-                  {user ? (
-                    <p onClick={() => handleSignOut()}>sign out</p>
-                  ) : (
-                    <NavLink to="/login">
-                      <p onClick={() => setShowMenu(false)}>Login</p>
-                    </NavLink>
-                  )}
-                </div>
-              )}
-            </div>
+            )}
           </div>
-        )
-      }
+        </div>
+      )}
     </UserContext.Consumer>
   );
 }

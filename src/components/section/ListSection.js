@@ -6,11 +6,14 @@ function ListSection({ user, group, sections }) {
   const [isDraggable, setIsDraggable] = useState(false);
   return (
     <div className="section-desktop-list-scroll">
-      <button onClick={() => setIsDraggable(!isDraggable)}>
-        {isDraggable === true
-          ? "Reorder List: active"
-          : "Reorder List: NO active"}{" "}
-      </button>
+      {group === "admin" && (
+        <button onClick={() => setIsDraggable(!isDraggable)}>
+          {isDraggable === true
+            ? "Reorder List: active"
+            : "Reorder List: NO active"}{" "}
+        </button>
+      )}
+
       {isDraggable === false ? (
         <ItemSection sections={sections} user={user} />
       ) : (
