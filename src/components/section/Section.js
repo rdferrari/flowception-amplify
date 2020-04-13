@@ -91,6 +91,21 @@ const Section = () => {
             src="/images/tagline.svg"
             alt="WHAT WE CAN DESCRIBE IS IMPERMANENT"
           />
+
+          <div>
+            <img
+              className="section-admin-buttons"
+              src="/images/createNewSection.svg"
+              alt="New section"
+            />
+
+            <img
+              className="section-admin-buttons"
+              src="/images/reorderSectionList.svg"
+              alt="Reorder section list"
+            />
+          </div>
+
           {user && group === "admin" && (
             <div className="section-create-container">
               <CreateSection user={user} sections={sections} />

@@ -73,7 +73,7 @@ function CreateSection({ sections }) {
 
   if (showForm === false) {
     return (
-      <div className="section-create-container-detail">
+      <div>
         <button
           className="add-section-button button-dark"
           onClick={() => setShowForm(true)}
@@ -84,7 +84,7 @@ function CreateSection({ sections }) {
     );
   } else {
     return (
-      <div className="section-create-container-detail">
+      <div>
         {urlKey ? (
           <div>
             <S3Image className="section-card-image" imgKey={urlKey} />

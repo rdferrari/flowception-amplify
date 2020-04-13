@@ -6,6 +6,16 @@
   }
 }
 
+.section-admin-buttons {
+  margin: $space-sm $space-sm $space-sm 0;
+  width: 60px;
+
+  @media (min-width: $screen-lg-min) {
+    margin: $space-lg $space-lg $space-lg 0;
+    width: 120px;
+  }
+}
+
 .section-list-container {
   padding: $space-xm;
   width: 100%;
@@ -18,12 +28,6 @@
 .section-create-container {
   @media (min-width: $screen-lg-min) {
     width: 100%;
-  }
-}
-
-.section-create-container-detail {
-  @media (min-width: $screen-lg-min) {
-    padding: 0 $space-xl 0 $space-md;
   }
 }
 
