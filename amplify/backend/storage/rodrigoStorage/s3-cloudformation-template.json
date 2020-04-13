@@ -85,9 +85,9 @@
 	
     
     
-        "authdementiacd4a0ce0UserPoolId": {
+        "authrodrigo55de561cUserPoolId": {
             "Type": "String",
-            "Default": "authdementiacd4a0ce0UserPoolId"
+            "Default": "authrodrigo55de561cUserPoolId"
         },
         
         
@@ -258,7 +258,7 @@
                         "",
                         [
                           {
-                            "Ref": "authdementiacd4a0ce0UserPoolId"
+                            "Ref": "authrodrigo55de561cUserPoolId"
                           },
                           "-adminGroupRole"
                         ]

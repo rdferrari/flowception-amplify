@@ -1,6 +1,6 @@
 {
     "auth": {
-        "dementiacd4a0ce0": {
+        "rodrigo55de561c": {
             "service": "Cognito",
             "providerPlugin": "awscloudformation",
             "dependsOn": [],
@@ -12,7 +12,7 @@
             "dependsOn": [
                 {
                     "category": "auth",
-                    "resourceName": "dementiacd4a0ce0",
+                    "resourceName": "rodrigo55de561c",
                     "attributes": [
                         "UserPoolId",
                         "AppClientIDWeb",
@@ -24,7 +24,7 @@
         }
     },
     "api": {
-        "dementia": {
+        "rodrigo": {
             "service": "AppSync",
             "providerPlugin": "awscloudformation",
             "output": {
@@ -33,7 +33,7 @@
                         {
                             "authenticationType": "API_KEY",
                             "apiKeyConfig": {
-                                "description": "dementiapi",
+                                "description": "rodrigoApi",
                                 "apiKeyExpirationDays": "300"
                             }
                         }
@@ -41,7 +41,7 @@
                     "defaultAuthentication": {
                         "authenticationType": "AMAZON_COGNITO_USER_POOLS",
                         "userPoolConfig": {
-                            "userPoolId": "authdementiacd4a0ce0"
+                            "userPoolId": "authrodrigo55de561c"
                         }
                     }
                 }
@@ -53,14 +53,14 @@
             "dependsOn": [
                 {
                     "category": "auth",
-                    "resourceName": "dementiacd4a0ce0",
+                    "resourceName": "rodrigo55de561c",
                     "attributes": [
                         "UserPoolId"
                     ]
                 },
                 {
                     "category": "function",
-                    "resourceName": "AdminQueries440f01df",
+                    "resourceName": "AdminQueries5e5fce3c",
                     "attributes": [
                         "Arn",
                         "Name"
@@ -70,13 +70,13 @@
         }
     },
     "storage": {
-        "dementiaStorage": {
+        "rodrigoStorage": {
             "service": "S3",
             "providerPlugin": "awscloudformation",
             "dependsOn": [
                 {
                     "category": "auth",
-                    "resourceName": "dementiacd4a0ce0",
+                    "resourceName": "rodrigo55de561c",
                     "attributes": [
                         "UserPoolId"
                     ]
@@ -92,14 +92,14 @@
         }
     },
     "function": {
-        "AdminQueries440f01df": {
+        "AdminQueries5e5fce3c": {
             "service": "Lambda",
             "providerPlugin": "awscloudformation",
             "build": true,
             "dependsOn": [
                 {
                     "category": "auth",
-                    "resourceName": "dementiacd4a0ce0",
+                    "resourceName": "rodrigo55de561c",
                     "attributes": [
                         "UserPoolId"
                     ]

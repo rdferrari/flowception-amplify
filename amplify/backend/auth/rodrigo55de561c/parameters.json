@@ -1,8 +1,8 @@
 {
-    "identityPoolName": "dementiacd4a0ce0_identitypool_cd4a0ce0",
+    "identityPoolName": "rodrigo55de561c_identitypool_55de561c",
     "allowUnauthenticatedIdentities": true,
-    "resourceNameTruncated": "dementcd4a0ce0",
-    "userPoolName": "dementiacd4a0ce0_userpool_cd4a0ce0",
+    "resourceNameTruncated": "rodrig55de561c",
+    "userPoolName": "rodrigo55de561c_userpool_55de561c",
     "autoVerifiedAttributes": [
         "email"
     ],
@@ -28,9 +28,9 @@
     "userpoolClientReadAttributes": [
         "email"
     ],
-    "userpoolClientLambdaRole": "dementcd4a0ce0_userpoolclient_lambda_role",
+    "userpoolClientLambdaRole": "rodrig55de561c_userpoolclient_lambda_role",
     "userpoolClientSetAttributes": false,
-    "resourceName": "dementiacd4a0ce0",
+    "resourceName": "rodrigo55de561c",
     "authSelections": "identityPoolAndUserPool",
     "authRoleArn": {
         "Fn::GetAtt": [

@@ -1,19 +1,19 @@
 {
     "master": {
         "awscloudformation": {
-            "AuthRoleName": "amplify-dementia-master-135101-authRole",
-            "UnauthRoleArn": "arn:aws:iam::180844034732:role/amplify-dementia-master-135101-unauthRole",
-            "AuthRoleArn": "arn:aws:iam::180844034732:role/amplify-dementia-master-135101-authRole",
+            "AuthRoleName": "amplify-rodrigo-master-134315-authRole",
+            "UnauthRoleArn": "arn:aws:iam::180844034732:role/amplify-rodrigo-master-134315-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::180844034732:role/amplify-rodrigo-master-134315-authRole",
             "Region": "ap-southeast-2",
-            "DeploymentBucketName": "amplify-dementia-master-135101-deployment",
-            "UnauthRoleName": "amplify-dementia-master-135101-unauthRole",
-            "StackName": "amplify-dementia-master-135101",
-            "StackId": "arn:aws:cloudformation:ap-southeast-2:180844034732:stack/amplify-dementia-master-135101/725a3fd0-793b-11ea-9ce8-0a564743ac36",
-            "AmplifyAppId": "d2aq334lptqgqm"
+            "DeploymentBucketName": "amplify-rodrigo-master-134315-deployment",
+            "UnauthRoleName": "amplify-rodrigo-master-134315-unauthRole",
+            "StackName": "amplify-rodrigo-master-134315",
+            "StackId": "arn:aws:cloudformation:ap-southeast-2:180844034732:stack/amplify-rodrigo-master-134315/2628e6c0-7d28-11ea-be44-0229e4e38598",
+            "AmplifyAppId": "dfr2v2hp8x1c3"
         },
         "categories": {
             "auth": {
-                "dementiacd4a0ce0": {}
+                "rodrigo55de561c": {}
             }
         }
     }

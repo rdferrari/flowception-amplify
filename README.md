@@ -34,8 +34,19 @@ Clone this repository than in the project directory run:
 
 ### `amplify add auth`
 
+### `amplify update auth`
+
+Create or update Cognito user pool groups
+
 ### `amplify add api`
 
+...
+Yes, I want to make some additional changes.
+
 ### `amplify add storage`
+
+### `amplify update auth`
+
+### `amplify push`
 
 ### `amplify add host`
