@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 import "./index.scss";
 import Header from "./components/Header";
+import Footer from "./components/Footer";
 import Section from "./components/section/Section";
 import Subsection from "./components/subsection/Subsection";
 
@@ -121,6 +122,7 @@ function App() {
             <Route path="/login" component={LoginApp} />
           </Switch>
         </div>
+        <Footer />
       </Router>
     </UserContext.Provider>
   );

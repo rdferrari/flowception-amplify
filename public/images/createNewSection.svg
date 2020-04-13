@@ -1,6 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="178" height="208" viewBox="0 0 178 208">
-  <g id="Group_140" data-name="Group 140" transform="translate(-204 -810)">
-    <g id="Group_8" data-name="Group 8" transform="translate(-1329 524.375)">
+<svg xmlns="http://www.w3.org/2000/svg" width="172" height="155" viewBox="0 0 172 155">
+  <g id="Group_143" data-name="Group 143" transform="translate(-767 -788)">
+    <g id="Group_8" data-name="Group 8" transform="translate(-769 502.375)">
       <g id="Ellipse_2" data-name="Ellipse 2" transform="translate(1572 285.625)" fill="none" stroke="#29ad85" stroke-width="8">
         <circle cx="50" cy="50" r="50" stroke="none"/>
         <circle cx="50" cy="50" r="46" fill="none"/>
@@ -8,6 +8,6 @@
       <line id="Line_4" data-name="Line 4" y2="35.085" transform="translate(1621.813 321.712)" fill="none" stroke="#29ad85" stroke-linecap="round" stroke-width="8"/>
       <line id="Line_5" data-name="Line 5" x1="33.331" transform="translate(1605.147 339.278)" fill="none" stroke="#29ad85" stroke-linecap="round" stroke-width="8"/>
     </g>
-    <text id="Create_a_new_section" data-name="Create a new section" transform="translate(204 930)" fill="#29ad85" font-size="30" font-family="Raleway-Regular, Raleway"><tspan x="31.28" y="28">Create a </tspan><tspan x="5.735" y="63">new section</tspan></text>
+    <text id="New_section" data-name="New section" transform="translate(853 936)" fill="#29ad85" font-size="30" font-family="Raleway-Regular, Raleway"><tspan x="-85.995" y="0">New section</tspan></text>
   </g>
 </svg>

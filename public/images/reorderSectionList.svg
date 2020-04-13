@@ -1,31 +1,31 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="178" height="208" viewBox="0 0 178 208">
-  <g id="Group_139" data-name="Group 139" transform="translate(-486 -810)">
-    <g id="Group_7" data-name="Group 7" transform="translate(-1054.431 324.814)">
-      <g id="Rectangle_5" data-name="Rectangle 5" transform="translate(1583.431 485.186)" fill="none" stroke="#29ad85" stroke-linecap="round" stroke-linejoin="round" stroke-width="8">
-        <rect width="41" height="41" stroke="none"/>
-        <rect x="4" y="4" width="33" height="33" fill="none"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="168" height="155" viewBox="0 0 168 155">
+  <g id="Group_142" data-name="Group 142" transform="translate(-1051 -788)">
+    <g id="Group_7" data-name="Group 7" transform="translate(-498.53 302.814)">
+      <g id="Rectangle_5" data-name="Rectangle 5" transform="translate(1583.53 485.186)" fill="none" stroke="#29ad85" stroke-linecap="round" stroke-linejoin="round" stroke-width="6">
+        <rect width="45" height="45" stroke="none"/>
+        <rect x="3" y="3" width="39" height="39" fill="none"/>
       </g>
-      <g id="Rectangle_6" data-name="Rectangle 6" transform="translate(1634.431 485.186)" fill="none" stroke="#29ad85" stroke-linecap="round" stroke-linejoin="round" stroke-width="8">
-        <rect width="40" height="41" stroke="none"/>
-        <rect x="4" y="4" width="32" height="33" fill="none"/>
+      <g id="Rectangle_6" data-name="Rectangle 6" transform="translate(1639.53 485.186)" fill="none" stroke="#29ad85" stroke-linecap="round" stroke-linejoin="round" stroke-width="6">
+        <rect width="44" height="45" stroke="none"/>
+        <rect x="3" y="3" width="38" height="39" fill="none"/>
       </g>
-      <g id="Rectangle_7" data-name="Rectangle 7" transform="translate(1584.431 485.186)" fill="none" stroke="#29ad85" stroke-linecap="round" stroke-linejoin="round" stroke-width="8">
-        <rect width="40" height="41" stroke="none"/>
-        <rect x="4" y="4" width="32" height="33" fill="none"/>
+      <g id="Rectangle_7" data-name="Rectangle 7" transform="translate(1584.53 485.186)" fill="none" stroke="#29ad85" stroke-linecap="round" stroke-linejoin="round" stroke-width="6">
+        <rect width="44" height="45" stroke="none"/>
+        <rect x="3" y="3" width="38" height="39" fill="none"/>
       </g>
-      <g id="Rectangle_8" data-name="Rectangle 8" transform="translate(1634.431 485.186)" fill="none" stroke="#29ad85" stroke-linecap="round" stroke-linejoin="round" stroke-width="8">
-        <rect width="41" height="41" stroke="none"/>
-        <rect x="4" y="4" width="33" height="33" fill="none"/>
+      <g id="Rectangle_8" data-name="Rectangle 8" transform="translate(1639.53 485.186)" fill="none" stroke="#29ad85" stroke-linecap="round" stroke-linejoin="round" stroke-width="6">
+        <rect width="45" height="45" stroke="none"/>
+        <rect x="3" y="3" width="39" height="39" fill="none"/>
       </g>
-      <g id="Rectangle_9" data-name="Rectangle 9" transform="translate(1584.431 535.186)" fill="none" stroke="#29ad85" stroke-linecap="round" stroke-linejoin="round" stroke-width="8">
-        <rect width="40" height="41" stroke="none"/>
-        <rect x="4" y="4" width="32" height="33" fill="none"/>
+      <g id="Rectangle_9" data-name="Rectangle 9" transform="translate(1584.53 540.186)" fill="none" stroke="#29ad85" stroke-linecap="round" stroke-linejoin="round" stroke-width="6">
+        <rect width="44" height="45" stroke="none"/>
+        <rect x="3" y="3" width="38" height="39" fill="none"/>
       </g>
-      <g id="Rectangle_10" data-name="Rectangle 10" transform="translate(1634.431 535.186)" fill="none" stroke="#29ad85" stroke-linecap="round" stroke-linejoin="round" stroke-width="8">
-        <rect width="41" height="41" stroke="none"/>
-        <rect x="4" y="4" width="33" height="33" fill="none"/>
+      <g id="Rectangle_10" data-name="Rectangle 10" transform="translate(1639.53 540.186)" fill="none" stroke="#29ad85" stroke-linecap="round" stroke-linejoin="round" stroke-width="6">
+        <rect width="45" height="45" stroke="none"/>
+        <rect x="3" y="3" width="39" height="39" fill="none"/>
       </g>
     </g>
-    <text id="Reorder_section_list" data-name="Reorder section list" transform="translate(486 930)" fill="#29ad85" font-size="30" font-family="Raleway-Regular, Raleway"><tspan x="33.425" y="28">Reorder </tspan><tspan x="15.185" y="63">section list</tspan></text>
+    <text id="Reorder_List" data-name="Reorder List" transform="translate(1135 936)" fill="#29ad85" font-size="30" font-family="Raleway-Regular, Raleway"><tspan x="-83.385" y="0">Reorder List</tspan></text>
   </g>
 </svg>
