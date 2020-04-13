@@ -1,3 +1,11 @@
+.section-tagline {
+  width: 85%;
+
+  @media (min-width: $screen-lg-min) {
+    width: 70%;
+  }
+}
+
 .section-list-container {
   padding: $space-xm;
   width: 100%;
@@ -17,10 +25,6 @@
   @media (min-width: $screen-lg-min) {
     padding: 0 $space-xl 0 $space-md;
   }
-}
-
-.section-desktop-flex {
-  display: flex;
 }
 
 .section-desktop-right {
@@ -60,14 +64,6 @@
   left: 50%;
   text-align: center;
   transform: translate(-50%, -50%);
-}
-
-.section-desktop-list-scroll {
-  @media (min-width: $screen-lg-min) {
-    height: 85vh;
-    overflow: scroll;
-    padding: $space-md;
-  }
 }
 
 .section-card {

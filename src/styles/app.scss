@@ -22,8 +22,10 @@ a {
 }
 
 .app-container {
-  margin-top: 56px;
-  padding-top: $space-xm / 2;
+  margin: 0 $space-sm;
+  @media (min-width: $screen-lg-min) {
+    margin: 0 $space-xl * 3;
+  }
 }
 
 .app-login-container {

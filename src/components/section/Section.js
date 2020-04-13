@@ -85,32 +85,28 @@ const Section = () => {
   return (
     <UserContext.Consumer>
       {({ user, group }) => (
-        <div className="section-desktop-flex">
-          <div className="section-list-container">
-            {user && group === "admin" && (
-              <div className="section-create-container">
-                <CreateSection user={user} sections={sections} />
-              </div>
-            )}
+        <div className="">
+          <img
+            className="section-tagline"
+            src="/images/tagline.svg"
+            alt="WHAT WE CAN DESCRIBE IS IMPERMANENT"
+          />
+          {user && group === "admin" && (
+            <div className="section-create-container">
+              <CreateSection user={user} sections={sections} />
+            </div>
+          )}
 
-            <DragDropContext onDragEnd={onDragEnd}>
-              <Droppable droppableId="list">
-                {(provided) => (
-                  <div ref={provided.innerRef} {...provided.droppableProps}>
-                    <ListSection
-                      user={user}
-                      group={group}
-                      sections={sections}
-                    />
-                    {provided.placeholder}
-                  </div>
-                )}
-              </Droppable>
-            </DragDropContext>
-
-            {/* <ListSection user={user} group={group} sections={sections} /> */}
-          </div>
-          ​
+          <DragDropContext onDragEnd={onDragEnd}>
+            <Droppable droppableId="list">
+              {(provided) => (
+                <div ref={provided.innerRef} {...provided.droppableProps}>
+                  <ListSection user={user} group={group} sections={sections} />
+                  {provided.placeholder}
+                </div>
+              )}
+            </Droppable>
+          </DragDropContext>
         </div>
       )}
     </UserContext.Consumer>

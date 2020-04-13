@@ -5,7 +5,7 @@ import ItemSectionDraggable from "./ItemSectionDraggable";
 function ListSection({ user, group, sections }) {
   const [isDraggable, setIsDraggable] = useState(false);
   return (
-    <div className="section-desktop-list-scroll">
+    <div className="">
       {group === "admin" && (
         <button onClick={() => setIsDraggable(!isDraggable)}>
           {isDraggable === true
