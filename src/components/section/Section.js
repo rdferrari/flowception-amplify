@@ -6,6 +6,7 @@ import { updateSection } from "../../graphql/mutations";
 import { onCreateSection } from "../../graphql/subscriptions";
 import CreateSection from "./CreateSection";
 import ListSection from "./ListSection";
+import AdminMenu from "../AdminMenu";
 
 import { DragDropContext, Droppable } from "react-beautiful-dnd";
 
@@ -99,29 +100,14 @@ const Section = () => {
           {user && group === "admin" && (
             <>
               {showCreateSection === false && (
-                <div>
-                  <img
-                    className="section-admin-buttons"
-                    src="/images/createNewSection.svg"
-                    alt="New section"
-                    onClick={() => setShowCreateSection(true)}
-                  />
-                  {isDraggable === false ? (
-                    <img
-                      className="section-admin-buttons"
-                      src="/images/reorderSectionList.svg"
-                      alt="Reorder section list"
-                      onClick={() => setIsDraggable(!isDraggable)}
-                    />
-                  ) : (
-                    <img
-                      className="section-admin-buttons"
-                      src="/images/sectionList.svg"
-                      alt="Reorder section list"
-                      onClick={() => setIsDraggable(!isDraggable)}
-                    />
-                  )}
-                </div>
+                <AdminMenu
+                  createIcon="createNewSection.svg"
+                  setShowCreate={setShowCreateSection}
+                  reorderIcon="reorderSectionList.svg"
+                  setIsDraggable={setIsDraggable}
+                  isDraggable={isDraggable}
+                  listIcon="sectionList.svg"
+                />
               )}
 
               {showCreateSection === true && (

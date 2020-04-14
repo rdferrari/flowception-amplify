@@ -17,6 +17,7 @@ import ItemsSubsection from "./ItemsSubsection";
 import DetailSection from "../section/DetailSection";
 import CreateSubsection from "./CreateSubsection";
 import ListSubsectionDraggable from "./ListSubsectionDraggable";
+import AdminMenu from "../AdminMenu";
 
 function Subsection(props) {
   let { id } = useParams();
@@ -29,6 +30,7 @@ function Subsection(props) {
   const [urlPath, setUrlPath] = useState(null);
   const [editSection, setEditSection] = useState(false);
   const [isDraggable, setIsDraggable] = useState(false);
+  const [showCreateSubsection, setShowCreateSubsection] = useState(false);
 
   useEffect(() => {
     getPublicData();
@@ -161,7 +163,7 @@ function Subsection(props) {
       {({ user, group }) => (
         <div>
           <div>
-            {isDraggable === false && (
+            {showCreateSubsection === false && (
               <div>
                 {editSection === false ? (
                   <DetailSection
@@ -194,8 +196,19 @@ function Subsection(props) {
                     />
                   )
                 )}
-
-                {user && group === "admin" && (
+              </div>
+            )}
+            {user && group === "admin" && (
+              <div>
+                <AdminMenu
+                  createIcon="createNewSection.svg"
+                  setShowCreate={setShowCreateSubsection}
+                  reorderIcon="reorderSectionList.svg"
+                  setIsDraggable={setIsDraggable}
+                  isDraggable={isDraggable}
+                  listIcon="sectionList.svg"
+                />
+                {showCreateSubsection === true && (
                   <CreateSubsection
                     sectionId={id}
                     getPublicData={getPublicData}
@@ -204,12 +217,6 @@ function Subsection(props) {
                 )}
               </div>
             )}
-
-            <button onClick={() => setIsDraggable(!isDraggable)}>
-              {isDraggable === true
-                ? "Reorder List: active"
-                : "Reorder List: NO active"}{" "}
-            </button>
 
             {isDraggable === false ? (
               subsections &&

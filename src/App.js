@@ -10,6 +10,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Section from "./components/section/Section";
 import Subsection from "./components/subsection/Subsection";
+import ScrollToTop from "./components/ScrollToTop";
 
 import { Authenticator, AmplifyTheme } from "aws-amplify-react";
 import Amplify from "@aws-amplify/core";
@@ -29,14 +30,6 @@ function LoginApp() {
       <Authenticator theme={theme} />
     </div>
   );
-}
-
-function ScrollToTopOnMount() {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-
-  return null;
 }
 
 function App() {
@@ -107,7 +100,7 @@ function App() {
   return (
     <UserContext.Provider value={{ user, username, group }}>
       <Router>
-        <ScrollToTopOnMount />
+        <ScrollToTop />
         <Header handleSignOut={handleSignOut} />
         <div className="app-container">
           <Switch>

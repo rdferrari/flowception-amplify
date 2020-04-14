@@ -121,7 +121,7 @@
 .section-detail-text-container {
   padding: 0 $space-xm;
   @media (min-width: $screen-lg-min) {
-    padding: 0 $space-xl * 2;
+    padding: 0 $space-xl * 4 0 0;
   }
 }
 
@@ -151,6 +151,24 @@
 }
 
 // Subsection
+
+.subsection-card-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+
+  @media (min-width: $screen-lg-min) {
+    height: 400px;
+  }
+}
+
+.subsection-container {
+  width: 100%;
+
+  @media (min-width: $screen-lg-min) {
+    width: 80%;
+  }
+}
 
 .section-sub-create {
   background-color: $primary-color;

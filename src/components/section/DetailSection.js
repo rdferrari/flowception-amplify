@@ -10,11 +10,11 @@ function DetailSection({
   group,
   setEditSection,
   handleDeleteSection,
-  sectionId
+  sectionId,
 }) {
   return (
-    <div>
-      {urlKey && <S3Image className="section-card-image" imgKey={urlKey} />}
+    <div className="subsection-container">
+      {urlKey && <S3Image className="subsection-card-image" imgKey={urlKey} />}
       <div className="section-detail-text-container">
         <div>
           <h2 className="section-title">{title}</h2>
