@@ -42,7 +42,7 @@ a {
 }
 
 .footer-container {
-  background-color: $primary-color;
+  background-color: $primary-color-0;
   color: white;
   margin-top: 60px;
   width: 100%;
@@ -185,4 +185,13 @@ a {
   left: 0;
   top: 0;
   opacity: 0;
+}
+
+.learn-more {
+  color: $secondary-color;
+  font-size: $font-lg;
+
+  @media (min-width: $screen-lg-min) {
+    font-size: $font-xl * 0.8;
+  }
 }

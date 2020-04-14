@@ -32,19 +32,9 @@ function ItemSectionDraggable({ sections }) {
               {...provided.draggableProps}
               {...provided.dragHandleProps}
             >
-              <Link to={`/section/${section.id}`}>
-                {section.urlKey && (
-                  <S3Image
-                    className="section-card-image"
-                    imgKey={section.urlKey}
-                  />
-                )}
-                <div className="section-card-text-container">
-                  <h2 className="section-card-text-title">{section.title}</h2>
-                  <p className="section-card-text">{section.intro}</p>
-                  {location.pathname !== "/sections" && <p>{section.body}</p>}
-                </div>
-              </Link>
+              <div className="section-card-text-container">
+                <h2 className="section-card-text-title">{section.title}</h2>
+              </div>
             </div>
           )}
         </Draggable>

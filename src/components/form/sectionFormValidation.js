@@ -6,5 +6,8 @@ export default function validate(values) {
   if (!values.intro) {
     errors.intro = "Intro is required";
   }
+  if (!values.body) {
+    errors.body = "Body text is required";
+  }
   return errors;
 }

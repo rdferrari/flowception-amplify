@@ -80,6 +80,7 @@ function CreateSection({ sections, setShowCreateSection }) {
           required
         />
 
+        {errors.body && <p className="input-error">* {errors.body}</p>}
         <textarea
           rows="6"
           cols="60"

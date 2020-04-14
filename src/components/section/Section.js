@@ -87,7 +87,7 @@ const Section = () => {
   return (
     <UserContext.Consumer>
       {({ user, group }) => (
-        <div className="">
+        <div>
           {showCreateSection === false && (
             <img
               className="section-tagline"
@@ -106,12 +106,21 @@ const Section = () => {
                     alt="New section"
                     onClick={() => setShowCreateSection(true)}
                   />
-
-                  <img
-                    className="section-admin-buttons"
-                    src="/images/reorderSectionList.svg"
-                    alt="Reorder section list"
-                  />
+                  {isDraggable === false ? (
+                    <img
+                      className="section-admin-buttons"
+                      src="/images/reorderSectionList.svg"
+                      alt="Reorder section list"
+                      onClick={() => setIsDraggable(!isDraggable)}
+                    />
+                  ) : (
+                    <img
+                      className="section-admin-buttons"
+                      src="/images/sectionList.svg"
+                      alt="Reorder section list"
+                      onClick={() => setIsDraggable(!isDraggable)}
+                    />
+                  )}
                 </div>
               )}
 
