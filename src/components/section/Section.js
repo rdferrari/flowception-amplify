@@ -96,7 +96,7 @@ const Section = () => {
             />
           )}
 
-          {group === "admin" && (
+          {user && group === "admin" && (
             <>
               {showCreateSection === false && (
                 <div>

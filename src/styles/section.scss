@@ -1,8 +1,10 @@
 .section-tagline {
-  width: 85%;
+  width: 95%;
+  margin: $space-md 0;
 
   @media (min-width: $screen-lg-min) {
     width: 70%;
+    margin: $space-lg 0 $space-xl * 3 0;
   }
 }
 
@@ -29,7 +31,7 @@
 .section-card {
   @media (min-width: $screen-lg-min) {
     margin-right: $space-xl * 3;
-    width: 40%;
+    width: 500px;
   }
 }
 
