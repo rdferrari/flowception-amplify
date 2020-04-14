@@ -11,6 +11,8 @@ import { DragDropContext, Droppable } from "react-beautiful-dnd";
 
 const Section = () => {
   const [sections, updateSections] = useState([]);
+  const [showCreateSection, setShowCreateSection] = useState(false);
+  const [isDraggable, setIsDraggable] = useState(false);
 
   useEffect(() => {
     getPublicData();
@@ -86,42 +88,59 @@ const Section = () => {
     <UserContext.Consumer>
       {({ user, group }) => (
         <div className="">
-          <img
-            className="section-tagline"
-            src="/images/tagline.svg"
-            alt="WHAT WE CAN DESCRIBE IS IMPERMANENT"
-          />
-
-          <div>
+          {showCreateSection === false && (
             <img
-              className="section-admin-buttons"
-              src="/images/createNewSection.svg"
-              alt="New section"
+              className="section-tagline"
+              src="/images/tagline.svg"
+              alt="WHAT WE CAN DESCRIBE IS IMPERMANENT"
             />
-
-            <img
-              className="section-admin-buttons"
-              src="/images/reorderSectionList.svg"
-              alt="Reorder section list"
-            />
-          </div>
-
-          {user && group === "admin" && (
-            <div className="section-create-container">
-              <CreateSection user={user} sections={sections} />
-            </div>
           )}
 
-          <DragDropContext onDragEnd={onDragEnd}>
-            <Droppable droppableId="list">
-              {(provided) => (
-                <div ref={provided.innerRef} {...provided.droppableProps}>
-                  <ListSection user={user} group={group} sections={sections} />
-                  {provided.placeholder}
+          {group === "admin" && (
+            <>
+              {showCreateSection === false && (
+                <div>
+                  <img
+                    className="section-admin-buttons"
+                    src="/images/createNewSection.svg"
+                    alt="New section"
+                    onClick={() => setShowCreateSection(true)}
+                  />
+
+                  <img
+                    className="section-admin-buttons"
+                    src="/images/reorderSectionList.svg"
+                    alt="Reorder section list"
+                  />
                 </div>
               )}
-            </Droppable>
-          </DragDropContext>
+
+              {showCreateSection === true && (
+                <CreateSection
+                  user={user}
+                  sections={sections}
+                  setShowCreateSection={setShowCreateSection}
+                />
+              )}
+            </>
+          )}
+
+          {showCreateSection === false && (
+            <DragDropContext onDragEnd={onDragEnd}>
+              <Droppable droppableId="list">
+                {(provided) => (
+                  <div ref={provided.innerRef} {...provided.droppableProps}>
+                    <ListSection
+                      user={user}
+                      sections={sections}
+                      isDraggable={isDraggable}
+                    />
+                    {provided.placeholder}
+                  </div>
+                )}
+              </Droppable>
+            </DragDropContext>
+          )}
         </div>
       )}
     </UserContext.Consumer>

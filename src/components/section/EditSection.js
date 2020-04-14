@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { API, graphqlOperation, Storage } from "aws-amplify";
-import { S3Image } from "aws-amplify-react";
+import { API, graphqlOperation } from "aws-amplify";
 import { updateSection } from "../../graphql/mutations";
+import Upload from "../Upload";
 
 import useForm from "../form/useForm";
 import validate from "../form/sectionFormValidation";
@@ -16,11 +16,8 @@ function EditSection({
   getPublicData,
   setEditSection,
 }) {
-  const [uploading, setUploading] = useState(false);
   const [urlKey, setUrlKey] = useState(iniUrlKey);
   const [urlPath, setUrlPath] = useState(iniUrlPath);
-  const [progressLoaded, setProgressLoaded] = useState("");
-  const [progressTotal, setProgressTotal] = useState("");
 
   const INIT_VALUES = {
     title: iniTitle,
@@ -72,65 +69,16 @@ function EditSection({
     console.info(`Updated section: id ${result.data.updateSection.id}`);
   };
 
-  const handleUploadFile = async (event) => {
-    event.preventDefault();
-    const file = event.target.files[0];
-
-    const randomExtension = Math.floor(Math.random() * 90000) + 10000;
-
-    const name = randomExtension + file.name;
-
-    setUploading(true);
-
-    Storage.put(name, file, {
-      progressCallback(progress) {
-        setProgressLoaded(progress.loaded);
-        setProgressTotal(progress.total);
-      },
-    }).then(() => {
-      setUrlKey(name);
-      setUploading(false);
-      Storage.get(name)
-        .then((result) => setUrlPath(result))
-        .catch((err) => console.log(err));
-      updateUrl(name, urlPath);
-    });
-  };
-
-  const handleDeleteImage = async (imageUrl) => {
-    Storage.remove(imageUrl).then(() => {
-      setUrlKey(null);
-      updateUrl(null, null);
-    });
-  };
-
   return (
     <div>
-      {urlKey ? (
-        <div>
-          <S3Image className="section-card-image" imgKey={urlKey} />
-          <div className="section-detail-text-container">
-            <button
-              className="primary-button button-dark"
-              onClick={() => handleDeleteImage(urlKey)}
-            >
-              Delete image
-            </button>
-          </div>
-        </div>
-      ) : (
-        <div className="upload-btn-wrapper">
-          <input type="file" onChange={handleUploadFile} className="myfile" />
-          {uploading === false ? (
-            <img className="btn" src="/images/UploadBt.svg" />
-          ) : (
-            <div>
-              <img className="btn" src="/images/Uploading.svg" />
-              <p>Uploading: {(progressLoaded / progressTotal) * 100} %</p>
-            </div>
-          )}
-        </div>
-      )}
+      <Upload
+        setUrlKey={setUrlKey}
+        setUrlPath={setUrlPath}
+        urlPath={urlPath}
+        urlKey={urlKey}
+        updateUrl={updateUrl}
+      />
+
       <div className="section-detail-text-container">
         <form onSubmit={handleSubmit}>
           <input

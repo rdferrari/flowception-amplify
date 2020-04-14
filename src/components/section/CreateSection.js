@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { Auth, API, graphqlOperation, Storage } from "aws-amplify";
-import { S3Image } from "aws-amplify-react";
+import { Auth, API, graphqlOperation } from "aws-amplify";
 import { createSection } from "../../graphql/mutations";
 import useForm from "../form/useForm";
 import validate from "../form/sectionFormValidation";
+import Upload from "../Upload";
 
 const INIT_VALUES = {
   title: "",
@@ -11,11 +11,9 @@ const INIT_VALUES = {
   body: "",
 };
 
-function CreateSection({ sections }) {
+function CreateSection({ sections, setShowCreateSection }) {
   const [urlKey, setUrlKey] = useState(null);
   const [urlPath, setUrlPath] = useState(null);
-  const [showForm, setShowForm] = useState(false);
-  const [uploading, setUploading] = useState(false);
 
   const handleSubmitApi = async () => {
     const input = {
@@ -38,6 +36,7 @@ function CreateSection({ sections }) {
 
     setUrlKey(null);
     setUrlPath(null);
+    setShowCreateSection(false);
   };
 
   const { values, errors, handleChange, handleSubmit } = useForm(
@@ -46,118 +45,66 @@ function CreateSection({ sections }) {
     validate
   );
 
-  const handleUploadFile = async (event) => {
-    event.preventDefault();
-    const file = event.target.files[0];
+  return (
+    <div className="section-create-container">
+      <Upload
+        setUrlKey={setUrlKey}
+        setUrlPath={setUrlPath}
+        urlPath={urlPath}
+        urlKey={urlKey}
+      />
 
-    const randomExtension = Math.floor(Math.random() * 90000) + 10000;
+      <form onSubmit={handleSubmit} noValidate>
+        {errors.title && <p className="input-error">* {errors.title}</p>}
+        <textarea
+          rows="2"
+          cols="60"
+          placeholder="Section title"
+          className="input-light section-card-text-title"
+          type="text"
+          name="title"
+          onChange={handleChange}
+          value={values.title || ""}
+          required
+        />
+        {errors.intro && <p className="input-error">* {errors.intro}</p>}
+        <textarea
+          rows="6"
+          cols="60"
+          placeholder="Section introduction"
+          className="input-light section-card-text"
+          type="text"
+          name="intro"
+          onChange={handleChange}
+          value={values.intro || ""}
+          required
+        />
 
-    const name = randomExtension + file.name;
+        <textarea
+          rows="6"
+          cols="60"
+          placeholder="Section body text"
+          className="input-light section-card-text"
+          type="text"
+          name="body"
+          onChange={handleChange}
+          value={values.body || ""}
+        />
 
-    setUploading(true);
-
-    Storage.put(name, file).then(() => {
-      setUrlKey(name);
-      setUploading(false);
-      Storage.get(name)
-        .then((result) => setUrlPath(result))
-        .catch((err) => console.log(err));
-    });
-  };
-
-  const handleDeleteImage = async (imageUrl) => {
-    Storage.remove(imageUrl).then(() => {
-      setUrlKey(null);
-    });
-  };
-
-  if (showForm === false) {
-    return (
-      <div>
-        <button
-          className="add-section-button button-dark"
-          onClick={() => setShowForm(true)}
-        >
-          Add new section
-        </button>
-      </div>
-    );
-  } else {
-    return (
-      <div>
-        {urlKey ? (
-          <div>
-            <S3Image className="section-card-image" imgKey={urlKey} />
-            <button
-              className="primary-button button-transparent"
-              onClick={() => handleDeleteImage(urlKey)}
-            >
-              Delete image
-            </button>
-          </div>
-        ) : (
-          <div className="upload-btn-wrapper">
-            <input type="file" onChange={handleUploadFile} className="myfile" />
-            {uploading === false ? (
-              <img className="btn" src="/images/UploadBt.svg" />
-            ) : (
-              <img className="btn" src="/images/Uploading.svg" />
-            )}
-          </div>
-        )}
-
-        <form onSubmit={handleSubmit} noValidate>
-          <input
-            placeholder="Section title"
-            className="input-light"
-            type="text"
-            name="title"
-            onChange={handleChange}
-            value={values.title || ""}
-            required
-          />
-          {errors.title && <p>{errors.title}</p>}
-
-          <textarea
-            rows="6"
-            cols="60"
-            placeholder="Section introduction"
-            className="input-light"
-            type="text"
-            name="intro"
-            onChange={handleChange}
-            value={values.intro || ""}
-            required
-          />
-
-          {errors.intro && <p>{errors.intro}</p>}
-
-          <textarea
-            rows="6"
-            cols="60"
-            placeholder="Section body text"
-            className="input-light"
-            type="text"
-            name="body"
-            onChange={handleChange}
-            value={values.body || ""}
-          />
-
-          <div className="section-button-flex">
-            <button className="primary-button button-dark" type="submit">
-              Add new section
-            </button>
-            <button
-              className="primary-button button-transparent"
-              onClick={() => setShowForm(false)}
-            >
-              Close form
-            </button>
-          </div>
-        </form>
-      </div>
-    );
-  }
+        <div className="section-button-flex">
+          <button className="primary-button button-dark" type="submit">
+            Add new section
+          </button>
+          <button
+            className="primary-button button-transparent"
+            onClick={() => setShowCreateSection(false)}
+          >
+            Close form
+          </button>
+        </div>
+      </form>
+    </div>
+  );
 }
 
 export default CreateSection;

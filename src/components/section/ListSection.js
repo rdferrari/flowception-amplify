@@ -2,18 +2,9 @@ import React, { useState } from "react";
 import ItemSection from "./ItemSection";
 import ItemSectionDraggable from "./ItemSectionDraggable";
 
-function ListSection({ user, group, sections }) {
-  const [isDraggable, setIsDraggable] = useState(false);
+function ListSection({ user, sections, isDraggable }) {
   return (
     <div className="">
-      {group === "admin" && (
-        <button onClick={() => setIsDraggable(!isDraggable)}>
-          {isDraggable === true
-            ? "Reorder List: active"
-            : "Reorder List: NO active"}{" "}
-        </button>
-      )}
-
       {isDraggable === false ? (
         <ItemSection sections={sections} user={user} />
       ) : (

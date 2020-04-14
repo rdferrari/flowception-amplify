@@ -80,9 +80,9 @@ a {
 }
 
 .button-dark {
-  background-color: $primary-color;
+  background-color: $secondary-color;
   border: none;
-  color: $secondary-color;
+  color: white;
 }
 
 .button-light {
@@ -93,8 +93,8 @@ a {
 
 .button-transparent {
   background-color: transparent;
-  border: 1px solid $primary-color;
-  color: $primary-color;
+  border: 1px solid $secondary-color;
+  color: $secondary-color;
 }
 
 .button-transparent-light {
@@ -150,14 +150,28 @@ a {
   width: 95%;
 }
 
+.input-error {
+  color: $alert-color;
+  font-size: $space-sm;
+}
+
 .upload-btn-wrapper {
   position: relative;
   overflow: hidden;
   display: inline-block;
+  margin: $space-sm $space-sm $space-sm 0;
+
+  @media (min-width: $screen-lg-min) {
+    margin: $space-md $space-md $space-md 0;
+  }
 }
 
 .btn {
-  width: 100%;
+  width: 60px;
+
+  @media (min-width: $screen-lg-min) {
+    width: 100px;
+  }
 }
 
 .myfile {

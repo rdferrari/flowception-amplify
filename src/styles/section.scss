@@ -26,8 +26,9 @@
 }
 
 .section-create-container {
+  width: 100%;
   @media (min-width: $screen-lg-min) {
-    width: 100%;
+    width: 800px;
   }
 }
 
@@ -114,6 +115,7 @@
 }
 
 .section-card-text-title {
+  font-family: $primary-font-black, serif;
   color: $primary-color-0;
   font-size: $font-lg;
   @media (min-width: $screen-lg-min) {
@@ -128,47 +130,13 @@
   }
 }
 
-// Section hero
+.section-uploaded-image {
+  width: 100px;
+}
 
 .section-button-flex {
   display: flex;
   margin: $space-lg 0;
-}
-
-.section-hero-container {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  margin-top: 30px;
-  width: 100%;
-}
-
-.section-hero-image {
-  width: 100%;
-}
-
-.section-hero-tag-container {
-  text-align: center;
-}
-
-.section-hero-tag {
-  font-size: $font-lg;
-  padding: 0 $space-md;
-
-  @media (min-width: $screen-lg-min) {
-    font-size: $font-xl;
-  }
-}
-
-.section-hero-subtag {
-  font-size: $font-md;
-  @media (min-width: $screen-lg-min) {
-    font-size: $font-lg;
-  }
-}
-
-.section-hero-disclaimer {
-  margin-top: 50px;
 }
 
 // Subsection

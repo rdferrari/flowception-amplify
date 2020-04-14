@@ -4,6 +4,7 @@ import { createSubsection } from "../../graphql/mutations";
 
 import useForm from "../form/useForm";
 import validate from "../form/subsectionFormValidation";
+import Upload from "../Upload";
 
 const INIT_VALUES = {
   title: "",
@@ -13,25 +14,24 @@ const INIT_VALUES = {
 const MediaType = ({
   mediaType,
   type,
-  uploading,
-  handleUploadFile,
   createSubsectionMedia,
-  setShowForm,
+  setUrlKey,
+  setUrlPath,
+  urlPath,
   urlKey,
+  setShowForm,
 }) => {
   return (
     mediaType === type && (
       <div className="upload-btn-wrapper">
-        {!urlKey ? (
-          <div>
-            <input type="file" onChange={handleUploadFile} className="myfile" />
-            {uploading === false ? (
-              <img className="btn" src="/images/UploadBt.svg" />
-            ) : (
-              <img className="btn" src="/images/Uploading.svg" />
-            )}
-          </div>
-        ) : (
+        <Upload
+          setUrlKey={setUrlKey}
+          setUrlPath={setUrlPath}
+          urlPath={urlPath}
+          urlKey={urlKey}
+        />
+
+        {urlKey && (
           <button
             className="primary-button button-transparent-light"
             onClick={createSubsectionMedia}
@@ -54,8 +54,6 @@ const MediaType = ({
 };
 
 function CreateSubsection({ sectionId, subsections }) {
-  // const { value: title, bind: bindTitle, reset: resetTitle } = useInput(null);
-  // const { value: text, bind: bindText, reset: resetText } = useInput(null);
   const [urlKey, setUrlKey] = useState(null);
   const [urlPath, setUrlPath] = useState(null);
   const [mediaType, setMediaType] = useState(null);
@@ -178,46 +176,42 @@ function CreateSubsection({ sectionId, subsections }) {
             <MediaType
               mediaType={mediaType}
               type="IMAGE"
-              setUploading={setUploading}
-              handleUploadFile={handleUploadFile}
-              uploading={uploading}
               setShowForm={setShowForm}
               createSubsectionMedia={() => createSubsectionMedia(urlKey)}
-              urlKey={urlKey}
+              setUrlKey={setUrlKey}
               setUrlPath={setUrlPath}
+              urlPath={urlPath}
+              urlKey={urlKey}
             />
             <MediaType
               mediaType={mediaType}
               type="VIDEO"
-              setUploading={setUploading}
-              handleUploadFile={handleUploadFile}
-              uploading={uploading}
               setShowForm={setShowForm}
               createSubsectionMedia={() => createSubsectionMedia(urlKey)}
-              urlKey={urlKey}
+              setUrlKey={setUrlKey}
               setUrlPath={setUrlPath}
+              urlPath={urlPath}
+              urlKey={urlKey}
             />
             <MediaType
               mediaType={mediaType}
               type="IMAGE_360"
-              setUploading={setUploading}
-              handleUploadFile={handleUploadFile}
-              uploading={uploading}
               setShowForm={setShowForm}
               createSubsectionMedia={() => createSubsectionMedia(urlKey)}
-              urlKey={urlKey}
+              setUrlKey={setUrlKey}
               setUrlPath={setUrlPath}
+              urlPath={urlPath}
+              urlKey={urlKey}
             />
             <MediaType
               mediaType={mediaType}
               type="VIDEO_360"
-              setUploading={setUploading}
-              handleUploadFile={handleUploadFile}
-              uploading={uploading}
               setShowForm={setShowForm}
               createSubsectionMedia={() => createSubsectionMedia(urlKey)}
-              urlKey={urlKey}
+              setUrlKey={setUrlKey}
               setUrlPath={setUrlPath}
+              urlPath={urlPath}
+              urlKey={urlKey}
             />
 
             <form onSubmit={handleSubmit} noValidate>
