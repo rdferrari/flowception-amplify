@@ -5,6 +5,7 @@ import Upload from "../Upload";
 
 import useForm from "../form/useForm";
 import validate from "../form/sectionFormValidation";
+import SectionForm from "./SectionForm";
 
 function EditSection({
   sectionId,
@@ -79,59 +80,14 @@ function EditSection({
         updateUrl={updateUrl}
       />
 
-      <div className="section-detail-text-container">
-        <form onSubmit={handleSubmit}>
-          <input
-            placeholder="Section title"
-            className="input-light"
-            type="text"
-            name="title"
-            onChange={handleChange}
-            value={values.title || ""}
-            required
-          />
-          {errors.title && <p>{errors.title}</p>}
-
-          <textarea
-            rows="6"
-            cols="60"
-            placeholder="Section introduction"
-            className="input-light"
-            type="text"
-            name="intro"
-            onChange={handleChange}
-            value={values.intro || ""}
-            required
-          />
-
-          {errors.intro && <p>{errors.intro}</p>}
-
-          <textarea
-            rows="6"
-            cols="60"
-            placeholder="Section body text"
-            className="input-light"
-            type="text"
-            name="body"
-            onChange={handleChange}
-            value={values.body || ""}
-          />
-
-          <div className="section-button-flex">
-            <input
-              className="primary-button button-dark"
-              type="submit"
-              value="Save section"
-            />
-            <button
-              className="primary-button button-transparent"
-              onClick={() => setEditSection(false)}
-            >
-              Close form
-            </button>
-          </div>
-        </form>
-      </div>
+      <SectionForm
+        handleSubmit={handleSubmit}
+        setShowForm={setEditSection}
+        errors={errors}
+        values={values}
+        handleChange={handleChange}
+        buttonText="Save changes"
+      />
     </div>
   );
 }

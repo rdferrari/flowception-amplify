@@ -126,10 +126,24 @@ a {
   width: 100%;
 }
 
-.delete-section-button {
+.delete-section-button-transparent {
   background-color: transparent;
-  border: 1px solid $primary-color-1;
-  color: $primary-color-1;
+  border: 1px solid $alert-color;
+  color: $alert-color;
+  font-family: $secondary-font-medium, sans-serif;
+  font-size: $font-md;
+  margin-bottom: $space-sm;
+  padding: $space-xm;
+  width: 100%;
+
+  @media (min-width: $screen-lg-min) {
+    width: 300px;
+  }
+}
+
+.delete-section-button-dark {
+  background-color: $alert-color;
+  color: white;
   font-family: $secondary-font-medium, sans-serif;
   font-size: $font-md;
   margin-bottom: $space-sm;
@@ -194,4 +208,31 @@ a {
   @media (min-width: $screen-lg-min) {
     font-size: $font-xl * 0.8;
   }
+}
+
+.uploaded-img-container {
+  background-color: $alert-color;
+  display: flex;
+  margin-bottom: $space-md;
+  width: 270px;
+  height: 100px;
+
+  @media (min-width: $screen-lg-min) {
+    width: 270px;
+  }
+}
+
+.uploaded-image {
+  height: 100px;
+}
+
+.uploading-text {
+  color: $primary-color;
+  font-size: $font-sm;
+  text-align: center;
+}
+
+.delete-uploaded-image {
+  height: 50px;
+  margin: $space-md $space-sm;
 }

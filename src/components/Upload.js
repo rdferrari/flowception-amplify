@@ -44,14 +44,13 @@ const Upload = ({ setUrlKey, setUrlPath, urlPath, urlKey, updateUrl }) => {
   return (
     <div>
       {urlKey ? (
-        <div>
-          <S3Image className="section-uploaded-image" imgKey={urlKey} />
-          <button
-            className="primary-button button-transparent"
+        <div className="uploaded-img-container">
+          <S3Image className="uploaded-image" imgKey={urlKey} />
+          <img
             onClick={() => handleDeleteImage(urlKey)}
-          >
-            Delete image
-          </button>
+            className="delete-uploaded-image"
+            src="/images/deleteImage.svg"
+          />
         </div>
       ) : (
         <div className="upload-btn-wrapper">
@@ -61,7 +60,10 @@ const Upload = ({ setUrlKey, setUrlPath, urlPath, urlKey, updateUrl }) => {
           ) : (
             <div>
               <img className="btn" src="/images/Uploading.svg" />
-              <p>Uploading: {(progressLoaded / progressTotal) * 100} %</p>
+
+              <p className="uploading-text">
+                {(progressLoaded / progressTotal) * 100} %
+              </p>
             </div>
           )}
         </div>

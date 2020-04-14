@@ -141,13 +141,15 @@
   }
 }
 
-.section-uploaded-image {
-  width: 100px;
-}
-
 .section-button-flex {
   display: flex;
-  margin: $space-lg 0;
+  flex-direction: column;
+  margin: $space-sm 0;
+
+  @media (min-width: $screen-lg-min) {
+    flex-direction: row;
+    margin: $space-lg 0;
+  }
 }
 
 // Subsection

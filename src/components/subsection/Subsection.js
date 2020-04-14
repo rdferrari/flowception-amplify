@@ -100,7 +100,7 @@ function Subsection(props) {
       handleDeleteImage(urlKey);
     }
 
-    props.history.push("/sections");
+    props.history.push("/");
   };
 
   function compare(a, b) {
