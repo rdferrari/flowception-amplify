@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="100" height="122" viewBox="0 0 100 122">
+  <g id="Group_154" data-name="Group 154" transform="translate(-603 -402)">
+    <g id="Group_131" data-name="Group 131" transform="translate(44 -54)">
+      <g id="Rectangle_72" data-name="Rectangle 72" transform="translate(559 456)" fill="none" stroke="#29ad85" stroke-width="6">
+        <rect width="100" height="78" stroke="none"/>
+        <rect x="3" y="3" width="94" height="72" fill="none"/>
+      </g>
+      <path id="Polygon_15" data-name="Polygon 15" d="M10,0,20,17H0Z" transform="translate(618 487) rotate(90)" fill="#29ad85"/>
+    </g>
+    <text id="Video" transform="translate(653 519)" fill="#29ad85" font-size="20" font-family="Raleway-Regular, Raleway"><tspan x="-27.01" y="0">Video</tspan></text>
+  </g>
+</svg>

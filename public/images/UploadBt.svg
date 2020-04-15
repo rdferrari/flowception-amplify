@@ -1,7 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="198" height="153" viewBox="0 0 198 153">
-  <g id="Group_145" data-name="Group 145" transform="translate(-1370 -439)">
-    <text id="Upload_image" data-name="Upload image" transform="translate(1469 585)" fill="#29ad85" font-size="30" font-family="Raleway-Regular, Raleway"><tspan x="-98.22" y="0">Upload image</tspan></text>
-    <g id="upload" transform="translate(1394 353.667)">
+<svg xmlns="http://www.w3.org/2000/svg" width="152" height="153" viewBox="0 0 152 153">
+  <g id="Group_157" data-name="Group 157" transform="translate(-217 -355)">
+    <text id="Upload_file" data-name="Upload file" transform="translate(293 501)" fill="#29ad85" font-size="30" font-family="Raleway-Regular, Raleway"><tspan x="-75.36" y="0">Upload file</tspan></text>
+    <g id="upload" transform="translate(218 269.667)">
       <g id="Group_134" data-name="Group 134" transform="translate(0 85.333)">
         <path id="Path_7" data-name="Path 7" d="M120.969,123.052a46.866,46.866,0,0,0-87.531-12.5A37.5,37.5,0,0,0,37.5,185.333h81.25a31.178,31.178,0,0,0,2.219-62.281ZM87.5,141.583v25h-25v-25H43.75L75,110.333l31.25,31.25H87.5Z" transform="translate(0 -85.333)" fill="#29ad85"/>
       </g>

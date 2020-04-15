@@ -31,16 +31,15 @@ const MediaType = ({
           urlKey={urlKey}
         />
 
-        {urlKey && (
-          <button
-            className="primary-button button-transparent-light"
-            onClick={createSubsectionMedia}
-          >
-            Confirm add content
-          </button>
-        )}
-
         <div className="section-button-flex">
+          {urlKey && (
+            <button
+              className="primary-button button-dark"
+              onClick={createSubsectionMedia}
+            >
+              Confirm add content
+            </button>
+          )}
           <button
             className="primary-button button-transparent-light"
             onClick={() => setShowForm(false)}
@@ -58,7 +57,6 @@ function CreateSubsection({ sectionId, subsections }) {
   const [urlPath, setUrlPath] = useState(null);
   const [mediaType, setMediaType] = useState(null);
   const [showForm, setShowForm] = useState(false);
-  const [uploading, setUploading] = useState(false);
 
   const handleSubmitApi = async () => {
     const input = {
@@ -117,22 +115,6 @@ function CreateSubsection({ sectionId, subsections }) {
     setShowForm(false);
   };
 
-  const handleUploadFile = async (event) => {
-    event.preventDefault();
-    const file = event.target.files[0];
-
-    const randomExtension = Math.floor(Math.random() * 90000) + 10000;
-
-    const name = randomExtension + file.name;
-
-    setUploading(true);
-
-    Storage.put(name, file).then(() => {
-      setUrlKey(name);
-      setUploading(false);
-    });
-  };
-
   const handleTypeForm = (type) => {
     setMediaType(type);
     setShowForm(true);
@@ -140,126 +122,123 @@ function CreateSubsection({ sectionId, subsections }) {
 
   return (
     <div className="section-sub-create">
-      <div className="section-detail-text-container">
-        <h2 className="section-sub-create-title">Create Subsection</h2>
+      {mediaType === null && (
+        <p className="section-text">Chose the media type to create</p>
+      )}
 
-        {showForm === false ? (
-          <div className="section-sub-type-container">
-            <img
-              className="section-sub-create-icon"
-              onClick={() => handleTypeForm("TEXT")}
-              src="/images/subText.svg"
-            />
-            <img
-              className="section-sub-create-icon"
-              onClick={() => handleTypeForm("IMAGE")}
-              src="/images/subImage.svg"
-            />
-            <img
-              className="section-sub-create-icon"
-              onClick={() => handleTypeForm("IMAGE_360")}
-              src="/images/subImage360.svg"
-            />
-            <img
-              className="section-sub-create-icon"
-              onClick={() => handleTypeForm("VIDEO")}
-              src="/images/subVideo.svg"
-            />
-            <img
-              className="section-sub-create-icon"
-              onClick={() => handleTypeForm("VIDEO_360")}
-              src="/images/subVideo360.svg"
-            />
-          </div>
-        ) : (
-          <div>
-            <MediaType
-              mediaType={mediaType}
-              type="IMAGE"
-              setShowForm={setShowForm}
-              createSubsectionMedia={() => createSubsectionMedia(urlKey)}
-              setUrlKey={setUrlKey}
-              setUrlPath={setUrlPath}
-              urlPath={urlPath}
-              urlKey={urlKey}
-            />
-            <MediaType
-              mediaType={mediaType}
-              type="VIDEO"
-              setShowForm={setShowForm}
-              createSubsectionMedia={() => createSubsectionMedia(urlKey)}
-              setUrlKey={setUrlKey}
-              setUrlPath={setUrlPath}
-              urlPath={urlPath}
-              urlKey={urlKey}
-            />
-            <MediaType
-              mediaType={mediaType}
-              type="IMAGE_360"
-              setShowForm={setShowForm}
-              createSubsectionMedia={() => createSubsectionMedia(urlKey)}
-              setUrlKey={setUrlKey}
-              setUrlPath={setUrlPath}
-              urlPath={urlPath}
-              urlKey={urlKey}
-            />
-            <MediaType
-              mediaType={mediaType}
-              type="VIDEO_360"
-              setShowForm={setShowForm}
-              createSubsectionMedia={() => createSubsectionMedia(urlKey)}
-              setUrlKey={setUrlKey}
-              setUrlPath={setUrlPath}
-              urlPath={urlPath}
-              urlKey={urlKey}
-            />
+      {showForm === false ? (
+        <div className="section-sub-type-container">
+          <img
+            className="section-sub-create-icon"
+            onClick={() => handleTypeForm("TEXT")}
+            src="/images/createText.svg"
+          />
+          <img
+            className="section-sub-create-icon"
+            onClick={() => handleTypeForm("IMAGE")}
+            src="/images/createImage.svg"
+          />
+          <img
+            className="section-sub-create-icon"
+            onClick={() => handleTypeForm("IMAGE_360")}
+            src="/images/create360Image.svg"
+          />
+          <img
+            className="section-sub-create-icon"
+            onClick={() => handleTypeForm("VIDEO")}
+            src="/images/createVideo.svg"
+          />
+          <img
+            className="section-sub-create-icon"
+            onClick={() => handleTypeForm("VIDEO_360")}
+            src="/images/create360Video.svg"
+          />
+        </div>
+      ) : (
+        <div>
+          <MediaType
+            mediaType={mediaType}
+            type="IMAGE"
+            setShowForm={setShowForm}
+            createSubsectionMedia={() => createSubsectionMedia(urlKey)}
+            setUrlKey={setUrlKey}
+            setUrlPath={setUrlPath}
+            urlPath={urlPath}
+            urlKey={urlKey}
+          />
+          <MediaType
+            mediaType={mediaType}
+            type="VIDEO"
+            setShowForm={setShowForm}
+            createSubsectionMedia={() => createSubsectionMedia(urlKey)}
+            setUrlKey={setUrlKey}
+            setUrlPath={setUrlPath}
+            urlPath={urlPath}
+            urlKey={urlKey}
+          />
+          <MediaType
+            mediaType={mediaType}
+            type="IMAGE_360"
+            setShowForm={setShowForm}
+            createSubsectionMedia={() => createSubsectionMedia(urlKey)}
+            setUrlKey={setUrlKey}
+            setUrlPath={setUrlPath}
+            urlPath={urlPath}
+            urlKey={urlKey}
+          />
+          <MediaType
+            mediaType={mediaType}
+            type="VIDEO_360"
+            setShowForm={setShowForm}
+            createSubsectionMedia={() => createSubsectionMedia(urlKey)}
+            setUrlKey={setUrlKey}
+            setUrlPath={setUrlPath}
+            urlPath={urlPath}
+            urlKey={urlKey}
+          />
 
-            <form onSubmit={handleSubmit} noValidate>
-              {mediaType === "TEXT" && (
-                <div>
-                  <input
-                    placeholder="Subsection title"
-                    className="input-light"
-                    type="text"
-                    name="title"
-                    onChange={handleChange}
-                    value={values.title || ""}
-                    required
-                  />
-                  {errors.title && <p>{errors.title}</p>}
-                  <textarea
-                    rows="6"
-                    cols="60"
-                    placeholder="Subsection text"
-                    className="input-light"
-                    type="text"
-                    name="text"
-                    onChange={handleChange}
-                    value={values.text || ""}
-                    required
-                  />
+          <form onSubmit={handleSubmit} noValidate>
+            {mediaType === "TEXT" && (
+              <div>
+                <input
+                  placeholder="Subsection title"
+                  className="input-light"
+                  type="text"
+                  name="title"
+                  onChange={handleChange}
+                  value={values.title || ""}
+                  required
+                />
+                {errors.title && <p>{errors.title}</p>}
+                <textarea
+                  rows="6"
+                  cols="60"
+                  placeholder="Subsection text"
+                  className="input-light"
+                  type="text"
+                  name="text"
+                  onChange={handleChange}
+                  value={values.text || ""}
+                  required
+                />
 
-                  {errors.text && <p>{errors.text}</p>}
-                  <div className="section-button-flex">
-                    <button
-                      className="primary-button button-dark"
-                      type="submit"
-                    >
-                      Add new subsection
-                    </button>
-                    <button
-                      className="primary-button button-transparent-light"
-                      onClick={() => setShowForm(false)}
-                    >
-                      Close form
-                    </button>
-                  </div>
+                {errors.text && <p>{errors.text}</p>}
+                <div className="section-button-flex">
+                  <button className="primary-button button-dark" type="submit">
+                    Add new subsection
+                  </button>
+                  <button
+                    className="primary-button button-transparent-light"
+                    onClick={() => setShowForm(false)}
+                  >
+                    Close form
+                  </button>
                 </div>
-              )}
-            </form>
-          </div>
-        )}
-      </div>
+              </div>
+            )}
+          </form>
+        </div>
+      )}
     </div>
   );
 }

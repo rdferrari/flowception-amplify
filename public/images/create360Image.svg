@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="98" height="130" viewBox="0 0 98 130">
+  <g id="Group_155" data-name="Group 155" transform="translate(-797 -394)">
+    <g id="Group_132" data-name="Group 132" transform="translate(91 -54)">
+      <g id="Group_119" data-name="Group 119" transform="translate(566 -69)">
+        <g id="Ellipse_10" data-name="Ellipse 10" transform="translate(144 517)" fill="none" stroke="#29ad85" stroke-width="4">
+          <circle cx="47" cy="47" r="47" stroke="none"/>
+          <circle cx="47" cy="47" r="45" fill="none"/>
+        </g>
+        <g id="Ellipse_11" data-name="Ellipse 11" transform="translate(162 517)" fill="none" stroke="#29ad85" stroke-width="4">
+          <ellipse cx="29" cy="47" rx="29" ry="47" stroke="none"/>
+          <ellipse cx="29" cy="47" rx="27" ry="45" fill="none"/>
+        </g>
+        <g id="Ellipse_12" data-name="Ellipse 12" transform="translate(144 593) rotate(-90)" fill="none" stroke="#29ad85" stroke-width="4">
+          <ellipse cx="29" cy="47" rx="29" ry="47" stroke="none"/>
+          <ellipse cx="29" cy="47" rx="27" ry="45" fill="none"/>
+        </g>
+      </g>
+      <text id="_360" data-name="360" transform="translate(757 502)" fill="#29ad85" font-size="20" font-family="Raleway-Bold, Raleway" font-weight="700"><tspan x="-17.79" y="0">360</tspan></text>
+    </g>
+    <text id="_360_image" data-name="360 image" transform="translate(846 519)" fill="#29ad85" font-size="20" font-family="Raleway-Regular, Raleway"><tspan x="-48.91" y="0">360 image</tspan></text>
+  </g>
+</svg>

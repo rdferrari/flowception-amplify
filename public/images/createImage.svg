@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="100" height="122" viewBox="0 0 100 122">
+  <g id="Group_153" data-name="Group 153" transform="translate(-407 -402)">
+    <g id="Group_130" data-name="Group 130" transform="translate(10 -50)">
+      <g id="Group_121" data-name="Group 121" transform="translate(383 -170.307)">
+        <g id="Rectangle_71" data-name="Rectangle 71" transform="translate(14 622.307)" fill="none" stroke="#29ad85" stroke-width="6">
+          <rect width="100" height="78" stroke="none"/>
+          <rect x="3" y="3" width="94" height="72" fill="none"/>
+        </g>
+        <path id="Exclusion_4" data-name="Exclusion 4" d="M46.406,72,0,71.995,14.128,50.3a35.153,35.153,0,0,0,32.278,21.7V72ZM90,71.995H46.433A35.007,35.007,0,0,0,77.5,52.806L90,71.99ZM77.5,52.8l0,0L45,2.883,14.132,50.29a36.694,36.694,0,0,1,7.415-39.746,34.577,34.577,0,0,1,49.719,0A36.2,36.2,0,0,1,81.563,36a36.778,36.778,0,0,1-4.057,16.8Z" transform="translate(20 625.307)" fill="#29ad85"/>
+      </g>
+    </g>
+    <text id="Image" transform="translate(457 519)" fill="#29ad85" font-size="20" font-family="Raleway-Regular, Raleway"><tspan x="-29.17" y="0">Image</tspan></text>
+  </g>
+</svg>

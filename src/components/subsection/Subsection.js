@@ -161,8 +161,8 @@ function Subsection(props) {
   return (
     <UserContext.Consumer>
       {({ user, group }) => (
-        <div>
-          <div>
+        <div className="subsection-container">
+          <div className="section-detail-text-container">
             {showCreateSubsection === false && (
               <div>
                 {editSection === false ? (
@@ -200,15 +200,16 @@ function Subsection(props) {
             )}
             {user && group === "admin" && (
               <div>
-                <AdminMenu
-                  createIcon="createNewSection.svg"
-                  setShowCreate={setShowCreateSubsection}
-                  reorderIcon="reorderSectionList.svg"
-                  setIsDraggable={setIsDraggable}
-                  isDraggable={isDraggable}
-                  listIcon="sectionList.svg"
-                />
-                {showCreateSubsection === true && (
+                {showCreateSubsection === false ? (
+                  <AdminMenu
+                    createIcon="createNewSection.svg"
+                    setShowCreate={setShowCreateSubsection}
+                    reorderIcon="reorderSectionList.svg"
+                    setIsDraggable={setIsDraggable}
+                    isDraggable={isDraggable}
+                    listIcon="sectionList.svg"
+                  />
+                ) : (
                   <CreateSubsection
                     sectionId={id}
                     getPublicData={getPublicData}

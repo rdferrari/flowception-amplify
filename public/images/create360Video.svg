@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="95" height="130" viewBox="0 0 95 130">
+  <g id="Group_156" data-name="Group 156" transform="translate(-1011 -394)">
+    <text id="_360_video" data-name="360 video" transform="translate(1057 519)" fill="#29ad85" font-size="20" font-family="Raleway-Regular, Raleway"><tspan x="-45.32" y="0">360 video</tspan></text>
+    <g id="Group_133" data-name="Group 133" transform="translate(130 -54)">
+      <g id="Group_129" data-name="Group 129" transform="translate(738 -69)">
+        <g id="Ellipse_10" data-name="Ellipse 10" transform="translate(144 517)" fill="none" stroke="#29ad85" stroke-width="4">
+          <circle cx="47" cy="47" r="47" stroke="none"/>
+          <circle cx="47" cy="47" r="45" fill="none"/>
+        </g>
+        <g id="Ellipse_11" data-name="Ellipse 11" transform="translate(162 517)" fill="none" stroke="#29ad85" stroke-width="4">
+          <ellipse cx="29" cy="47" rx="29" ry="47" stroke="none"/>
+          <ellipse cx="29" cy="47" rx="27" ry="45" fill="none"/>
+        </g>
+        <g id="Ellipse_12" data-name="Ellipse 12" transform="translate(144 593) rotate(-90)" fill="none" stroke="#29ad85" stroke-width="4">
+          <ellipse cx="29" cy="47" rx="29" ry="47" stroke="none"/>
+          <ellipse cx="29" cy="47" rx="27" ry="45" fill="none"/>
+        </g>
+      </g>
+      <path id="Polygon_14" data-name="Polygon 14" d="M10,0,20,17H0Z" transform="translate(941 487) rotate(90)" fill="#29ad85"/>
+    </g>
+  </g>
+</svg>

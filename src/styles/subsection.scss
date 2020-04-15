@@ -1,0 +1,89 @@
+// Subsection
+
+.subsection-card-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+
+  @media (min-width: $screen-lg-min) {
+    height: 400px;
+  }
+}
+
+.subsection-container {
+  width: 100%;
+
+  @media (min-width: $screen-lg-min) {
+    width: 80%;
+    padding: 0 $space-xl * 4 0 0;
+  }
+}
+
+.section-sub-create {
+  width: 100%;
+
+  @media (min-width: $screen-lg-min) {
+    width: 80%;
+  }
+}
+
+.section-sub-create-title {
+  font-size: $font-lg;
+  @media (min-width: $screen-lg-min) {
+    font-size: $font-xl;
+  }
+}
+
+.section-sub-create-icon {
+  height: 40px;
+  @media (min-width: $screen-lg-min) {
+    height: 80px;
+  }
+}
+
+.section-sub-container {
+  width: 100%;
+
+  @media (min-width: $screen-lg-min) {
+    display: flex;
+    width: inherit;
+  }
+}
+
+.section-sub-type-container {
+  display: flex;
+  justify-content: space-between;
+  padding: $space-md $space-xm;
+}
+
+.section-sub-textType-container {
+  padding: 0 $space-xm;
+}
+
+.section-sub-container-menu {
+  display: none;
+
+  @media (min-width: $screen-lg-min) {
+    display: inherit;
+    height: 90vh;
+    margin-top: $space-md;
+    padding-left: 16px;
+    overflow-y: scroll;
+    position: static;
+    width: 34%;
+  }
+}
+
+.section-sub-container-content {
+  padding-bottom: $space-xl;
+  @media (min-width: $screen-lg-min) {
+    background-color: $primary-color-2;
+    margin-top: -63px;
+    height: 100vh;
+    width: 65%;
+  }
+}
+
+.section-sub-item {
+  margin-top: $space-md;
+}

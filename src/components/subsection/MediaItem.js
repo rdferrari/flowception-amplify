@@ -14,10 +14,10 @@ function MediaItem({ type, urlKey, id, handleDeleteSubsection, user, group }) {
   }, []);
 
   return (
-    <div className="section-detail-text-container">
+    <div className="subsection-media-item">
       {urlKey && type === "IMAGE" && (
         <div>
-          <S3Image className="section-card-image" imgKey={urlKey} />
+          <S3Image className="subsection-card-image" imgKey={urlKey} />
           {user && group === "admin" && (
             <button
               className="primary-button button-dark"
