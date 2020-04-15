@@ -4,52 +4,11 @@ import { createSubsection } from "../../graphql/mutations";
 
 import useForm from "../form/useForm";
 import validate from "../form/subsectionFormValidation";
-import Upload from "../Upload";
+import MediaType from "./MediaType";
 
 const INIT_VALUES = {
   title: "",
   text: "",
-};
-
-const MediaType = ({
-  mediaType,
-  type,
-  createSubsectionMedia,
-  setUrlKey,
-  setUrlPath,
-  urlPath,
-  urlKey,
-  setShowForm,
-}) => {
-  return (
-    mediaType === type && (
-      <div className="upload-btn-wrapper">
-        <Upload
-          setUrlKey={setUrlKey}
-          setUrlPath={setUrlPath}
-          urlPath={urlPath}
-          urlKey={urlKey}
-        />
-
-        <div className="section-button-flex">
-          {urlKey && (
-            <button
-              className="primary-button button-dark"
-              onClick={createSubsectionMedia}
-            >
-              Confirm add content
-            </button>
-          )}
-          <button
-            className="primary-button button-transparent-light"
-            onClick={() => setShowForm(false)}
-          >
-            Close form
-          </button>
-        </div>
-      </div>
-    )
-  );
 };
 
 function CreateSubsection({ sectionId, subsections }) {
@@ -222,7 +181,6 @@ function CreateSubsection({ sectionId, subsections }) {
                   required
                 />
 
-                {errors.text && <p>{errors.text}</p>}
                 <div className="section-button-flex">
                   <button className="primary-button button-dark" type="submit">
                     Add new subsection

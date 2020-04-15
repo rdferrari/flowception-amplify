@@ -3,8 +3,8 @@ export default function validate(values) {
   if (!values.title) {
     errors.title = "Title is required";
   }
-  if (!values.text) {
-    errors.text = "Text is required";
-  }
+  // if (!values.text) {
+  //   errors.text = "Text is required";
+  // }
   return errors;
 }
