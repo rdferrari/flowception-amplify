@@ -211,15 +211,9 @@ a {
 }
 
 .uploaded-img-container {
-  background-color: $alert-color;
   display: flex;
   margin-bottom: $space-md;
-  width: 270px;
   height: 100px;
-
-  @media (min-width: $screen-lg-min) {
-    width: 270px;
-  }
 }
 
 .uploaded-image {
@@ -233,6 +227,6 @@ a {
 }
 
 .delete-uploaded-image {
-  height: 50px;
-  margin: $space-md $space-sm;
+  height: 100px;
+  margin-left: $space-sm / 3;
 }
