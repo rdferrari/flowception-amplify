@@ -124,6 +124,13 @@
     font-size: $font-xl;
   }
 }
+
+.section-detail-text-container {
+  width: 100%;
+  @media (min-width: $screen-sm-min) {
+    width: 90%;
+  }
+}
 // review
 
 // .section-card-title {

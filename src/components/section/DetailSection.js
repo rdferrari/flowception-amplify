@@ -21,9 +21,11 @@ function DetailSection({
             <S3Image className="subsection-card-image" imgKey={urlKey} />
           )}
           <div>
-            <h2 className="section-title">{title}</h2>
-            <p className="section-text">{intro}</p>
-            <p className="section-text">{body}</p>
+            <div className="section-detail-text-container">
+              <h2 className="section-title">{title}</h2>
+              <p className="section-text">{intro}</p>
+              <p className="section-text">{body}</p>
+            </div>
             {user && group === "admin" && (
               <div>
                 <div className="section-button-flex">
@@ -46,7 +48,7 @@ function DetailSection({
         </div>
       ) : (
         <div>
-          <h2 className="section-title">You are deleting {title}</h2>
+          <h2 className="section-title">You are deleting: {title}</h2>
           <p className="section-text">
             This action can´t be undone. Are you sure you want proceed?
           </p>

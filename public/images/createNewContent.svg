@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="178" height="155" viewBox="0 0 178 155">
+  <g id="Group_160" data-name="Group 160" transform="translate(-764 -788)">
+    <g id="Group_8" data-name="Group 8" transform="translate(-769 502.375)">
+      <g id="Ellipse_2" data-name="Ellipse 2" transform="translate(1572 285.625)" fill="none" stroke="#29ad85" stroke-width="8">
+        <circle cx="50" cy="50" r="50" stroke="none"/>
+        <circle cx="50" cy="50" r="46" fill="none"/>
+      </g>
+      <line id="Line_4" data-name="Line 4" y2="35.085" transform="translate(1621.813 321.712)" fill="none" stroke="#29ad85" stroke-linecap="round" stroke-width="8"/>
+      <line id="Line_5" data-name="Line 5" x1="33.331" transform="translate(1605.147 339.278)" fill="none" stroke="#29ad85" stroke-linecap="round" stroke-width="8"/>
+    </g>
+    <text id="New_content" data-name="New content" transform="translate(853 936)" fill="#29ad85" font-size="30" font-family="Raleway-Regular, Raleway"><tspan x="-88.77" y="0">New content</tspan></text>
+  </g>
+</svg>

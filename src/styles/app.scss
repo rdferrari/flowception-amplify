@@ -23,7 +23,7 @@ a {
 
 .app-container {
   margin: 0 $space-sm;
-  @media (min-width: $screen-lg-min) {
+  @media (min-width: $screen-sm-min) {
     margin: 0 $space-xl * 3;
   }
 }

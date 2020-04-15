@@ -16,15 +16,14 @@ function MediaItem({ type, urlKey, id, handleDeleteSubsection, user, group }) {
   return (
     <div className="subsection-media-item">
       {urlKey && type === "IMAGE" && (
-        <div>
+        <div className="subsection-delete-container">
           <S3Image className="subsection-card-image" imgKey={urlKey} />
           {user && group === "admin" && (
-            <button
-              className="primary-button button-dark"
+            <img
+              className="subsection-delete-bt"
+              src="/images/deleteImage.svg"
               onClick={() => handleDeleteSubsection(id, urlKey)}
-            >
-              Delete image
-            </button>
+            />
           )}
         </div>
       )}

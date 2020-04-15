@@ -1,23 +1,29 @@
-// Subsection
+.subsection-container {
+  width: 100%;
+
+  @media (min-width: $screen-xl-min) {
+    width: 70%;
+  }
+}
+
+.subsection-delete-bt {
+  width: 60px;
+  @media (min-width: $screen-md-min) {
+    width: 80px;
+  }
+}
 
 .subsection-card-image {
-  width: 100%;
   height: 200px;
   object-fit: cover;
+  width: 100%;
 
   @media (min-width: $screen-lg-min) {
     height: 400px;
   }
 }
 
-.subsection-container {
-  width: 100%;
-
-  @media (min-width: $screen-lg-min) {
-    width: 80%;
-    padding: 0 $space-xl * 4 0 0;
-  }
-}
+// review
 
 .section-sub-create {
   width: 100%;
