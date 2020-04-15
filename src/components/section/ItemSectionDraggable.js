@@ -33,7 +33,7 @@ function ItemSectionDraggable({ sections }) {
               {...provided.dragHandleProps}
             >
               <div className="section-card-text-container">
-                <h2 className="section-card-text-title">{section.title}</h2>
+                <h2 className="section-card-title">{section.title}</h2>
               </div>
             </div>
           )}

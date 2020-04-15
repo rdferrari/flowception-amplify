@@ -16,7 +16,7 @@ function SectionForm({
           rows="2"
           cols="60"
           placeholder="Section title"
-          className="input-light section-card-text-title"
+          className="input-light section-card-title"
           type="text"
           name="title"
           onChange={handleChange}

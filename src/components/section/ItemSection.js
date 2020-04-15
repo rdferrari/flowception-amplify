@@ -21,7 +21,7 @@ function ItemSection({ sections }) {
           {section.urlKey && (
             <S3Image className="section-card-image" imgKey={section.urlKey} />
           )}
-          <div>
+          <div className="section-text-container">
             <h2 className="section-title">{section.title}</h2>
             <p className="section-text">{section.intro}</p>
             <Link to={`/section/${section.id}`}>

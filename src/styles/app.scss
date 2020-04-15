@@ -169,38 +169,6 @@ a {
   font-size: $space-sm;
 }
 
-.upload-btn-wrapper {
-  position: relative;
-  overflow: hidden;
-  display: inline-block;
-  margin: $space-sm $space-sm $space-sm 0;
-
-  @media (min-width: $screen-lg-min) {
-    margin: $space-md $space-md $space-md 0;
-  }
-}
-
-.btn {
-  width: 60px;
-
-  @media (min-width: $screen-lg-min) {
-    width: 100px;
-  }
-}
-
-.myfile {
-  width: 100%;
-  height: 80%;
-}
-
-.upload-btn-wrapper input[type="file"] {
-  font-size: 100px;
-  position: absolute;
-  left: 0;
-  top: 0;
-  opacity: 0;
-}
-
 .learn-more {
   color: $secondary-color;
   font-size: $font-lg;
@@ -208,25 +176,4 @@ a {
   @media (min-width: $screen-lg-min) {
     font-size: $font-xl * 0.8;
   }
-}
-
-.uploaded-img-container {
-  display: flex;
-  margin-bottom: $space-md;
-  height: 100px;
-}
-
-.uploaded-image {
-  height: 100px;
-}
-
-.uploading-text {
-  color: $primary-color;
-  font-size: $font-sm;
-  text-align: center;
-}
-
-.delete-uploaded-image {
-  height: 100px;
-  margin-left: $space-sm / 3;
 }

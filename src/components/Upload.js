@@ -48,18 +48,22 @@ const Upload = ({ setUrlKey, setUrlPath, urlPath, urlKey, updateUrl }) => {
           <S3Image className="uploaded-image" imgKey={urlKey} />
           <img
             onClick={() => handleDeleteImage(urlKey)}
-            className="delete-uploaded-image"
+            className="uploaded-delete-image"
             src="/images/deleteImage.svg"
           />
         </div>
       ) : (
         <div className="upload-btn-wrapper">
-          <input type="file" onChange={handleUploadFile} className="myfile" />
+          <input
+            type="file"
+            onChange={handleUploadFile}
+            className="upload-myfile"
+          />
           {uploading === false ? (
-            <img className="btn" src="/images/UploadBt.svg" />
+            <img className="upload-btn" src="/images/UploadBt.svg" />
           ) : (
             <div>
-              <img className="btn" src="/images/Uploading.svg" />
+              <img className="upload-btn" src="/images/Uploading.svg" />
 
               <p className="uploading-text">
                 {(progressLoaded / progressTotal) * 100} %
