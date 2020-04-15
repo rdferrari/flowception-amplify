@@ -13,10 +13,12 @@ import {
 import { getSection } from "../../graphql/queries";
 
 import EditSection from "../section/EditSection";
-import ItemsSubsection from "./ItemsSubsection";
 import DetailSection from "../section/DetailSection";
+
+import ItemsSubsection from "./ItemsSubsection";
 import CreateSubsection from "./CreateSubsection";
 import ListSubsectionDraggable from "./ListSubsectionDraggable";
+
 import AdminMenu from "../AdminMenu";
 
 function Subsection(props) {
@@ -231,8 +233,6 @@ function Subsection(props) {
                     group={group}
                     handleDeleteSubsection={handleDeleteSubsection}
                     subsectionId={item.id}
-                    iniTitle={item.title}
-                    iniText={item.text}
                     getPublicData={getPublicData}
                     type={item.type}
                     urlKey={item.urlKey}

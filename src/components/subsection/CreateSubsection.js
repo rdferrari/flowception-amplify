@@ -5,6 +5,7 @@ import { createSubsection } from "../../graphql/mutations";
 import useForm from "../form/useForm";
 import validate from "../form/subsectionFormValidation";
 import MediaType from "./MediaType";
+import SubsectionForm from "./SubsectionForm";
 
 const INIT_VALUES = {
   title: "",
@@ -46,7 +47,8 @@ function CreateSubsection({ sectionId, subsections }) {
   const { values, errors, handleChange, handleSubmit } = useForm(
     INIT_VALUES,
     handleSubmitApi,
-    validate
+    validate,
+    true
   );
 
   const createSubsectionMedia = async (urlKey) => {
@@ -156,45 +158,16 @@ function CreateSubsection({ sectionId, subsections }) {
             urlKey={urlKey}
           />
 
-          <form onSubmit={handleSubmit} noValidate>
-            {mediaType === "TEXT" && (
-              <div>
-                <input
-                  placeholder="Subsection title"
-                  className="input-light section-title"
-                  type="text"
-                  name="title"
-                  onChange={handleChange}
-                  value={values.title || ""}
-                  required
-                />
-                {errors.title && <p>{errors.title}</p>}
-                <textarea
-                  rows="6"
-                  cols="60"
-                  placeholder="Subsection text"
-                  className="input-light section-text"
-                  type="text"
-                  name="text"
-                  onChange={handleChange}
-                  value={values.text || ""}
-                  required
-                />
-
-                <div className="section-button-flex">
-                  <button className="primary-button button-dark" type="submit">
-                    Add new subsection
-                  </button>
-                  <button
-                    className="primary-button button-transparent-light"
-                    onClick={() => setShowForm(false)}
-                  >
-                    Close form
-                  </button>
-                </div>
-              </div>
-            )}
-          </form>
+          {mediaType === "TEXT" && (
+            <SubsectionForm
+              handleSubmit={handleSubmit}
+              setShowForm={setShowForm}
+              errors={errors}
+              values={values}
+              handleChange={handleChange}
+              buttonText="Create new content"
+            />
+          )}
         </div>
       )}
     </div>

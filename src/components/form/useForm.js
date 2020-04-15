@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-const useForm = (initValues, callback, validate) => {
+const useForm = (initValues, callback, validate, createForm) => {
   const [values, setValues] = useState(initValues);
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -8,7 +8,10 @@ const useForm = (initValues, callback, validate) => {
   useEffect(() => {
     if (Object.keys(errors).length === 0 && isSubmitting) {
       callback();
-      setValues("");
+
+      if (createForm === true) {
+        setValues("");
+      }
     }
   }, [errors]);
 

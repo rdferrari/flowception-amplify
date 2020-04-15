@@ -4,6 +4,7 @@ import { updateSubsection } from "../../graphql/mutations";
 
 import useForm from "../form/useForm";
 import validate from "../form/subsectionFormValidation";
+import SubsectionForm from "./SubsectionForm";
 
 function TextEdit({
   title,
@@ -18,11 +19,6 @@ function TextEdit({
   getPublicData,
 }) {
   const [editText, setEditText] = useState(false);
-
-  const INIT_VALUES = {
-    title: iniTitle,
-    text: iniText,
-  };
 
   const handleSubmitApi = async () => {
     const input = {
@@ -42,6 +38,11 @@ function TextEdit({
     getPublicData();
   };
 
+  const INIT_VALUES = {
+    title: title,
+    text: text,
+  };
+
   const { values, errors, handleChange, handleSubmit } = useForm(
     INIT_VALUES,
     handleSubmitApi,
@@ -50,44 +51,14 @@ function TextEdit({
 
   if (editText === true) {
     return (
-      <div>
-        <form onSubmit={handleSubmit} noValidate>
-          <input
-            placeholder="Subsection title"
-            className="input-light"
-            type="text"
-            name="title"
-            onChange={handleChange}
-            value={values.title || ""}
-            required
-          />
-          {errors.title && <p>{errors.title}</p>}
-          <textarea
-            rows="6"
-            cols="60"
-            placeholder="Section introduction"
-            className="input-light"
-            type="text"
-            name="text"
-            onChange={handleChange}
-            value={values.text || ""}
-            required
-          />
-
-          {errors.text && <p>{errors.text}</p>}
-          <div className="section-button-flex">
-            <button className="primary-button button-dark" type="submit">
-              Save subsection
-            </button>
-            <button
-              className="primary-button button-transparent"
-              onClick={() => setEditText(false)}
-            >
-              Close form
-            </button>
-          </div>
-        </form>
-      </div>
+      <SubsectionForm
+        handleSubmit={handleSubmit}
+        setShowForm={setShowForm}
+        errors={errors}
+        values={values}
+        handleChange={handleChange}
+        buttonText="Save changes"
+      />
     );
   } else {
     return (

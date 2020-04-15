@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { API, graphqlOperation } from "aws-amplify";
 import { updateSubsection } from "../../graphql/mutations";
-// import { Draggable } from "react-beautiful-dnd";
 import MediaItem from "./MediaItem";
 
 import useForm from "../form/useForm";
 import validate from "../form/subsectionFormValidation";
+import SubsectionForm from "./SubsectionForm";
 
 function ItemsSubsection({
   title,
@@ -15,8 +15,6 @@ function ItemsSubsection({
   group,
   handleDeleteSubsection,
   subsectionId,
-  iniTitle,
-  iniText,
   getPublicData,
   type,
   urlKey,
@@ -24,8 +22,8 @@ function ItemsSubsection({
   const [editText, setEditText] = useState(false);
 
   const INIT_VALUES = {
-    title: iniTitle,
-    text: iniText,
+    title: title,
+    text: text,
   };
 
   const handleSubmitApi = async () => {
@@ -49,53 +47,28 @@ function ItemsSubsection({
   const { values, errors, handleChange, handleSubmit } = useForm(
     INIT_VALUES,
     handleSubmitApi,
-    validate
+    validate,
+    false
   );
 
-  const TextItemEdit = () => {
-    if (editText === true) {
-      return (
-        <div>
-          <form onSubmit={handleSubmit} noValidate>
-            <input
-              placeholder="Subsection title"
-              className="input-light"
-              type="text"
-              name="title"
-              onChange={handleChange}
-              value={values.title || ""}
-              required
-            />
-            {errors.title && <p>{errors.title}</p>}
-            <textarea
-              rows="6"
-              cols="60"
-              placeholder="Section introduction"
-              className="input-light"
-              type="text"
-              name="text"
-              onChange={handleChange}
-              value={values.text || ""}
-              required
-            />
+  console.log(INIT_VALUES.title, values.title);
 
-            {errors.text && <p>{errors.text}</p>}
-            <div className="section-button-flex">
-              <button className="primary-button button-dark" type="submit">
-                Save subsection
-              </button>
-              <button
-                className="primary-button button-transparent"
-                onClick={() => setEditText(false)}
-              >
-                Close form
-              </button>
-            </div>
-          </form>
-        </div>
-      );
-    } else {
-      return (
+  const handleEditText = () => {
+    setEditText(true);
+  };
+
+  return type === "TEXT" ? (
+    <div>
+      {title && text && editText === true ? (
+        <SubsectionForm
+          handleSubmit={handleSubmit}
+          setShowForm={setEditText}
+          errors={errors}
+          values={values}
+          handleChange={handleChange}
+          buttonText="Save changes"
+        />
+      ) : (
         <div className="section-detail-text-container">
           <h2 className="section-title">{title}</h2>
           <p className="section-text">{text}</p>
@@ -103,7 +76,7 @@ function ItemsSubsection({
             <div className="section-button-flex">
               <button
                 className="primary-button button-dark"
-                onClick={() => setEditText(true)}
+                onClick={() => handleEditText()}
               >
                 Edit text
               </button>
@@ -116,12 +89,8 @@ function ItemsSubsection({
             </div>
           )}
         </div>
-      );
-    }
-  };
-
-  return type === "TEXT" ? (
-    <TextItemEdit />
+      )}
+    </div>
   ) : (
     <MediaItem
       type={type}
