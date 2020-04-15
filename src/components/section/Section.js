@@ -125,12 +125,14 @@ const Section = () => {
               <Droppable droppableId="list">
                 {(provided) => (
                   <div ref={provided.innerRef} {...provided.droppableProps}>
-                    <ListSection
-                      user={user}
-                      sections={sections}
-                      isDraggable={isDraggable}
-                    />
-                    {provided.placeholder}
+                    <div>
+                      <ListSection
+                        user={user}
+                        sections={sections}
+                        isDraggable={isDraggable}
+                      />
+                      {provided.placeholder}
+                    </div>
                   </div>
                 )}
               </Droppable>

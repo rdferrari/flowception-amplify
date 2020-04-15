@@ -8,15 +8,17 @@ const ListSubsectionDraggable = ({ subsections, compare }) => {
       <Draggable key={item.id} draggableId={item.id} index={index}>
         {(provided) => (
           <div
+            className="section-drag-container"
             ref={provided.innerRef}
             {...provided.draggableProps}
             {...provided.dragHandleProps}
             key={item.id}
           >
-            <div className="section-card">
-              <p>{item.id}</p>
-              <p>{item.order}</p>
-            </div>
+            <p className="section-drag-drop-title">{item.urlKey}</p>
+            <img
+              className="section-drag-drop-icon"
+              src="/images/dragDrop.svg"
+            />
           </div>
         )}
       </Draggable>
