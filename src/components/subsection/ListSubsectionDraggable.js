@@ -15,6 +15,7 @@ const ListSubsectionDraggable = ({ subsections, compare }) => {
             key={item.id}
           >
             <p className="section-drag-drop-title">{item.urlKey}</p>
+            <p className="section-drag-drop-title">{item.title}</p>
             <img
               className="section-drag-drop-icon"
               src="/images/dragDrop.svg"

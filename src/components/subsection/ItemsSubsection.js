@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { API, graphqlOperation } from "aws-amplify";
 import { updateSubsection } from "../../graphql/mutations";
 import MediaItem from "./MediaItem";
