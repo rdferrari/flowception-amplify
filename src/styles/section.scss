@@ -126,8 +126,11 @@
 }
 
 .section-detail-text-container {
+  margin-bottom: $space-xl;
   width: 100%;
+
   @media (min-width: $screen-sm-min) {
+    margin-bottom: $space-xl * 2;
     width: 90%;
   }
 }
@@ -193,12 +196,5 @@
 
 //   @media (min-width: $screen-lg-min) {
 //     margin: $space-lg $space-xl;
-//   }
-// }
-
-// .section-detail-text-container {
-//   padding: 0;
-//   @media (min-width: $screen-lg-min) {
-//     padding: 0 $space-xl * 4 0 0;
 //   }
 // }

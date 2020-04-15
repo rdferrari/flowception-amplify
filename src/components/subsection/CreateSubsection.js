@@ -202,7 +202,7 @@ function CreateSubsection({ sectionId, subsections }) {
               <div>
                 <input
                   placeholder="Subsection title"
-                  className="input-light"
+                  className="input-light section-title"
                   type="text"
                   name="title"
                   onChange={handleChange}
@@ -214,7 +214,7 @@ function CreateSubsection({ sectionId, subsections }) {
                   rows="6"
                   cols="60"
                   placeholder="Subsection text"
-                  className="input-light"
+                  className="input-light section-text"
                   type="text"
                   name="text"
                   onChange={handleChange}

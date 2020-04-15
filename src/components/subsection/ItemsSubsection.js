@@ -97,8 +97,8 @@ function ItemsSubsection({
     } else {
       return (
         <div className="section-detail-text-container">
-          <h2>{title}</h2>
-          <p>{text}</p>
+          <h2 className="section-title">{title}</h2>
+          <p className="section-text">{text}</p>
           {user && group === "admin" && (
             <div className="section-button-flex">
               <button
@@ -108,7 +108,7 @@ function ItemsSubsection({
                 Edit text
               </button>
               <button
-                className="delete-section-button"
+                className="delete-section-button-dark"
                 onClick={() => handleDeleteSubsection(id)}
               >
                 Delete text
