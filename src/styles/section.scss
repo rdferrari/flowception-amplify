@@ -25,22 +25,6 @@
   }
 }
 
-.section-card-title {
-  font-family: $primary-font-black, serif;
-  color: $primary-color-0;
-  font-size: $font-lg;
-  @media (min-width: $screen-lg-min) {
-    font-size: $font-xl;
-  }
-}
-
-.section-card-text {
-  font-size: $font-md;
-  @media (min-width: $screen-lg-min) {
-    font-size: $font-lg;
-  }
-}
-
 .section-list-container {
   width: 100%;
 
@@ -105,7 +89,58 @@
   }
 }
 
+.section-drag-container {
+  border: 3px solid $secondary-color;
+  display: flex;
+  flex-direction: column-reverse;
+
+  padding: $space-md;
+  margin: $space-sm 0;
+  @media (min-width: $screen-md-min) {
+    flex-direction: row;
+    justify-content: space-between;
+    width: 80%;
+  }
+}
+
+.section-drag-drop-icon {
+  height: 60px;
+  @media (min-width: $screen-md-min) {
+    height: 80px;
+  }
+}
+
+.section-drag-drop-title {
+  color: $greyDark;
+  font-family: $secondary-font-medium;
+  text-align: center;
+  font-size: $font-md;
+  @media (min-width: $screen-md-min) {
+    font-size: $font-lg;
+    padding-right: $space-md;
+    text-align: left;
+  }
+  @media (min-width: $screen-lg-min) {
+    font-size: $font-xl;
+  }
+}
 // review
+
+// .section-card-title {
+//   font-family: $primary-font-black, serif;
+//   color: $primary-color-0;
+//   font-size: $font-lg;
+//   @media (min-width: $screen-lg-min) {
+//     font-size: $font-xl;
+//   }
+// }
+
+// .section-card-text {
+//   font-size: $font-md;
+//   @media (min-width: $screen-lg-min) {
+//     font-size: $font-lg;
+//   }
+// }
 
 // .section-desktop-right {
 //   display: none;
@@ -146,17 +181,17 @@
 //   transform: translate(-50%, -50%);
 // }
 
-.section-card-text-container {
-  margin: $space-md;
+// .section-card-text-container {
+//   margin: $space-md;
 
-  @media (min-width: $screen-lg-min) {
-    margin: $space-lg $space-xl;
-  }
-}
+//   @media (min-width: $screen-lg-min) {
+//     margin: $space-lg $space-xl;
+//   }
+// }
 
-.section-detail-text-container {
-  padding: 0;
-  @media (min-width: $screen-lg-min) {
-    padding: 0 $space-xl * 4 0 0;
-  }
-}
+// .section-detail-text-container {
+//   padding: 0;
+//   @media (min-width: $screen-lg-min) {
+//     padding: 0 $space-xl * 4 0 0;
+//   }
+// }

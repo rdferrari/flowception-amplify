@@ -16,7 +16,7 @@ function SectionForm({
           rows="2"
           cols="60"
           placeholder="Section title"
-          className="input-light section-card-title"
+          className="input-light section-title"
           type="text"
           name="title"
           onChange={handleChange}
@@ -28,7 +28,7 @@ function SectionForm({
           rows="6"
           cols="60"
           placeholder="Section introduction"
-          className="input-light section-card-text"
+          className="input-light section-text"
           type="text"
           name="intro"
           onChange={handleChange}
@@ -41,7 +41,7 @@ function SectionForm({
           rows="6"
           cols="60"
           placeholder="Section body text"
-          className="input-light section-card-text"
+          className="input-light section-text"
           type="text"
           name="body"
           onChange={handleChange}

@@ -27,14 +27,16 @@ function ItemSectionDraggable({ sections }) {
         <Draggable key={section.id} draggableId={section.id} index={index}>
           {(provided) => (
             <div
-              className="section-card"
+              className="section-drag-container"
               ref={provided.innerRef}
               {...provided.draggableProps}
               {...provided.dragHandleProps}
             >
-              <div className="section-card-text-container">
-                <h2 className="section-card-title">{section.title}</h2>
-              </div>
+              <p className="section-drag-drop-title">{section.title}</p>
+              <img
+                className="section-drag-drop-icon"
+                src="/images/dragDrop.svg"
+              />
             </div>
           )}
         </Draggable>
