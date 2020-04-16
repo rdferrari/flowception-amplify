@@ -51,8 +51,6 @@ function ItemsSubsection({
     false
   );
 
-  console.log(INIT_VALUES.title, values.title);
-
   const handleEditText = () => {
     setEditText(true);
   };

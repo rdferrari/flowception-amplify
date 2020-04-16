@@ -7,6 +7,16 @@
   z-index: 99;
 }
 
+.header-logo {
+  padding: $space-sm;
+  width: 40px;
+
+  @media (min-width: $screen-lg-min) {
+    margin: $space-sm * 2 $space-xl * 3 0 0;
+    width: 80px;
+  }
+}
+
 .header-title {
   border-bottom: 0.5px solid $grey;
   font-size: $font-sm;

@@ -14,6 +14,12 @@
         "categories": {
             "auth": {
                 "rodrigo55de561c": {}
+            },
+            "hosting": {
+                "amplifyhosting": {
+                    "appId": "dfr2v2hp8x1c3",
+                    "type": "cicd"
+                }
             }
         }
     }
