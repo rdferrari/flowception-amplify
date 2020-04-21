@@ -43,7 +43,7 @@ function MediaItem({
           <Player playsInline src={urlPath} />
           {user && group === "admin" && (
             <button
-              className="primary-button button-dark"
+              className="delete-section-button-transparent"
               onClick={() => handleDeleteSubsection(id, urlKey)}
             >
               Delete video
@@ -55,13 +55,13 @@ function MediaItem({
       {urlPath && type === "PDF" && (
         <div>
           <a href={urlPath}>
-            <p className="text-button">
+            <p className="section-text text-button">
               Download PDF | <span>{title}</span>
             </p>
           </a>
           {user && group === "admin" && (
             <button
-              className="primary-button button-dark"
+              className="delete-section-button-transparent"
               onClick={() => handleDeleteSubsection(id, urlKey)}
             >
               Delete pdf
@@ -87,7 +87,7 @@ function MediaItem({
           ></Pannellum>
           {user && group === "admin" && (
             <button
-              className="primary-button button-dark"
+              className="delete-section-button-transparent"
               onClick={() => handleDeleteSubsection(id, urlKey)}
             >
               Delete 360 image
@@ -113,7 +113,7 @@ function MediaItem({
           ></PannellumVideo>
           {user && group === "admin" && (
             <button
-              className="primary-button button-dark"
+              className="delete-section-button-transparent"
               onClick={() => handleDeleteSubsection(id, urlKey)}
             >
               Delete 360 video

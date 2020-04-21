@@ -58,59 +58,58 @@ function CreateSubsection({ sectionId, subsections, setShowCreateSubsection }) {
 
   return (
     <div className="section-sub-create">
-      {mediaType === null && (
-        <div>
-          <p className="section-text">
-            Chose a media type to create or
-            <span
-              className="text-button"
-              onClick={() => setShowCreateSubsection(false)}
-            >
-              {" "}
-              go back
-            </span>
-          </p>
-        </div>
-      )}
-
       {showForm === false ? (
-        <div className="section-sub-type-container">
-          <img
-            className="section-sub-create-icon"
-            onClick={() => handleTypeForm("TEXT")}
-            src="/images/createText.svg"
-            alt="Create text"
-          />
-          <img
-            className="section-sub-create-icon"
-            onClick={() => handleTypeForm("PDF")}
-            src="/images/createPdf.svg"
-            alt="Create pdf"
-          />
-          <img
-            className="section-sub-create-icon"
-            onClick={() => handleTypeForm("IMAGE")}
-            src="/images/createImage.svg"
-            alt="Create content"
-          />
-          <img
-            className="section-sub-create-icon"
-            onClick={() => handleTypeForm("IMAGE_360")}
-            src="/images/create360Image.svg"
-            alt="Create 360 content"
-          />
-          <img
-            className="section-sub-create-icon"
-            onClick={() => handleTypeForm("VIDEO")}
-            src="/images/createVideo.svg"
-            alt="Create video"
-          />
-          <img
-            className="section-sub-create-icon"
-            onClick={() => handleTypeForm("VIDEO_360")}
-            src="/images/create360Video.svg"
-            alt="Create 360 video"
-          />
+        <div>
+          <div>
+            <p className="section-text">
+              Chose a media type to create or
+              <span
+                className="text-button"
+                onClick={() => setShowCreateSubsection(false)}
+              >
+                {" "}
+                go back
+              </span>
+            </p>
+          </div>
+          <div className="section-sub-type-container">
+            <img
+              className="section-sub-create-icon"
+              onClick={() => handleTypeForm("TEXT")}
+              src="/images/createText.svg"
+              alt="Create text"
+            />
+            <img
+              className="section-sub-create-icon"
+              onClick={() => handleTypeForm("PDF")}
+              src="/images/createPdf.svg"
+              alt="Create pdf"
+            />
+            <img
+              className="section-sub-create-icon"
+              onClick={() => handleTypeForm("IMAGE")}
+              src="/images/createImage.svg"
+              alt="Create content"
+            />
+            <img
+              className="section-sub-create-icon"
+              onClick={() => handleTypeForm("IMAGE_360")}
+              src="/images/create360Image.svg"
+              alt="Create 360 content"
+            />
+            <img
+              className="section-sub-create-icon"
+              onClick={() => handleTypeForm("VIDEO")}
+              src="/images/createVideo.svg"
+              alt="Create video"
+            />
+            <img
+              className="section-sub-create-icon"
+              onClick={() => handleTypeForm("VIDEO_360")}
+              src="/images/create360Video.svg"
+              alt="Create 360 video"
+            />
+          </div>
         </div>
       ) : (
         <div>
