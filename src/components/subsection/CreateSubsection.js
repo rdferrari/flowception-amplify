@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Auth, API, graphqlOperation, Storage } from "aws-amplify";
+import { Auth, API, graphqlOperation } from "aws-amplify";
 import { createSubsection } from "../../graphql/mutations";
 
 import useForm from "../form/useForm";
@@ -93,26 +93,31 @@ function CreateSubsection({ sectionId, subsections }) {
             className="section-sub-create-icon"
             onClick={() => handleTypeForm("TEXT")}
             src="/images/createText.svg"
+            alt="Create text"
           />
           <img
             className="section-sub-create-icon"
             onClick={() => handleTypeForm("IMAGE")}
             src="/images/createImage.svg"
+            alt="Create content"
           />
           <img
             className="section-sub-create-icon"
             onClick={() => handleTypeForm("IMAGE_360")}
             src="/images/create360Image.svg"
+            alt="Create 360 content"
           />
           <img
             className="section-sub-create-icon"
             onClick={() => handleTypeForm("VIDEO")}
             src="/images/createVideo.svg"
+            alt="Create video"
           />
           <img
             className="section-sub-create-icon"
             onClick={() => handleTypeForm("VIDEO_360")}
             src="/images/create360Video.svg"
+            alt="Create 360 video"
           />
         </div>
       ) : (

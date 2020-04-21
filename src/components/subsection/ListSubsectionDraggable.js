@@ -19,6 +19,7 @@ const ListSubsectionDraggable = ({ subsections, compare }) => {
             <img
               className="section-drag-drop-icon"
               src="/images/dragDrop.svg"
+              alt="Drag and drop"
             />
           </div>
         )}

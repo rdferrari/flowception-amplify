@@ -50,6 +50,7 @@ const Upload = ({ setUrlKey, setUrlPath, urlPath, urlKey, updateUrl }) => {
             onClick={() => handleDeleteImage(urlKey)}
             className="uploaded-delete-image"
             src="/images/deleteImage.svg"
+            alt="Delete"
           />
         </div>
       ) : (
@@ -60,10 +61,18 @@ const Upload = ({ setUrlKey, setUrlPath, urlPath, urlKey, updateUrl }) => {
             className="upload-myfile"
           />
           {uploading === false ? (
-            <img className="upload-btn" src="/images/UploadBt.svg" />
+            <img
+              className="upload-btn"
+              src="/images/UploadBt.svg"
+              alt="Upload"
+            />
           ) : (
             <div>
-              <img className="upload-btn" src="/images/Uploading.svg" />
+              <img
+                className="upload-btn"
+                src="/images/Uploading.svg"
+                alt="Uploading"
+              />
 
               <p className="uploading-text">
                 {(progressLoaded / progressTotal) * 100} %

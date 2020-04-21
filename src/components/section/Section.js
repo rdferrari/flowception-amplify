@@ -4,6 +4,7 @@ import { UserContext } from "../../App";
 import { listSections } from "../../graphql/queries";
 import { updateSection } from "../../graphql/mutations";
 import { onCreateSection } from "../../graphql/subscriptions";
+
 import CreateSection from "./CreateSection";
 import ListSection from "./ListSection";
 import AdminMenu from "../AdminMenu";
@@ -90,11 +91,13 @@ const Section = () => {
       {({ user, group }) => (
         <div>
           {showCreateSection === false && (
-            <img
-              className="section-tagline"
-              src="/images/tagline.svg"
-              alt="WHAT WE CAN DESCRIBE IS IMPERMANENT"
-            />
+            <div>
+              <img
+                className="section-tagline"
+                src="/images/tagline.svg"
+                alt="WHAT WE CAN DESCRIBE IS IMPERMANENT"
+              />
+            </div>
           )}
 
           {user && group === "admin" && (

@@ -17,14 +17,23 @@ function Header({ history, handleSignOut }) {
                     onClick={() => handleSignOut()}
                     className="header-signing"
                     src="/images/signout.svg"
+                    alt="Signout"
                   />
                 ) : path !== "/login" ? (
                   <NavLink to="/login">
-                    <img className="header-signing" src="/images/signin.svg" />
+                    <img
+                      className="header-signing"
+                      src="/images/signin.svg"
+                      alt="Signin"
+                    />
                   </NavLink>
                 ) : (
                   <NavLink to="/">
-                    <img className="header-signing" src="/images/close.svg" />
+                    <img
+                      className="header-signing"
+                      src="/images/close.svg"
+                      alt="Go back"
+                    />
                   </NavLink>
                 )}
               </div>
@@ -48,6 +57,7 @@ function Header({ history, handleSignOut }) {
                         <img
                           className="header-title-back-icon"
                           src="/images/backHeader.svg"
+                          alt="Go back to home"
                         />
                       </span>
                       WHAT WE CAN DESCRIBE IS IMPERMANENT

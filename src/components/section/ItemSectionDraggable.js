@@ -1,7 +1,7 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
-import { S3Image } from "aws-amplify-react";
-import { Link } from "react-router-dom";
+// import { S3Image } from "aws-amplify-react";
+// import { Link } from "react-router-dom";
 
 import { Draggable } from "react-beautiful-dnd";
 
@@ -36,6 +36,7 @@ function ItemSectionDraggable({ sections }) {
               <img
                 className="section-drag-drop-icon"
                 src="/images/dragDrop.svg"
+                alt={section.title}
               />
             </div>
           )}
