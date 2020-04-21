@@ -4,7 +4,15 @@ import { S3Image } from "aws-amplify-react";
 import { Player } from "video-react";
 import { Pannellum, PannellumVideo } from "pannellum-react";
 
-function MediaItem({ type, urlKey, id, handleDeleteSubsection, user, group }) {
+function MediaItem({
+  type,
+  urlKey,
+  id,
+  handleDeleteSubsection,
+  user,
+  group,
+  title,
+}) {
   const [urlPath, setUrlPath] = useState(null);
 
   useEffect(() => {
@@ -39,6 +47,24 @@ function MediaItem({ type, urlKey, id, handleDeleteSubsection, user, group }) {
               onClick={() => handleDeleteSubsection(id, urlKey)}
             >
               Delete video
+            </button>
+          )}
+        </div>
+      )}
+
+      {urlPath && type === "PDF" && (
+        <div>
+          <a href={urlPath}>
+            <p className="text-button">
+              Download PDF | <span>{title}</span>
+            </p>
+          </a>
+          {user && group === "admin" && (
+            <button
+              className="primary-button button-dark"
+              onClick={() => handleDeleteSubsection(id, urlKey)}
+            >
+              Delete pdf
             </button>
           )}
         </div>

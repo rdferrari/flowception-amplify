@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="100" height="122" viewBox="0 0 100 122">
+  <defs>
+    <style>
+      .cls-1, .cls-3, .cls-5 {
+        fill: none;
+      }
+
+      .cls-1, .cls-3 {
+        stroke: #29ad85;
+      }
+
+      .cls-1 {
+        stroke-width: 4px;
+      }
+
+      .cls-2 {
+        fill: #29ad85;
+        font-size: 20px;
+        font-family: Raleway-Regular, Raleway;
+      }
+
+      .cls-3 {
+        stroke-width: 6px;
+      }
+
+      .cls-4 {
+        stroke: none;
+      }
+    </style>
+  </defs>
+  <g id="Group_164" data-name="Group 164" transform="translate(-1351 -402)">
+    <g id="Group_163" data-name="Group 163" transform="translate(1372 425)">
+      <line id="Line_23" data-name="Line 23" class="cls-1" x2="57.745"/>
+      <line id="Line_24" data-name="Line 24" class="cls-1" x2="50.527" transform="translate(0 10.827)"/>
+      <line id="Line_25" data-name="Line 25" class="cls-1" x2="57.745" transform="translate(0 21.654)"/>
+      <line id="Line_26" data-name="Line 26" class="cls-1" x2="39.7" transform="translate(0 32.482)"/>
+    </g>
+    <text id="PDF" class="cls-2" transform="translate(1401 519)"><tspan x="-19.26" y="0">PDF</tspan></text>
+    <g id="Rectangle_72" data-name="Rectangle 72" class="cls-3" transform="translate(1351 402)">
+      <rect class="cls-4" width="100" height="78"/>
+      <rect class="cls-5" x="3" y="3" width="94" height="72"/>
+    </g>
+  </g>
+</svg>

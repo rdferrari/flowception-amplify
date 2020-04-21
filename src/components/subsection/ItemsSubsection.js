@@ -97,6 +97,7 @@ function ItemsSubsection({
       handleDeleteSubsection={handleDeleteSubsection}
       user={user}
       group={group}
+      title={title}
     />
   );
 }

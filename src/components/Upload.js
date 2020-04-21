@@ -2,7 +2,14 @@ import React, { useState } from "react";
 import { Storage } from "aws-amplify";
 import { S3Image } from "aws-amplify-react";
 
-const Upload = ({ setUrlKey, setUrlPath, urlPath, urlKey, updateUrl }) => {
+const Upload = ({
+  setUrlKey,
+  setUrlPath,
+  urlPath,
+  urlKey,
+  updateUrl,
+  type,
+}) => {
   const [uploading, setUploading] = useState(false);
   const [progressLoaded, setProgressLoaded] = useState("");
   const [progressTotal, setProgressTotal] = useState("");
@@ -45,13 +52,13 @@ const Upload = ({ setUrlKey, setUrlPath, urlPath, urlKey, updateUrl }) => {
     <div>
       {urlKey ? (
         <div className="uploaded-img-container">
-          <S3Image className="uploaded-image" imgKey={urlKey} />
-          <img
+          <p>{urlKey}</p>
+          <button
+            className="delete-section-button-dark"
             onClick={() => handleDeleteImage(urlKey)}
-            className="uploaded-delete-image"
-            src="/images/deleteImage.svg"
-            alt="Delete"
-          />
+          >
+            Delete content
+          </button>
         </div>
       ) : (
         <div className="upload-btn-wrapper">

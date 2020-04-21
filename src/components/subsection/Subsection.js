@@ -216,6 +216,7 @@ function Subsection(props) {
                     sectionId={id}
                     getPublicData={getPublicData}
                     subsections={subsections}
+                    setShowCreateSubsection={setShowCreateSubsection}
                   />
                 )}
               </div>

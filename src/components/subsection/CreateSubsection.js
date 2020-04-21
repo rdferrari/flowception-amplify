@@ -12,7 +12,7 @@ const INIT_VALUES = {
   text: null,
 };
 
-function CreateSubsection({ sectionId, subsections }) {
+function CreateSubsection({ sectionId, subsections, setShowCreateSubsection }) {
   const [urlKey, setUrlKey] = useState(null);
   const [urlPath, setUrlPath] = useState(null);
   const [mediaType, setMediaType] = useState(null);
@@ -59,7 +59,18 @@ function CreateSubsection({ sectionId, subsections }) {
   return (
     <div className="section-sub-create">
       {mediaType === null && (
-        <p className="section-text">Chose a media type to create</p>
+        <div>
+          <p className="section-text">
+            Chose a media type to create or
+            <span
+              className="text-button"
+              onClick={() => setShowCreateSubsection(false)}
+            >
+              {" "}
+              go back
+            </span>
+          </p>
+        </div>
       )}
 
       {showForm === false ? (
@@ -69,6 +80,12 @@ function CreateSubsection({ sectionId, subsections }) {
             onClick={() => handleTypeForm("TEXT")}
             src="/images/createText.svg"
             alt="Create text"
+          />
+          <img
+            className="section-sub-create-icon"
+            onClick={() => handleTypeForm("PDF")}
+            src="/images/createPdf.svg"
+            alt="Create pdf"
           />
           <img
             className="section-sub-create-icon"
@@ -144,6 +161,20 @@ function CreateSubsection({ sectionId, subsections }) {
             handleChange={handleChange}
             mediaType={mediaType}
             type="VIDEO_360"
+            setUrlKey={setUrlKey}
+            setUrlPath={setUrlPath}
+            urlPath={urlPath}
+            urlKey={urlKey}
+          />
+
+          <MediaType
+            handleSubmit={handleSubmit}
+            setShowForm={setShowForm}
+            errors={errors}
+            values={values}
+            handleChange={handleChange}
+            mediaType={mediaType}
+            type="PDF"
             setUrlKey={setUrlKey}
             setUrlPath={setUrlPath}
             urlPath={urlPath}
