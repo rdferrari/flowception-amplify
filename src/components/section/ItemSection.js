@@ -25,7 +25,7 @@ function ItemSection({ sections }) {
             <h2 className="section-title">{section.title}</h2>
             <p className="section-text">{section.intro}</p>
             <Link to={`/section/${section.id}`}>
-              <p className="learn-more">Learn more</p>
+              <p className="learn-more">View more</p>
             </Link>
           </div>
         </div>

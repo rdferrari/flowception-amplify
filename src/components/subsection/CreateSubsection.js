@@ -8,8 +8,8 @@ import MediaType from "./MediaType";
 import SubsectionForm from "./SubsectionForm";
 
 const INIT_VALUES = {
-  title: "",
-  text: "",
+  title: null,
+  text: null,
 };
 
 function CreateSubsection({ sectionId, subsections }) {
@@ -38,9 +38,9 @@ function CreateSubsection({ sectionId, subsections }) {
     );
     console.info(`Created section: id ${result.data.createSubsection.id}`);
 
-    setUrlKey(null);
-    setUrlPath(null);
-    setMediaType(null);
+    //setUrlKey(null);
+    //setUrlPath(null);
+    //setMediaType(null);
     setShowForm(false);
   };
 
@@ -51,31 +51,6 @@ function CreateSubsection({ sectionId, subsections }) {
     true
   );
 
-  const createSubsectionMedia = async (urlKey) => {
-    const input = {
-      sectionId,
-      type: mediaType,
-      urlKey,
-      urlPath,
-      text: null,
-      title: null,
-      order: subsections.length,
-      ownerUsername: Auth.user.username,
-      createdAt: Date.now(),
-    };
-
-    const result = await API.graphql(
-      graphqlOperation(createSubsection, {
-        input,
-      })
-    );
-    console.info(`Created section: id ${result.data.createSubsection.id}`);
-    setUrlKey(null);
-    setUrlPath(null);
-    setMediaType(null);
-    setShowForm(false);
-  };
-
   const handleTypeForm = (type) => {
     setMediaType(type);
     setShowForm(true);
@@ -84,7 +59,7 @@ function CreateSubsection({ sectionId, subsections }) {
   return (
     <div className="section-sub-create">
       {mediaType === null && (
-        <p className="section-text">Chose the media type to create</p>
+        <p className="section-text">Chose a media type to create</p>
       )}
 
       {showForm === false ? (
@@ -123,40 +98,52 @@ function CreateSubsection({ sectionId, subsections }) {
       ) : (
         <div>
           <MediaType
+            handleSubmit={handleSubmit}
+            setShowForm={setShowForm}
+            errors={errors}
+            values={values}
+            handleChange={handleChange}
             mediaType={mediaType}
             type="IMAGE"
-            setShowForm={setShowForm}
-            createSubsectionMedia={() => createSubsectionMedia(urlKey)}
             setUrlKey={setUrlKey}
             setUrlPath={setUrlPath}
             urlPath={urlPath}
             urlKey={urlKey}
           />
           <MediaType
+            handleSubmit={handleSubmit}
+            setShowForm={setShowForm}
+            errors={errors}
+            values={values}
+            handleChange={handleChange}
             mediaType={mediaType}
             type="VIDEO"
-            setShowForm={setShowForm}
-            createSubsectionMedia={() => createSubsectionMedia(urlKey)}
             setUrlKey={setUrlKey}
             setUrlPath={setUrlPath}
             urlPath={urlPath}
             urlKey={urlKey}
           />
           <MediaType
+            handleSubmit={handleSubmit}
+            setShowForm={setShowForm}
+            errors={errors}
+            values={values}
+            handleChange={handleChange}
             mediaType={mediaType}
             type="IMAGE_360"
-            setShowForm={setShowForm}
-            createSubsectionMedia={() => createSubsectionMedia(urlKey)}
             setUrlKey={setUrlKey}
             setUrlPath={setUrlPath}
             urlPath={urlPath}
             urlKey={urlKey}
           />
           <MediaType
+            handleSubmit={handleSubmit}
+            setShowForm={setShowForm}
+            errors={errors}
+            values={values}
+            handleChange={handleChange}
             mediaType={mediaType}
             type="VIDEO_360"
-            setShowForm={setShowForm}
-            createSubsectionMedia={() => createSubsectionMedia(urlKey)}
             setUrlKey={setUrlKey}
             setUrlPath={setUrlPath}
             urlPath={urlPath}
