@@ -109,6 +109,12 @@ function CreateSubsection({ sectionId, subsections, setShowCreateSubsection }) {
               src="/images/create360Video.svg"
               alt="Create 360 video"
             />
+            <img
+              className="section-sub-create-icon"
+              onClick={() => handleTypeForm("AUDIO")}
+              src="/images/createAudio.svg"
+              alt="Create Audio"
+            />
           </div>
         </div>
       ) : (
@@ -121,6 +127,19 @@ function CreateSubsection({ sectionId, subsections, setShowCreateSubsection }) {
             handleChange={handleChange}
             mediaType={mediaType}
             type="IMAGE"
+            setUrlKey={setUrlKey}
+            setUrlPath={setUrlPath}
+            urlPath={urlPath}
+            urlKey={urlKey}
+          />
+          <MediaType
+            handleSubmit={handleSubmit}
+            setShowForm={setShowForm}
+            errors={errors}
+            values={values}
+            handleChange={handleChange}
+            mediaType={mediaType}
+            type="AUDIO"
             setUrlKey={setUrlKey}
             setUrlPath={setUrlPath}
             urlPath={urlPath}

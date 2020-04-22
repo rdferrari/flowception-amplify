@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="81.559" height="122" viewBox="0 0 81.559 122">
+  <defs>
+    <style>
+      .cls-1, .cls-2 {
+        fill: #29ad85;
+      }
+
+      .cls-2 {
+        font-size: 20px;
+        font-family: Raleway-Regular, Raleway;
+      }
+    </style>
+  </defs>
+  <g id="Group_165" data-name="Group 165" transform="translate(-1430 -402)">
+    <g id="speaker" transform="translate(1430 386.01)">
+      <path id="Path_26" data-name="Path 26" class="cls-1" d="M47.4,16.26a2.71,2.71,0,0,0-2.876.326L18.073,37.743H5.437A5.446,5.446,0,0,0,0,43.18V64.929a5.443,5.443,0,0,0,5.437,5.437H18.073L44.515,91.523a2.722,2.722,0,0,0,2.882.321A2.713,2.713,0,0,0,48.935,89.4V18.712A2.727,2.727,0,0,0,47.4,16.26Z" transform="translate(0 0)"/>
+      <path id="Path_27" data-name="Path 27" class="cls-1" d="M346.38,123.035a2.72,2.72,0,0,0-3.822,3.871,21.685,21.685,0,0,1,0,30.71,2.716,2.716,0,1,0,3.822,3.86,27.12,27.12,0,0,0,0-38.441Z" transform="translate(-283.683 -88.207)"/>
+      <path id="Path_28" data-name="Path 28" class="cls-1" d="M391.5,77.914a2.72,2.72,0,1,0-3.833,3.86,32.443,32.443,0,0,1,0,46.048,2.72,2.72,0,0,0,3.833,3.86,37.891,37.891,0,0,0,0-53.769Z" transform="translate(-321.133 -50.747)"/>
+    </g>
+    <text id="Audio" class="cls-2" transform="translate(1471 519)"><tspan x="-26.93" y="0">Audio</tspan></text>
+  </g>
+</svg>

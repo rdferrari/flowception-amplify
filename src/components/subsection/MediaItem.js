@@ -3,6 +3,7 @@ import { Storage } from "aws-amplify";
 import { S3Image } from "aws-amplify-react";
 import { Player } from "video-react";
 import { Pannellum, PannellumVideo } from "pannellum-react";
+import ReactAudioPlayer from "react-audio-player";
 
 function MediaItem({
   type,
@@ -65,6 +66,22 @@ function MediaItem({
               onClick={() => handleDeleteSubsection(id, urlKey)}
             >
               Delete pdf
+            </button>
+          )}
+        </div>
+      )}
+
+      {urlPath && type === "AUDIO" && (
+        <div>
+          <div>
+            <ReactAudioPlayer src={urlPath} controls />
+          </div>
+          {user && group === "admin" && (
+            <button
+              className="delete-section-button-transparent"
+              onClick={() => handleDeleteSubsection(id, urlKey)}
+            >
+              Delete audio
             </button>
           )}
         </div>
