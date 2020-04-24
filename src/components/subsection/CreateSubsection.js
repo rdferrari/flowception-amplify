@@ -131,6 +131,7 @@ function CreateSubsection({ sectionId, subsections, setShowCreateSubsection }) {
             setUrlPath={setUrlPath}
             urlPath={urlPath}
             urlKey={urlKey}
+            fileType="image/*"
           />
           <MediaType
             handleSubmit={handleSubmit}
@@ -144,6 +145,7 @@ function CreateSubsection({ sectionId, subsections, setShowCreateSubsection }) {
             setUrlPath={setUrlPath}
             urlPath={urlPath}
             urlKey={urlKey}
+            fileType="audio/*"
           />
           <MediaType
             handleSubmit={handleSubmit}
@@ -157,6 +159,7 @@ function CreateSubsection({ sectionId, subsections, setShowCreateSubsection }) {
             setUrlPath={setUrlPath}
             urlPath={urlPath}
             urlKey={urlKey}
+            fileType="video/*"
           />
           <MediaType
             handleSubmit={handleSubmit}
@@ -170,6 +173,7 @@ function CreateSubsection({ sectionId, subsections, setShowCreateSubsection }) {
             setUrlPath={setUrlPath}
             urlPath={urlPath}
             urlKey={urlKey}
+            fileType="image/*"
           />
           <MediaType
             handleSubmit={handleSubmit}
@@ -183,6 +187,7 @@ function CreateSubsection({ sectionId, subsections, setShowCreateSubsection }) {
             setUrlPath={setUrlPath}
             urlPath={urlPath}
             urlKey={urlKey}
+            fileType="video/*"
           />
 
           <MediaType
@@ -197,6 +202,7 @@ function CreateSubsection({ sectionId, subsections, setShowCreateSubsection }) {
             setUrlPath={setUrlPath}
             urlPath={urlPath}
             urlKey={urlKey}
+            accept=".pdf"
           />
 
           {mediaType === "TEXT" && (

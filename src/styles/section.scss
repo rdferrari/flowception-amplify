@@ -1,6 +1,7 @@
 .section-tagline {
   width: 95%;
   margin: $space-md 0;
+  padding-right: 5px;
 
   @media (min-width: $screen-sm-min) {
     width: 80%;

@@ -94,10 +94,9 @@ function MediaItem({
             height="400px"
             image={urlPath}
             mouseZoom={false}
-            pitch={10}
-            yaw={180}
+            pitch={30}
+            yaw={0}
             hfov={110}
-            autoLoad
             onLoad={() => {
               console.log("panorama loaded");
             }}

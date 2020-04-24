@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Storage } from "aws-amplify";
-import { S3Image } from "aws-amplify-react";
+// import { S3Image } from "aws-amplify-react";
 
 const Upload = ({
   setUrlKey,
@@ -8,7 +8,7 @@ const Upload = ({
   urlPath,
   urlKey,
   updateUrl,
-  type,
+  fileType,
 }) => {
   const [uploading, setUploading] = useState(false);
   const [progressLoaded, setProgressLoaded] = useState("");
@@ -66,6 +66,7 @@ const Upload = ({
             type="file"
             onChange={handleUploadFile}
             className="upload-myfile"
+            accept={fileType}
           />
           {uploading === false ? (
             <img

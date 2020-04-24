@@ -13,6 +13,7 @@ const MediaType = ({
   errors,
   values,
   handleChange,
+  fileType,
 }) => {
   return (
     mediaType === type && (
@@ -22,6 +23,7 @@ const MediaType = ({
           setUrlPath={setUrlPath}
           urlPath={urlPath}
           urlKey={urlKey}
+          fileType={fileType}
         />
 
         {console.log(urlKey, urlPath)}

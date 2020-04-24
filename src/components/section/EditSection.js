@@ -78,6 +78,7 @@ function EditSection({
         urlPath={urlPath}
         urlKey={urlKey}
         updateUrl={updateUrl}
+        fileType="image/*"
       />
 
       <SectionForm

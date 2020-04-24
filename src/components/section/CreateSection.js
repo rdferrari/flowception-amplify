@@ -53,6 +53,7 @@ function CreateSection({ sections, setShowCreateSection }) {
         setUrlPath={setUrlPath}
         urlPath={urlPath}
         urlKey={urlKey}
+        fileType="image/*"
       />
 
       <SectionForm
