@@ -1,7 +1,7 @@
 {
-    "bucketName": "rodrigo123",
-    "authPolicyName": "s3_amplify_b19028cf",
-    "unauthPolicyName": "s3_amplify_b19028cf",
+    "bucketName": "flowception1",
+    "authPolicyName": "s3_amplify_7f5bcc52",
+    "unauthPolicyName": "s3_amplify_7f5bcc52",
     "authRoleName": {
         "Ref": "AuthRoleName"
     },
@@ -17,15 +17,15 @@
         "s3:ListBucket"
     ],
     "s3PermissionsAuthenticatedPublic": "s3:GetObject",
-    "s3PublicPolicy": "Public_policy_d47c0400",
+    "s3PublicPolicy": "Public_policy_16903074",
     "s3PermissionsAuthenticatedUploads": "DISALLOW",
-    "s3UploadsPolicy": "Uploads_policy_d47c0400",
+    "s3UploadsPolicy": "Uploads_policy_16903074",
     "s3PermissionsAuthenticatedProtected": "s3:GetObject",
-    "s3ProtectedPolicy": "Protected_policy_1a475f85",
+    "s3ProtectedPolicy": "Protected_policy_b7866346",
     "s3PermissionsAuthenticatedPrivate": "s3:GetObject",
-    "s3PrivatePolicy": "Private_policy_1a475f85",
+    "s3PrivatePolicy": "Private_policy_b7866346",
     "AuthenticatedAllowList": "ALLOW",
-    "s3ReadPolicy": "read_policy_d47c0400",
+    "s3ReadPolicy": "read_policy_16903074",
     "s3PermissionsGuestPublic": "s3:GetObject",
     "s3PermissionsGuestUploads": "DISALLOW",
     "GuestAllowList": "ALLOW",

@@ -1,6 +1,6 @@
 {
     "auth": {
-        "rodrigo55de561c": {
+        "flowceptione9de984b": {
             "service": "Cognito",
             "providerPlugin": "awscloudformation",
             "dependsOn": [],
@@ -12,7 +12,7 @@
             "dependsOn": [
                 {
                     "category": "auth",
-                    "resourceName": "rodrigo55de561c",
+                    "resourceName": "flowceptione9de984b",
                     "attributes": [
                         "UserPoolId",
                         "AppClientIDWeb",
@@ -24,7 +24,7 @@
         }
     },
     "api": {
-        "rodrigo": {
+        "flowception": {
             "service": "AppSync",
             "providerPlugin": "awscloudformation",
             "output": {
@@ -33,15 +33,15 @@
                         {
                             "authenticationType": "API_KEY",
                             "apiKeyConfig": {
-                                "description": "rodrigoApi",
-                                "apiKeyExpirationDays": "300"
+                                "description": "flowception",
+                                "apiKeyExpirationDays": "360"
                             }
                         }
                     ],
                     "defaultAuthentication": {
                         "authenticationType": "AMAZON_COGNITO_USER_POOLS",
                         "userPoolConfig": {
-                            "userPoolId": "authrodrigo55de561c"
+                            "userPoolId": "authflowceptione9de984b"
                         }
                     }
                 }
@@ -53,14 +53,14 @@
             "dependsOn": [
                 {
                     "category": "auth",
-                    "resourceName": "rodrigo55de561c",
+                    "resourceName": "flowceptione9de984b",
                     "attributes": [
                         "UserPoolId"
                     ]
                 },
                 {
                     "category": "function",
-                    "resourceName": "AdminQueries5e5fce3c",
+                    "resourceName": "AdminQueriesb8eafc8f",
                     "attributes": [
                         "Arn",
                         "Name"
@@ -70,13 +70,13 @@
         }
     },
     "storage": {
-        "rodrigoStorage": {
+        "flowception": {
             "service": "S3",
             "providerPlugin": "awscloudformation",
             "dependsOn": [
                 {
                     "category": "auth",
-                    "resourceName": "rodrigo55de561c",
+                    "resourceName": "flowceptione9de984b",
                     "attributes": [
                         "UserPoolId"
                     ]
@@ -92,25 +92,19 @@
         }
     },
     "function": {
-        "AdminQueries5e5fce3c": {
+        "AdminQueriesb8eafc8f": {
             "service": "Lambda",
             "providerPlugin": "awscloudformation",
             "build": true,
             "dependsOn": [
                 {
                     "category": "auth",
-                    "resourceName": "rodrigo55de561c",
+                    "resourceName": "flowceptione9de984b",
                     "attributes": [
                         "UserPoolId"
                     ]
                 }
             ]
-        }
-    },
-    "hosting": {
-        "amplifyhosting": {
-            "service": "amplifyhosting",
-            "type": "cicd"
         }
     }
 }

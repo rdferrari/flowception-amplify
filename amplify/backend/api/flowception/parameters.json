@@ -1,10 +1,10 @@
 {
-    "AppSyncApiName": "rodrigo",
+    "AppSyncApiName": "flowception",
     "DynamoDBBillingMode": "PAY_PER_REQUEST",
     "DynamoDBEnableServerSideEncryption": "false",
     "AuthCognitoUserPoolId": {
         "Fn::GetAtt": [
-            "authrodrigo55de561c",
+            "authflowceptione9de984b",
             "Outputs.UserPoolId"
         ]
     }

@@ -1,25 +1,19 @@
 {
-    "master": {
+    "dev": {
         "awscloudformation": {
-            "AuthRoleName": "amplify-rodrigo-master-134315-authRole",
-            "UnauthRoleArn": "arn:aws:iam::180844034732:role/amplify-rodrigo-master-134315-unauthRole",
-            "AuthRoleArn": "arn:aws:iam::180844034732:role/amplify-rodrigo-master-134315-authRole",
+            "AuthRoleName": "amplify-flowception-dev-155044-authRole",
+            "UnauthRoleArn": "arn:aws:iam::837623038432:role/amplify-flowception-dev-155044-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::837623038432:role/amplify-flowception-dev-155044-authRole",
             "Region": "ap-southeast-2",
-            "DeploymentBucketName": "amplify-rodrigo-master-134315-deployment",
-            "UnauthRoleName": "amplify-rodrigo-master-134315-unauthRole",
-            "StackName": "amplify-rodrigo-master-134315",
-            "StackId": "arn:aws:cloudformation:ap-southeast-2:180844034732:stack/amplify-rodrigo-master-134315/2628e6c0-7d28-11ea-be44-0229e4e38598",
-            "AmplifyAppId": "dfr2v2hp8x1c3"
+            "DeploymentBucketName": "amplify-flowception-dev-155044-deployment",
+            "UnauthRoleName": "amplify-flowception-dev-155044-unauthRole",
+            "StackName": "amplify-flowception-dev-155044",
+            "StackId": "arn:aws:cloudformation:ap-southeast-2:837623038432:stack/amplify-flowception-dev-155044/f29bd220-86a7-11ea-a80d-0223254a71be",
+            "AmplifyAppId": "dtietkyot8apn"
         },
         "categories": {
             "auth": {
-                "rodrigo55de561c": {}
-            },
-            "hosting": {
-                "amplifyhosting": {
-                    "appId": "dfr2v2hp8x1c3",
-                    "type": "cicd"
-                }
+                "flowceptione9de984b": {}
             }
         }
     }

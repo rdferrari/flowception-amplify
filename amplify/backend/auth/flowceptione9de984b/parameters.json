@@ -1,8 +1,8 @@
 {
-    "identityPoolName": "rodrigo55de561c_identitypool_55de561c",
+    "identityPoolName": "flowceptione9de984b_identitypool_e9de984b",
     "allowUnauthenticatedIdentities": true,
-    "resourceNameTruncated": "rodrig55de561c",
-    "userPoolName": "rodrigo55de561c_userpool_55de561c",
+    "resourceNameTruncated": "flowcee9de984b",
+    "userPoolName": "flowceptione9de984b_userpool_e9de984b",
     "autoVerifiedAttributes": [
         "email"
     ],
@@ -28,9 +28,9 @@
     "userpoolClientReadAttributes": [
         "email"
     ],
-    "userpoolClientLambdaRole": "rodrig55de561c_userpoolclient_lambda_role",
+    "userpoolClientLambdaRole": "flowcee9de984b_userpoolclient_lambda_role",
     "userpoolClientSetAttributes": false,
-    "resourceName": "rodrigo55de561c",
+    "resourceName": "flowceptione9de984b",
     "authSelections": "identityPoolAndUserPool",
     "authRoleArn": {
         "Fn::GetAtt": [

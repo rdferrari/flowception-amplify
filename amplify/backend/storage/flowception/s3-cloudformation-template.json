@@ -85,9 +85,9 @@
 	
     
     
-        "authrodrigo55de561cUserPoolId": {
+        "authflowceptione9de984bUserPoolId": {
             "Type": "String",
-            "Default": "authrodrigo55de561cUserPoolId"
+            "Default": "authflowceptione9de984bUserPoolId"
         },
         
         
@@ -258,7 +258,7 @@
                         "",
                         [
                           {
-                            "Ref": "authrodrigo55de561cUserPoolId"
+                            "Ref": "authflowceptione9de984bUserPoolId"
                           },
                           "-adminGroupRole"
                         ]
