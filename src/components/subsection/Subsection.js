@@ -10,7 +10,7 @@ import {
   deleteSection,
   updateSubsection,
 } from "../../graphql/mutations";
-import { getSection } from "../../graphql/queries";
+import { getSection, listSubsections } from "../../graphql/queries";
 
 import EditSection from "../section/EditSection";
 import DetailSection from "../section/DetailSection";
@@ -34,15 +34,38 @@ function Subsection(props) {
   const [isDraggable, setIsDraggable] = useState(false);
   const [showCreateSubsection, setShowCreateSubsection] = useState(false);
 
+  const [subSections, setSubSections] = useState([]);
+
   useEffect(() => {
     getPublicData();
+    listSubsectionData();
   }, []);
+
+  const listSubsectionData = async () => {
+    try {
+      const subsectionsData = await API.graphql({
+        query: listSubsections,
+        variables: { limit: 1000 },
+        authMode: "API_KEY",
+      });
+
+      const subsectionsDataArray = subsectionsData.data.listSubsections.items;
+
+      const subsectionsDataFiltered = subsectionsDataArray.filter(
+        (item) => item.sectionId === id
+      );
+
+      setSubSections(subsectionsDataFiltered);
+    } catch (err) {
+      console.log("error fetching data..", err);
+    }
+  };
 
   const getPublicData = async () => {
     try {
       const sectionData = await API.graphql({
         query: getSection,
-        variables: { id },
+        variables: { id, limit: 1000 },
         authMode: "API_KEY",
       });
 
@@ -223,10 +246,9 @@ function Subsection(props) {
             )}
 
             {isDraggable === false ? (
-              subsections &&
-              subsections.sort(compare).map((item, index) => (
+              subSections &&
+              subSections.sort(compare).map((item) => (
                 <div key={item.id}>
-                  {console.log(subsections)}
                   <ItemsSubsection
                     title={item.title}
                     text={item.text}
@@ -238,11 +260,9 @@ function Subsection(props) {
                     getPublicData={getPublicData}
                     type={item.type}
                     urlKey={item.urlKey}
-                    index={index}
                     isDraggable={isDraggable}
                     order={item.order}
                   />
-                  {console.log(item.order)}
                 </div>
               ))
             ) : (
@@ -251,7 +271,7 @@ function Subsection(props) {
                   {(provided) => (
                     <div ref={provided.innerRef} {...provided.droppableProps}>
                       <ListSubsectionDraggable
-                        subsections={subsections}
+                        subsections={subSections}
                         compare={compare}
                       />
                       {provided.placeholder}
