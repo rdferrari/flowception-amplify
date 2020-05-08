@@ -106,10 +106,10 @@ function Subsection(props) {
   };
 
   function compare(a, b) {
-    if (a.order < b.order) {
+    if (Number(a.order) < Number(b.order)) {
       return -1;
     }
-    if (a.order > b.order) {
+    if (Number(a.order) > Number(b.order)) {
       return 1;
     }
     return 0;
@@ -241,6 +241,8 @@ function Subsection(props) {
                     isDraggable={isDraggable}
                     order={item.order}
                   />
+                  {item.order}
+                  {console.log(item.order)}
                 </div>
               ))
             ) : (
