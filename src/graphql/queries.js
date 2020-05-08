@@ -117,7 +117,7 @@ export const listSubsections = /* GraphQL */ `
     $limit: Int
     $nextToken: String
   ) {
-    listSubsections(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    listSubsections(filter: $filter, limit: 1000, nextToken: $nextToken) {
       items {
         id
         order

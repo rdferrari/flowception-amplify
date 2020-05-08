@@ -4,17 +4,17 @@ import { Link } from "react-router-dom";
 
 function ItemSection({ sections }) {
   function compare(a, b) {
-    if (a.order < b.order) {
+    if (Number(a.order) < Number(b.order)) {
       return -1;
     }
-    if (a.order > b.order) {
+    if (Number(a.order) > Number(b.order)) {
       return 1;
     }
     return 0;
   }
 
   const orderedSections = sections.sort(compare);
-  return orderedSections.map(
+  return sections.map(
     (section) =>
       sections && (
         <div key={section.id} className="section-card">
@@ -29,6 +29,7 @@ function ItemSection({ sections }) {
             <Link to={`/section/${section.id}`}>
               <p className="learn-more">View more</p>
             </Link>
+            {console.log(section.title)}
           </div>
         </div>
       )

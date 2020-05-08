@@ -226,6 +226,7 @@ function Subsection(props) {
               subsections &&
               subsections.sort(compare).map((item, index) => (
                 <div key={item.id}>
+                  {console.log(subsections)}
                   <ItemsSubsection
                     title={item.title}
                     text={item.text}
@@ -241,7 +242,6 @@ function Subsection(props) {
                     isDraggable={isDraggable}
                     order={item.order}
                   />
-                  {item.order}
                   {console.log(item.order)}
                 </div>
               ))

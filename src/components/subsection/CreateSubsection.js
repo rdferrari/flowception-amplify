@@ -60,6 +60,7 @@ function CreateSubsection({ sectionId, subsections, setShowCreateSubsection }) {
 
   return (
     <div className="section-sub-create">
+      {console.log(subsections.length)}
       {showForm === false ? (
         <div>
           <div>

@@ -40,11 +40,12 @@ const Section = () => {
   const getPublicData = async () => {
     const sectionData = await API.graphql({
       query: listSections,
-      variables: {},
+      variables: { limit: 1000 },
       authMode: "API_KEY",
     });
 
     const sectionArray = sectionData.data.listSections.items;
+    console.log(sectionData.data);
     updateSections(sectionArray);
   };
 
@@ -112,6 +113,8 @@ const Section = () => {
                   listIcon="sectionList.svg"
                 />
               )}
+
+              {console.log(sections.length)}
 
               {showCreateSection === true && (
                 <CreateSection
