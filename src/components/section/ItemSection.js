@@ -19,7 +19,9 @@ function ItemSection({ sections }) {
       sections && (
         <div key={section.id} className="section-card">
           {section.urlKey && (
-            <S3Image className="section-card-image" imgKey={section.urlKey} />
+            <div>
+              <S3Image className="section-card-image" imgKey={section.urlKey} />
+            </div>
           )}
           <div className="section-text-container">
             <h2 className="section-title">{section.title}</h2>

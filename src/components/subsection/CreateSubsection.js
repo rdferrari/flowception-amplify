@@ -52,6 +52,8 @@ function CreateSubsection({ sectionId, subsections, setShowCreateSubsection }) {
   );
 
   const handleTypeForm = (type) => {
+    setUrlKey(null);
+    setUrlPath(null);
     setMediaType(type);
     setShowForm(true);
   };

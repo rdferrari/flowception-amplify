@@ -14,6 +14,12 @@
         "categories": {
             "auth": {
                 "flowceptione9de984b": {}
+            },
+            "hosting": {
+                "amplifyhosting": {
+                    "appId": "dtietkyot8apn",
+                    "type": "cicd"
+                }
             }
         }
     }
