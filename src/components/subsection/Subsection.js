@@ -24,7 +24,7 @@ import AdminMenu from "../AdminMenu";
 function Subsection(props) {
   let { id } = useParams();
   const [sectionId, setSectionId] = useState(null);
-  const [subsections, setSubsections] = useState(null);
+  // const [subsections, setSubsections] = useState(null);
   const [title, setTitle] = useState(null);
   const [intro, setIntro] = useState(null);
   const [body, setBody] = useState(null);
@@ -69,7 +69,7 @@ function Subsection(props) {
         authMode: "API_KEY",
       });
 
-      setSubsections(sectionData.data.getSection.subsections.items);
+      // setSubsections(sectionData.data.getSection.subsections.items);
       setSectionId(sectionData.data.getSection.id);
       setTitle(sectionData.data.getSection.title);
       setIntro(sectionData.data.getSection.intro);
@@ -91,12 +91,12 @@ function Subsection(props) {
             data: { onCreateSubsection },
           },
         } = data;
-        const subsectionData = [onCreateSubsection, ...subsections];
-        setSubsections(subsectionData);
+        const subsectionData = [onCreateSubsection, ...subSections];
+        setSubSections(subsectionData);
       },
     });
     return () => subscription.unsubscribe();
-  }, [subsections]);
+  }, [subSections]);
 
   const handleDeleteSubsection = async (subsectionId, urlKey) => {
     const input = { id: subsectionId };
@@ -114,7 +114,7 @@ function Subsection(props) {
   };
 
   const handleDeleteSection = async (sectionId, urlKey) => {
-    subsections.map((subsection) =>
+    subSections.map((subsection) =>
       handleDeleteSubsection(subsection.id, subsection.urlKey)
     );
 
@@ -154,10 +154,10 @@ function Subsection(props) {
       return;
     }
 
-    setSubsections([]);
+    setSubSections([]);
     console.log("source:", dropSource);
     console.log("destination", dropDestination);
-    console.log(subsections[dropDestination].order);
+    console.log(subSections[dropDestination].order);
 
     const reorderUpdate = async (sectionId, drop) => {
       const input = {
@@ -170,17 +170,17 @@ function Subsection(props) {
           input,
         })
       );
-      getPublicData();
+      listSubsectionData();
       console.info(`Updated section: id ${result.data.updateSubsection.id}`);
     };
 
-    const dropSourceOrderCopy = subsections[dropSource].order;
+    const dropSourceOrderCopy = subSections[dropSource].order;
 
     reorderUpdate(
-      subsections[dropSource].id,
-      subsections[dropDestination].order
+      subSections[dropSource].id,
+      subSections[dropDestination].order
     );
-    reorderUpdate(subsections[dropDestination].id, dropSourceOrderCopy);
+    reorderUpdate(subSections[dropDestination].id, dropSourceOrderCopy);
   };
 
   return (
@@ -237,8 +237,8 @@ function Subsection(props) {
                 ) : (
                   <CreateSubsection
                     sectionId={id}
-                    getPublicData={getPublicData}
-                    subsections={subsections}
+                    getPublicData={listSubsectionData}
+                    subsections={subSections}
                     setShowCreateSubsection={setShowCreateSubsection}
                   />
                 )}
@@ -249,6 +249,7 @@ function Subsection(props) {
               subSections &&
               subSections.sort(compare).map((item) => (
                 <div key={item.id}>
+                  {console.log(item.order)}
                   <ItemsSubsection
                     title={item.title}
                     text={item.text}
@@ -257,7 +258,7 @@ function Subsection(props) {
                     group={group}
                     handleDeleteSubsection={handleDeleteSubsection}
                     subsectionId={item.id}
-                    getPublicData={getPublicData}
+                    getPublicData={listSubsectionData}
                     type={item.type}
                     urlKey={item.urlKey}
                     isDraggable={isDraggable}
