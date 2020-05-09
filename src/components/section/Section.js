@@ -45,7 +45,7 @@ const Section = () => {
     });
 
     const sectionArray = sectionData.data.listSections.items;
-    console.log(sectionData.data);
+
     updateSections(sectionArray);
   };
 
@@ -113,8 +113,6 @@ const Section = () => {
                   listIcon="sectionList.svg"
                 />
               )}
-
-              {console.log(sections.length)}
 
               {showCreateSection === true && (
                 <CreateSection

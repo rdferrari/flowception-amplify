@@ -249,7 +249,6 @@ function Subsection(props) {
               subSections &&
               subSections.sort(compare).map((item) => (
                 <div key={item.id}>
-                  {console.log(item.order)}
                   <ItemsSubsection
                     title={item.title}
                     text={item.text}

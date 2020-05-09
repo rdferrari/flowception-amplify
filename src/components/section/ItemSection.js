@@ -13,7 +13,7 @@ function ItemSection({ sections }) {
     return 0;
   }
 
-  const orderedSections = sections.sort(compare);
+  // const orderedSections = sections.sort(compare);
   return sections.map(
     (section) =>
       sections && (
@@ -29,7 +29,6 @@ function ItemSection({ sections }) {
             <Link to={`/section/${section.id}`}>
               <p className="learn-more">View more</p>
             </Link>
-            {console.log(section.title)}
           </div>
         </div>
       )

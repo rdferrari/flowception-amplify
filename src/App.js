@@ -41,7 +41,7 @@ function App() {
 
   useEffect(() => {
     getUserData();
-    console.dir(AmplifyTheme);
+    // console.dir(AmplifyTheme);
 
     Hub.listen("auth", (data) => {
       const { payload } = data;
@@ -67,7 +67,7 @@ function App() {
     const groupUsers = user.signInUserSession.idToken.payload["cognito:groups"];
 
     if (groupUsers) {
-      console.log(groupUsers[0]);
+      // console.log(groupUsers[0]);
       setGroup(groupUsers[0]);
     }
   };
