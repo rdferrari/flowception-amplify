@@ -67,6 +67,20 @@
 					]
 				}
 			]
+		},
+		"stripeapi": {
+			"service": "API Gateway",
+			"providerPlugin": "awscloudformation",
+			"dependsOn": [
+				{
+					"category": "function",
+					"resourceName": "stripeCheckout",
+					"attributes": [
+						"Name",
+						"Arn"
+					]
+				}
+			]
 		}
 	},
 	"storage": {
@@ -105,6 +119,11 @@
 					]
 				}
 			]
+		},
+		"stripeCheckout": {
+			"build": true,
+			"providerPlugin": "awscloudformation",
+			"service": "Lambda"
 		}
 	},
 	"hosting": {
