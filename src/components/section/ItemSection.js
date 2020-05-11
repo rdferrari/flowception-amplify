@@ -13,8 +13,8 @@ function ItemSection({ sections }) {
     return 0;
   }
 
-  // const orderedSections = sections.sort(compare);
-  return sections.map(
+  const orderedSections = sections.sort(compare);
+  return orderedSections.map(
     (section) =>
       sections && (
         <div key={section.id} className="section-card">

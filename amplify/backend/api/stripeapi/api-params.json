@@ -1,0 +1,34 @@
+{
+    "paths": [
+        {
+            "name": "/checkout",
+            "lambdaFunction": "stripeCheckout",
+            "privacy": {
+                "open": true
+            }
+        }
+    ],
+    "resourceName": "stripeapi",
+    "apiName": "stripeapi",
+    "functionArns": [
+        {
+            "lambdaFunction": "stripeCheckout"
+        }
+    ],
+    "privacy": {
+        "auth": 0,
+        "unauth": 0,
+        "authRoleName": "amplify-flowception-dev-155044-authRole",
+        "unAuthRoleName": "amplify-flowception-dev-155044-unauthRole"
+    },
+    "dependsOn": [
+        {
+            "category": "function",
+            "resourceName": "stripeCheckout",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        }
+    ]
+}
