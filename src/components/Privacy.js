@@ -3,7 +3,7 @@ import React from "react";
 function Privacy() {
   return (
     <div>
-      <p>Privacy</p>
+      <p>New Privacy</p>
     </div>
   );
 }
