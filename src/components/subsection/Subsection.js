@@ -142,6 +142,8 @@ function Subsection(props) {
     getPublicData();
   }
 
+  // On drag
+
   const onDragEnd = (result) => {
     if (!result.destination) {
       return;

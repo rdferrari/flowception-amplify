@@ -20,6 +20,7 @@ const ListSubsectionDraggable = ({ subsections, compare }) => {
               src="/images/dragDrop.svg"
               alt="Drag and drop"
             />
+            {console.log(index, item.order, item.title)}
           </div>
         )}
       </Draggable>
