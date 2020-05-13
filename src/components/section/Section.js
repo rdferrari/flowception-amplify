@@ -90,7 +90,9 @@ const Section = () => {
           {showCreateSection === false && (
             <div>
               {isDraggable === false ? (
-                <ItemSection sections={sections} user={user} />
+                <div className="section-list-container">
+                  <ItemSection sections={sections} user={user} />
+                </div>
               ) : (
                 <ListDraggable data={sections} update={updateSection} />
               )}

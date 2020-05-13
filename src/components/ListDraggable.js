@@ -31,7 +31,6 @@ const ListDraggable = ({ data, update }) => {
     const resultArr = Array.from(data);
     const [removed] = resultArr.splice(startIndex, 1);
     resultArr.splice(endIndex, 0, removed);
-    console.log(resultArr);
 
     resultArr.map((item, index) => (item.order = index));
 
