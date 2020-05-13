@@ -17,7 +17,8 @@ import DetailSection from "../section/DetailSection";
 
 import ItemsSubsection from "./ItemsSubsection";
 import CreateSubsection from "./CreateSubsection";
-import ListSubsectionDraggable from "./ListSubsectionDraggable";
+// import ListSubsectionDraggable from "./ListSubsectionDraggable";
+import ListSubDraggable from "./ListSubDraggable";
 
 import AdminMenu from "../AdminMenu";
 
@@ -161,6 +162,12 @@ function Subsection(props) {
     console.log("destination", dropDestination);
     console.log(subSections[dropDestination].order);
 
+    subSections.map((item) => {
+      if (Number(item.order) > Number(subSections[dropSource].order)) {
+        console.log(Number(item.order));
+      }
+    });
+
     const reorderUpdate = async (sectionId, drop) => {
       const input = {
         id: sectionId,
@@ -175,6 +182,10 @@ function Subsection(props) {
       listSubsectionData();
       console.info(`Updated section: id ${result.data.updateSubsection.id}`);
     };
+
+    // subSections.map((item, index) =>
+    //   console.log(item.order, index, item.title)
+    // );
 
     const dropSourceOrderCopy = subSections[dropSource].order;
 
@@ -268,19 +279,7 @@ function Subsection(props) {
                 </div>
               ))
             ) : (
-              <DragDropContext onDragEnd={onDragEnd}>
-                <Droppable droppableId="list">
-                  {(provided) => (
-                    <div ref={provided.innerRef} {...provided.droppableProps}>
-                      <ListSubsectionDraggable
-                        subsections={subSections}
-                        compare={compare}
-                      />
-                      {provided.placeholder}
-                    </div>
-                  )}
-                </Droppable>
-              </DragDropContext>
+              <ListSubDraggable subsections={subSections} />
             )}
           </div>
         </div>

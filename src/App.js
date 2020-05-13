@@ -12,7 +12,7 @@ import Section from "./components/section/Section";
 import Subsection from "./components/subsection/Subsection";
 import ScrollToTop from "./components/ScrollToTop";
 
-// import Ar from "./components/Ar";
+import DragTest from "./components/DragTest";
 
 import { Authenticator, AmplifyTheme } from "aws-amplify-react";
 import Amplify from "@aws-amplify/core";
@@ -107,6 +107,8 @@ function App() {
         <div className="app-container">
           <Switch>
             <Route exact path="/" component={Section} />
+
+            {/* <Route path="/drag" component={DragTest} /> */}
 
             <Route path="/section/:id" component={Subsection} />
 
