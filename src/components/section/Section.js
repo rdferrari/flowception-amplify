@@ -50,44 +50,6 @@ const Section = () => {
     updateSections(sectionArray);
   };
 
-  const onDragEnd = (result) => {
-    if (!result.destination) {
-      return;
-    }
-
-    const dropSource = result.source.index;
-    const dropDestination = result.destination.index;
-
-    if (dropDestination === dropSource) {
-      return;
-    }
-
-    updateSections([]);
-    console.log("source:", dropSource);
-    console.log("destination", dropDestination);
-    console.log(sections[dropDestination].order);
-
-    const reorderUpdate = async (sectionId, drop) => {
-      const input = {
-        id: sectionId,
-        order: drop,
-      };
-
-      const result = await API.graphql(
-        graphqlOperation(updateSection, {
-          input,
-        })
-      );
-      getPublicData();
-      console.info(`Updated section: id ${result.data.updateSection.id}`);
-    };
-
-    const dropSourceOrderCopy = sections[dropSource].order;
-
-    reorderUpdate(sections[dropSource].id, sections[dropDestination].order);
-    reorderUpdate(sections[dropDestination].id, dropSourceOrderCopy);
-  };
-
   return (
     <UserContext.Consumer>
       {({ user, group }) => (

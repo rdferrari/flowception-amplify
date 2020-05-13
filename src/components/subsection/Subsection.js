@@ -142,59 +142,6 @@ function Subsection(props) {
     getPublicData();
   }
 
-  // On drag
-
-  const onDragEnd = (result) => {
-    if (!result.destination) {
-      return;
-    }
-
-    const dropSource = result.source.index;
-    const dropDestination = result.destination.index;
-
-    if (dropDestination === dropSource) {
-      return;
-    }
-
-    setSubSections([]);
-    console.log("source:", dropSource);
-    console.log("destination", dropDestination);
-    console.log(subSections[dropDestination].order);
-
-    subSections.map((item) => {
-      if (Number(item.order) > Number(subSections[dropSource].order)) {
-        console.log(Number(item.order));
-      }
-    });
-
-    const reorderUpdate = async (sectionId, drop) => {
-      const input = {
-        id: sectionId,
-        order: drop,
-      };
-
-      const result = await API.graphql(
-        graphqlOperation(updateSubsection, {
-          input,
-        })
-      );
-      listSubsectionData();
-      console.info(`Updated section: id ${result.data.updateSubsection.id}`);
-    };
-
-    // subSections.map((item, index) =>
-    //   console.log(item.order, index, item.title)
-    // );
-
-    const dropSourceOrderCopy = subSections[dropSource].order;
-
-    reorderUpdate(
-      subSections[dropSource].id,
-      subSections[dropDestination].order
-    );
-    reorderUpdate(subSections[dropDestination].id, dropSourceOrderCopy);
-  };
-
   return (
     <UserContext.Consumer>
       {({ user, group }) => (
