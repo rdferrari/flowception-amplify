@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { API, graphqlOperation, Storage } from "aws-amplify";
 import { useParams } from "react-router-dom";
 import { UserContext } from "../../App";
-import { DragDropContext, Droppable } from "react-beautiful-dnd";
+// import { DragDropContext, Droppable } from "react-beautiful-dnd";
 
 import { onCreateSubsection } from "../../graphql/subscriptions";
 import {
@@ -17,8 +17,7 @@ import DetailSection from "../section/DetailSection";
 
 import ItemsSubsection from "./ItemsSubsection";
 import CreateSubsection from "./CreateSubsection";
-// import ListSubsectionDraggable from "./ListSubsectionDraggable";
-import ListSubDraggable from "./ListSubDraggable";
+import ListDraggable from "../ListDraggable";
 
 import AdminMenu from "../AdminMenu";
 
@@ -279,7 +278,7 @@ function Subsection(props) {
                 </div>
               ))
             ) : (
-              <ListSubDraggable subsections={subSections} />
+              <ListDraggable data={subSections} update={updateSubsection} />
             )}
           </div>
         </div>

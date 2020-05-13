@@ -1,9 +1,9 @@
 import React from "react";
 import { API, graphqlOperation } from "aws-amplify";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
-import { updateSubsection } from "../../graphql/mutations";
+// import { update } from "../graphql/mutations";
 
-function DragTest({ subsections }) {
+const ListDraggable = ({ data, update }) => {
   function compare(a, b) {
     if (Number(a.order) < Number(b.order)) {
       return -1;
@@ -28,7 +28,7 @@ function DragTest({ subsections }) {
 
     console.log(startIndex, endIndex);
 
-    const resultArr = Array.from(subsections);
+    const resultArr = Array.from(data);
     const [removed] = resultArr.splice(startIndex, 1);
     resultArr.splice(endIndex, 0, removed);
     console.log(resultArr);
@@ -45,11 +45,11 @@ function DragTest({ subsections }) {
     };
 
     const result = await API.graphql(
-      graphqlOperation(updateSubsection, {
+      graphqlOperation(update, {
         input,
       })
     );
-    console.info(`Updated section: id ${result.data.updateSubsection.id}`);
+    // console.info(`Updated section: id ${result.data.update.id}`);
   };
 
   return (
@@ -57,8 +57,8 @@ function DragTest({ subsections }) {
       <Droppable droppableId="list">
         {(provided) => (
           <div ref={provided.innerRef} {...provided.droppableProps}>
-            {subsections &&
-              subsections.sort(compare).map((item, index) => (
+            {data &&
+              data.sort(compare).map((item, index) => (
                 <Draggable key={item.id} draggableId={item.id} index={index}>
                   {(provided) => (
                     <div
@@ -83,6 +83,6 @@ function DragTest({ subsections }) {
       </Droppable>
     </DragDropContext>
   );
-}
+};
 
-export default DragTest;
+export default ListDraggable;

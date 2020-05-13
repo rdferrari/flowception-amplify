@@ -6,10 +6,11 @@ import { updateSection } from "../../graphql/mutations";
 import { onCreateSection } from "../../graphql/subscriptions";
 
 import CreateSection from "./CreateSection";
-import ListSection from "./ListSection";
+import ItemSection from "./ItemSection";
 import AdminMenu from "../AdminMenu";
 
-import { DragDropContext, Droppable } from "react-beautiful-dnd";
+// import { DragDropContext, Droppable } from "react-beautiful-dnd";
+import ListDraggable from "../ListDraggable";
 
 const Section = () => {
   const [sections, updateSections] = useState([]);
@@ -125,22 +126,13 @@ const Section = () => {
           )}
 
           {showCreateSection === false && (
-            <DragDropContext onDragEnd={onDragEnd}>
-              <Droppable droppableId="list">
-                {(provided) => (
-                  <div ref={provided.innerRef} {...provided.droppableProps}>
-                    <div>
-                      <ListSection
-                        user={user}
-                        sections={sections}
-                        isDraggable={isDraggable}
-                      />
-                      {provided.placeholder}
-                    </div>
-                  </div>
-                )}
-              </Droppable>
-            </DragDropContext>
+            <div>
+              {isDraggable === false ? (
+                <ItemSection sections={sections} user={user} />
+              ) : (
+                <ListDraggable data={sections} update={updateSection} />
+              )}
+            </div>
           )}
         </div>
       )}
