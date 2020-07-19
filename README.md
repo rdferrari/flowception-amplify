@@ -1,4 +1,4 @@
-React JS and AWS-amplify Content Management System - CMS developed by Rodrigo Ferrari.
+https://www.flowception.com/ React JS and AWS-amplify full stack Progressive Web App developed by Rodrigo Ferrari.
 
 - Clone the repo, then:
 
@@ -8,7 +8,7 @@ React JS and AWS-amplify Content Management System - CMS developed by Rodrigo Fe
 
 ### `git remote -v`
 
-Demo = https://master.d2bkfq99j0cffj.amplifyapp.com/
+
 
 ## AWS Amplify
 
