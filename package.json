@@ -10,7 +10,7 @@
     "@testing-library/user-event": "^7.1.2",
     "aws-amplify": "^3.0.9",
     "aws-amplify-react": "^4.1.8",
-    "node-sass": "^4.13.1",
+    "node-sass": "^7.0.0",
     "pannellum-react": "^1.2.4",
     "react": "^16.13.0",
     "react-audio-player": "^0.13.0",
